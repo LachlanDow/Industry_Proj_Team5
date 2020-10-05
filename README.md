@@ -14,3 +14,14 @@ Ritch Paul P.A.Ritch@dundee.ac.uk
 Robb Matthew M.V.Robb@dundee.ac.uk
 Roebuck Alek A.Roebuck@dundee.ac.uk
 Tarar Sultana Rauf R.N.Tararsultana@dundee.ac.uk
+
+
+Team Structure:
+
+Backend Team:
+Product manager:Ryan
+Members: Jason, Robert, Matthew
+
+Frontend Team:
+Product manager: Rauf
+Members: Matt, Lachlan, Alek
