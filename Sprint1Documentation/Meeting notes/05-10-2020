@@ -1,0 +1,34 @@
+First Team meeting 10:30 - 12:00
+Minutes:
+Teams devided(Front end and back end)
+Front End: Rauf, Matt, Lachlan, Alek, Matthew
+Back End:Robert, Ryan, jason, Paul
+Float: Mikhail
+
+
+Game Decisions
+Webapp: Powered by angular on the front end
+Unecided on the backend, research is required of the tech stack, and the API schema.
+
+Game flow designed to be "who wants to be a millionair" style
+  Update: This design would have not worked well for multiplayer so was scrapped for quiz golf - goal of having minimum score, and golf themed ideas.
+
+
+Front end and backend meetings 13:00 - 14:30
+
+Back-end meeting - Divided up to research different back end technologies
+
+Front-end - Discussed the development of the user interface, started drawing up wireframes and prototypes. discussed important aspects of the future development of the game
+
+Issues created on github: Tasks assigned and added to the sprint backlog
+
+
+meeting 14:30- 
+Management meeting:
+Discussed the general plan for the project.
+Important notes:
+Keep track of decisions being made
+Follow agile methodology
+
+Post metting: 
+Discussed the realities of the development of the app, made the adgjustments to create a themed quiz app to give more direction to the development. 
