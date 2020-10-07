@@ -1,13 +1,17 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const questionSchema = new Schema({
-questionText: {
+question: {
   type: String,
-  required: true
+ },
+ category: {
+  type: String,
  },
 answer: {
   type: String,
-  required: true
+ },
+ choices: {
+  type: [String],
  }
 });
 const Question = mongoose.model("Question", questionSchema);

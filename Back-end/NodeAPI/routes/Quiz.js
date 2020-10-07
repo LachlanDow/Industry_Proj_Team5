@@ -3,6 +3,7 @@ const router = express.Router();
 const Quiz = require("../models/Quiz");
 const Participant = require("../models/Participant");
 const Category = require("../models/Category");
+const Question = require("../models/Question");
 const SSE = require('../ServerSentEvents');
 
 // Get All quizzes from db
@@ -15,18 +16,20 @@ router.get("/", async (req, res) => {
     }
   });
 
-//Create new quiz
+//Create new quiz. This adds the host as a participant, 
   router.post("/", async (req, res) => {
     const participant = new Participant ({
       name: req.body.hostName,
       score: 0
     });
+    const questionList = await Question.find().limit(req.body.questionCount);
     const category = await Category.findById(req.body.categoryId);
     const quizToCreate = new Quiz({
       participants: [ participant ],
       category: category,
       timeLimit: req.body.timeLimit,
-      questionCount: req.body.questionCount
+      questionCount: req.body.questionCount,
+      questions: questionList
     });
     try {
       const newQuiz = await quizToCreate.save();
