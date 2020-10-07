@@ -62,6 +62,20 @@ router.patch("/:id", getQuiz, async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 });
+
+  //Update participant score
+  router.patch("/:id/:participantId", getQuiz, async (req, res) => {
+    //Find the participant in the quiz by their participant ID, and change to the score send in request body
+    res.quiz.participants.find(p => p.id == req.params.participantId).score = req.body.score;
+    try {
+      const updatedQuiz = await res.quiz.save();
+      res.json(updatedQuiz);
+      SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
+    } catch (err) {
+      res.status(400).json({ message: err.message });
+    }
+  });
+   
  
 
 //getQuiz middleware - this allows multiple functions above which do the same thing (get quiz by id) to reuse the same code
