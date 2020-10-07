@@ -1,0 +1,42 @@
+.ins_title{
+    font-family: "Roboto";
+    color: white;
+    text-align: center;
+    font-size: 60px;
+    padding-top: 4%;
+    font-weight: bold;
+    padding-bottom: 5%;
+}
+
+.instructions_box{
+    width: 65%;
+    height: 55%;
+    margin: auto;
+    background-color: #2e323e;
+    border-radius: 25px;  
+}
+
+.instructions_text{
+    font-family: "Roboto";
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding-top: 3%;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 2%;
+    word-wrap:break-word;
+    letter-spacing: 1px; 
+    line-height: 1;
+}
+
+.btn{
+    font-family: "Roboto";
+    color: white;
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+    border-color: black;
+    font-size: 12px;
+}
