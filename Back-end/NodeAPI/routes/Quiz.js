@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Quiz = require("../models/Quiz");
 const Participant = require("../models/Participant");
+const Category = require("../models/Category");
 const SSE = require('../ServerSentEvents');
 
 // Get All quizzes from db
@@ -17,11 +18,15 @@ router.get("/", async (req, res) => {
 //Create new quiz
   router.post("/", async (req, res) => {
     const participant = new Participant ({
-      name: req.body.name,
+      name: req.body.hostName,
       score: 0
     });
+    const category = await Category.findById(req.body.categoryId);
     const quizToCreate = new Quiz({
-      participants: [ participant ]
+      participants: [ participant ],
+      category: category,
+      timeLimit: req.body.timeLimit,
+      questionCount: req.body.questionCount
     });
     try {
       const newQuiz = await quizToCreate.save();
@@ -49,7 +54,7 @@ router.patch("/:id", getQuiz, async (req, res) => {
   try {
     const updatedQuiz = await res.quiz.save();
     res.json(updatedQuiz);
-    SSE.data.sendEventsToAll("Participant joined", updatedQuiz);
+    SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }

@@ -14,11 +14,13 @@ app.use(express.json());
 //Declaring routers for different routes
 const questionsRouter = require("./routes/question");
 const quizRouter = require("./routes/quiz");
+
 app.use("/questions", questionsRouter);
 app.use("/quiz", quizRouter);
+app.use("/categories", quizRouter);
 
 //App listen on specified port
 app.listen(3000, () => console.log('server has started at port 3000'));
 
 //If there is a get request to stream endpoint, call the events handler from Server Sent Events
-app.get('/stream', SSE.data.eventsHandler);
+app.get('/stream/:participantId', SSE.data.eventsHandler);

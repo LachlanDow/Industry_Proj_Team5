@@ -1,4 +1,7 @@
-var eventsHandler = function eventsHandler(req, res, next) {
+const Participant = require("./models/Participant");
+const Quiz = require("./models/Quiz");
+
+var eventsHandler =  async function eventsHandler(req, res) {
 // Mandatory headers and http status to keep connection open. Also header to stop CORS from being disallowed on browser.
 const headers = {
 'Content-Type': 'text/event-stream',
@@ -9,29 +12,40 @@ const headers = {
 res.writeHead(200, headers);
 // Generate an id based on timestamp and save res
 // object of client connection on clients list
-const clientId = Date.now();
-const newClient = {
-id: clientId,
-res
-};
+try { 
+    participantList[req.params.participantId] = res
 
-clients.push(newClient);
+ } catch(e) {
+   console.log(e);
+ }
+
 //When client closes connection, update the clients list to remove client
 req.on('close', () => {
-console.log(`${clientId} Connection closed`);
-clients = clients.filter(c => c.id !== clientId);
+console.log(`${req.params.participantId} Connection closed`);
+delete participantList[req.params.participantId];
 });
 }
 
 //Function to send passed in JSON object as a string to client 
 //so that client can then parse this string to have the object sent to them
-var sendEventsToAll = function sendEventsToAll(eventContent) {
-clients.forEach(c => c.res.write(`data: ${JSON.stringify(eventContent)}\n\n`));
+var sendEventsToAllInQuiz = function sendEventsToAllInQuiz(particpantsInQuiz, eventContent) {
+particpantsInQuiz.forEach(function (participant) {
+    try { 
+        if(participantList[participant.id] !== undefined)
+        {
+            participantList[participant.id].write(`data: ${JSON.stringify(eventContent)}\n\n`);
+        }
+    }
+    catch(e) {
+        console.log(e);
+      }
+});
 }
 
-let clients = [];
+var participantList = {}
+
 
 //Exports methods so they are usable by other files
-var methods = {eventsHandler, sendEventsToAll}
+var methods = {eventsHandler, sendEventsToAllInQuiz}
 exports.data = methods;
 
