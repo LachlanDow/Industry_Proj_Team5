@@ -1,0 +1,56 @@
+Daily scrum meeting minutes
+Time 10:00 - 10:20
+
+Members present: Rauf, Matthew, Robert, Matt, Ryan, Jason, Paul, Lachlan
+Missing: Mikhail, Alek
+
+Rauf:
+Tasks completed: angular front end progress
+
+Plan today:Push completed pages to github, liaise with Matt and Lachlan about the coding for the front end and continue development
+
+
+Matthew: 
+Tasks completed: Researched backend, worked on getting used to node js, Express and mongoDB setup
+
+Plan today: work with data set and more research
+
+
+Robert:
+Tasks completed: SPIKE about syncing information and requests to the server
+
+Plan Today: MOre work on API schema and development on syncronising requests
+
+Matt: 
+Tasks Completed: Finsihed the UI design of pages, made changes to UI
+
+Plan Today: Made some changes to UI design and start on the coding, liaise with Rauf to get on the same page
+
+Ryan:
+Tasks Completed: Learning Node JS, solutions for syncing: sockets, deciided against as very complicated
+
+Plan today:  Define schema more formally with backend team
+
+Jason:
+Tasks completed: learning node js, using local server managed to retrieve results from the DB
+
+Plan today: continue work with back end team to find dataset and get working on hosting it
+
+Paul:
+Tasks completed: spike for syncing 
+
+Plan Today:Work on backend development. liaise with rest of group
+
+
+Lachlan:
+Tasks COmpleted: continued work on learning angular, updated documentation and continued work on UX notes
+
+Plan Today: Work with Rauf and Matt on Front end coding, group meeting to discuss user stories, update documentation accordingly
+
+
+_________________________________________________________________________________________________________________________________________________
+Meeting:
+Backend syncronisation:
+Using json and event lsiteners so that whenever there is an update with the game the user is alerted. Hold list of client ids. can also use for question updates. And anytime where the server needs to commmunicate with the client
+
+
