@@ -1,0 +1,60 @@
+.body {
+    background-color: #2e323e;
+}
+
+.title{
+  font-family: "PhosphateInline";
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  color: #cebc6f;
+  font-size  : 100px; 
+}
+
+.options{
+  width: 75%;
+  height: 70%;
+  background-color: black;
+  margin: auto; 
+  border: 3px solid white;
+  border-radius: 25px;
+}
+
+.btn{
+  font-family: "Roboto";
+  color: white;
+  width: 350px;
+  height: 150px;
+  border-radius: 25px;
+  border-color: black;
+  font-size: 30px;
+  }
+  
+  .play{
+  background-color: #0480fc;
+  margin-top: 100px;
+  margin-left: 190px;
+  margin-right: 150px;
+  }
+  
+  .leaderboard {
+  background: rgb(63,94,251);
+  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,8,75,1) 100%);
+  margin-top: 100px;
+  margin-left: 150px;
+  margin-right: 150px;
+  }
+  
+  .instructions {
+  background-color: #16ac9a;
+  margin-top: 150px;
+  margin-left: 190px;
+  margin-right: 150px;
+  }
+  
+  .settings {
+  background-color: #888888;
+  margin-top: 150px;
+  margin-left: 150px;
+  margin-right: 150px;
+  }
