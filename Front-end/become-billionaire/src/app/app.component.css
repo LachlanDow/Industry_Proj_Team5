@@ -71,3 +71,28 @@ margin-top: 5%;
   margin-right: 0%;
 }
 
+@media only screen and (max-width: 600px) {
+  
+    .btn{
+      font-family: "Roboto";
+      color: #191919;
+      width: 70%;
+      height: 15%;
+      font-weight: bold;
+      border-radius: 30px;
+      border-color: black;
+      font-size: 7vw;
+      margin-left: 15%;;
+      }
+      .title{
+        font-family: "PhosphateInline";
+        text-align: center;
+        padding-top: 15%;
+        padding-bottom: 5%;
+        color: #cebc6f;
+        font-size  : 10vw; 
+        }
+      
+      
+}
+
