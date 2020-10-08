@@ -29,7 +29,6 @@ export class AppComponent  {
   }
 
   ngAfterViewChecked(){ 
-    this.display = false;
     this.displaySettings = false;
     this.displayInstructions = false;
   }
