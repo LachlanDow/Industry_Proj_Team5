@@ -15,9 +15,5 @@ export class AppComponent {
     console.log(this.display);
   }
 
-  onSettingPress() {
-    this.settingsDisplay = true;
-    console.log(this.settingsDisplay)
-  
   }
 }

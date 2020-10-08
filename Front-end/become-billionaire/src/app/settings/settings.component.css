@@ -66,6 +66,20 @@
   .slider.round:before {
     border-radius: 50%;
   }
+  .btnExit{
+    float: right;
+    border: none;
+    background-color: darkred;
+    color: darkgray;
+    padding: 3%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 3vw;
+    margin: 2% 1%;
+    cursor: pointer;  
+    border-radius: 50%
+  }
   h3{
       color:white;
       float: left;
