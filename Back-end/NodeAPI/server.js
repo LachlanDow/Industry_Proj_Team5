@@ -5,7 +5,7 @@ const SSE = require('./ServerSentEvents');
 const app = express();
 
 //Establish connection to database
-mongoose.connect("mongodb://34.105.235.219:27017/quiz", { useNewUrlParser: true }); 
+mongoose.connect("mongodb://35.214.13.185:27017/quiz", { useNewUrlParser: true }); 
 const db = mongoose.connection;
 db.on("error", error => console.log(error));
 db.once("open", () => console.log("connection to db established"));
