@@ -71,7 +71,7 @@ margin-top: 5%;
   margin-right: 0%;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
   
     .btn{
       font-family: "Roboto";
