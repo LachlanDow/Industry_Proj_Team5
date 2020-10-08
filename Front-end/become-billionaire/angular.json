@@ -122,5 +122,8 @@
       }
     }
   },
-  "defaultProject": "become-billionaire"
+  "defaultProject": "become-billionaire",
+  "cli": {
+    "analytics": false
+  }
 }

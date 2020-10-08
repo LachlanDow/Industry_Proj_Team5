@@ -6,7 +6,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import {MatCardModule} from '@angular/material/card';
 import { HostSettingComponent } from './host-setting/host-setting.component';
 import { SettingsComponent } from './settings/settings.component'
-
+import { InstructionsComponent } from './instructions/instructions.component';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -15,6 +15,7 @@ import { SettingsComponent } from './settings/settings.component'
     LandingPageComponent,
     HostSettingComponent,
     SettingsComponent
+    InstructionsComponent
   ],
   imports: [
     BrowserModule,
