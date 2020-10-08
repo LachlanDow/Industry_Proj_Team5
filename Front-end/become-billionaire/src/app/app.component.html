@@ -1,1 +1,23 @@
-<p>Welcome! Who wants to be a Billionaire</p>
+<link href="//db.onlinewebfonts.com/c/c4a64740ecb71342cea0a87b66ee15e0?family=PhosphateInline" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia" type="text/css" />
+
+<body class="body">
+    <p class="title">BILLIONAIRE GOLF</p>
+    <div class="options" *ngIf="!display && !displaySettings && !displayInstructions">
+        <button type="button" class="btn play" (click)="onPress()">Play!</button>
+        <button type="button" class="btn join" (click)="onPress()">Join Game</button>
+        
+        <button type="button" class="btn leaderboard">Leaderboard</button>
+        <button type="button" class="btn instructions" (click)="onInstructionsPress()">Instructions</button>
+        <button type=" button " class="btn settings " (click)="onSettingsPress() ">Settings</button>
+    </div>
+    <div class="options " *ngIf="display ">
+        <!-- ADD QUIZ PAGE OR HOST -->
+    </div>
+    <div class="options " *ngIf="displaySettings ">
+        <app-settings></app-settings>
+    </div>
+    <div class="options " *ngIf="displayInstructions">
+        <app-instructions></app-instructions>
+    </div>
+</body>
