@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./instructions.component.css']
 })
 export class InstructionsComponent  {
-  clicked_back: boolean;
+  clicked_back = false;
 
   constructor() { }
 
