@@ -1,20 +1,15 @@
 
-#parent{ 
-  background: rgb(251, 251, 251);
-  padding:10px;
-}
+#parent{padding:3%;}
 
-.child {
-  background:#ccc;
-  height:200px;
-  margin:20px;
-}
+.child {height: 16%;margin:1%; float:inline-start;}
+
 /* The switch - the box around the slider */
 .switch {
     position: relative;
     display: inline-block;
     width: 60px;
     height: 34px;
+    float: right;
   }
   
   /* Hide default HTML checkbox */
@@ -71,3 +66,14 @@
   .slider.round:before {
     border-radius: 50%;
   }
+  h3{
+      color:white;
+      float: left;
+      font-size: 2vw;
+    }
+
+  h1{
+        color:white;
+        float: left;
+        font-size: 3vw;
+ }
