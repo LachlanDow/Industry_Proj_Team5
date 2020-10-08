@@ -31,7 +31,8 @@ router.get("/", async (req, res) => {
       category: category,
       timeLimit: req.body.timeLimit,
       questionCount: req.body.questionCount,
-      questions: questionList
+      questions: questionList,
+      questionNumber: 0
     });
     try {
       const newQuiz = await quizToCreate.save();
@@ -45,6 +46,18 @@ router.get("/", async (req, res) => {
   // Get quiz by ID - this is the equivalent of get quiz state
   router.get("/:id", getQuiz, (req, res) => {
     res.json(res.quiz);
+  });
+
+  // Start quiz
+  router.post("/:id/start", getQuiz, async (req, res) => {
+    SSE.data.gameLoopStart(res.quiz);
+    try {
+      const updatedQuiz = await res.quiz.save();
+      res.json(updatedQuiz);
+      SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
+    } catch (err) {
+      res.status(400).json({ message: err.message });
+    }
   });
 
   //Join Quiz. Patch to quiz endpoint with quizID after slash. This notifies all other participants in quiz.
