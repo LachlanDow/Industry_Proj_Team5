@@ -3,14 +3,18 @@
 
 <body class="body">
     <p class="title">BILLIONAIRE GOLF</p>
-    <div class="options" *ngIf="!display">
+    <div class="options" *ngIf="!display && !displaySettings">
         <button type="button" class="btn play" (click)="onPress()">Play!</button>
         <button type="button" class="btn leaderboard">Leaderboard</button>
         <button type="button" class="btn instructions">Instructions</button>
-        <button type="button" class="btn settings">Settings</button>
-    </div>>
+        <button type="button" class="btn settings" (click)="onSettingsPress()">Settings</button>
+    </div>
     <div class="options" *ngIf="display">
         <app-landing-page></app-landing-page>
+    </div>
+    <div class="options" *ngIf="displaySettings">
+        <app-settings></app-settings>
     </div>>
+
 
 </body>

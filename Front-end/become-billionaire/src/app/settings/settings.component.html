@@ -1,0 +1,43 @@
+  <div class="options" ngIf="!display">
+  <div id="parent" style="width: 40%; float: left; height:100%">
+   <div class="child"> <h1>Settings</h1></div>
+   
+    <div class="child">
+        <h3>Music</h3>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+    </div>
+    <div class="child">  
+        <h3>Sound Effects</h3>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+    </div>
+    <div class="child"> 
+        <h3>Inverted Colours</h3>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+    </div>
+    <div class="child"> 
+        <h3>Label</h3>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+    </div> 
+    </div>
+</div>
+<div id="parent" style="width: 30%; float:right;">
+    <button type="button" class="btn play" (click)="onPress()">Play!</button>
+    <img src="../../assets/dancing.png" width="200" height="400" >
+
+</div>
+
+<div class="options" *ngIf="display">
+    <app-landing-page></app-landing-page>
+</div>

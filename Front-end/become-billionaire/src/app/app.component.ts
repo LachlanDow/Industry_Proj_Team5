@@ -8,9 +8,16 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'become-billionaire';
   display = false;
+  settingsDisplay= false;
 
   onPress() {
     this.display = true;
     console.log(this.display);
+  }
+
+  onSettingPress() {
+    this.settingsDisplay = true;
+    console.log(this.settingsDisplay)
+  
   }
 }
