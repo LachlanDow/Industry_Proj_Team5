@@ -25,7 +25,7 @@ export class AppComponent  {
     this.displayInstructions = true;
   }
   onLeaderboardPress() {
-    this.displayLeaderboard= true;
+    this.displayLeaderboard = true;
   }
 
   ngAfterViewChecked(){ 
