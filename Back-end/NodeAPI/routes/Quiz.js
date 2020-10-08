@@ -16,7 +16,9 @@ router.get("/", async (req, res) => {
     }
   });
 
-//Create new quiz. This adds the host as a participant, 
+//Create new quiz. This adds the host as a participant, selects the category, timelimit, question count
+//and selects questions. TODO - move question selection to another function and provide functionality to pick random questions
+//from different categories
   router.post("/", async (req, res) => {
     const participant = new Participant ({
       name: req.body.hostName,
@@ -40,12 +42,12 @@ router.get("/", async (req, res) => {
   });
 
   
-  // Get quiz by ID
+  // Get quiz by ID - this is the equivalent of get quiz state
   router.get("/:id", getQuiz, (req, res) => {
     res.json(res.quiz);
   });
 
-  //Join Quiz
+  //Join Quiz. Patch to quiz endpoint with quizID after slash. This notifies all other participants in quiz.
 router.patch("/:id", getQuiz, async (req, res) => {
   if (req.body.name != null) {
     const participant = new Participant ({
