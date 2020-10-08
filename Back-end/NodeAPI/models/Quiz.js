@@ -1,9 +1,15 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const Participant = require("../models/Participant");
+const Participant = require("./Participant");
+const Category = require("./Category");
+const Question = require("./Question");
 
 const quizSchema = new Schema({
-  participants: [Participant.schema]
+  participants: [Participant.schema],
+  category: Category.schema,
+  timeLimit: Number,
+  questionCount: Number,
+  questions: [Question.schema]
 });
 const Quiz = mongoose.model("Quiz", quizSchema);
 

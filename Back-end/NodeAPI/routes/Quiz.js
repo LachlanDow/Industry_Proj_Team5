@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Quiz = require("../models/Quiz");
 const Participant = require("../models/Participant");
+const Category = require("../models/Category");
+const Question = require("../models/Question");
 const SSE = require('../ServerSentEvents');
 
 // Get All quizzes from db
@@ -14,14 +16,22 @@ router.get("/", async (req, res) => {
     }
   });
 
-//Create new quiz
+//Create new quiz. This adds the host as a participant, selects the category, timelimit, question count
+//and selects questions. TODO - move question selection to another function and provide functionality to pick random questions
+//from different categories
   router.post("/", async (req, res) => {
     const participant = new Participant ({
-      name: req.body.name,
+      name: req.body.hostName,
       score: 0
     });
+    const questionList = await Question.find().limit(req.body.questionCount);
+    const category = await Category.findById(req.body.categoryId);
     const quizToCreate = new Quiz({
-      participants: [ participant ]
+      participants: [ participant ],
+      category: category,
+      timeLimit: req.body.timeLimit,
+      questionCount: req.body.questionCount,
+      questions: questionList
     });
     try {
       const newQuiz = await quizToCreate.save();
@@ -32,12 +42,12 @@ router.get("/", async (req, res) => {
   });
 
   
-  // Get quiz by ID
+  // Get quiz by ID - this is the equivalent of get quiz state
   router.get("/:id", getQuiz, (req, res) => {
     res.json(res.quiz);
   });
 
-  //Join Quiz
+  //Join Quiz. Patch to quiz endpoint with quizID after slash. This notifies all other participants in quiz.
 router.patch("/:id", getQuiz, async (req, res) => {
   if (req.body.name != null) {
     const participant = new Participant ({
@@ -49,11 +59,25 @@ router.patch("/:id", getQuiz, async (req, res) => {
   try {
     const updatedQuiz = await res.quiz.save();
     res.json(updatedQuiz);
-    SSE.data.sendEventsToAll("Participant joined", updatedQuiz);
+    SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
+
+  //Update participant score
+  router.patch("/:id/:participantId", getQuiz, async (req, res) => {
+    //Find the participant in the quiz by their participant ID, and change to the score send in request body
+    res.quiz.participants.find(p => p.id == req.params.participantId).score = req.body.score;
+    try {
+      const updatedQuiz = await res.quiz.save();
+      res.json(updatedQuiz);
+      SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
+    } catch (err) {
+      res.status(400).json({ message: err.message });
+    }
+  });
+   
  
 
 //getQuiz middleware - this allows multiple functions above which do the same thing (get quiz by id) to reuse the same code
