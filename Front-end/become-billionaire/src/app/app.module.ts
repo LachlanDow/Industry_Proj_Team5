@@ -6,6 +6,7 @@ import {MatCardModule} from '@angular/material/card';
 import { HostSettingComponent } from './host-setting/host-setting.component';
 import { SettingsComponent } from './settings/settings.component'
 import { InstructionsComponent } from './instructions/instructions.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -13,7 +14,9 @@ import { InstructionsComponent } from './instructions/instructions.component';
     AppComponent,
     HostSettingComponent,
     SettingsComponent,
+    LeaderboardComponent,
     InstructionsComponent
+    
   ],
   imports: [
     BrowserModule,
