@@ -44,3 +44,6 @@ Plans Today: Finish settings page begin the report writing
 
 ______________________________________________________________________________________________________________________________________________________________________
 
+
+Changes to backend dev:
+Switched the DB and node server to use static IPs instead of ephemeral IPs just in case they are restarted or anything. All the info about the cloud infrastructure is documented in a file in the files tab of this channel (also a link in Documentation Links in other team)
