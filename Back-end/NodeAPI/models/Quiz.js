@@ -9,7 +9,8 @@ const quizSchema = new Schema({
   category: Category.schema,
   timeLimit: Number,
   questionCount: Number,
-  questions: [Question.schema]
+  questions: [Question.schema],
+  questionNumber: Number
 });
 const Quiz = mongoose.model("Quiz", quizSchema);
 

@@ -42,12 +42,35 @@ particpantsInQuiz.forEach(function (participant) {
 });
 }
 
+var timerHandler;
+
+async function gameLoop(quiz) { 
+    quiz.questionNumber++;
+
+    if(quiz.questionNumber <= quiz.questionCount) { 
+        const updatedQuiz = await quiz.save();
+        sendEventsToAllInQuiz(quiz.participants, updatedQuiz);
+    }
+    else { 
+        clearInterval(timerHandler);
+        quiz.questionNumber = -1;
+        const updatedQuiz = await quiz.save();
+        sendEventsToAllInQuiz(quiz.participants, updatedQuiz);
+    }
+    
+}
+
+var gameLoopStart = async function gameLoopStart(quiz) { 
+    quiz.questionNumber++;
+    timerHandler = setInterval(gameLoop, quiz.timeLimit * 1000, quiz);
+}
+
 //Associative array to store participant. Works like a hash table or dictionary data structure
 //Participant IDs are used as keys, and res objects are values. Allows for quick look up of participant res object needed for SSE.
 var participantList = {}
 
 
 //Exports methods so they are usable by other files
-var methods = {eventsHandler, sendEventsToAllInQuiz}
+var methods = {eventsHandler, sendEventsToAllInQuiz, gameLoopStart}
 exports.data = methods;
 
