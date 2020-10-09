@@ -6,7 +6,8 @@ const cors = require('cors');
 const app = express();
 
 //Establish connection to database
-mongoose.connect("mongodb://35.214.13.185:27017/quiz", { useNewUrlParser: true }); 
+var password = process.env.DB_PASSWORD;
+mongoose.connect(`mongodb://quizAdmin:${password}@34.105.157.233:27017/admin`, { useNewUrlParser: true }); 
 const db = mongoose.connection;
 db.on("error", error => console.log(error));
 db.once("open", () => console.log("connection to db established"));
