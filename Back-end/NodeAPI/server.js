@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require("mongoose");
 const SSE = require('./ServerSentEvents');
+const cors = require('cors');
 
 const app = express();
 
@@ -18,6 +19,7 @@ const quizRouter = require("./routes/Quiz");
 app.use("/questions", questionsRouter);
 app.use("/quiz", quizRouter);
 app.use("/categories", quizRouter);
+app.use(cors());
 
 //App listen on specified port
 app.listen(3000, () => console.log('server has started at port 3000'));
