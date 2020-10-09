@@ -1,42 +1,48 @@
-.ins_title{
+.ins_title {
     font-family: "Roboto";
     color: white;
     text-align: center;
-    font-size: 60px;
+    font-size: 5vw;
     padding-top: 4%;
     font-weight: bold;
     padding-bottom: 5%;
 }
 
-.instructions_box{
+.instructions_box {
     width: 65%;
     height: 55%;
     margin: auto;
     background-color: #2e323e;
-    border-radius: 25px;  
+    border-radius: 25px;
 }
 
-.instructions_text{
+.instructions_text {
     font-family: "Roboto";
     color: white;
     text-align: center;
-    font-size: 24px;
+    font-size: 1.6vw;
     font-weight: bold;
     padding-top: 3%;
     padding-left: 3%;
     padding-right: 3%;
     padding-bottom: 2%;
-    word-wrap:break-word;
-    letter-spacing: 1px; 
+    word-wrap: break-word;
+    letter-spacing: 1px;
     line-height: 1;
 }
 
-.btn{
-    font-family: "Roboto";
-    color: white;
-    width: 100px;
-    height: 50px;
-    border-radius: 5px;
-    border-color: black;
-    font-size: 12px;
+.btn {
+    text-align: center !important;
+    float: right;
+    border: none;
+    background-color: darkred;
+    color: darkgray;
+    cursor: pointer;
+    line-height: 0px;
+    height: 3vh;
+    width: 3vh;
+    font-size: 3vw;
+    padding: 3%;
+    border-radius: 50%;
+    margin: 2% 2%;
 }
