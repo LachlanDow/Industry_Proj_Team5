@@ -29,5 +29,8 @@ div.box {
 
   .vl {
     border-left: 6px solid #3B3B3B;
-    height: 500px;
+    height: 70%;
+    margin-top: 8%;
+    margin-left: 50%;
+    
   }
