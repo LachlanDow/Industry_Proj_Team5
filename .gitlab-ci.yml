@@ -19,7 +19,7 @@ deploy-to-gcp:
   
   - scp -o StrictHostKeyChecking=no ../NodeAPI.tar.gz rober@35.214.82.56:/home/rober/
   
-  - ssh rober@35.214.82.56 "sudo rm /var/www/NodeAPI.tar.gz && sudo mv /home/rober/NodeAPI.tar.gz /var/www/ && sudo rm -rf /var/www/NodeAPI && sudo tar zxf /var/www/NodeAPI.tar.gz -C /var/www/ && sudo cp -r /var/www/Back-end/NodeAPI /var/www && sudo rm -r /var/www/Back-end && cd /var/www/NodeAPI && sudo npm install && sudo forever start server.js"
+  - ssh rober@35.214.82.56 "sudo rm /var/www/NodeAPI.tar.gz && sudo mv /home/rober/NodeAPI.tar.gz /var/www/ && sudo rm -rf /var/www/NodeAPI && sudo tar zxf /var/www/NodeAPI.tar.gz -C /var/www/ && sudo cp -r /var/www/Back-end/NodeAPI /var/www && sudo rm -r /var/www/Back-end && cd /var/www/NodeAPI && sudo npm install && sudo forever stopall && sudo forever start server.js"
   
   only:
     changes:
