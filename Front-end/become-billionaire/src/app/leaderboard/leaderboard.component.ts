@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class LeaderboardComponent implements OnInit {
   display = false;
   
-
+  userScore = 70;
   constructor() { 
   }
 
