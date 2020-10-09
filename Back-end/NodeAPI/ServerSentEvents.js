@@ -10,13 +10,17 @@ const headers = {
 'Access-Control-Allow-Origin': '*'
 };
 res.writeHead(200, headers);
+streamConnected = {
+    streamSuccess: false
+}
 //Adds participants res object to associative array
 try { 
-    participantList[req.params.participantId] = res
-
+    participantList[req.params.participantId] = res;
+    streamConnected.streamSuccess = true;
  } catch(e) {
    console.log(e);
  }
+ res.write(`data: ${JSON.stringify(streamConnected)}\n\n`);
 
 //When client closes connection, update the clients list to remove client
 req.on('close', () => {

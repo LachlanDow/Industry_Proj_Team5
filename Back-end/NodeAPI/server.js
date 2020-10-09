@@ -12,8 +12,8 @@ db.once("open", () => console.log("connection to db established"));
 app.use(express.json());
 
 //Declaring routers for different routes
-const questionsRouter = require("./routes/question");
-const quizRouter = require("./routes/quiz");
+const questionsRouter = require("./routes/Question");
+const quizRouter = require("./routes/Quiz");
 
 app.use("/questions", questionsRouter);
 app.use("/quiz", quizRouter);
