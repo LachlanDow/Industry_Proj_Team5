@@ -1,1 +1,33 @@
 
+div.box {
+    border-color: #3B3B3B;
+   
+    height: 100%;
+    width: 100%;
+  }
+  
+  div.div1 {
+    
+    float: left;
+    height: 100%;
+    width: 50%;
+  }
+  
+  div.div2 {
+    
+    height: 100%;
+    width: 50%;
+  }
+  
+  div.clear {
+    clear: both;
+    height: 1px;
+    overflow: hidden;
+    font-size: 0pt;
+    margin-top: -1px;
+  }
+
+  .vl {
+    border-left: 6px solid #3B3B3B;
+    height: 500px;
+  }

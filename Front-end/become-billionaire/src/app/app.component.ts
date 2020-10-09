@@ -12,6 +12,7 @@ export class AppComponent  {
   displaySettings = false;
   displayInstructions = false;
   displayLeaderboard = false;
+  
 
   onPress() {
     this.display = true;

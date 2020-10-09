@@ -1,20 +1,23 @@
 
 .body {
   background-color: #202136;
+  
 }
 
 .title{
 font-family: "PhosphateInline";
 text-align: center;
-padding-top: 10%;
-padding-bottom: 5%;
+padding-top: 6%;
+padding-bottom: 3%;
 color: #cebc6f;
-font-size: 10vw ; 
+font-size: 5vw ; 
 }
 
 .options{
-width: 75%;
-height: 72%;
+width: 65%;
+height: 70%;
+max-width: 1500px;
+max-height: 900px;
 background-color: #191919;
 margin: auto; 
 border: 3px solid rgba(255, 255, 255, 0);
@@ -26,11 +29,13 @@ box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 font-family: "Roboto";
 color: #191919;
 width: 25%;
+max-width: 1000px;
+max-height: 200px;
 height: 25%;
 font-weight: bold;
 border-radius: 30px;
 border-color: black;
-font-size: 3vw;
+font-size: 2vw;
 }
 
 .play{
@@ -44,7 +49,7 @@ height: 20%;
 }
 .join {
   background-color: #DEFF86;
-  margin-top: 5%;
+  margin-top: 4%;
   margin-left: 20%;
   margin-right: 0%;
 }
@@ -52,21 +57,21 @@ height: 20%;
 .leaderboard {
 
 background: linear-gradient( 90deg, #FC0441 0%, #F62DA8);
-margin-top: 5%;
-  margin-left: 10%;
-  margin-right: 0%;
+margin-top: 4%;
+margin-left: 10%;
+margin-right: 0%;
 }
 
 .instructions {
 background-color: #60E0D1;
-margin-top: 5%;
+margin-top: 4%;
   margin-left: 20%;
   margin-right: 0%;
 }
 
 .settings {
 background-color: #707070;
-margin-top: 5%;
+margin-top: 4%;
   margin-left: 10%;
   margin-right: 0%;
 }
@@ -95,4 +100,6 @@ margin-top: 5%;
       
       
 }
+
+
 
