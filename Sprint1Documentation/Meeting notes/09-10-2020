@@ -1,0 +1,49 @@
+DAily Scrum meeting notes 09-10-2020
+Meeting start 10:00 - 10:15:
+Rauf
+Completed today: working on quiz page, working on design, new dataset, answer question right you get a little notification, 
+ 
+Plan today: time functionality, score
+ 
+Robert: 
+Completed Today: Worked on time system, got CICD working, very slow,
+
+Plan today: more work on CICD, more documentation on how to test Back-end
+ 
+Jason:
+Completed today: working on timing, worked on stuff with front end, updated API schema
+
+Plan today: COntinue with back end updates
+
+Matt:
+Completed: Made adjustments to UI
+ 
+Plan Today: Finish leaderboard, look into different components adjustability to screen sizes
+
+Mikhail:
+Completed:Work on host settings page, UI finished
+
+Plan: Add functionality
+
+Alek:
+Completed:Make some tweeks to instructions page, more research on angular
+
+Plan:Do more work on different screen sizes
+
+Lachlan:
+Completed: Settings Page UI design complete, progress on report
+
+Plan: Continue work on the report, any additional coding work that needs done
+
+
+Matthew:
+Completed:Working with the back end to get everything working, 
+
+Plan: Make documentation for possible additions during the next sprint
+
+Ryan:
+Cmompleted:Programming session with backend team getting gneral quiz functionality working, experimenting with API code to get used to tweeks that need to be made, meeting with front end team leader for clarity of data in server responses
+
+Plan: More wokring with front end team to discuss how API call will be handled, seecting non onscure questions and adding them to a new database
+
+
