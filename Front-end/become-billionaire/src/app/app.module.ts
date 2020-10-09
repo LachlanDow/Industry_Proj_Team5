@@ -6,19 +6,21 @@ import {MatCardModule} from '@angular/material/card';
 import { HostSettingComponent } from './host-setting/host-setting.component';
 import { SettingsComponent } from './settings/settings.component'
 import { InstructionsComponent } from './instructions/instructions.component';
-//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import {QuizPageComponent} from './quiz-page/quiz-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HostSettingComponent,
     SettingsComponent,
-    InstructionsComponent
+    LeaderboardComponent,
+    InstructionsComponent,
+    QuizPageComponent
   ],
   imports: [
     BrowserModule,
     MatCardModule,
-    // BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

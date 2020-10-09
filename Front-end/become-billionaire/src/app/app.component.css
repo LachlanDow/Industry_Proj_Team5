@@ -6,10 +6,10 @@
 .title{
 font-family: "PhosphateInline";
 text-align: center;
-padding-top: 5%;
+padding-top: 10%;
 padding-bottom: 5%;
 color: #cebc6f;
-font-size  : 100px; 
+font-size: 10vw ; 
 }
 
 .options{
@@ -30,7 +30,7 @@ height: 25%;
 font-weight: bold;
 border-radius: 30px;
 border-color: black;
-font-size: 30px;
+font-size: 3vw;
 }
 
 .play{
@@ -69,5 +69,30 @@ background-color: #707070;
 margin-top: 5%;
   margin-left: 10%;
   margin-right: 0%;
+}
+
+@media only screen and (max-width: 800px) {
+  
+    .btn{
+      font-family: "Roboto";
+      color: #191919;
+      width: 70%;
+      height: 15%;
+      font-weight: bold;
+      border-radius: 30px;
+      border-color: black;
+      font-size: 7vw;
+      margin-left: 15%;;
+      }
+      .title{
+        font-family: "PhosphateInline";
+        text-align: center;
+        padding-top: 15%;
+        padding-bottom: 5%;
+        color: #cebc6f;
+        font-size  : 10vw; 
+        }
+      
+      
 }
 
