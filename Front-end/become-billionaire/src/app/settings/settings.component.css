@@ -1,26 +1,37 @@
+#parent {
+    padding: 3%;
+}
 
-#parent{padding:3%;}
+.child {
+    height: 16%;
+    margin: 1%;
+    float: inline-start;
+}
 
-.child {height: 16%;margin:1%; float:inline-start;}
 
 /* The switch - the box around the slider */
+
 .switch {
     position: relative;
     display: inline-block;
     width: 60px;
     height: 34px;
     float: right;
-  }
-  
-  /* Hide default HTML checkbox */
-  .switch input {
+}
+
+
+/* Hide default HTML checkbox */
+
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  /* The slider */
-  .slider {
+}
+
+
+/* The slider */
+
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -30,9 +41,9 @@
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  .slider:before {
+}
+
+.slider:before {
     position: absolute;
     content: "";
     height: 26px;
@@ -42,31 +53,34 @@
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  input:checked + .slider {
+}
+
+input:checked+.slider {
     background-color: #2196F3;
-  }
-  
-  input:focus + .slider {
+}
+
+input:focus+.slider {
     box-shadow: 0 0 1px #2196F3;
-  }
-  
-  input:checked + .slider:before {
+}
+
+input:checked+.slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
-  }
-  
-  /* Rounded sliders */
-  .slider.round {
+}
+
+
+/* Rounded sliders */
+
+.slider.round {
     border-radius: 34px;
-  }
-  
-  .slider.round:before {
+}
+
+.slider.round:before {
     border-radius: 50%;
-  }
-  .btnExit{
+}
+
+.btnExit {
     float: right;
     border: none;
     background-color: darkred;
@@ -77,17 +91,18 @@
     display: inline-block;
     font-size: 3vw;
     margin: 2% 1%;
-    cursor: pointer;  
+    cursor: pointer;
     border-radius: 50%
-  }
-  h3{
-      color:white;
-      float: left;
-      font-size: 2vw;
-    }
+}
 
-  h1{
-        color:white;
-        float: left;
-        font-size: 3vw;
- }
+h3 {
+    color: white;
+    float: left;
+    font-size: 2vw;
+}
+
+h1 {
+    color: white;
+    float: left;
+    font-size: 3vw;
+}
