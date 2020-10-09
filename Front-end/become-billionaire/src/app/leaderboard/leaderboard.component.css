@@ -28,17 +28,29 @@ div.box {
     margin-top: -1px;
   }
   .userInfo {
-    border: 3px solid  #3B3B3B;
+    border: 0.2vw solid  #3B3B3B;
     border-radius: 0.4vw;
     font-family: "Roboto";
     text-align: left;
-    font-size: 1.5vw ; 
+    
     color: white;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    padding-top: 5%;
+    padding-left: 5%;
+    
     
   }
   .profileIcon {
-      margin-left: 70%;
+      margin-left: 40%;
+      height: auto;
       width: auto;
+  }
+  .yourscoreSizing {
+      font-size: 1.5vw;
+      
+      
   }
 
  
