@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Quiz = require("../models/Quiz");
+const CryptPin = require("../generateID");
 const Participant = require("../models/Participant");
 const Category = require("../models/Category");
 const Question = require("../models/Question");
@@ -26,7 +27,8 @@ router.get("/", async (req, res) => {
     });
     const questionList = await Question.find().limit(req.body.questionCount);
     const category = await Category.findById(req.body.categoryId);
-    const quizToCreate = new Quiz({
+      const quizToCreate = new Quiz({
+          _id: CryptPin(),
       participants: [ participant ],
       category: category,
       timeLimit: req.body.timeLimit,
