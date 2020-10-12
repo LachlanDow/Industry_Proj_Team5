@@ -73,6 +73,7 @@
     color: #FC0441;
     padding: 3%;    
     font-size: 3vw;
+    font-size: max(80px);
     cursor: pointer;  
     
   }
