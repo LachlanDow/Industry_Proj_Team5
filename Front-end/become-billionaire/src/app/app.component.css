@@ -10,7 +10,8 @@ text-align: center;
 padding-top: 6%;
 padding-bottom: 4%;
 color: #cebc6f;
-font-size: max(4vw);
+font-size: 4vw;
+font-size: max(30px);
 }
 
 .options{
