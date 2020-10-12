@@ -14,6 +14,7 @@ db.once("open", () => console.log("connection to db established"));
 app.use(express.json());
 app.use(cors());
 
+
 //Declaring routers for different routes
 const questionsRouter = require("./routes/Question");
 const quizRouter = require("./routes/Quiz");

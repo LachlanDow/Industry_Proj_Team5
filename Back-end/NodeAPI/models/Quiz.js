@@ -5,6 +5,7 @@ const Category = require("./Category");
 const Question = require("./Question");
 
 const quizSchema = new Schema({
+    _id: String,
   participants: [Participant.schema],
   category: Category.schema,
   timeLimit: Number,
