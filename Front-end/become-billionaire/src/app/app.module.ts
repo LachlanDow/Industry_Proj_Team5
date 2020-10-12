@@ -8,6 +8,8 @@ import { SettingsComponent } from './settings/settings.component'
 import { InstructionsComponent } from './instructions/instructions.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import {QuizPageComponent} from './quiz-page/quiz-page.component';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import {QuizPageComponent} from './quiz-page/quiz-page.component';
   ],
   imports: [
     BrowserModule,
+    MatSlideToggleModule,
+    MatSliderModule,
     MatCardModule,
   ],
   providers: [],

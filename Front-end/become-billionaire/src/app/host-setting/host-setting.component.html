@@ -10,10 +10,7 @@
 <div class="left">
 
         <h1> Time Per Question </h1>
-        <div class="slidecontainer">
-            <input type="range" min="10" max="30" value="20 " class="slider" id="myRange" oninput="Qtime.value = myRange.value">
-            <output id="Qtime" ></output>
-          </div>
+        <mat-slider (value)=slidervalue></mat-slider>
         <h2> Number Of Questions </h2>
         <input type="number" id="Qnum" value="1">
         <h3> Categories: </h3>
@@ -43,10 +40,7 @@
     </form>
 
     <div>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span>
-        </label>
+        <mat-slide-toggle class="toggle">Slide me!</mat-slide-toggle>
     </div>
 </div>
 </div>
