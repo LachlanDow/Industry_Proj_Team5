@@ -1,23 +1,18 @@
 .question {
     font-family: "Roboto";
-    /* font-size: 50px; */
-    /* font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width]))); */
     font-size: 3vw;
-    font-size: max(45px);
-    width: 50vw;
-    height: 3vw;
-    max-height: 15px;
-    max-width: 80%;
-    background-color: transparent;
+    font-size: max(40px);
+    width: 52vw;
+    height: 2vw;
+    max-width: 90%;
     color: white;
     font-weight: bold;
     text-align: left;
-    padding-bottom: 3%;
     line-height: normal;
-    margin-left: 10%;
+    margin-left: 8%;
     margin-top: 3%;
-    position: relative;
-    margin-bottom: 5%;
+    
+    
     
     
 }
@@ -35,6 +30,7 @@
     font-size: auto;
     font-size: max(35px);
     background-color: #50AFF5;
+    
     
 }
 
@@ -100,13 +96,15 @@
 }
 
 .options{
+    padding-top: 5%;
     width: 85%;
     height: 90%;
-    max-width: 1400px;
+    max-width: 1100px;
     max-height: 700px;
-    
+
     margin: auto; 
     border: 3px solid rgba(255, 255, 255, 0);
+    
     
     }
 

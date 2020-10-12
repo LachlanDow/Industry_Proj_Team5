@@ -168,18 +168,7 @@ export const Questions = {
           "category": "animals",
           "answer": "Grass snake"
         },
-        {
-          "choices": [
-            "South America and Asia",
-            "Asia and Africa",
-            "Asia and Australia",
-            "South America and Australia"
-          ],
-          "_id": "5f7e27359aab364fb4376d70",
-          "question": "Cobras are venomous snakes of family Elapidae, that generally inhabit regions of these two continents.",
-          "category": "animals",
-          "answer": "Asia and Africa"
-        },
+        
       ],
       "__v": 0
     }
