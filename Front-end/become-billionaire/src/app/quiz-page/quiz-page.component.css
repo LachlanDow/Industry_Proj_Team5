@@ -3,29 +3,39 @@
     /* font-size: 50px; */
     /* font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width]))); */
     font-size: 3vw;
-    font-size: max(50px);
-    height: 60px;
+    font-size: max(45px);
+    width: 50vw;
+    height: 3vw;
+    max-height: 15px;
+    max-width: 80%;
     background-color: transparent;
     color: white;
     font-weight: bold;
-    text-align: center;
-    padding-top: 2%;
+    text-align: left;
     padding-bottom: 3%;
     line-height: normal;
-    max-height: 50px;
+    margin-left: 10%;
+    margin-top: 3%;
+    position: relative;
+    margin-bottom: 5%;
+    
+    
 }
 
 .btn {
     font-family: "Roboto";
     color: #191919;
+    position: relative;
     width: 35%;
     height: 25%;
     font-weight: bold;
     border-radius: 30px;
     border-color: black;
     /* font-size: 3vw; */
-    font-size: calc(14px + (40 - 14) * ((100vw - 300px) / (1600 - 300)));
+    font-size: auto;
+    font-size: max(35px);
     background-color: #50AFF5;
+    
 }
 
 .firstChoice {
@@ -89,7 +99,7 @@
     line-height: normal;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 950px) {
     .btn {
         font-family: "Roboto";
         color: #191919;
