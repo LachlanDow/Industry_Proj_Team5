@@ -1,1 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
 
+        
+   <div class="a"> 
+<div class="left">
+
+        <h1> Time Per Question </h1>
+        <div class="slidecontainer">
+            <input type="range" min="10" max="30" value="20 " class="slider" id="myRange" oninput="Qtime.value = myRange.value">
+            <output id="Qtime" ></output>
+          </div>
+        <h2> Number Of Questions </h2>
+        <input type="number" id="Qnum" value="1">
+        <h3> Categories: </h3>
+        <div> 
+            <button type="button" class="btn Golf">Golf</button>
+            <button type="button" class="btn Random">Random</button>
+            <button type="button" class="btn General">General</button>
+        </div>
+        <div>
+            <button type="button" class="btn Physics">Physics</button>
+            <button type="button" class="btn History">History</button>
+            <div class="dropdown">
+                <button class="dropbtn">Other ↓</button>
+                <div class="dropdown-content">
+                    <a href="#">other1</a>
+                    <a href="#">other2</a>
+                    <a href="#">other3</a>
+                </div>
+            </div>
+        </div>
+
+</div>
+<div class="right">
+    <form>
+        <label for="uname">Username:</label>
+        <input type="text" id="uname" name="uname"><br>
+    </form>
+
+    <div>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label>
+    </div>
+</div>
+</div>
+
+ 
+
+
+       
+
+</body>
+</html>
