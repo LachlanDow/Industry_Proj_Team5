@@ -90,7 +90,7 @@
 
  .frame {
   border: 0.2vw solid  #3B3B3B;
-  border-radius: 0.4vw;
+  border-radius: 0.6vw;
   font-family: "Roboto";
   height: 15vw;
   width: 20vw;
@@ -106,7 +106,7 @@
  }
  
  .big-icon {
-  font-size: 15vw;
+  font-size: 13vw;
   color: #3B3B3B;
-  padding-right: 30%;
+  
 }
