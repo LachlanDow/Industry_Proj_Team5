@@ -13,4 +13,52 @@ Last 5 mins - additional time for questions.
 Also discussed - new user stories. added to backlog, looking into different possible pieces of funtionality to add to the quiz
 
 
+Daily stand up
+Members present: Rauf, Robert, Matthew,  Jason, Matt, Mikhail, Paul, Lachlan
+Missing: Ryan
+Time: 10:20 - 10:40
+Rauf:
+Compeleted, Conencted API, new angular service for communication
 
+Planned: Sort out GitHub and discuss more plans, sort out api conenction
+
+Robert:
+Completed: Integration between front and backend, fixed CICD connection
+
+Planned, discuss meetings, assist rauf
+
+Matthew:
+Completed: touching up research documents
+
+Plans: continue doing research into powerups ect
+
+Jason:
+Completed: tried to generate a pin for the quiz, did spike for the quiz id's
+
+Plans, commit and work on new stuff
+
+
+Matt:
+Completed: pushed leaderboard page, sorting out scaling
+
+Plans: go through all pages, making sure they all size correctly
+
+Alek:
+Completed: made a couple tweeks on the instructions page, researched angular
+
+Plans: push to seperate branch with instructions
+
+Mikhail:
+Completed: setup page progress
+
+Plans: setuprest of page
+
+Paul:
+Completed: server side code, laerning how its works
+
+plans: help where can
+
+Lachlan:
+Compelted: more report progress, lots will be needed to be added
+
+Plans; updating sprint backlog and product backlog, 
