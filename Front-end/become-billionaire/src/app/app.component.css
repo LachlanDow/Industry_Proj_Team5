@@ -8,16 +8,16 @@
 font-family: "PhosphateInline";
 text-align: center;
 padding-top: 6%;
-padding-bottom: 3%;
+padding-bottom: 4%;
 color: #cebc6f;
-font-size: 5vw ; 
+font-size: max(4vw);
 }
 
 .options{
 width: 65%;
-height: 70%;
-max-width: 1500px;
-max-height: 900px;
+height: 60%;
+max-width: 1400px;
+max-height: 700px;
 background-color: #191919;
 margin: auto; 
 border: 3px solid rgba(255, 255, 255, 0);
@@ -29,13 +29,14 @@ box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 font-family: "Roboto";
 color: #191919;
 width: 25%;
-max-width: 1000px;
-max-height: 200px;
+max-width: 800px;
+max-height: 180px;
 height: 25%;
 font-weight: bold;
 border-radius: 30px;
 border-color: black;
-font-size: 2vw;
+font-size: 1.8vw;
+font-size: max(30px);
 }
 
 .play{
@@ -43,8 +44,9 @@ background-color: #50AFF5;
 margin-top: 5%;
 margin-left: 20%;
 margin-right: 20%;
-width: 60%;
+width: 57%;
 height: 20%;
+max-width: 800px;
 
 }
 .join {
@@ -58,7 +60,7 @@ height: 20%;
 
 background: linear-gradient( 90deg, #FC0441 0%, #F62DA8);
 margin-top: 4%;
-margin-left: 10%;
+margin-left: 7%;
 margin-right: 0%;
 }
 
@@ -72,11 +74,11 @@ margin-top: 4%;
 .settings {
 background-color: #707070;
 margin-top: 4%;
-  margin-left: 10%;
+  margin-left: 7%;
   margin-right: 0%;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 980px) {
   
     .btn{
       font-family: "Roboto";
@@ -87,7 +89,8 @@ margin-top: 4%;
       border-radius: 30px;
       border-color: black;
       font-size: 7vw;
-      margin-left: 15%;;
+      margin-left: 15%;
+      font-size: max(20px);
       }
       .title{
         font-family: "PhosphateInline";
