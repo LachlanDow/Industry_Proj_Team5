@@ -13,6 +13,8 @@ db.on("error", error => console.log(error));
 db.once("open", () => console.log("connection to db established"));
 app.use(express.json());
 app.use(cors());
+
+
 //Declaring routers for different routes
 const questionsRouter = require("./routes/Question");
 const quizRouter = require("./routes/Quiz");
@@ -20,6 +22,7 @@ const quizRouter = require("./routes/Quiz");
 app.use("/questions", questionsRouter);
 app.use("/quiz", quizRouter);
 app.use("/categories", quizRouter);
+
 
 //App listen on specified port
 app.listen(3000, () => console.log('server has started at port 3000'));
