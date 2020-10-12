@@ -1,50 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { QuizPageQuizobject } from '../models/quiz-page.quizobject'
-import { Questions } from '../models/questions';
+import { Component, OnChanges, OnInit } from '@angular/core';
+import { RestService } from '../services/rest.service'
 
 @Component({
   selector: 'app-quiz-page',
   templateUrl: './quiz-page.component.html',
   styleUrls: ['./quiz-page.component.css']
 })
-export class QuizPageComponent implements OnInit {
+export class QuizPageComponent implements OnInit, OnChanges {
   questions;
   currentQuestion = 0;
-  quiz: QuizPageQuizobject[] = [];
   IsitCorrect;
   correctAnswerIndex;
   resultIcons = [] as boolean[];
   questionNumber = 1;
+  quiz;
 
-  constructor() {
-    
+  constructor(private quizQuestion: RestService) {
+    //NOOP
   }
-
 
   ngOnInit(): void {
-    this.questions = Questions.newQuiz.questions;
-    
+    this.getData();
   }
 
-  // sortQuestions() {
-  //   this.questions.forEach(question => {
-  //     this.quiz.push(new QuizPageQuizobject(question.questionID, question.question, question.answers, question.correctAnswer));
-  //   });
-  //   console.log(this.quiz);
-  //   return this.quiz;
-  // }
+  ngOnChanges(): void {
+    //NOOP
+  }
 
   questionCount(e: any) {
     this.getCorrectAnswerIndex();
     if (e == this.correctAnswerIndex) {
       this.IsitCorrect = "Correct Answer! Well Done";
       let icon = this.resultIcons.push(true)
-      console.log(this.resultIcons);
     }
     else {
       this.IsitCorrect = "Wrong Answer! Good luck next time";
-      // this.resultIcons.push(false);
-      console.log(this.resultIcons);
       let icon = this.resultIcons.push(false)
 
     }
@@ -53,8 +43,13 @@ export class QuizPageComponent implements OnInit {
   }
 
   getCorrectAnswerIndex() {
-    this.correctAnswerIndex = this.questions[this.currentQuestion].choices.findIndex(x =>x == this.questions[this.currentQuestion].answer);
-    this.correctAnswerIndex = this.correctAnswerIndex+1;
+    this.correctAnswerIndex = this.quiz.questions[this.currentQuestion].choices.findIndex(x => x == this.quiz.questions[this.currentQuestion].answer);
+    this.correctAnswerIndex = this.correctAnswerIndex + 1;
   }
 
+  getData() {
+    this.quizQuestion.getData().subscribe(data => {
+    this.quiz = data;
+    });
+  }
 }
