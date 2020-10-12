@@ -3,10 +3,12 @@
 <div class="question">
     {{questionNumber}}. {{questions[currentQuestion].question}}
 </div>
+<div class="options">
 <button type="button" class="btn firstChoice" (click)="questionCount(1)">{{questions[currentQuestion].choices[0]}}</button>
 <button type="button" class="btn secondChoice" (click)="questionCount(2)">{{questions[currentQuestion].choices[1]}}</button>
 <button type="button" class="btn thirdChoice" (click)="questionCount(3)">{{questions[currentQuestion].choices[2]}}</button>
 <button type="button" class="btn fourthChoice" (click)="questionCount(4)">{{questions[currentQuestion].choices[3]}}</button>
+<div>
 
 <div>
     <span *ngFor="let icon of resultIcons">

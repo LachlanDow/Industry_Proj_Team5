@@ -99,6 +99,17 @@
     line-height: normal;
 }
 
+.options{
+    width: 85%;
+    height: 90%;
+    max-width: 1400px;
+    max-height: 700px;
+    
+    margin: auto; 
+    border: 3px solid rgba(255, 255, 255, 0);
+    
+    }
+
 @media only screen and (max-width: 950px) {
     .btn {
         font-family: "Roboto";
