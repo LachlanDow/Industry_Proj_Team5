@@ -3,9 +3,9 @@
 
 <body class="body">
     <p class="title">BILLIONAIRE GOLF</p>
-    <div class="options" *ngIf="!display && !displaySettings && !displayInstructions">
+    <div class="options" *ngIf="!display && !displaySettings && !displayInstructions && !displayHost">
         <button type="button" class="btn play" (click)="onPress()">Play!</button>
-        <button type="button" class="btn join" (click)="onPress()">Join Game</button>
+        <button type="button" class="btn join" (click)="onHostPress()">Join Game</button>
 
         <button type="button" class="btn leaderboard" (click)="onLeaderboardPress()">Leaderboard</button>
         <button type="button" class="btn instructions" (click)="onInstructionsPress()">Instructions</button>
@@ -22,5 +22,8 @@
     </div>
     <div class="options " *ngIf="displayLeaderboard">
         <app-leaderboard></app-leaderboard>
+    </div>
+    <div class="options " *ngIf="displayHost">
+        <app-host-setting></app-host-setting>
     </div>
 </body>
