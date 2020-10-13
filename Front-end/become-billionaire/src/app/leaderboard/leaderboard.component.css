@@ -87,7 +87,7 @@ div.box {
   .headers {
     font-family: "Roboto";
     text-align: center;
-    position: absolute;
+    position: relative;
     padding-bottom: 2vw;
     color: white; 
     font-size: max(50px);
@@ -186,6 +186,7 @@ div.box {
   margin-top: -3%;
   margin-left: 8%;  
   position: relative;
+  z-index: 1;
 }
 .leftAlign {
   float:left;
