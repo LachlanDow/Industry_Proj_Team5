@@ -87,7 +87,7 @@ div.box {
   .headers {
     font-family: "Roboto";
     text-align: center;
-    position: relative;
+    position: absolute;
     padding-bottom: 2vw;
     color: white; 
     font-size: max(50px);
