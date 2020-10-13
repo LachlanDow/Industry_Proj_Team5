@@ -2,39 +2,32 @@
     font-family: "Roboto";
     color: white;
     text-align: center;
-    font-size: 8vw;
-    font-size: max(70px);
+    font-size: max(400%);
     padding-top: 6%;
     font-weight: thin;
     padding-bottom: 5%;
     margin-left: 10%;
 }
-
-
-
 .btn{
     float: right;
     background-color: #191919;
     border: none;
-    color: #FC0441;
+    color: #FA1772;
     padding: 3%;    
-    font-size: 3vw;
-    font-size: max(80px);
+    font-size: max(70px);
     
     cursor: pointer;
     margin-right: 1.5%;
     margin-top: 1.5%;
 }
 .frame {
-    border: 0.2vw solid  #3B3B3B;
-    border-radius: 0.6vw;
+    border: 0.3vw solid  #3B3B3B;
+    border-radius: 0.9vw;
     font-family: "Roboto";
     height: auto;
-    width: 25vw;
-    padding-top: 2%;
-    padding-left: 5%;
-    padding-right: 5%;
-    margin-left: 21%;
+    width: 30vw;
+    margin:auto;
+    position: relative;
    }
   
    .textmain {
@@ -42,8 +35,56 @@
     text-align: center;
     width: 100%;
     color: white;
-    font-size: 0.5vw;
-    font-size: max(25px);
+    font-size: max(160%);
     line-height: normal;
+    position: relative;
+   }
+
+   @media only screen and (max-width: 980px) {
+    .ins_title{
+        font-family: "Roboto";
+        color: white;
+        text-align: center;
+        font-size: max(7vw);
+        padding-top: 6%;
+        font-weight: thin;
+        padding-bottom: 5%;
+        margin-left: 10%;
+    }
+    .btn{
+        float: right;
+        background-color: #191919;
+        border: none;
+        color: #FA1772;
+        padding: 3%;    
+        font-size: max(6vw);
+        
+        cursor: pointer;
+        margin-right: 1.5%;
+        margin-top: 1.5%;
+    }
+    .frame {
+        border: 0.4vw solid  #3B3B3B;
+        border-radius: 4vw;
+        font-family: "Roboto";
+        height: auto;
+        width: 40vw;
+        padding-top: 2%;
+        padding-left: 6%;
+        padding-right: 5%;
+        margin-left: 12%;
+        position: relative;
+       }
+      
+       .textmain {
+        font-family: "roboto";
+        text-align: center;
+        width: 100%;
+        color: white;
+        font-size: 0.5vw;
+        font-size: max(2vw);
+        line-height: normal;
+        position: relative;
+       }
    }
    
