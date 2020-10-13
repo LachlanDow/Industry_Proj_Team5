@@ -1,1 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
 
+        
+   <div class="a"> 
+<div class="left">
+
+        <h1> Time Per Question </h1>
+        <mat-slider min=1 max=30 step=1 thumbLabel (value)=slidervalue></mat-slider>
+        <h2> Number Of Questions </h2>
+        <input type="number" id="Qnum" value="1">
+        <h3> Categories: </h3>
+        <mat-button-toggle-group multiple name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle value="bold">Golf</mat-button-toggle>
+            <mat-button-toggle value="italic">Animals</mat-button-toggle>
+            <mat-button-toggle value="underline">Sports</mat-button-toggle>
+        </mat-button-toggle-group>
+     <div>
+        <mat-button-toggle-group multiple name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle value="bold">Geography</mat-button-toggle>
+            <mat-button-toggle value="italic">History</mat-button-toggle>
+        </mat-button-toggle-group>
+        <button mat-button [matMenuTriggerFor]="menu">Other</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Fashion</button>
+            <button mat-menu-item>Music</button>
+        </mat-menu>
+    </div>
+
+</div>
+<div class="right">
+    <form>
+        <label for="uname">Username:</label>
+        <input type="text" id="uname" name="uname"><br>
+    </form>
+
+    <div>
+        Single-player <mat-slide-toggle class="toggle">Multi-Player</mat-slide-toggle>
+    </div>
+
+    <div>
+        <output type=number> 123456 </output> 
+
+    </div>
+    <div>
+        <button type="button">Start Game</button>
+    </div>
+    
+</div>
+</div>
+
+ 
+
+
+       
+
+</body>
+</html>

@@ -12,7 +12,9 @@ export class AppComponent  {
   displaySettings = false;
   displayInstructions = false;
   displayLeaderboard = false;
-  
+
+  displayHost = false;
+
 
   onPress() {
     this.display = true;
@@ -28,10 +30,15 @@ export class AppComponent  {
   onLeaderboardPress() {
     this.displayLeaderboard = true;
   }
+  onHostPress() {
+    this.displayHost = true;
+  }
 
   ngAfterViewChecked(){ 
     this.displaySettings = false;
     this.displayInstructions = false;
+
     this.displayLeaderboard = false;
+
   }
 }

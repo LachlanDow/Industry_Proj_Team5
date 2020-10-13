@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./host-setting.component.css']
 })
 export class HostSettingComponent implements OnInit {
-
+  slidervalue = 75;
   constructor() { }
 
   ngOnInit(): void {
   }
 
 }
+export class ButtonToggleAppearance {}
+
+export class matMenu {}
