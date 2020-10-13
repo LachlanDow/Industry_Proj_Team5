@@ -1,12 +1,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- <div class="questionCount">{{currentQuestion}}</div> -->
 <div class="question">
-    {{questionNumber}}. {{quiz.questions[currentQuestion].question}}
+    {{quiz.questionNumber}}. {{quiz.questions[currentQuestion].question}}
 </div>
-<button type="button" class="btn firstChoice" (click)="questionCount(1)">{{quiz.questions[currentQuestion].choices[0]}}</button>
-<button type="button" class="btn secondChoice" (click)="questionCount(2)">{{quiz.questions[currentQuestion].choices[1]}}</button>
-<button type="button" class="btn thirdChoice" (click)="questionCount(3)">{{quiz.questions[currentQuestion].choices[2]}}</button>
-<button type="button" class="btn fourthChoice" (click)="questionCount(4)">{{quiz.questions[currentQuestion].choices[3]}}</button>
+<button type="button" class="btn firstChoice" (click)="answerCheck(1)">{{quiz.questions[currentQuestion].choices[0]}}</button>
+<button type="button" class="btn secondChoice" (click)="answerCheck(2)">{{quiz.questions[currentQuestion].choices[1]}}</button>
+<button type="button" class="btn thirdChoice" (click)="answerCheck(3)">{{quiz.questions[currentQuestion].choices[2]}}</button>
+<button type="button" class="btn fourthChoice" (click)="answerCheck(4)">{{quiz.questions[currentQuestion].choices[3]}}</button>
 
 <div>
     <span *ngFor="let icon of resultIcons">
