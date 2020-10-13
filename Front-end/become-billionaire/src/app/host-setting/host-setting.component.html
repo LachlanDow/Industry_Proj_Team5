@@ -10,27 +10,26 @@
 <div class="left">
 
         <h1> Time Per Question </h1>
-        <mat-slider (value)=slidervalue></mat-slider>
+        <mat-slider min=1 max=30 step=1 thumbLabel (value)=slidervalue></mat-slider>
         <h2> Number Of Questions </h2>
         <input type="number" id="Qnum" value="1">
         <h3> Categories: </h3>
-        <div> 
-            <button type="button" class="btn Golf">Golf</button>
-            <button type="button" class="btn Random">Random</button>
-            <button type="button" class="btn General">General</button>
-        </div>
-        <div>
-            <button type="button" class="btn Physics">Physics</button>
-            <button type="button" class="btn History">History</button>
-            <div class="dropdown">
-                <button class="dropbtn">Other ↓</button>
-                <div class="dropdown-content">
-                    <a href="#">other1</a>
-                    <a href="#">other2</a>
-                    <a href="#">other3</a>
-                </div>
-            </div>
-        </div>
+        <mat-button-toggle-group multiple name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle value="bold">Golf</mat-button-toggle>
+            <mat-button-toggle value="italic">Animals</mat-button-toggle>
+            <mat-button-toggle value="underline">Sports</mat-button-toggle>
+        </mat-button-toggle-group>
+     <div>
+        <mat-button-toggle-group multiple name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle value="bold">Geography</mat-button-toggle>
+            <mat-button-toggle value="italic">History</mat-button-toggle>
+        </mat-button-toggle-group>
+        <button mat-button [matMenuTriggerFor]="menu">Other</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Fashion</button>
+            <button mat-menu-item>Music</button>
+        </mat-menu>
+    </div>
 
 </div>
 <div class="right">
@@ -40,8 +39,17 @@
     </form>
 
     <div>
-        <mat-slide-toggle class="toggle">Slide me!</mat-slide-toggle>
+        Single-player <mat-slide-toggle class="toggle">Multi-Player</mat-slide-toggle>
     </div>
+
+    <div>
+        <output type=number> 123456 </output> 
+
+    </div>
+    <div>
+        <button type="button">Start Game</button>
+    </div>
+    
 </div>
 </div>
 

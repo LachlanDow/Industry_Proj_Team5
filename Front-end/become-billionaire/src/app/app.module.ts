@@ -10,6 +10,9 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import {QuizPageComponent} from './quiz-page/quiz-page.component';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatButtonToggleModule} from '@angular/material/button-toggle'
+import {MatMenuModule} from '@angular/material/menu';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +28,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatSlideToggleModule,
     MatSliderModule,
     MatCardModule,
+    MatButtonToggleModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
