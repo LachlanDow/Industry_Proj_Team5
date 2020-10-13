@@ -8,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class LeaderboardComponent implements OnInit {
   display = false;
   
-
+  userScore = 76;
+  userScore1 = 86;
+  userScore2 = 82;
+  userScore3 = 78;
+  userScore4 = 72;
+  userScore5 = 68;
+  userScore6 = 64;
   constructor() { 
   }
 
@@ -17,6 +23,5 @@ export class LeaderboardComponent implements OnInit {
  
   onPress() {
     this.display = true;
-    console.log(this.display);
   }
 }

@@ -86,16 +86,6 @@ export const Questions = {
         },
         {
           "choices": [
-            "True",
-            "False"
-          ],
-          "_id": "5f7e27359aab364fb4376d64",
-          "question": "All dogs, cats and birds are colorblind.",
-          "category": "animals",
-          "answer": "False"
-        },
-        {
-          "choices": [
             "Polar bears",
             "Foxes",
             "Bats",
@@ -144,36 +134,6 @@ export const Questions = {
         },
         {
           "choices": [
-            "True",
-            "False"
-          ],
-          "_id": "5f7e27359aab364fb4376d69",
-          "question": "Snakes reproduce only by laying eggs.",
-          "category": "animals",
-          "answer": "False"
-        },
-        {
-          "choices": [
-            "True",
-            "False"
-          ],
-          "_id": "5f7e27359aab364fb4376d6a",
-          "question": "Snakes are deaf.",
-          "category": "animals",
-          "answer": "True"
-        },
-        {
-          "choices": [
-            "True",
-            "False"
-          ],
-          "_id": "5f7e27359aab364fb4376d6b",
-          "question": "Snake skin is covered in scales.",
-          "category": "animals",
-          "answer": "True"
-        },
-        {
-          "choices": [
             "Invertebrates",
             "Lizards",
             "Reptiles",
@@ -208,40 +168,7 @@ export const Questions = {
           "category": "animals",
           "answer": "Grass snake"
         },
-        {
-          "choices": [
-            "True",
-            "False"
-          ],
-          "_id": "5f7e27359aab364fb4376d6f",
-          "question": "Snakes are very likely to attack us, regardless of whether they feel threatened or not.",
-          "category": "animals",
-          "answer": "False"
-        },
-        {
-          "choices": [
-            "South America and Asia",
-            "Asia and Africa",
-            "Asia and Australia",
-            "South America and Australia"
-          ],
-          "_id": "5f7e27359aab364fb4376d70",
-          "question": "Cobras are venomous snakes of family Elapidae, that generally inhabit regions of these two continents.",
-          "category": "animals",
-          "answer": "Asia and Africa"
-        },
-        {
-          "choices": [
-            "Balance control",
-            "Heat collection from sun rays",
-            "Camouflage",
-            "More threatening appearance"
-          ],
-          "_id": "5f7e27359aab364fb4376d71",
-          "question": "The cobras most recognizable feature is its hood, a flap of skin and muscle behind the head, believed to serve this purpose.",
-          "category": "animals",
-          "answer": "More threatening appearance"
-        }
+        
       ],
       "__v": 0
     }
