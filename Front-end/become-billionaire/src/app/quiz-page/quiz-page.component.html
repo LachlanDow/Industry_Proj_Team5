@@ -3,6 +3,7 @@
 <div class="question">
     {{questionNumber}}. {{quiz.questions[currentQuestion].question}}
 </div>
+
 <button type="button" class="btn firstChoice" (click)="questionCount(1)">{{quiz.questions[currentQuestion].choices[0]}}</button>
 <button type="button" class="btn secondChoice" (click)="questionCount(2)">{{quiz.questions[currentQuestion].choices[1]}}</button>
 <button type="button" class="btn thirdChoice" (click)="questionCount(3)">{{quiz.questions[currentQuestion].choices[2]}}</button>

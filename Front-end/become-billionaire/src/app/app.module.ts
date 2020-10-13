@@ -7,6 +7,8 @@ import { HostSettingComponent } from './host-setting/host-setting.component';
 import { SettingsComponent } from './settings/settings.component'
 import { InstructionsComponent } from './instructions/instructions.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import {QuizPageComponent} from './quiz-page/quiz-page.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { QuizPageComponent } from './quiz-page/quiz-page.component';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -21,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    MatProgressBarModule,
     MatCardModule,
     HttpClientModule
   ],
