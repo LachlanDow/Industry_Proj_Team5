@@ -1,30 +1,37 @@
 .question {
     font-family: "Roboto";
-    /* font-size: 50px; */
-    /* font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width]))); */
-    font-size: calc(10px + (50 - 10) * ((100vw - 300px) / (1600 - 300)));
-    height: 50px;
-    background-color: transparent;
+    font-size: 3vw;
+    font-size: max(40px);
+    width: 52vw;
+    height: 2vw;
+    max-width: 90%;
     color: white;
     font-weight: bold;
-    text-align: center;
-    padding-top: 2%;
-    padding-bottom: 3%;
+    text-align: left;
     line-height: normal;
-    max-height: 50px;
+    margin-left: 8%;
+    margin-top: 3%;
+    
+    
+    
+    
 }
 
 .btn {
     font-family: "Roboto";
     color: #191919;
+    position: relative;
     width: 35%;
     height: 25%;
     font-weight: bold;
     border-radius: 30px;
     border-color: black;
     /* font-size: 3vw; */
-    font-size: calc(14px + (40 - 14) * ((100vw - 300px) / (1600 - 300)));
+    font-size: auto;
+    font-size: max(35px);
     background-color: #50AFF5;
+    
+    
 }
 
 .firstChoice {
@@ -88,7 +95,20 @@
     line-height: normal;
 }
 
-@media only screen and (max-width: 800px) {
+.options{
+    padding-top: 5%;
+    width: 85%;
+    height: 90%;
+    max-width: 1100px;
+    max-height: 700px;
+
+    margin: auto; 
+    border: 3px solid rgba(255, 255, 255, 0);
+    
+    
+    }
+
+@media only screen and (max-width: 950px) {
     .btn {
         font-family: "Roboto";
         color: #191919;
