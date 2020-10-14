@@ -1,7 +1,7 @@
-import { Component, Output, OnInit, EventEmitter } from '@angular/core';
-import {MatSliderChange} from '@angular/material/slider';
+import { Component, OnInit, } from '@angular/core';
+import { MatSliderChange } from '@angular/material/slider';
 import { HttpClient, HttpErrorResponse, HttpSentEvent } from '@angular/common/http'
-import { AppComponent } from '../app.component';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-host-setting',
@@ -14,16 +14,15 @@ export class HostSettingComponent implements OnInit {
   questionTimeLimit;
   username = "username";
   showLobby = false;
-  @Output() sendHostIdEvent = new EventEmitter<any>();
-  hostId;
+  hostId: number;;
 
-
-
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private data: DataService) {
     //NOOP
   }
 
   ngOnInit(): void {
+    this.data.currentMessage.subscribe(message => this.hostId = message)
+    console.log("hostID", this.hostId)
     //NOOP
   }
   createLobby() {
@@ -40,11 +39,11 @@ export class HostSettingComponent implements OnInit {
     const url = "http://35.214.82.56:3000/quiz";
     const headers = { 'Content-Type': 'application/json' };
     const data = {
-      "hostName" : this.username,
-      "categoryId" : "5f7e2403ac9ce729944e732d", 
-      "timeLimit": this.questionTimeLimit, 
+      "hostName": this.username,
+      "categoryId": "5f7e2403ac9ce729944e732d",
+      "timeLimit": this.questionTimeLimit,
       "questionCount": parseInt(this.questionNum)
-  };
+    };
     this.http.post<any>(url, JSON.stringify(data), { headers: headers }).subscribe(data => {
       console.log(data);
       console.log(data.newQuiz.participants[0]._id);
@@ -54,7 +53,7 @@ export class HostSettingComponent implements OnInit {
   }
 
   sendHostId() {
-    this.sendHostIdEvent.emit(this.hostId);
+    this.data.changeMessage(this.hostId);
   }
 
 }

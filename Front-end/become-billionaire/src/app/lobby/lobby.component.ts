@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-lobby',
@@ -7,20 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LobbyComponent implements OnInit {
 
-  hostId: string;
   display = false;
+  @Input() hostId;
 
   constructor() { }
 
   ngOnInit(): void {
-    
+    console.log("lobby");
+    console.log("lobby", this.hostId);
   }
 
-  receiveHostId($event){
-    this.hostId = "";
-    this.hostId = $event;
-    console.log(this.hostId);
-  }
 
   onPress() {
     this.display = true;

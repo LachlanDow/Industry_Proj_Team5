@@ -1,8 +1,9 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { RestService } from '../services/rest.service'
 import { HttpClient, HttpErrorResponse, HttpSentEvent } from '@angular/common/http'
 import { catchError, } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-quiz-page',
@@ -22,15 +23,18 @@ export class QuizPageComponent implements OnInit, OnChanges {
   counter;
   currentScore = 0;
   participantID;
-  hostId: string;
+  hostId;
 
-  constructor(private quizQuestion: RestService, private http: HttpClient) {
+  constructor(private quizQuestion: RestService, private http: HttpClient, private data:DataService) {
     //NOOP
   }
 
   ngOnInit(): void {
-    // this.getData();
-    // this.getEvent();
+   
+    this.data.currentMessage.subscribe(message => this.hostId = message)
+    console.log("hostID", this.hostId)
+    this.getData();
+    this.getEvent();
   }
 
   ngOnChanges(): void {
@@ -91,14 +95,6 @@ export class QuizPageComponent implements OnInit, OnChanges {
     });
   }
   
-  receiveHostId($event){
-    this.hostId = "";
-    this.hostId = $event;
-    console.log("host id in quiz page",this.hostId);
-    this.participantID = this.hostId
-    this.getData();
-    this.getEvent();
-  }
 
   // startCountdown() {
   //   console.log("seconds",this.quiz.timeLimit)
