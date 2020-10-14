@@ -12,11 +12,11 @@
                 
                 <form>
                 <h2> Username</h2> 
-             <input type="text" id="username" name ="username">
+             <input type="text" #username>
     
                 <h2>Party Code</h2>
-                <input type="text" id="PartyCode" name ="PartyCode">
-                <button type="button" class="btnJoin" (click)="onPressJoin()">Join</button>     
+                <input type="text" #partyCode>
+                <button type="button" class="btnJoin" (click)="onPressJoin(username,partyCode)">Join</button>     
                 </form>
 
             </div>

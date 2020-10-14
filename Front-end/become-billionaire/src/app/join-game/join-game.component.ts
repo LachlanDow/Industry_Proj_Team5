@@ -18,7 +18,9 @@ export class JoinGameComponent implements OnInit {
     this.displayJoinGame = true;
     console.log(this.displayJoinGame);
   }
-  onPressJoin(){
 
+  onPressJoin(username, partyCode){
+    console.log(username.value);
+    console.log(partyCode.value);
   }
 }
