@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
     const question = new Question({
       questionText: req.body.questionText,
-      answer: req.body.answer
+        answer: req.body.answer,
     });
     try {
       const newQuestion = await question.save();
