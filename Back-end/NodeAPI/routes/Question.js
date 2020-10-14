@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Question = require("../models/Question");
-
+const Category = require("../models/Category");
 // Get All Route
 router.get("/", async (req, res) => {
     try {
@@ -17,7 +17,11 @@ router.post("/", async (req, res) => {
     const question = new Question({
       questionText: req.body.questionText,
         answer: req.body.answer,
-        category: req.body.categoryId
+        category: new Category({
+            name: req.body.category,
+            _id: req.body.categoryId
+        }),
+        choices:req.body.choices
     });
     try {
       const newQuestion = await question.save();
