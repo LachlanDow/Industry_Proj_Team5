@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
         score: 0
     });
 
-    const questionList = await Question.find({category: categoryId}).limit(req.body.questionCount);
+    const questionList = await Question.find({category: req.body.categoryId}).limit(req.body.questionCount);
     const category = await Category.findById(req.body.categoryId);
       const quizToCreate = new Quiz({
           _id: CryptPin(),
