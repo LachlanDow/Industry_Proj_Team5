@@ -4,14 +4,13 @@ import { BehaviorSubject } from 'rxjs'
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
-
+export class QuizIdService {
   private messageSource = new BehaviorSubject<number>(0);
 
   currentMessage = this.messageSource.asObservable();
 
-  changeMessage(message: number) {
-    this.messageSource.next(message)
+  changeMessage(quizID: number) {
+    this.messageSource.next(quizID);
   }
 
   constructor() { }
