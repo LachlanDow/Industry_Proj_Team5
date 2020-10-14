@@ -1,0 +1,31 @@
+<div *ngIf="!display">
+
+    <div class="topbar">
+        <div class="div1">
+             <button type="button" class="fa fa-arrow-circle-left fa-2x btnExit" (click)="onPress()"></button>
+        </div><!--div1-->
+            <h1>Join Game</h1>
+    
+        <div class="joingame">
+         
+            <div class ="input">
+                
+                <form>
+                <h2> Username</h2> 
+             <input type="text" id="username" name ="username">
+    
+                <h2>Party Code</h2>
+                <input type="text" id="PartyCode" name ="PartyCode">
+                <button type="button" class="btnJoin" (click)="onPressJoin()">Join</button>     
+                </form>
+
+            </div>
+        
+        </div>
+        
+    </div>
+</div>
+    
+<div *ngIf="display">
+    <app></app>
+</div>

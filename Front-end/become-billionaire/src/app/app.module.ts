@@ -17,6 +17,7 @@ import {MatMenuModule} from '@angular/material/menu';
 
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { HttpClientModule } from '@angular/common/http';
+import { JoinGameComponent } from './join-game/join-game.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     SettingsComponent,
     LeaderboardComponent,
     InstructionsComponent,
-    QuizPageComponent
+    QuizPageComponent,
+    JoinGameComponent
   ],
   imports: [
     BrowserModule,
