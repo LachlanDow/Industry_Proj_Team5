@@ -8,6 +8,7 @@ import { SettingsComponent } from './settings/settings.component'
 import { InstructionsComponent } from './instructions/instructions.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import {QuizPageComponent} from './quiz-page/quiz-page.component';
+import { EndScreenComponent } from './end-screen/end-screen.component';
 
 import {MatSliderModule} from '@angular/material/slider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
@@ -29,7 +30,8 @@ import { LobbyComponent } from './lobby/lobby.component'
     LeaderboardComponent,
     InstructionsComponent,
     QuizPageComponent,
-    LobbyComponent
+    LobbyComponent,
+    EndScreenComponent,
   ],
   imports: [
     BrowserModule,
