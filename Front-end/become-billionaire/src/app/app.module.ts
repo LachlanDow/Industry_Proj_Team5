@@ -17,6 +17,8 @@ import {MatMenuModule} from '@angular/material/menu';
 
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { HttpClientModule } from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import { LobbyComponent } from './lobby/lobby.component'
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     SettingsComponent,
     LeaderboardComponent,
     InstructionsComponent,
-    QuizPageComponent
+    QuizPageComponent,
+    LobbyComponent
   ],
   imports: [
     BrowserModule,
@@ -36,10 +39,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatButtonToggleModule,
     MatMenuModule,
-
     MatProgressBarModule,
-   
-    HttpClientModule
+  
+    HttpClientModule,
+    FormsModule
 
   ],
   providers: [],

@@ -1,8 +1,7 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
-import { RestService } from '../services/rest.service'
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpSentEvent } from '@angular/common/http'
-import { catchError, } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
+import { DataService } from '../data.service';
+import { QuizIdService } from '../quiz-id.service';
 
 @Component({
   selector: 'app-quiz-page',
@@ -21,14 +20,19 @@ export class QuizPageComponent implements OnInit, OnChanges {
   lastAnsweredTime;
   counter;
   currentScore = 0;
-  participantID = "5f860a2e7df4ca0ee145f4a1";
+  participantID;
+  hostId;
+  quizId;
+  quizStarted = false;
 
-  constructor(private quizQuestion: RestService, private http: HttpClient) {
+  constructor(private http: HttpClient, private data: DataService, private quizID: QuizIdService) {
     //NOOP
   }
 
   ngOnInit(): void {
-    this.getData();
+    this.data.currentMessage.subscribe(message => this.hostId = message);
+    this.quizID.currentMessage.subscribe(message => this.quizId = message);
+    this.participantID = this.hostId;
     this.getEvent();
   }
 
@@ -36,6 +40,11 @@ export class QuizPageComponent implements OnInit, OnChanges {
     //NOOP
   }
 
+  /**
+   * Check if the clicked answer is the correct one 
+   *  - if it's correct it calculates the score and sends it the server
+   * @param e 
+   */
   answerCheck(e: any) {
     this.getCorrectAnswerIndex();
     if (e == this.correctAnswerIndex) {
@@ -58,30 +67,39 @@ export class QuizPageComponent implements OnInit, OnChanges {
     this.currentQuestion--;
   }
 
+  /**
+   * gets the index of the correct answer
+   */
   getCorrectAnswerIndex() {
     this.correctAnswerIndex = this.quiz.questions[this.currentQuestion].choices.findIndex(x => x == this.quiz.questions[this.currentQuestion].answer);
     this.correctAnswerIndex = this.correctAnswerIndex + 1;
   }
 
-  getData() {
-    this.quizQuestion.getData().subscribe(data => {
-      this.quiz = data;
-    });
-  }
-
+  /**
+   * Listens to the events fromthe server to update the questions.
+   */
   getEvent() {
     let localQuiz;
     let quizPage = this;
     let serverEvents = new EventSource(`http://35.214.82.56:3000/stream/${this.participantID}`);
     serverEvents.addEventListener('message', function (event) {
-      quizPage.quiz = JSON.parse(event.data);
+      quizPage.quiz = JSON.parse(event.data)
+      console.log("quiz", quizPage.quiz);
       quizPage.questionCount();
       quizPage.lastQuestionRecievedTime = new Date().getTime();
+      if (!quizPage.quizStarted){
+      quizPage.startQuiz();
+      quizPage.quizStarted = true;
+      }
     });
+
   };
 
+  /**
+   * Sends score to the server
+   */
   sendScore() {
-    const url = `http://35.214.82.56:3000/quiz/${this.quiz._id}/${this.participantID}`;
+    const url = `http://35.214.82.56:3000/quiz/${this.quizId}/${this.participantID}`;
     const headers = { 'Content-Type': 'application/json' };
     const data = {
       "score": this.currentScore
@@ -89,6 +107,18 @@ export class QuizPageComponent implements OnInit, OnChanges {
     this.http.patch(url, JSON.stringify(data), { headers: headers }).subscribe(data => {
     });
   }
+
+  /**
+   * Starts the quiz
+   */
+  startQuiz() {
+    console.log("Quiz started")
+    const url = `http://35.214.82.56:3000/quiz/${this.quizId}/start`;
+    const headers = { 'Content-Type': 'application/json' };
+    this.http.post<any>(url, { headers: headers }).subscribe(data => {
+    });
+  }
+
 
   // startCountdown() {
   //   console.log("seconds",this.quiz.timeLimit)
@@ -105,4 +135,5 @@ export class QuizPageComponent implements OnInit, OnChanges {
   //     }
   //   }, 1000);
   // }
+
 }

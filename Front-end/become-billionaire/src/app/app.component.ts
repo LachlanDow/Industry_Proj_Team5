@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +14,13 @@ export class AppComponent  {
   displayLeaderboard = false;
 
   displayHost = false;
+  
+  hostId: string;
 
 
   onPress() {
     this.display = true;
-    console.log(this.display);
-  }
+    }
   onSettingsPress() {
     this.displaySettings = true;
   }
@@ -39,6 +40,5 @@ export class AppComponent  {
     this.displayInstructions = false;
 
     this.displayLeaderboard = false;
-
   }
 }
