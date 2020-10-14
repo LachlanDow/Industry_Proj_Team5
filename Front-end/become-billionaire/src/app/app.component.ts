@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +14,13 @@ export class AppComponent  {
   displayLeaderboard = false;
 
   displayHost = false;
+  hostId: string;
+  @Output() sendHostIdEvent = new EventEmitter<any>();
 
 
   onPress() {
     this.display = true;
-    console.log(this.display);
-  }
+    }
   onSettingsPress() {
     this.displaySettings = true;
   }
@@ -39,6 +40,16 @@ export class AppComponent  {
     this.displayInstructions = false;
 
     this.displayLeaderboard = false;
+  }
 
+  receiveHostId($event){
+    this.hostId = "";
+    this.hostId = $event;
+    console.log("host id in parent",this.hostId);
+    this.sendHostId();
+  }
+
+  sendHostId() {
+    this.sendHostIdEvent.emit(this.hostId);
   }
 }

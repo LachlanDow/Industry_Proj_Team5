@@ -21,15 +21,16 @@ export class QuizPageComponent implements OnInit, OnChanges {
   lastAnsweredTime;
   counter;
   currentScore = 0;
-  participantID = "5f860a2e7df4ca0ee145f4a1";
+  participantID;
+  hostId: string;
 
   constructor(private quizQuestion: RestService, private http: HttpClient) {
     //NOOP
   }
 
   ngOnInit(): void {
-    this.getData();
-    this.getEvent();
+    // this.getData();
+    // this.getEvent();
   }
 
   ngOnChanges(): void {
@@ -89,6 +90,15 @@ export class QuizPageComponent implements OnInit, OnChanges {
     this.http.patch(url, JSON.stringify(data), { headers: headers }).subscribe(data => {
     });
   }
+  
+  receiveHostId($event){
+    this.hostId = "";
+    this.hostId = $event;
+    console.log("host id in quiz page",this.hostId);
+    this.participantID = this.hostId
+    this.getData();
+    this.getEvent();
+  }
 
   // startCountdown() {
   //   console.log("seconds",this.quiz.timeLimit)
@@ -105,4 +115,6 @@ export class QuizPageComponent implements OnInit, OnChanges {
   //     }
   //   }, 1000);
   // }
+
+
 }
