@@ -12,7 +12,6 @@ export class AppComponent  {
   displaySettings = false;
   displayInstructions = false;
   displayLeaderboard = false;
-
   displayHost = false;
 
 
@@ -37,7 +36,7 @@ export class AppComponent  {
   ngAfterViewChecked(){ 
     this.displaySettings = false;
     this.displayInstructions = false;
-
+    this.displayHost = false;
     this.displayLeaderboard = false;
 
   }

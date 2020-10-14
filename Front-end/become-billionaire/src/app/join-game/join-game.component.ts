@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./join-game.component.css']
 })
 export class JoinGameComponent implements OnInit {
-  display = false;
+  displayJoinGame = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -15,8 +15,8 @@ export class JoinGameComponent implements OnInit {
 
 
   onPress() {
-    this.display = true;
-    console.log(this.display);
+    this.displayJoinGame = true;
+    console.log(this.displayJoinGame);
   }
   onPressJoin(){
 
