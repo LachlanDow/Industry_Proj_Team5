@@ -5,7 +5,7 @@ import { Component, } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent  {
+export class AppComponent {
   title = 'become-billionaire';
   display = false;
   settingsDisplay = false;
@@ -13,13 +13,14 @@ export class AppComponent  {
   displayInstructions = false;
   displayLeaderboard = false;
   displayJoinPage = false;
-  
+  displayHost = false;
+
   hostId: string;
 
 
   onPress() {
     this.display = true;
-    }
+  }
   onSettingsPress() {
     this.displaySettings = true;
   }
@@ -34,7 +35,11 @@ export class AppComponent  {
     this.displayJoinPage = true;
   }
 
-  ngAfterViewChecked(){ 
+  onHostPress() {
+    this.displayHost = true;
+  }
+
+  ngAfterViewChecked() {
     this.displaySettings = false;
     this.displayInstructions = false;
     this.displayLeaderboard = false;
