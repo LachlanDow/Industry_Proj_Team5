@@ -64,7 +64,7 @@ h3{
     border-color: black;
     font-size: 1.8vw;
     font-size: max(30px);
-
+    padding: 2% 2% 2% 2%;
   }
 
 
@@ -73,35 +73,10 @@ h3{
     background-color: grey;
 } 
   
-.btn1{
-    background-color: red;
-}
-
-.btn2{
-    background-color: greenyellow;
-}
-
-.btn3{
-    background-color: purple;
-}
-
-.btn4{
-    background-color: yellow;
-}
-
-.btn5{
-    background-color: turquoise;
-}
-
-.uName{
-    font-family: "Roboto";
-    margin-left: 22.5%;
-    margin-bottom: 5%;
-    font-size: 200%;
-}
 
 .uNameIn{
     margin-left: 20%;
+    margin-top: 20%;
 }
 
 
@@ -113,7 +88,7 @@ h3{
     font-size: 300%;
     background-color: teal;
     margin-left: 15%;
-    margin-top: 10%;
+    margin-top: 30%;
 }
 
 .frame {
@@ -138,7 +113,9 @@ h3{
     font-size: max(70px);
     cursor: pointer;  
     margin-top: -1%;
+    margin-left: 0%; 
     margin-right: 4%; 
+    position: relative;
 }
 
   .headers {
@@ -150,6 +127,9 @@ h3{
     font-size: max(35px);
 }
 
+.numQuest{
+    margin-left: 15%;
+}
 
  .questbox {
     width: 15%;
@@ -159,6 +139,7 @@ h3{
 } 
 
 .btnBox {
-    width:200%;
+    width: auto;
     flex-wrap: wrap;
+   
 }

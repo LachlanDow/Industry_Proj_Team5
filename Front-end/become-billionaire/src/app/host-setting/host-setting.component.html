@@ -8,17 +8,11 @@
             <mat-slider class=slider min=1 max=30 step=1 thumbLabel (input)="onInputChange($event)"></mat-slider>
             <h1 class="num_Quest"> Number Of Questions<input type="number" class="questbox" (change)='questionNum=$event.target.value' [value]="questionNum"> </h1>    
         </div>
-        <div>
+
         <h1> Categories: </h1>
-        <mat-button-toggle-group class=btnBox multiple name="fontStyle" aria-label="Font Style">
-            <mat-button-toggle class=btn value="Golf">Golf</mat-button-toggle>
-            <mat-button-toggle class=btn value="Animals">Animals</mat-button-toggle>
-            <mat-button-toggle class=btn value="Sports">Sports</mat-button-toggle>
-            <mat-button-toggle class=btn value="Geography">Geography</mat-button-toggle>
-            <mat-button-toggle class=btn value="History">History</mat-button-toggle>
-        </mat-button-toggle-group>  
-        </div>
+
     </div>
+
 
 
 <div class="right frame">
@@ -30,7 +24,15 @@
     </div>
 
 </div>
-
+<div>
+    <mat-button-toggle-group class=btnBox multiple name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle class=btn value="Golf">Golf</mat-button-toggle>
+        <mat-button-toggle class=btn value="Animals">Animals</mat-button-toggle>
+        <mat-button-toggle class=btn value="Sports">Sports</mat-button-toggle>
+        <mat-button-toggle class=btn value="Geography">Geography</mat-button-toggle>
+        <mat-button-toggle class=btn value="History">History</mat-button-toggle>
+    </mat-button-toggle-group>  
+</div>
 <div *ngIf="showLobby">
     <app-lobby></app-lobby>
 </div>
