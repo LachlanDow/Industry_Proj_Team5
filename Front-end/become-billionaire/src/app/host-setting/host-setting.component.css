@@ -145,9 +145,7 @@ h3{
     font-size: max(70px);
     cursor: pointer;  
     margin-top: -1%;
-    margin-left: 0%; 
     margin-right: 4%; 
-    position: relative;
 }
 
   .headers {
@@ -159,10 +157,6 @@ h3{
     font-size: max(35px);
 }
 
-  .num_Quest{
-      display: inline;
-      position: relative;
-}
 
  .questbox {
     width: 15%;
