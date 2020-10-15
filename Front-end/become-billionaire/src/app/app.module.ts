@@ -2,17 +2,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { HostSettingComponent } from './host-setting/host-setting.component';
 import { SettingsComponent } from './settings/settings.component'
 import { InstructionsComponent } from './instructions/instructions.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import {QuizPageComponent} from './quiz-page/quiz-page.component';
+
 import {MatSliderModule} from '@angular/material/slider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonToggleModule} from '@angular/material/button-toggle'
 import {MatMenuModule} from '@angular/material/menu';
-import {MatSelectModule} from '@angular/material/select';
+
+
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 
 @NgModule({
@@ -22,24 +28,23 @@ import {MatSelectModule} from '@angular/material/select';
     SettingsComponent,
     LeaderboardComponent,
     InstructionsComponent,
-    QuizPageComponent
+    QuizPageComponent,
+    
+
   ],
   imports: [
     BrowserModule,
+
     MatSlideToggleModule,
     MatSliderModule,
     MatCardModule,
     MatButtonToggleModule,
     MatMenuModule,
-<<<<<<< Updated upstream
-=======
-    MatSelectModule,
-
     MatProgressBarModule,
-   
-    HttpClientModule
+  
+    HttpClientModule,
+    
 
->>>>>>> Stashed changes
   ],
   providers: [],
   bootstrap: [AppComponent]
