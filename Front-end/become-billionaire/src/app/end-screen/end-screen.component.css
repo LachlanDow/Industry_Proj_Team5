@@ -78,6 +78,15 @@ div.box {
     width: auto;
  
 }
+
+  .scores {
+    float:right;
+    margin-right: 5%;
+    font-size: 1.5vw;
+    font-size: max(40px);
+    height: auto;
+    width: auto;
+  }
   
   .headers {
     font-family: "Roboto";

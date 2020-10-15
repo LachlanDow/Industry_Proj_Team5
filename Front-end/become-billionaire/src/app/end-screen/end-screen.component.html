@@ -20,40 +20,20 @@
        <h1 class="headers">Top Match Players</h1>
        <div class="div2">
           
-             <div class="topPlayerInfo">
-                <h1 class="nameSizeTop">{{player1Name}}<i style="color: gold;"class="fa fa-trophy fa-1x trophyIcon"> {{userScore}}</i></h1>
-                <mat-progress-bar class="progressBarTop" mode="determinate" [value]="player1Score"></mat-progress-bar>
-                <h1 class="leftAlign topPoints">Correct - {{player1Correct}}</h1>
-                <h1 class="leftAlign topPoints">Incorrect - {{player1Incorrect}}</h1>
+            <ng-container *ngFor="let element of playerName; let i=index;">
+             <div class="topPlayerInfo" >
+                <h1 class="nameSizeTop">{{playerName[i]}}
+                  <!--<i style="color: gold;"class="fa fa-trophy fa-1x trophyIcon"></i>  Creates trophy next to score, can't figure out how to have it change based on players ranking, 
+                     apparently you can't have more than one structural directive on an element. can't figure out work around, may fix this later-->
+                   <i class="scores"> {{playerScore[i]}}</i>
+                  </h1>
+                <mat-progress-bar class="progressBarTop" mode="determinate" [value]="playerScore[i]"></mat-progress-bar>
+                <h1 class="leftAlign topPoints">Correct - {{playerCorrect[i]}}</h1>
+                <h1 class="leftAlign topPoints">Incorrect - {{playerIncorrect[i]}}</h1>
                 <h1 class="leftAlign topPoints">Average Time</h1> 
-                <h1 class="Toptimer leftAlign">{{player1Avg}}s</h1>
+                <h1 class="Toptimer leftAlign">{{playerAvg[i]}}s</h1>
              </div>
-    
-             <div class="topPlayerInfo">
-                <h1 class="nameSizeTop">{{player2Name}}<i style="color: silver;"class="fa fa-trophy fa-1x trophyIcon"> {{userScore}}</i></h1>
-                <mat-progress-bar class="progressBarTop" mode="determinate" [value]="player2Score"></mat-progress-bar>
-                <h1 class="leftAlign topPoints">Correct - {{player2Correct}}</h1>
-                <h1 class="leftAlign topPoints">Incorrect - {{player2Incorrect}}</h1>
-                <h1 class="leftAlign topPoints">Average Time</h1> 
-                <h1 class="Toptimer leftAlign">{{player2Avg}}s</h1>
-             </div>
-    
-             <div class="topPlayerInfo">
-                <h1 class="nameSizeTop">{{player3Name}}<i style="color: brown;"class="fa fa-trophy fa-1x trophyIcon"> {{userScore}}</i></h1>
-                <mat-progress-bar class="progressBarTop" mode="determinate" [value]="player3Score"></mat-progress-bar>
-                <h1 class="leftAlign topPoints">Correct - {{player3Correct}}</h1>
-                <h1 class="leftAlign topPoints">Incorrect - {{player3Incorrect}}</h1>
-                <h1 class="leftAlign topPoints">Average Time</h1> 
-                <h1 class="Toptimer leftAlign">{{player3Avg}}s</h1>
-             </div>
-             <div class="topPlayerInfo">
-                <h1 class="nameSizeTop">{{player4Name}}<i class="trophyIcon"> {{userScore}}</i></h1>
-                <mat-progress-bar class="progressBarTop" mode="determinate" [value]="player4Score"></mat-progress-bar>
-                <h1 class="leftAlign topPoints">Correct - {{player4Correct}}</h1>
-                <h1 class="leftAlign topPoints">Incorrect - {{player4Incorrect}}</h1>
-                <h1 class="leftAlign topPoints">Average Time</h1> 
-                <h1 class="Toptimer leftAlign">{{player4Avg}}s</h1>
-             </div>
+            </ng-container>
 
        </div>
     

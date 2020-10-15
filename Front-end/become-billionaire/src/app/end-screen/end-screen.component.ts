@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-end-screen',
   templateUrl: './end-screen.component.html',
   styleUrls: ['./end-screen.component.css']
 })
 export class EndScreenComponent implements OnInit {
-
-
-  //Need a way to adjust the amount of spaces on the top players list for how many players are in the game
-  //not sure how to do yet
-  numOfPlayers = 1;
 
   //Data for current player
   userName = "bestPlayer"; 
@@ -19,33 +15,17 @@ export class EndScreenComponent implements OnInit {
   userIncorrect = 1;
   userAvg = 10;
 
-  //Data for top match players
-  //No1 scoring player in match
-  player1Name = "quiz boy";
-  player1Score = 20;
-  player1Correct = 9;
-  player1Incorrect = 1;
-  player1Avg = 10;
 
-  //No2 scoring player in match
-  player2Name = "player name";
-  player2Score = 20;
-  player2Correct = 91;
-  player2Incorrect = 11;
-  player2Avg = 10;
+  //data for the players in game,
+  //currently players need to be put into the array in the correct order, as the first item in array will come at the top of the leaderboard i.e. dave will be No1, jimmy No2
+  playerName = ["dave","jimmy","quiz boy"];
+  playerScore = ["20", "15","10"];
+  playerCorrect = ["20","15","5"];
+  playerIncorrect = ["5","10","25"];
+  playerAvg = ["10","9","5"];
 
-  //No3 scoring player in match etc. 
-  player3Name = "joe bloggs";
-  player3Score = 20;
-  player3Correct = 9;
-  player3Incorrect = 1;
-  player3Avg = 10;
+  // can add code later to auto sort players into the array if necessary 
 
-  player4Name = "joe bloggs 2";
-  player4Score = 20;
-  player4Correct = 9;
-  player4Incorrect = 1;
-  player4Avg = 10;
 
   constructor() { }
 
@@ -59,3 +39,9 @@ export class EndScreenComponent implements OnInit {
   }
 
 }
+
+export class player {
+  
+}
+
+
