@@ -1,12 +1,14 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const Category = require("./Category");
 const questionSchema = new Schema({
-question: {
-  type: String,
- },
- category: {
-  type: String,
- },
+    question: {
+        type: String,
+    },
+    category: {
+        type: Category.schema
+    },
+ 
 answer: {
   type: String,
  },

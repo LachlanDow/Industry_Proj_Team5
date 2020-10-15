@@ -18,10 +18,11 @@ app.use(cors());
 //Declaring routers for different routes
 const questionsRouter = require("./routes/Question");
 const quizRouter = require("./routes/Quiz");
+const categoriesRouter = require("./routes/Category");
 
 app.use("/questions", questionsRouter);
 app.use("/quiz", quizRouter);
-app.use("/categories", quizRouter);
+app.use("/categories", categoriesRouter);
 
 
 //App listen on specified port

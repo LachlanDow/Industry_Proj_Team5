@@ -20,17 +20,18 @@ router.get("/", async (req, res) => {
 //Create new quiz. This adds the host as a participant, selects the category, timelimit, question count
 //and selects questions. TODO - move question selection to another function and provide functionality to pick random questions
 //from different categories
-  router.post("/", async (req, res) => {
-    const participant = new Participant ({
-      name: req.body.hostName,
-      score: 0
+router.post("/", async (req, res) => {
+    const participant = new Participant({
+        name: req.body.hostName,
+        score: 0
     });
-    const questionList = await Question.find().limit(req.body.questionCount);
-    const category = await Category.findById(req.body.categoryId);
+
+    const questionList = await Question.find({ "category._id": String(req.body.categoryId) }).limit(req.body.questionCount);
+   
       const quizToCreate = new Quiz({
           _id: CryptPin(),
-      participants: [ participant ],
-      category: category,
+          participants: [participant],
+          categoryId: req.body.categoryId,
       timeLimit: req.body.timeLimit,
       questionCount: req.body.questionCount,
       questions: questionList,
