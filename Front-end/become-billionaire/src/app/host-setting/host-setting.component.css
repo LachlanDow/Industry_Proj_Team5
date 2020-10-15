@@ -65,7 +65,25 @@ h3{
     margin-bottom: 2%;
   }
 
+.btn1{
+    background-color:#F03963  ;
+}
 
+.btn2{
+    background-color:#740DA2;
+}
+ 
+.btn3{
+    background-color:#DFD9E6;
+}
+
+.btn4{
+    background-color:#F5DC50;
+}
+
+.btn5{
+    background-color:#50AFF5;
+}
 
 .mat-button-toggle-checked{
     background-color: grey;
@@ -80,6 +98,7 @@ h3{
 
 .start{
     font-family: "Roboto";
+    font-weight: bold;
     color: black;
     border-radius: 8px;
     border-color: black;
@@ -143,7 +162,3 @@ h3{
     border-style: none;
 }
 
-.dropDown{
-    opacity: 0.75;
-  font-size: 0.75em;
-}
