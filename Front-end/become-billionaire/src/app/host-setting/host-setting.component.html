@@ -35,20 +35,21 @@
     </div>
 
 
-<div class="right">
-    <form>
-        <label class=uName for="uname">Username:</label>
-        <Div>
-            <input class=uNameIn placeholder="Username" type="text" id="uname" name="uname"><br>
-        </Div>
-    </form>
-    <div>
-        <button class=start type="button" (click)="createLobby()">Start Game</button>
-    </div>
+    <div class="right">
+        <form>
+            <label class=uName for="uname">Username:</label>
+            <Div>
+                <input class=uNameIn placeholder="Username" type="text" id="username" (change)='username=$event.target.value' [value]="username">
+                <!-- <input class=uNameIn  type="text" id="uname" name="uname"><br> -->
+            </Div>
+        </form>
+        <div>
+            <button class=start type="button" (click)="createLobby()">Start Game</button>
+        </div>
 
+    </div>
 </div>
 
 <div *ngIf="showLobby">
     <app-lobby></app-lobby>
-</div>
 </div>

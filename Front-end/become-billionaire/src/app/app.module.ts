@@ -17,7 +17,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { JoinGameComponent } from './join-game/join-game.component';
 import {FormsModule} from '@angular/forms';
-import { LobbyComponent } from './lobby/lobby.component'
+import { LobbyComponent } from './lobby/lobby.component';
+import { JoinGameLobbyComponent } from './join-game-lobby/join-game-lobby.component'
 
 
 
@@ -30,7 +31,8 @@ import { LobbyComponent } from './lobby/lobby.component'
     InstructionsComponent,
     QuizPageComponent,
     JoinGameComponent,
-    LobbyComponent
+    LobbyComponent,
+    JoinGameLobbyComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,6 @@ import { LobbyComponent } from './lobby/lobby.component'
     MatProgressBarModule,
     HttpClientModule,
     FormsModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]
