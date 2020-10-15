@@ -12,8 +12,7 @@ export class AppComponent  {
   displaySettings = false;
   displayInstructions = false;
   displayLeaderboard = false;
-
-  displayHost = false;
+  displayJoinPage = false;
   
   hostId: string;
 
@@ -31,14 +30,14 @@ export class AppComponent  {
   onLeaderboardPress() {
     this.displayLeaderboard = true;
   }
-  onHostPress() {
-    this.displayHost = true;
+  onJoinPress() {
+    this.displayJoinPage = true;
   }
 
   ngAfterViewChecked(){ 
     this.displaySettings = false;
     this.displayInstructions = false;
-
     this.displayLeaderboard = false;
+    this.displayJoinPage = false;
   }
 }
