@@ -8,13 +8,9 @@
 .left{
     float: left;
     width: 40%;
-    background-color: blue;
 }
-
 .right{
     float: right;
-    background-color: orange;
-    
 }
 
 h1{
@@ -23,7 +19,7 @@ h1{
 }
 
 .slider {
-  width: 60%;
+  width: 100%;
   display: block;
 }
 
@@ -61,10 +57,12 @@ h3{
     height: 25%;
     font-weight: bold;
     border-radius: 0.3vw;
-    border-color: black;
     font-size: 1.8vw;
     font-size: max(30px);
     padding: 2% 2% 2% 2%;
+    border-style: none;
+    margin-left: 2%;
+    margin-bottom: 2%;
   }
 
 
@@ -89,6 +87,7 @@ h3{
     background-color: teal;
     margin-left: 15%;
     margin-top: 30%;
+    margin-bottom: 20%;
 }
 
 .frame {
@@ -141,5 +140,10 @@ h3{
 .btnBox {
     width: auto;
     flex-wrap: wrap;
-   
+    border-style: none;
+}
+
+.dropDown{
+    opacity: 0.75;
+  font-size: 0.75em;
 }
