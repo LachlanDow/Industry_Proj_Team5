@@ -27,7 +27,6 @@ export class HostSettingComponent implements OnInit {
     this.data.currentMessage.subscribe(message => this.hostId = message)
   }
   createLobby() {
-    this.showLobby = true;
     this.createQuiz();
   }
 
@@ -48,13 +47,16 @@ export class HostSettingComponent implements OnInit {
     this.http.post<any>(url, JSON.stringify(data), { headers: headers }).subscribe(data => {
       this.hostId = data.newQuiz.participants[0]._id;
       this.quizId = data.newQuiz._id;
+      console.log("quiz id",data.newQuiz._id);
       this.sendHostId();
     });
   }
 
   sendHostId() {
+    console.log(this.hostId);
     this.data.changeMessage(this.hostId);
     this.quizID.changeMessage(this.quizId);
+    this.showLobby = true;
   }
 
 

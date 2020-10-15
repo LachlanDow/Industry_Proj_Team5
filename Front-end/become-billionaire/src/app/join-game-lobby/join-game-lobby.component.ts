@@ -12,7 +12,6 @@ export class JoinGameLobbyComponent implements OnInit {
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
-    console.log("joing game lobby");
     this.data.currentMessage.subscribe(message => this.participantID = message);
     this.getEvent();
   }
@@ -26,7 +25,6 @@ export class JoinGameLobbyComponent implements OnInit {
     console.log("sdfsdkfhj",this.participantID)
     let serverEvents = new EventSource(`http://35.214.82.56:3000/stream/${this.participantID}`);
     serverEvents.addEventListener('message', function (event) {
-      console.log("event.data");
       console.log(event.data);
     });
 
