@@ -16,10 +16,6 @@
     background-color: orange;
     
 }
-.example-additional-selection {
-    opacity: 0.75;
-    font-size: 0.75em;
-  }
 
 h1{
     color: white;
@@ -44,9 +40,6 @@ label{
     margin-top: 30%;
 }
 
-h2{
-    color: white;
-}
 
 input[type=number]{
     margin-left: 21%;
@@ -157,11 +150,6 @@ h3{
     padding-bottom: 2vw;
     color: white; 
     font-size: max(35px);
-}
-
-  .num_Quest{
-      display: inline;
-      position: relative;
 }
 
  .questbox {
