@@ -8,10 +8,12 @@
 .left{
     float: left;
     width: 40%;
+    background-color: blue;
 }
 
 .right{
     float: right;
+    background-color: orange;
     
 }
 .example-additional-selection {
@@ -19,21 +21,13 @@
     font-size: 0.75em;
   }
 
-
 h1{
     color: white;
-    
-    
-    
 }
 
-
-
 .slider {
-  
   width: 60%;
   display: block;
-  
 }
 
 
@@ -51,8 +45,6 @@ label{
 
 h2{
     color: white;
-    
-    
 }
 
 input[type=number]{
@@ -62,31 +54,33 @@ input[type=number]{
 h3{
     color: white;
     text-align: left;
-    
     margin-left: 2%;
     font-size: 20px;
 }
 
 .mat-button-toggle{
     font-family: "Roboto";
-    color: black;
-    border-radius: 8px;
+    color: #191919;
+    width: 25%;
+    max-width: 800px;
+    max-height: 180px;
+    height: 25%;
+    font-weight: bold;
+    border-radius: 0.3vw;
     border-color: black;
-    font-size: 200%;
-    
-    
+    font-size: 1.8vw;
+    font-size: max(30px);
+
   }
 
+
+
 .mat-button-toggle-checked{
-    color: white;
-    border-radius: 8px;
-    border-color: black;
-    font-size: 200%;
+    background-color: grey;
 } 
   
 .btn1{
     background-color: red;
-  
 }
 
 .btn2{
@@ -95,7 +89,6 @@ h3{
 
 .btn3{
     background-color: purple;
-    
 }
 
 .btn4{
@@ -106,14 +99,11 @@ h3{
     background-color: turquoise;
 }
 
-
-
 .uName{
     font-family: "Roboto";
     margin-left: 22.5%;
     margin-bottom: 5%;
     font-size: 200%;
-
 }
 
 .uNameIn{
@@ -131,6 +121,7 @@ h3{
     margin-left: 15%;
     margin-top: 10%;
 }
+
 .frame {
     border: 0.3vw solid  #3B3B3B;
     border-radius: 0.6vw;
@@ -140,11 +131,9 @@ h3{
     padding-top: 0%;
     padding-left: 10%;
     padding-right: 10%;
-    margin-top: 10%;
     position: relative;
-  
-   }
- 
+}
+
    .btnExit{
     float: left;
     background-color: #191919;
@@ -157,8 +146,8 @@ h3{
     margin-top: 5%;
     margin-left: 0%;  
     position: relative;
-   
-  }
+}
+
   .headers {
     font-family: "Roboto";
     text-align: left;
@@ -166,34 +155,21 @@ h3{
     padding-bottom: 2vw;
     color: white; 
     font-size: max(35px);
-   
-  }
+}
+
   .num_Quest{
       display: inline;
       position: relative;
-      
-  }
+}
+
  .questbox {
     width: 15%;
-   font-size: 1.1vw;
-   
+    font-size: 1.1vw;
     border-style: none;
     border-radius: 0.3vw;
- } 
- .btn{
-    font-family: "Roboto";
-    color: #191919;
-    width: 25%;
-    max-width: 800px;
-    max-height: 180px;
-    height: 25%;
-    font-weight: bold;
-    border-radius: 0.3vw;
-    border-color: black;
-    font-size: 1.8vw;
-    font-size: max(30px);
-    position: relative;
-    }
+} 
+
 .btnBox {
-    width:100%;
+    width:200%;
+    flex-wrap: wrap;
 }
