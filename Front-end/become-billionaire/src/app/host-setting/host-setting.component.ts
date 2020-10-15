@@ -1,3 +1,4 @@
+import {FormControl} from '@angular/forms';
 import { Component, OnInit, } from '@angular/core';
 import { MatSliderChange } from '@angular/material/slider';
 import { HttpClient, HttpErrorResponse, HttpSentEvent } from '@angular/common/http'
@@ -8,6 +9,7 @@ import { QuizIdService } from '../quiz-id.service';
   selector: 'app-host-setting',
   templateUrl: './host-setting.component.html',
   styleUrls: ['./host-setting.component.css']
+  
 })
 export class HostSettingComponent implements OnInit {
   slidervalue = 75;
@@ -55,7 +57,10 @@ export class HostSettingComponent implements OnInit {
     this.quizID.changeMessage(this.quizId);
   }
 
-}
-export class ButtonToggleAppearance { }
 
-export class matMenu { }
+}
+export class SelectCustomTriggerExample {
+  toppings = new FormControl();
+
+  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+}
