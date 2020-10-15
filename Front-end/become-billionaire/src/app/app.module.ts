@@ -18,6 +18,9 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { JoinGameComponent } from './join-game/join-game.component';
+import {FormsModule} from '@angular/forms';
+import { LobbyComponent } from './lobby/lobby.component'
+
 
 
 @NgModule({
@@ -29,6 +32,8 @@ import { JoinGameComponent } from './join-game/join-game.component';
     InstructionsComponent,
     QuizPageComponent,
     JoinGameComponent
+    LobbyComponent
+
   ],
   imports: [
     BrowserModule,
@@ -38,10 +43,10 @@ import { JoinGameComponent } from './join-game/join-game.component';
     MatCardModule,
     MatButtonToggleModule,
     MatMenuModule,
-
     MatProgressBarModule,
-   
-    HttpClientModule
+  
+    HttpClientModule,
+    FormsModule
 
   ],
   providers: [],
