@@ -13,14 +13,6 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonToggleModule} from '@angular/material/button-toggle'
 import {MatSelectModule} from '@angular/material/select';
-
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { HttpClientModule } from '@angular/common/http';
-import {FormControl} from '@angular/forms';
-
-
-
-
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { JoinGameComponent } from './join-game/join-game.component';
@@ -47,7 +39,6 @@ import { LobbyComponent } from './lobby/lobby.component'
     MatCardModule,
     MatButtonToggleModule,
     MatSelectModule,
-    MatMenuModule,
     MatProgressBarModule,
     HttpClientModule,
     FormsModule
