@@ -1,28 +1,17 @@
 
-
-.a{
-    position: relative;
-    width: 400px;
-    height: 200px;
-    border: 3px blue;
+.a {
+    padding-left: 5%;
+    padding-right: 10%;
+    padding-top:2%;
 }
+
 .left{
-    position: absolute;
-    left: 10%;
-    width: 200%;
-    height: 200%;
-    border: 5px blue;
-    border-radius: 8px;
+    float: left;
+    width: 40%;
 }
 
 .right{
-    position: absolute;
-    left: 175%;
-    width: 175%;
-    height: 200%;
-    border: 3px blue;
-    border-radius: 16px;
-    margin-top: 40%;
+    float: right;
     
 }
 .example-additional-selection {
@@ -33,20 +22,18 @@
 
 h1{
     color: white;
-    margin-left: 20%;
-    margin-top: 15%;
+    
+    
     
 }
 
-output{
-    display: inline;
-    color: white;
-    margin-left: 5%;
-}
+
 
 .slider {
-  margin-left: 18%;
-  width: 30%;
+  
+  width: 60%;
+  display: block;
+  
 }
 
 
@@ -64,8 +51,8 @@ label{
 
 h2{
     color: white;
-    margin-left: 20%;
-    margin-top: 5%;
+    
+    
 }
 
 input[type=number]{
@@ -75,7 +62,7 @@ input[type=number]{
 h3{
     color: white;
     text-align: left;
-    margin-top: 10%;
+    
     margin-left: 2%;
     font-size: 20px;
 }
@@ -86,6 +73,7 @@ h3{
     border-radius: 8px;
     border-color: black;
     font-size: 200%;
+    
     
   }
 
@@ -142,4 +130,70 @@ h3{
     background-color: teal;
     margin-left: 15%;
     margin-top: 10%;
+}
+.frame {
+    border: 0.3vw solid  #3B3B3B;
+    border-radius: 0.6vw;
+    font-family: "Roboto";
+    height: auto;
+    width: auto;
+    padding-top: 0%;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 10%;
+    position: relative;
+  
+   }
+ 
+   .btnExit{
+    float: left;
+    background-color: #191919;
+    border: none;
+    color: #FA1772;
+    position: fixed;   
+    font-size: 3vw;
+    font-size: max(70px);
+    cursor: pointer;  
+    margin-top: 5%;
+    margin-left: 0%;  
+    position: relative;
+   
+  }
+  .headers {
+    font-family: "Roboto";
+    text-align: left;
+    margin-top: 0%;
+    padding-bottom: 2vw;
+    color: white; 
+    font-size: max(35px);
+   
+  }
+  .num_Quest{
+      display: inline;
+      position: relative;
+      
+  }
+ .questbox {
+    width: 15%;
+   font-size: 1.1vw;
+   
+    border-style: none;
+    border-radius: 0.3vw;
+ } 
+ .btn{
+    font-family: "Roboto";
+    color: #191919;
+    width: 25%;
+    max-width: 800px;
+    max-height: 180px;
+    height: 25%;
+    font-weight: bold;
+    border-radius: 0.3vw;
+    border-color: black;
+    font-size: 1.8vw;
+    font-size: max(30px);
+    position: relative;
+    }
+.btnBox {
+    width:100%;
 }
