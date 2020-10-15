@@ -6,8 +6,8 @@ const Question = require("../models/Question");
 // Get All Categories
 router.get("/", async (req, res) => {
     try {
-      const category = await Category.find()
-      res.json(category)
+        const category = await Category.find({})
+        res.json(category)
     } catch (err) {
       res.status(500).json({message: err.message})
     }
@@ -36,7 +36,7 @@ router.get("/", async (req, res) => {
 async function getCategory(req, res, next) {
     let category;
     try {
-      category = await Category.findById(req.params.id);
+        category = await Category.find({ "_id": String(req.params.id) });//await Category.findById(req.params.id);
       if (category == null) {
         return res.status(404).json({ message: "Cannot find category" });
       }
