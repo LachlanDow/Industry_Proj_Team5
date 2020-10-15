@@ -1,4 +1,4 @@
-import { Component, } from '@angular/core';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -15,12 +15,10 @@ export class AppComponent {
   displayJoinPage = false;
   displayHost = false;
 
-  hostId: string;
-
-
   onPress() {
     this.display = true;
   }
+
   onSettingsPress() {
     this.displaySettings = true;
   }
@@ -28,9 +26,11 @@ export class AppComponent {
   onInstructionsPress() {
     this.displayInstructions = true;
   }
+
   onLeaderboardPress() {
     this.displayLeaderboard = true;
   }
+
   onJoinPress() {
     this.displayJoinPage = true;
   }
@@ -43,6 +43,6 @@ export class AppComponent {
     this.displaySettings = false;
     this.displayInstructions = false;
     this.displayLeaderboard = false;
-    this.displayJoinPage = false;
+    // this.displayJoinPage = false;
   }
 }

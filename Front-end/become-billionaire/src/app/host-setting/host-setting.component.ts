@@ -2,8 +2,8 @@ import {FormControl} from '@angular/forms';
 import { Component, OnInit, } from '@angular/core';
 import { MatSliderChange } from '@angular/material/slider';
 import { HttpClient, HttpErrorResponse, HttpSentEvent } from '@angular/common/http'
-import { DataService } from '../data.service';
-import { QuizIdService } from '../quiz-id.service';
+import { DataService } from '../services/data.service';
+import { QuizIdService } from '../services/quiz-id.service';
 
 @Component({
   selector: 'app-host-setting',
