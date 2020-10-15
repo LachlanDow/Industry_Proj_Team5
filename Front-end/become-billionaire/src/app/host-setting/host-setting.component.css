@@ -23,6 +23,7 @@
 
 h1{
     color: white;
+    
 }
 
 .slider {
@@ -143,15 +144,16 @@ h3{
     font-size: 3vw;
     font-size: max(70px);
     cursor: pointer;  
-    margin-top: 5%;
-    margin-left: 0%;  
+    margin-top: -1%;
+    margin-left: 0%; 
+    margin-right: 4%; 
     position: relative;
 }
 
   .headers {
     font-family: "Roboto";
     text-align: left;
-    margin-top: 0%;
+    margin-top: 2%;
     padding-bottom: 2vw;
     color: white; 
     font-size: max(35px);
