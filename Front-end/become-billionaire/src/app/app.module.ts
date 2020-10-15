@@ -31,7 +31,7 @@ import { LobbyComponent } from './lobby/lobby.component'
     LeaderboardComponent,
     InstructionsComponent,
     QuizPageComponent,
-    JoinGameComponent
+    JoinGameComponent,
     LobbyComponent
 
   ],
