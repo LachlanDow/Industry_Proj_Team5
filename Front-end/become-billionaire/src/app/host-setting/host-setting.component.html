@@ -10,44 +10,42 @@
 <div class="left">
 
         <h1> Time Per Question </h1>
-        <mat-slider min=1 max=30 step=1 thumbLabel (value)=slidervalue></mat-slider>
+        <mat-slider class=slider min=1 max=30 step=1 thumbLabel (value)=slidervalue></mat-slider>
         <h2> Number Of Questions </h2>
         <input type="number" id="Qnum" value="1">
         <h3> Categories: </h3>
-        <mat-button-toggle-group multiple name="fontStyle" aria-label="Font Style">
-            <mat-button-toggle value="bold">Golf</mat-button-toggle>
-            <mat-button-toggle value="italic">Animals</mat-button-toggle>
-            <mat-button-toggle value="underline">Sports</mat-button-toggle>
+        <mat-button-toggle-group class = btn multiple name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle class = btn1 value="Golf">Golf</mat-button-toggle>
+            <mat-button-toggle class = btn2 value="Animals">Animals</mat-button-toggle>
+            <mat-button-toggle class = btn3 value="Sports">Sports</mat-button-toggle>
         </mat-button-toggle-group>
      <div>
-        <mat-button-toggle-group multiple name="fontStyle" aria-label="Font Style">
-            <mat-button-toggle value="bold">Geography</mat-button-toggle>
-            <mat-button-toggle value="italic">History</mat-button-toggle>
+        <mat-button-toggle-group class = btn multiple name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle class = btn4 value="Geography">Geography</mat-button-toggle>
+            <mat-button-toggle class = btn5 value="History">History</mat-button-toggle>
         </mat-button-toggle-group>
-        <button mat-button [matMenuTriggerFor]="menu">Other</button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item>Fashion</button>
-            <button mat-menu-item>Music</button>
-        </mat-menu>
+         <mat-form-field appearance="fill"> 
+             <mat-label>Other</mat-label> 
+            <select matNativeControl required> 
+              <option value="Cars">Cars</option> 
+              <option value="Movies">Movies</option> 
+               <option value="Music">Music</option> 
+                <option value="Games">Games</option> 
+             </select>
+          </mat-form-field> 
     </div>
 
 </div>
 <div class="right">
     <form>
-        <label for="uname">Username:</label>
-        <input type="text" id="uname" name="uname"><br>
+        <label class=uName for="uname">Username:</label>
+        <Div>
+        <input class=uNameIn type="text" id="uname" name="uname"><br>
+        </Div>
     </form>
 
     <div>
-        Single-player <mat-slide-toggle class="toggle">Multi-Player</mat-slide-toggle>
-    </div>
-
-    <div>
-        <output type=number> 123456 </output> 
-
-    </div>
-    <div>
-        <button type="button">Start Game</button>
+        <button class=start type="button">Start Game</button>
     </div>
     
 </div>

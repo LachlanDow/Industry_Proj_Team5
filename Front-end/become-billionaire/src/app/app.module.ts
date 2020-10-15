@@ -12,6 +12,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonToggleModule} from '@angular/material/button-toggle'
 import {MatMenuModule} from '@angular/material/menu';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -30,6 +31,15 @@ import {MatMenuModule} from '@angular/material/menu';
     MatCardModule,
     MatButtonToggleModule,
     MatMenuModule,
+<<<<<<< Updated upstream
+=======
+    MatSelectModule,
+
+    MatProgressBarModule,
+   
+    HttpClientModule
+
+>>>>>>> Stashed changes
   ],
   providers: [],
   bootstrap: [AppComponent]
