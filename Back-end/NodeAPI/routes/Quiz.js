@@ -31,10 +31,7 @@ router.post("/", async (req, res) => {
       const quizToCreate = new Quiz({
           _id: CryptPin(),
           participants: [participant],
-          category: new Category({
-           name: req.body.category,
-            _id: req.body.categoryId
-          }),
+          categoryId: req.body.categoryId,
       timeLimit: req.body.timeLimit,
       questionCount: req.body.questionCount,
       questions: questionList,
