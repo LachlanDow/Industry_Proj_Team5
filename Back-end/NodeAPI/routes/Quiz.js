@@ -64,8 +64,9 @@ router.get("/", async (req, res) => {
 
   //Join Quiz. Patch to quiz endpoint with quizID after slash. This notifies all other participants in quiz.
 router.patch("/:id", getQuiz, async (req, res) => {
+  var participant;
   if (req.body.name != null) {
-    const participant = new Participant ({
+    participant = new Participant ({
       name: req.body.name,
       score: 0
     });
@@ -73,7 +74,7 @@ router.patch("/:id", getQuiz, async (req, res) => {
   }
   try {
     const updatedQuiz = await res.quiz.save();
-    res.json(updatedQuiz);
+    res.json(participant);
     SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
   } catch (err) {
     res.status(400).json({ message: err.message });
