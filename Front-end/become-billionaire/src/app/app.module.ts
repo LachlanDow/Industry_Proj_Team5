@@ -21,6 +21,14 @@ import {FormControl} from '@angular/forms';
 
 
 
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { HttpClientModule } from '@angular/common/http';
+import { JoinGameComponent } from './join-game/join-game.component';
+import {FormsModule} from '@angular/forms';
+import { LobbyComponent } from './lobby/lobby.component'
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,21 +37,20 @@ import {FormControl} from '@angular/forms';
     LeaderboardComponent,
     InstructionsComponent,
     QuizPageComponent,
-    
-
+    JoinGameComponent,
+    LobbyComponent
   ],
   imports: [
     BrowserModule,
-    
     MatSlideToggleModule,
     MatSliderModule,
     MatCardModule,
     MatButtonToggleModule,
     MatSelectModule,
+    MatMenuModule,
     MatProgressBarModule,
-  
     HttpClientModule,
-    
+    FormsModule
 
   ],
   providers: [],

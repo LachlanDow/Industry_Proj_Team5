@@ -1,0 +1,8 @@
+<div *ngIf="!display ">
+    <p class="test">lobby works!{{hostId}}</p>
+    <button type="button" class="btn play" (click)="onPress()">Play!</button>
+</div>
+
+<div class="options " *ngIf="display ">
+    <app-quiz-page></app-quiz-page>
+</div>

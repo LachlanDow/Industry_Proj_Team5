@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Page Title</title>
-</head>
-<body>
-
-        
-   <div class="a"> 
-<div class="left">
+<div class="a" *ngIf="!showLobby">
+    <div class="left">
 
         <h1> Time Per Question </h1>
+
         <mat-slider class=slider min=1 max=30 step=1 thumbLabel (value)=slidervalue></mat-slider>
+        <mat-slider class=slider min=1 max=30 step=1 thumbLabel (input)="onInputChange($event)"></mat-slider>
+
         <h2> Number Of Questions </h2>
-        <input type="number" id="Qnum" value="1">
+        <input type="number" id="Qnum" (change)='questionNum=$event.target.value' [value]="questionNum">
         <h3> Categories: </h3>
         <mat-button-toggle-group class = btn multiple name="fontStyle" aria-label="Font Style">
             <mat-button-toggle class = btn1 value="Golf">Golf</mat-button-toggle>
@@ -36,7 +31,11 @@
               <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
             </mat-select>
           </mat-form-field> -->
+
     </div>
+    <div class="right">
+        <input type="text" id="username" (change)='username=$event.target.value' [value]="username">
+
 
 </div>
 <div class="right">
@@ -52,12 +51,15 @@
     </div>
     
 </div>
+    
+        <div>
+            <button class=start type="button" (click)="createLobby()">Start Game</button>
+        </div>
+
+    </div>
+
 </div>
 
- 
-
-
-       
-
-</body>
-</html>
+<div *ngIf="showLobby">
+    <app-lobby></app-lobby>
+</div>
