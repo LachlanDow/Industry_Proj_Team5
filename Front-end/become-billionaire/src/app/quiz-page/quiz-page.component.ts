@@ -30,6 +30,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    console.log("quiz page ng onint")
     this.data.currentMessage.subscribe(message => this.hostId = message);
     this.quizID.currentMessage.subscribe(message => this.quizId = message);
     this.participantID = this.hostId;
