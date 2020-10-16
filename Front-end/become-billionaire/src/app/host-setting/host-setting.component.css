@@ -12,7 +12,6 @@
 }
 .right{
     float: right;
-    
 }
 
 h1{
@@ -35,10 +34,11 @@ h1{
     background-color: #191919;
     border-radius: 0.5vw;
     color: white;
-    width: 115%;
+    width: 113%;
     font-size: 150%;
     padding-top: 2%;
     padding-bottom: 2%;
+    margin-top: 1%;
 }
 
 
@@ -62,9 +62,9 @@ h3{
 .mat-button-toggle{
     font-family: "Roboto";
     color: #191919;
-    width: 25%;
-    max-width: 7vw;
-    max-height: 3vw;
+    width: 20%;
+    /* max-width: 7vw; */
+    /* max-height: 3vw; */
     height: 25%;
     font-weight: bold;
     border-radius: 0.3vw;
@@ -112,10 +112,11 @@ h3{
     font-weight: bold;
     color: black;
     border-radius: 8px;
-    width: 118%;
+    width: 117%;
     font-size: 300%;
     background-color: #FA1772;
-    margin-top: 10%;
+    margin-top: 8%;
+    margin-bottom: 3%;
 }
 
 .frame {
@@ -136,7 +137,7 @@ h3{
     font-family: "Roboto";
     height: auto;
     width: auto;
-    padding-top: 5%;
+    padding-top: 1%;
     padding-left: 10%;
     padding-right: 10%;
     position: relative;
