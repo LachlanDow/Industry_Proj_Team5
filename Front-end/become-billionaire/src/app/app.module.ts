@@ -18,8 +18,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { JoinGameComponent } from './join-game/join-game-component';
 import {FormsModule} from '@angular/forms';
 import { LobbyComponent } from './lobby/lobby.component';
+import { JoinGameLobbyComponent } from './join-game-lobby/join-game-lobby.component';
+import { CountdownModule } from 'ngx-countdown';
 import { WaitScreenComponent } from './wait-screen/wait-screen.component'
-import { JoinGameLobbyComponent } from './join-game-lobby/join-game-lobby.component'
+
 
 
 
@@ -47,7 +49,8 @@ import { JoinGameLobbyComponent } from './join-game-lobby/join-game-lobby.compon
     MatSelectModule,
     MatProgressBarModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CountdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

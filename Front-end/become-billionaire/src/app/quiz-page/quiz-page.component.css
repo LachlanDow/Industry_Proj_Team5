@@ -107,6 +107,11 @@
     
     
     }
+    .timer { 
+        background-color: aliceblue;
+        width: 500px;
+        height: 500px;
+    }
 
 @media only screen and (max-width: 950px) {
     .btn {

@@ -1,7 +1,9 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { DataService } from '../services/data.service';
 import { QuizIdService } from '../services/quiz-id.service';
+import { CountdownComponent, CountdownConfig } from 'ngx-countdown';
+
 
 @Component({
   selector: 'app-quiz-page',
@@ -18,12 +20,19 @@ export class QuizPageComponent implements OnInit, OnChanges {
   quiz;
   lastQuestionRecievedTime;
   lastAnsweredTime;
-  counter;
+  counter = 0;
   currentScore = 0;
   participantID;
   hostId;
   quizId;
   quizStarted = false;
+  interval = 1000; // ms
+  expected; 
+  config: CountdownConfig; 
+
+
+  @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
+
 
   constructor(private http: HttpClient, private data: DataService, private quizID: QuizIdService) {
     //NOOP
@@ -88,10 +97,17 @@ export class QuizPageComponent implements OnInit, OnChanges {
       console.log("quiz", quizPage.quiz);
       quizPage.questionCount();
       quizPage.lastQuestionRecievedTime = new Date().getTime();
+      quizPage.config = { leftTime: quizPage.quiz.timeLimit };
+      
       if (!quizPage.quizStarted){
       quizPage.startQuiz();
       quizPage.quizStarted = true;
+      quizPage.countdown.begin();
       }
+      else {
+        quizPage.countdown.restart();
+      }
+      
     });
 
   };
@@ -120,6 +136,10 @@ export class QuizPageComponent implements OnInit, OnChanges {
     });
   }
 
+  handleEvent(event) { 
+    console.log(event);
+  }
+
 
   // startCountdown() {
   //   console.log("seconds",this.quiz.timeLimit)
@@ -137,4 +157,6 @@ export class QuizPageComponent implements OnInit, OnChanges {
   //   }, 1000);
   // }
 
+
 }
+
