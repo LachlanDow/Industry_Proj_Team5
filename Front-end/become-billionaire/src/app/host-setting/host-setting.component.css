@@ -160,5 +160,11 @@ h3{
     width: auto;
     flex-wrap: wrap;
     border-style: none;
+    overflow-y: scroll; 
+    height:10vw;
+    margin-left: 10%;
+    
 }
-
+::-webkit-scrollbar {
+    display: none;
+    }
