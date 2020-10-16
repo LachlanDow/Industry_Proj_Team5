@@ -29,6 +29,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
   interval = 1000; // ms
   expected; 
   config: CountdownConfig; 
+  displayButtons = true;
 
 
   @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
@@ -63,13 +64,17 @@ export class QuizPageComponent implements OnInit, OnChanges {
       this.lastAnsweredTime = new Date().getTime();
       let timeDifference = this.lastAnsweredTime - this.lastQuestionRecievedTime;
       this.currentScore = this.currentScore + timeDifference;
+      
       this.sendScore();
+
+      
     }
     else {
       this.IsitCorrect = "Wrong Answer! Good luck next time";
       let icon = this.resultIcons.push(false)
-
+     
     }
+    this.displayButtons = false; //Hide buttons and show wait screen
   }
 
   public questionCount() {
@@ -92,6 +97,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
     let localQuiz;
     let quizPage = this;
     let serverEvents = new EventSource(`http://35.214.82.56:3000/stream/${this.participantID}`);
+    
     serverEvents.addEventListener('message', function (event) {
       quizPage.quiz = JSON.parse(event.data)
       console.log("quiz", quizPage.quiz);
@@ -106,10 +112,12 @@ export class QuizPageComponent implements OnInit, OnChanges {
       }
       else {
         quizPage.countdown.restart();
+        
       }
+      quizPage.displayButtons = true;
       
     });
-
+    
   };
 
   /**

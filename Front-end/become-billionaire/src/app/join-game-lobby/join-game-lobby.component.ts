@@ -7,6 +7,7 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./join-game-lobby.component.css']
 })
 export class JoinGameLobbyComponent implements OnInit {
+  display= false;
   participantID ;
   localParticipants = [
     {

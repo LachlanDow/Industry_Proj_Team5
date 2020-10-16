@@ -1,6 +1,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div></div>
-<div class="question">
+
+<div *ngIf="displayButtons">
+    <div class="question">
     {{quiz.questionNumber}}. {{quiz.questions[currentQuestion].question}}
 
 </div>
@@ -8,6 +10,45 @@
 <button type="button" class="btn secondChoice" (click)="answerCheck(2)">{{quiz.questions[currentQuestion].choices[1]}}</button>
 <button type="button" class="btn thirdChoice" (click)="answerCheck(3)">{{quiz.questions[currentQuestion].choices[2]}}</button>
 <button type="button" class="btn fourthChoice" (click)="answerCheck(4)">{{quiz.questions[currentQuestion].choices[3]}}</button>
+</div>
+
+<div *ngIf="!displayButtons">
+
+    <div class="result">
+        <div class="dynamicResult">{{IsitCorrect}}
+        </div>
+        <div class="border"> 
+            <div class="scoring">
+                <div class="text">
+                    Current Score
+                </div>
+                <div class="score">
+                   {{currentScore}}
+                </div>
+            </div>
+        
+        <div class="scoreBar"></div>
+            <div class="extraInfo">
+                <div class="text">Response Time</div>
+                <div class="infobox">{{responseTime}}s</div>
+            </div>
+            
+            <div class="extraInfo">
+                <div class="text">Position</div>
+                <div class="infobox">{{position}}</div>
+            </div>
+            <div class="waitCounter">
+                PLEASE WAIT
+                <br><br>
+               
+            </div>
+        
+            
+        </div>
+    </div> 
+
+
+</div>
 
 <div>
     <span *ngFor="let icon of resultIcons">

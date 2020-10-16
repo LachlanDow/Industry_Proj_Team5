@@ -127,3 +127,74 @@
         ;
     }
 }
+.border{
+    margin:auto;
+    width: 50%;
+    height: 100%;
+    border: 3px solid #3B3B3B;
+    border-radius: 25px;
+    padding:1vw;
+    color: white;
+    overflow: hidden;
+}
+.dynamicResult{
+    color: green;
+    text-align: center;
+    font-size: 3vw;
+    margin:2vw;
+    font-weight: 900;
+}
+.text{
+    float:left;
+    font-size: 3vw;
+    width: 65%;
+    text-align: left;
+    padding:1vw;
+}
+.score{
+    color:gold;
+    float:right;
+    text-align: right;
+    width:20%;
+    padding:1vw;
+    font-size: 3vw;;
+}
+.scoring{
+    padding:0.5vw;
+    float:right;
+    width:100%;
+}
+.scoreBar{
+    border:3px solid green;
+    width:95%;
+    float:left;
+}
+.extraInfo{
+    float:left;
+    width:100%;
+    padding-top: 3vw;;
+}
+.infobox{
+    padding:1vw;;
+    text-align: right;
+    width:20%;
+    font-size: 3vw;
+    border: 3px dashed darkred;
+    float:right;
+}
+.waitCounter{
+    float:left;
+    width:100%;
+    text-align: center;
+    font-size: 3vw;
+    padding-top: 1vw;
+    font-weight:900;
+    color:gold;
+}
+.tick {
+    font-size: 48px;
+    color: green;
+    padding-top: 1%;
+    padding-left: 2%;
+    font-size: 30px;
+}
