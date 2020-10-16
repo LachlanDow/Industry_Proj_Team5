@@ -32,6 +32,7 @@ export class JoinGameComponent implements OnInit {
       this.displayJoinGameLobby = true;
     
       this.participantID = (data as any)._id;
+      console.log("join game", this.participantID);
       this.sendHostId();
     });
   }
