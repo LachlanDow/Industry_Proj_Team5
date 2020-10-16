@@ -213,3 +213,105 @@ h3{
     {
       background: #FA1772;
     }
+
+
+    @media only screen and (max-width: 980px) {
+
+  .headers {
+    font-family: "Roboto";
+    text-align: center;
+    margin-top: 6%;
+    padding-bottom: 2vw;
+    color: white; 
+    font-size: max(35px);
+    margin-left: -10%;
+}
+.btnExit{
+    float: left;
+    background-color: #191919;
+    border: none;
+    color: #FA1772;
+    position: fixed;   
+    font-size: 3vw;
+    font-size: max(55px);
+    cursor: pointer;  
+    margin-top: -3%;
+    margin-left: 7%; 
+    margin-right: 4%; 
+    position: relative;
+    
+}
+.left{
+    float: left;
+    width: 100%;
+    margin-left: -7%;
+}
+.right{
+    float: left;
+    
+    margin-left: 3%;
+    
+}
+.frame2 {
+    border: 0.3vw solid  #3B3B3B;
+    border-radius: 0.6vw;
+    font-family: "Roboto";
+    height: auto;
+    width: auto;
+    padding-top: 5%;
+    padding-left: 20%;
+    padding-right: 25%;
+    position: relative;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.uNameIn[type=text]{
+    border: 0.15vw dashed  #FA1772;
+    background-color: #191919;
+    border-radius: 0.5vw;
+    color: white;
+    width: 110%;
+    font-size: 150%;
+    margin-left: 15%;
+}
+.start{
+    font-family: "Roboto";
+    font-weight: bold;
+    color: black;
+    border-radius: 8px;
+    width: 105%;
+    font-size: 280%;
+    background-color: #FA1772;
+    margin-top: 10%;
+    margin-left: 18%;
+    margin-bottom: 10%;
+
+}
+.a {
+    padding-left: 5%;
+    padding-right: 10%;
+    padding-top:2%;
+}
+.btnBox {
+    width: auto;
+    flex-wrap: wrap;
+    border-style: none;
+    overflow-y: scroll; 
+    height:auto;
+    margin-left: 10%;
+    
+}
+.mat-button-toggle{
+    font-family: "Roboto";
+    color: #191919;
+    max-width: 40vw;
+    max-height: 5vw;
+    font-weight: bold;
+    border-radius: 0.3vw;
+    text-align: center;
+    font-size: max(15px);
+   
+   
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+    }
