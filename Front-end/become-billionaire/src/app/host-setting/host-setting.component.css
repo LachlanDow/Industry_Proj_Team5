@@ -64,7 +64,9 @@ h3{
     margin-left: 2%;
     margin-bottom: 2%;
   }
-
+  .btn{
+    background-color:#50AFF5;
+}
 .btn1{
     background-color:#F03963  ;
 }
@@ -74,7 +76,7 @@ h3{
 }
  
 .btn3{
-    background-color:#DFD9E6;
+    background-color:#60E0D1;
 }
 
 .btn4{
