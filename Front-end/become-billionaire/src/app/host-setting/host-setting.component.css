@@ -70,6 +70,7 @@ h3{
     border-style: none;
     margin-left: 4%;
     margin-bottom: 2%;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
   .btn{
     background-color:#50AFF5;
@@ -122,6 +123,7 @@ h3{
     padding-left: 10%;
     padding-right: 10%;
     position: relative;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #style-2::-webkit-scrollbar-track
 {
@@ -143,6 +145,7 @@ h3{
     margin-left: 0%; 
     margin-right: 4%; 
     position: relative;
+    
 }
 
   .headers {
