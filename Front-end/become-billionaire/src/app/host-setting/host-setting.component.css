@@ -105,15 +105,11 @@ h3{
     font-weight: bold;
     color: black;
     border-radius: 8px;
-    width: 180%;
-    border-color: black;
-    font-size: 250%;
-    background-color: teal;
+    width: 150%;
+    border: none;
+    font-size: 300%;
+    background-color: #FA1772;
     margin-top: 5%;
-
-    margin-left: 15%;
-    margin-top: 30%;
-    margin-bottom: 5%;
 }
 
 .frame {
