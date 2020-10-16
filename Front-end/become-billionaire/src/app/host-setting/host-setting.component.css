@@ -33,6 +33,7 @@ h1{
     background-color: #191919;
     border-radius: 0.5vw;
     color: white;
+    width: 115%;
 }
 
 
@@ -106,12 +107,10 @@ h3{
     font-weight: bold;
     color: black;
     border-radius: 8px;
-    width: 150%;
+    width: 118%;
     font-size: 300%;
     background-color: #FA1772;
     margin-top: 10%;
-   
-
 }
 
 .frame {
@@ -176,7 +175,6 @@ h3{
     overflow-y: scroll; 
     height:10vw;
     margin-left: 10%;
-    
     
 }
 /* ::-webkit-scrollbar {
