@@ -25,9 +25,11 @@ h1{
 
 
 
-.input[type=text]{
-    margin-left: 80%;
-    margin-top: 20%;
+.uNameIn[type=text]{
+    border: 0.15vw dashed  #FA1772;
+    background-color: #191919;
+    border-radius: 0.5vw;
+    color: white;
 }
 
 label{
@@ -37,8 +39,13 @@ label{
 }
 
 
-input[type=number]{
-    margin-left: 21%;
+.questbox[type=number]{
+    display: inline;
+    margin-left: 10%;
+    border-radius: 0.5vw;
+    border: 0.15vw dashed  #FA1772;
+    background-color: #191919;
+    color: white;
 }
 
 h3{
@@ -86,15 +93,10 @@ h3{
 }
 
 .mat-button-toggle-checked{
-    background-color: grey;
+    background-color: rgb(179, 179, 179);
+
 } 
   
-
-.uNameIn{
-    margin-left: 20%;
-    margin-top: 20%;
-}
-
 
 .start{
     font-family: "Roboto";
@@ -105,8 +107,7 @@ h3{
     font-size: 300%;
     background-color: teal;
     margin-left: 15%;
-    margin-top: 30%;
-    margin-bottom: 20%;
+    
 }
 
 .frame {
