@@ -2,8 +2,8 @@ import {FormControl} from '@angular/forms';
 import { Component, OnInit, } from '@angular/core';
 import { MatSliderChange } from '@angular/material/slider';
 import { HttpClient, HttpErrorResponse, HttpSentEvent } from '@angular/common/http'
-import { DataService } from '../data.service';
-import { QuizIdService } from '../quiz-id.service';
+import { DataService } from '../services/data.service';
+import { QuizIdService } from '../services/quiz-id.service';
 
 @Component({
   selector: 'app-host-setting',
@@ -31,7 +31,6 @@ export class HostSettingComponent implements OnInit {
     this.data.currentMessage.subscribe(message => this.hostId = message)
   }
   createLobby() {
-    this.showLobby = true;
     this.createQuiz();
   }
 
@@ -45,20 +44,23 @@ export class HostSettingComponent implements OnInit {
     const headers = { 'Content-Type': 'application/json' };
     const data = {
       "hostName": this.username,
-      "categoryId": "5f7e2403ac9ce729944e732d",
+      "categoryId": "44ded658a5454fecb4c885c44b8cfd13",
       "timeLimit": this.questionTimeLimit,
       "questionCount": parseInt(this.questionNum)
     };
     this.http.post<any>(url, JSON.stringify(data), { headers: headers }).subscribe(data => {
       this.hostId = data.newQuiz.participants[0]._id;
       this.quizId = data.newQuiz._id;
+      console.log("quiz id",data.newQuiz._id);
       this.sendHostId();
     });
   }
 
   sendHostId() {
+    console.log(this.hostId);
     this.data.changeMessage(this.hostId);
     this.quizID.changeMessage(this.quizId);
+    this.showLobby = true;
   }
 
 

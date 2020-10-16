@@ -100,10 +100,21 @@ div.box {
     font-family: "Roboto";
     text-align: center;
     position: relative;
-    padding-bottom: 2vw;
-    padding-left: 5vw;
+    padding-bottom: 4vw;
+    padding-left: 6.2vw;
     color: gold;
     font-size: max(70px);
+  }
+
+  .headers3 {
+    font-family: "Roboto";
+    text-align: center;
+    position: relative;
+    padding-bottom: 2vw;
+    padding-top: 3vw;
+    padding-left: 5.8vw;
+    color: white;
+    font-size: max(35px);
   }
   
   ::ng-deep .mat-progress-bar-fill::after {

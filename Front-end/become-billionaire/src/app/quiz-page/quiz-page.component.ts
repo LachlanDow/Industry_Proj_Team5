@@ -1,7 +1,9 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpSentEvent } from '@angular/common/http'
-import { DataService } from '../data.service';
-import { QuizIdService } from '../quiz-id.service';
+import { Component, OnChanges, OnInit, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
+import { DataService } from '../services/data.service';
+import { QuizIdService } from '../services/quiz-id.service';
+import { CountdownComponent, CountdownConfig } from 'ngx-countdown';
+
 
 @Component({
   selector: 'app-quiz-page',
@@ -18,18 +20,26 @@ export class QuizPageComponent implements OnInit, OnChanges {
   quiz;
   lastQuestionRecievedTime;
   lastAnsweredTime;
-  counter;
+  counter = 0;
   currentScore = 0;
   participantID;
   hostId;
   quizId;
   quizStarted = false;
+  interval = 1000; // ms
+  expected; 
+  config: CountdownConfig; 
+
+
+  @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
+
 
   constructor(private http: HttpClient, private data: DataService, private quizID: QuizIdService) {
     //NOOP
   }
 
   ngOnInit(): void {
+    console.log("quiz page ng onint")
     this.data.currentMessage.subscribe(message => this.hostId = message);
     this.quizID.currentMessage.subscribe(message => this.quizId = message);
     this.participantID = this.hostId;
@@ -76,7 +86,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
   }
 
   /**
-   * Listens to the events fromthe server to update the questions.
+   * Listens to the events from the server to update the questions.
    */
   getEvent() {
     let localQuiz;
@@ -87,10 +97,17 @@ export class QuizPageComponent implements OnInit, OnChanges {
       console.log("quiz", quizPage.quiz);
       quizPage.questionCount();
       quizPage.lastQuestionRecievedTime = new Date().getTime();
+      quizPage.config = { leftTime: quizPage.quiz.timeLimit };
+      
       if (!quizPage.quizStarted){
       quizPage.startQuiz();
       quizPage.quizStarted = true;
+      quizPage.countdown.begin();
       }
+      else {
+        quizPage.countdown.restart();
+      }
+      
     });
 
   };
@@ -119,6 +136,10 @@ export class QuizPageComponent implements OnInit, OnChanges {
     });
   }
 
+  handleEvent(event) { 
+    console.log(event);
+  }
+
 
   // startCountdown() {
   //   console.log("seconds",this.quiz.timeLimit)
@@ -136,4 +157,6 @@ export class QuizPageComponent implements OnInit, OnChanges {
   //   }, 1000);
   // }
 
+
 }
+

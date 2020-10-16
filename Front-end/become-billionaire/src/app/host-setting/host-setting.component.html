@@ -13,17 +13,14 @@
 
     </div>
 
-
-
 <div class="right frame2">
     <form class="submit">
-        <input class=uNameIn placeholder="Username" type="text" id="uname" name="uname"><br>
+         <input class=uNameIn placeholder="Username" type="text" id="username" (change)='username=$event.target.value' [value]="username">
         <button class="start" type="button" (click)="createLobby()">Start Game</button>
     </form>
-    
-        
-    
 
+
+    </div>
 </div>
 <div>
     <mat-button-toggle-group class=btnBox multiple name="fontStyle" aria-label="Font Style">
@@ -58,4 +55,5 @@
 <div *ngIf="display">
     <app></app>
  </div>
+
 </div>
