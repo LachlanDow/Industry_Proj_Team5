@@ -1,59 +1,61 @@
 <div class="a" *ngIf="!showLobby">
 
-    <h1 class="headers"><button type="button" class="fa fa-arrow-circle-left fa-2x btnExit"  (click)="gohome()"></button>Host Settings</h1>
-    
+    <h1 class="headers"><button type="button" class="fa fa-arrow-circle-left fa-2x btnExit"
+            (click)="gohome()"></button>Host Settings</h1>
+
     <div class="left">
         <div class="frame">
             <h1> Time Per Question </h1>
-            <mat-slider class=slider min=1 max=30 step=1 value=15 thumbLabel (input)="onInputChange($event)"></mat-slider>
-            <h1 class="num_Quest"> Number Of Questions<input type="number" class="questbox" (change)='questionNum=$event.target.value' [value]="questionNum"> </h1>    
+            <mat-slider class=slider min=1 max=30 value=15 step=1 thumbLabel (input)="onInputChange($event)">
+            </mat-slider>
+            <h1 class="num_Quest"> Number Of Questions<input type="number" class="questbox"
+                    (change)='questionNum=$event.target.value' [value]="questionNum"> </h1>
         </div>
 
         <h1> Categories: </h1>
 
     </div>
 
-<div class="right frame2">
-    <form class="submit">
-         <input class=uNameIn placeholder="Username" type="text" id="username" (change)='username=$event.target.value' [value]="username">
-        <button class="start" type="button" (click)="createLobby()">Start Game</button>
-    </form>
 
+
+    <div class="right frame2">
+        <form class="submit">
+            <input class=uNameIn placeholder="Username" type="text" id="uname" name="uname"><br>
+            <button class="start" type="button" (click)="createLobby()">Start Game</button>
+        </form>
+    </div>
+
+    <div>
+        <mat-button-toggle-group class=btnBox multiple name="fontStyle" aria-label="Font Style">
+
+            <mat-button-toggle class=btn1 value="General">General</mat-button-toggle>
+            <mat-button-toggle class=btn2 value="Random">Random</mat-button-toggle>
+            <mat-button-toggle class=btn3 value="Sports">Sports</mat-button-toggle>
+            <mat-button-toggle class=btn4 value="Geography">Geography</mat-button-toggle>
+            <mat-button-toggle class=btn value="History">History</mat-button-toggle>
+            <mat-button-toggle class=btn1 value="Golf">Golf</mat-button-toggle>
+            <mat-button-toggle class=btn2 value="Animals">Animals</mat-button-toggle>
+            <mat-button-toggle class=btn3 value="Sports">Physics</mat-button-toggle>
+            <mat-button-toggle class=btn4 value="Geography">Biology</mat-button-toggle>
+            <mat-button-toggle class=btn value="History">Mythology</mat-button-toggle>
+            <mat-button-toggle class=btn1 value="Golf">Star Wars</mat-button-toggle>
+            <mat-button-toggle class=btn2 value="Animals">Human Body</mat-button-toggle>
+            <mat-button-toggle class=btn3 value="Sports">Celebrities</mat-button-toggle>
+            <mat-button-toggle class=btn4 value="Geography">Cars</mat-button-toggle>
+            <mat-button-toggle class=btn value="History">Movies</mat-button-toggle>
+            <mat-button-toggle class=btn1 value="Golf">Tech</mat-button-toggle>
+            <mat-button-toggle class=btn2 value="Animals">Video Games</mat-button-toggle>
+            <mat-button-toggle class=btn3 value="Sports">Food</mat-button-toggle>
+            <mat-button-toggle class=btn4 value="Geography">Math</mat-button-toggle>
+            <mat-button-toggle class=btn value="History">Art</mat-button-toggle>
+        </mat-button-toggle-group>
 
     </div>
-</div>
-<div>
-    <mat-button-toggle-group class=btnBox multiple name="fontStyle" aria-label="Font Style">
-        
-        <mat-button-toggle class=btn1 value="General">General</mat-button-toggle>
-        <mat-button-toggle class=btn2 value="Random">Random</mat-button-toggle>
-        <mat-button-toggle class=btn3 value="Sports">Sports</mat-button-toggle>
-        <mat-button-toggle class=btn4 value="Geography">Geography</mat-button-toggle>
-        <mat-button-toggle class=btn value="History">History</mat-button-toggle>
-        <mat-button-toggle class=btn1 value="Golf">Golf</mat-button-toggle>
-        <mat-button-toggle class=btn2 value="Animals">Animals</mat-button-toggle>
-        <mat-button-toggle class=btn3 value="Sports">Physics</mat-button-toggle>
-        <mat-button-toggle class=btn4 value="Geography">Biology</mat-button-toggle>
-        <mat-button-toggle class=btn value="History">Mythology</mat-button-toggle>
-        <mat-button-toggle class=btn1 value="Golf">Star Wars</mat-button-toggle>
-        <mat-button-toggle class=btn2 value="Animals">Human Body</mat-button-toggle>
-        <mat-button-toggle class=btn3 value="Sports">Celebrities</mat-button-toggle>
-        <mat-button-toggle class=btn4 value="Geography">Cars</mat-button-toggle>
-        <mat-button-toggle class=btn value="History">Movies</mat-button-toggle>
-        <mat-button-toggle class=btn1 value="Golf">Tech</mat-button-toggle>
-        <mat-button-toggle class=btn2 value="Animals">Video Games</mat-button-toggle>
-        <mat-button-toggle class=btn3 value="Sports">Food</mat-button-toggle>
-        <mat-button-toggle class=btn4 value="Geography">Math</mat-button-toggle>
-        <mat-button-toggle class=btn value="History">Art</mat-button-toggle>
-    </mat-button-toggle-group>  
-   
-</div>
-<div *ngIf="showLobby">
-    <app-lobby></app-lobby>
-</div>
+    <div *ngIf="showLobby">
+        <app-lobby></app-lobby>
+    </div>
 
-<div *ngIf="display">
-    <app></app>
- </div>
-
+    <div *ngIf="display">
+        <app></app>
+    </div>
 </div>
