@@ -49,7 +49,7 @@ div.box {
   }
   .userInfo {
     border: 0.2vw solid  #3B3B3B;
-    border-radius: 0.4vw;
+    border-radius: 1vw;
     float: right;
     text-align: left;
     height: auto;
@@ -139,7 +139,7 @@ div.box {
 
 .topPlayerInfo {
   border: 0.2vw solid  #3B3B3B;
-    border-radius: 0.4vw;
+    border-radius: 1vw;
     float: right;
     text-align: left;
     height: auto;
@@ -221,10 +221,10 @@ div.box {
     position: relative;
     padding-bottom: 2vw;
     color: white; 
-    font-size: max(35px);
+    font-size: max(25px);
   }
   .nameSize {
-    font-size: max(25px);
+    font-size: max(22px);
     position: relative;
   }
   
@@ -268,5 +268,37 @@ div.box {
   margin-left: 1vw;
   text-align: center;
   border-radius: 0.5vw;
+}
+.topPlayerInfo {
+  border: 0.2vw solid  #3B3B3B;
+    border-radius: 2vw;
+    float: right;
+    text-align: left;
+    height: auto;
+    width: 80%;
+    color: white;
+    margin-right: 8%;
+    margin-left: -10vw;
+    padding-top: 2%;
+    padding-left: 2vw;
+    margin-bottom: 2%;
+    position: relative;
+    
+}
+.userInfo {
+  border: 0.2vw solid  #3B3B3B;
+  border-radius: 2vw;
+  float: right;
+  text-align: left;
+  height: auto;
+  width: 70%;
+  color: white;
+  margin-right: 8%;
+  padding-top: 2%;
+  padding-left: 2vw;
+  margin-bottom: 2%;
+  position: relative;
+  
+  
 }
 }

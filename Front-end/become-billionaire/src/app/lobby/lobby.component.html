@@ -1,8 +1,49 @@
-<div *ngIf="!display ">
-    <p class="test">lobby works!{{hostId}}</p>
-    <button type="button" class="btn play" (click)="onPress()">Play!</button>
-</div>
+<div *ngIf="!display">
+    <div class="box">
+        <div class="div1">
+            <button type="button" class="fa fa-arrow-circle-left fa-2x btnExit" (click)="onPress()"></button>
+            <h1 class="headers">Room Code</h1>
+            <h1 class="headers2">{{quizId}}</h1>
+            <h1 class="headers2"> </h1>
+            <h1 class="headers2"> </h1>
+            <h1 class="headers2"> </h1>
+            <button type="button" class="startGame" (click)="onPress()">
+                <h1 class="startGameText">Start Game</h1>
+            </button>
 
-<div class="options " *ngIf="display ">
+        </div>
+
+        <h1 class="headers">Current Lobby</h1>
+        <div class="div2" *ngFor="let participant of localParticipants">
+
+            <div class="topPlayerInfo">
+                <h1 class="nameSizeTop">{{participant.name}}</h1>
+            </div>
+            <!-- <div class="topPlayerInfo">
+                <h1 class="nameSizeTop">Johnny</h1>
+            </div>
+            <div class="topPlayerInfo">
+                <h1 class="nameSizeTop">Benny</h1>
+            </div>
+            <div class="topPlayerInfo">
+                <h1 class="nameSizeTop">Jenny</h1>
+            </div>
+            <div class="topPlayerInfo">
+                <h1 class="nameSizeTop">Denny</h1>
+            </div>
+            <div class="topPlayerInfo">
+                <h1 class="nameSizeTop">Lenny</h1>
+            </div> -->
+
+        </div>
+
+
+        <!-- <div class="clear">
+
+        </div> -->
+
+    </div>
+</div>
+<div *ngIf="display">
     <app-quiz-page></app-quiz-page>
 </div>

@@ -5,17 +5,17 @@
 <body class="body">
     <p class="title">BILLIONAIRE GOLF</p>
 
-    <div class="options" *ngIf="!display && !displaySettings && !displayInstructions && !displayHost && !displayLeaderboard">
+    <div class="options" *ngIf="!displaySettings && !displayInstructions && !displayHost && !displayLeaderboard && !displayJoinPage">
 
-        <button type="button" class="btn play" (click)="onPress()">Play!</button>
-        <button type="button" class="btn join" (click)="onHostPress()">Join Game</button>
+        <button type="button" class="btn play" (click)="onHostPress()">Play!</button>
+        <button type="button" class="btn join" (click)="onJoinPress()">Join Game</button>
 
         <button type="button" class="btn leaderboard" (click)="onLeaderboardPress()">Leaderboard</button>
         <button type="button" class="btn instructions" (click)="onInstructionsPress()">Instructions</button>
         <button type=" button " class="btn settings " (click)="onSettingsPress() ">Settings</button>
     </div>
-    <div class="options " *ngIf="display ">
-        <app-quiz-page></app-quiz-page>
+    <div class="options " *ngIf="displayHost ">
+        <app-host-setting></app-host-setting>
     </div>
     <div class="options " *ngIf="displaySettings ">
         <app-settings></app-settings>
@@ -26,7 +26,7 @@
     <div class="options " *ngIf="displayLeaderboard">
         <app-leaderboard></app-leaderboard>
     </div>
-    <div class="options " *ngIf="displayHost">
-        <app-host-setting (sendHostIdEvent)="receiveHostId($event)"></app-host-setting>
+    <div class="options " *ngIf="displayJoinPage">
+        <app-join-game></app-join-game>
     </div>
 </body>

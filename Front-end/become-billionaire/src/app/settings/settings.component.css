@@ -70,10 +70,10 @@
     float: right;
     background-color: #191919;
     border: none;
-    color: #FC0441;
+    color: #FA1772;
     padding: 3%;    
     font-size: 3vw;
-    font-size: max(80px);
+    font-size: max(70px);
     cursor: pointer;  
     
   }
@@ -110,4 +110,52 @@
   font-size: 13vw;
   color: #3B3B3B;
   
+}
+
+@media only screen and (max-width: 1299px) {
+  .big-icon {
+    display:none;
+    
+  }
+  .btnExit{
+    float: right;
+    background-color: #191919;
+    border: none;
+    color: #FA1772;
+    padding: 3%;    
+    font-size: max(7vw);
+    cursor: pointer;  
+    margin-right: 15%;
+    
+  }
+  h1{
+    color:white;
+    float: left;
+    font-size: max(7vw);
+}
+.title {
+  margin-top: 10%;
+  margin-left: 10%;
+}
+.frame {
+  border: 0.5vw solid  #3B3B3B;
+  border-radius: 3vw;
+  font-family: "Roboto";
+  height: 60%;
+  width: 50vw;
+  padding-top: 10%;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-left: 8%;
+  position: relative;
+
+ }
+ h3{
+  color:white;
+  float: left;
+  font-size: 5vw;
+  
+  position: relative;
+}
+.child {height: 15%; margin-bottom: 10%; float:inline-start;}
 }

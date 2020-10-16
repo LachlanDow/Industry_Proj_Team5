@@ -1,0 +1,32 @@
+<div ng-hide="displayApp">
+    <div *ngIf="!displayJoinGameLobby && !displayApp">
+        <div class="topbar">
+            <div class="div1">
+                <button type="button" class="fa fa-arrow-circle-left fa-2x btnExit" (click)="onPress()"></button>
+            </div>
+
+            <h1>Join Game</h1>
+            <div class="joingame">
+                <div class="input">
+                    <form>
+                        <h2> Username</h2>
+                        <input type="text" #username>
+
+                        <h2>Party Code</h2>
+                        <input type="text" #partyCode>
+                        <button type="button" class="btnJoin" (click)="joinGame(username,partyCode)">Join</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="displayApp">
+        <app></app>
+    </div>
+
+    <div *ngIf="displayJoinGameLobby">
+        <app-join-game-lobby></app-join-game-lobby>
+    </div>
+
+</div>
