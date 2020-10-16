@@ -19,10 +19,13 @@ export class HostSettingComponent implements OnInit {
   showLobby = false;
   hostId: number;
   quizId: number;
+  display = false;
   constructor(private http: HttpClient, private data: DataService, private quizID: QuizIdService) {
     //NOOP
   }
-
+  onPress() {
+    this.display = true;
+  }
   ngOnInit(): void {
     this.data.currentMessage.subscribe(message => this.hostId = message)
   }
@@ -64,3 +67,4 @@ export class SelectCustomTriggerExample {
 
   toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
 }
+
