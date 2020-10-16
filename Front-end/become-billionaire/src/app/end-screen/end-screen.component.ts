@@ -40,8 +40,6 @@ export class EndScreenComponent implements OnInit {
 
 }
 
-export class player {
-  
-}
+
 
 

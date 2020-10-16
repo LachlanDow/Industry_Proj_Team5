@@ -3,7 +3,7 @@
     <div class="box">
       
        <div class="div1">
-       <button type="button" class="fa fa-arrow-circle-left fa-2x btnExit" (click)="onPress()"></button>
+       <button type="button" class="fa fa-arrow-circle-left fa-2x btnExit"  alt="Return to main screen" title="Return to main screen"(click)="onPress()"></button>
        <h1 class="headers">Your Score</h1>
     
        <div class="userInfo">
@@ -19,12 +19,10 @@
     
        <h1 class="headers">Top Match Players</h1>
        <div class="div2">
-          
             <ng-container *ngFor="let element of playerName; let i=index;">
              <div class="topPlayerInfo" >
                 <h1 class="nameSizeTop">{{playerName[i]}}
-                  <!--<i style="color: gold;"class="fa fa-trophy fa-1x trophyIcon"></i>  Creates trophy next to score, can't figure out how to have it change based on players ranking, 
-                     apparently you can't have more than one structural directive on an element. can't figure out work around, may fix this later-->
+                  <!--<i style="color: gold;"class="fa fa-trophy fa-1x trophyIcon"></i>  Creates trophy next to score, can't figure out how to have it change based on players ranking-->
                    <i class="scores"> {{playerScore[i]}}</i>
                   </h1>
                 <mat-progress-bar class="progressBarTop" mode="determinate" [value]="playerScore[i]"></mat-progress-bar>
@@ -34,15 +32,11 @@
                 <h1 class="Toptimer leftAlign">{{playerAvg[i]}}s</h1>
              </div>
             </ng-container>
-
        </div>
     
-       
        <div class="clear">
-          
-    </div>
-    
-    
+         </div>
+         
     </div>
     <div *ngIf="display">
        <app></app>
