@@ -40,7 +40,7 @@ export class HostSettingComponent implements OnInit {
     const headers = { 'Content-Type': 'application/json' };
     const data = {
       "hostName": this.username,
-      "categoryId": "5f7e2403ac9ce729944e732d",
+      "categoryId": "44ded658a5454fecb4c885c44b8cfd13",
       "timeLimit": this.questionTimeLimit,
       "questionCount": parseInt(this.questionNum)
     };

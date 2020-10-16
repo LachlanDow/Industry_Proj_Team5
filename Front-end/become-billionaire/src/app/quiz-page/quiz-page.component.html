@@ -2,8 +2,8 @@
 <div></div>
 <div class="question">
     {{quiz.questionNumber}}. {{quiz.questions[currentQuestion].question}}
-</div>
 
+</div>
 <button type="button" class="btn firstChoice" (click)="answerCheck(1)">{{quiz.questions[currentQuestion].choices[0]}}</button>
 <button type="button" class="btn secondChoice" (click)="answerCheck(2)">{{quiz.questions[currentQuestion].choices[1]}}</button>
 <button type="button" class="btn thirdChoice" (click)="answerCheck(3)">{{quiz.questions[currentQuestion].choices[2]}}</button>
@@ -18,4 +18,8 @@
             <i class="fa fa-times-circle cross"></i>
         </i>
     </span>
+</div>
+
+<div class="timer">
+    <countdown #cd [config]="config" (event)="handleEvent($event)"></countdown>
 </div>
