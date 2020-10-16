@@ -7,14 +7,26 @@
     max-width: 90%;
     color: white;
     font-weight: bold;
-    text-align: left;
+    text-align: center;
     line-height: normal;
-    margin-left: 8%;
-    margin-top: 3%;
-    
-    
-    
-    
+    margin-left: 5%;
+    margin-top: 5%;
+
+}
+.questionNum {
+    font-family: "Roboto";
+    font-size: 3vw;
+    font-size: max(40px);
+    width: 52vw;
+    height: 2vw;
+    max-width: 90%;
+    color: #CEBC6F;
+    font-weight: bold;
+    text-align: center;
+    line-height: normal;
+    margin-left: 6%;
+    margin-top: 1%;
+
 }
 
 .btn {
@@ -22,7 +34,7 @@
     color: #191919;
     position: relative;
     width: 35%;
-    height: 25%;
+    height: 55%;
     font-weight: bold;
     border-radius: 30px;
     border-color: black;
