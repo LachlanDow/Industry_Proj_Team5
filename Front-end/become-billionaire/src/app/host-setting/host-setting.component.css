@@ -8,9 +8,11 @@
 .left{
     float: left;
     width: 40%;
+    padding-left: 10%;
 }
 .right{
     float: right;
+    
 }
 
 h1{
@@ -114,6 +116,18 @@ h3{
 }
 
 .frame {
+    border: 0.3vw solid  #3B3B3B;
+    border-radius: 0.6vw;
+    font-family: "Roboto";
+    height: auto;
+    width: auto;
+    padding-top: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
+    position: relative;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.frame2 {
     border: 0.3vw solid  #3B3B3B;
     border-radius: 0.6vw;
     font-family: "Roboto";
