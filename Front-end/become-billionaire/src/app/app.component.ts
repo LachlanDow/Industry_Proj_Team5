@@ -43,6 +43,8 @@ export class AppComponent {
     this.displaySettings = false;
     this.displayInstructions = false;
     this.displayLeaderboard = false;
-    // this.displayJoinPage = false;
+    this.displayJoinPage = false;
+    // this.displayHost = false;
+
   }
 }

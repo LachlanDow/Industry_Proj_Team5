@@ -13,16 +13,20 @@ import { QuizIdService } from '../services/quiz-id.service';
 })
 export class HostSettingComponent implements OnInit {
   slidervalue = 75;
-  questionNum;
+  questionNum = 5;
   questionTimeLimit;
   username = "username";
   showLobby = false;
   hostId: number;
   quizId: number;
+  display = false;
   constructor(private http: HttpClient, private data: DataService, private quizID: QuizIdService) {
     //NOOP
   }
-
+  gohome() {
+    this.display = true;
+    
+  }
   ngOnInit(): void {
     this.data.currentMessage.subscribe(message => this.hostId = message)
   }
@@ -66,3 +70,4 @@ export class SelectCustomTriggerExample {
 
   toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
 }
+
