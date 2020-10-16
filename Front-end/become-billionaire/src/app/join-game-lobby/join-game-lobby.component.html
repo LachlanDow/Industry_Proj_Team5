@@ -1,1 +1,55 @@
-<p class="test">join-game-lobby works!</p>
+
+
+
+<div *ngIf="!display">
+    <div class="box">
+        <div class="div1">
+            <button type="button" class="fa fa-arrow-circle-left fa-2x btnExit" (click)="onPress()"></button>
+            <h1 class="headers">Room Code</h1>
+        <!-- <h1 class="headers2">{{quizId}}</h1> -->
+
+           <h1 class="headers2"> </h1>
+           <h1 class="headers2">2503d3</h1>
+
+            <h1 class="headers3">Waiting For Host To Start</h1>
+        </div>
+
+        <h1 class="headers">Current Lobby</h1>
+        <div class="div2">
+
+            <div class="topPlayerInfo" *ngFor="let participant of localParticipants">
+                <h1 class="nameSizeTop">{{participant.name}}</h1>
+            </div>
+
+            
+            <!-- <div class="topPlayerInfo">
+                <h1 class="nameSizeTop">Johnny</h1>
+            </div>
+            <div class="topPlayerInfo">
+                <h1 class="nameSizeTop">Benny</h1>
+            </div>
+            <div class="topPlayerInfo">
+                <h1 class="nameSizeTop">Jenny</h1>
+            </div>
+            <div class="topPlayerInfo">
+                <h1 class="nameSizeTop">Denny</h1>
+            </div>
+            <div class="topPlayerInfo">
+                <h1 class="nameSizeTop">Lenny</h1>
+            </div> -->
+
+        </div>
+
+
+        <!-- <div class="clear">
+
+        </div> -->
+
+    </div>
+</div>
+<div *ngIf="display">
+    <app-quiz-page></app-quiz-page>
+</div>
+
+
+
