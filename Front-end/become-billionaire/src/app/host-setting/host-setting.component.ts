@@ -13,7 +13,7 @@ import { QuizIdService } from '../quiz-id.service';
 })
 export class HostSettingComponent implements OnInit {
   slidervalue = 75;
-  questionNum;
+  questionNum = 5;
   questionTimeLimit;
   username = "username";
   showLobby = false;

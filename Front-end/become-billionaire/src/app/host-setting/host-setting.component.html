@@ -5,7 +5,7 @@
     <div class="left">
         <div class="frame">
             <h1> Time Per Question </h1>
-            <mat-slider class=slider min=1 max=30 step=1 thumbLabel (input)="onInputChange($event)"></mat-slider>
+            <mat-slider class=slider min=1 max=30 step=1 value=15 thumbLabel (input)="onInputChange($event)"></mat-slider>
             <h1 class="num_Quest"> Number Of Questions<input type="number" class="questbox" (change)='questionNum=$event.target.value' [value]="questionNum"> </h1>    
         </div>
 
@@ -49,18 +49,7 @@
         <mat-button-toggle class=btn4 value="Geography">Math</mat-button-toggle>
         <mat-button-toggle class=btn value="History">Art</mat-button-toggle>
     </mat-button-toggle-group>  
-    <!-- <mat-form-field class = "dropDown" appearance="fill">
-        <mat-label>Toppings</mat-label>
-        <mat-select [formControl]="toppings" multiple>
-          <mat-select-trigger>
-            {{toppings.value ? toppings.value[0] : ''}}
-            <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
-              (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
-            </span>
-          </mat-select-trigger>
-          <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-        </mat-select>
-      </mat-form-field> -->
+   
 </div>
 <div *ngIf="showLobby">
     <app-lobby></app-lobby>
