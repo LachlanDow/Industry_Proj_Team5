@@ -23,8 +23,9 @@ export class HostSettingComponent implements OnInit {
   constructor(private http: HttpClient, private data: DataService, private quizID: QuizIdService) {
     //NOOP
   }
-  onPress() {
+  gohome() {
     this.display = true;
+    
   }
   ngOnInit(): void {
     this.data.currentMessage.subscribe(message => this.hostId = message)

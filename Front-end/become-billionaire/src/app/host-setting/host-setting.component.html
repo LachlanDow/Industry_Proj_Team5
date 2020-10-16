@@ -1,6 +1,6 @@
 <div class="a" *ngIf="!showLobby">
 
-    <h1 class="headers"><button type="button" class="fa fa-arrow-circle-left fa-2x btnExit" (click)="onPress()"></button>Host Settings</h1>
+    <h1 class="headers"><button type="button" class="fa fa-arrow-circle-left fa-2x btnExit"  (click)="gohome()"></button>Host Settings</h1>
     
     <div class="left">
         <div class="frame">
@@ -64,4 +64,8 @@
 <div *ngIf="showLobby">
     <app-lobby></app-lobby>
 </div>
+
+<div *ngIf="display">
+    <app></app>
+ </div>
 </div>
