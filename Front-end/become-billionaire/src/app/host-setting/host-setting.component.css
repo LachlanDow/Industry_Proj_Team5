@@ -30,6 +30,7 @@ h1{
     background-color: #191919;
     border-radius: 0.5vw;
     color: white;
+    margin-top: 10%;
 }
 
 label{
@@ -110,6 +111,7 @@ h3{
     font-size: 300%;
     background-color: #FA1772;
     margin-top: 5%;
+    margin-left: 10%;
 }
 
 .frame {
