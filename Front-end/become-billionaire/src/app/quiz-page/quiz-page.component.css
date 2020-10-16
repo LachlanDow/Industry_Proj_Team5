@@ -31,16 +31,18 @@
 
 .btn {
     font-family: "Roboto";
-    color: #191919;
+    color: #ffffff;
     position: relative;
     width: 35%;
     height: 55%;
     font-weight: bold;
     border-radius: 30px;
     border-color: black;
+    padding-bottom: 3%;
+    padding-top: 3%;
     /* font-size: 3vw; */
     font-size: auto;
-    font-size: max(35px);
+    font-size: max(40px);
     background-color: #50AFF5;
     
     
