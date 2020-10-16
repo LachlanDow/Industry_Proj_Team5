@@ -7,7 +7,7 @@ const Question = require("./Question");
 const quizSchema = new Schema({
     _id: String,
   participants: [Participant.schema],
-    categoryId: String,
+    categoryId: { type: String, required: true },
   timeLimit: Number,
   questionCount: Number,
   questions: [Question.schema],

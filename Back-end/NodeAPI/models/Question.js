@@ -6,7 +6,8 @@ const questionSchema = new Schema({
         type: String,
     },
     category: {
-        type: Category.schema
+        type: Category.schema,
+        required: true
     },
  
 answer: {
