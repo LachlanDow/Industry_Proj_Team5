@@ -14,27 +14,10 @@
         </div>
 
         <h1 class="headers">Current Lobby</h1>
-        <div class="div2" *ngFor="let participant of localParticipants">
-
-            <div class="topPlayerInfo">
+        <div class="div2">
+            <div class="topPlayerInfo" *ngFor="let participant of localParticipants">
                 <h1 class="nameSizeTop">{{participant.name}}</h1>
             </div>
-            <!-- <div class="topPlayerInfo">
-                <h1 class="nameSizeTop">Johnny</h1>
-            </div>
-            <div class="topPlayerInfo">
-                <h1 class="nameSizeTop">Benny</h1>
-            </div>
-            <div class="topPlayerInfo">
-                <h1 class="nameSizeTop">Jenny</h1>
-            </div>
-            <div class="topPlayerInfo">
-                <h1 class="nameSizeTop">Denny</h1>
-            </div>
-            <div class="topPlayerInfo">
-                <h1 class="nameSizeTop">Lenny</h1>
-            </div> -->
-
         </div>
 
 
