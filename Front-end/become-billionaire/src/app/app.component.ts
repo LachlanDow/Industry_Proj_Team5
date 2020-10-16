@@ -1,11 +1,11 @@
-import { Component, } from '@angular/core';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent  {
+export class AppComponent {
   title = 'become-billionaire';
   display = false;
   settingsDisplay = false;
@@ -13,13 +13,12 @@ export class AppComponent  {
   displayInstructions = false;
   displayLeaderboard = false;
   displayJoinPage = false;
-  
-  hostId: string;
-
+  displayHost = false;
 
   onPress() {
     this.display = true;
-    }
+  }
+
   onSettingsPress() {
     this.displaySettings = true;
   }
@@ -27,17 +26,23 @@ export class AppComponent  {
   onInstructionsPress() {
     this.displayInstructions = true;
   }
+
   onLeaderboardPress() {
     this.displayLeaderboard = true;
   }
+
   onJoinPress() {
     this.displayJoinPage = true;
   }
 
-  ngAfterViewChecked(){ 
+  onHostPress() {
+    this.displayHost = true;
+  }
+
+  ngAfterViewChecked() {
     this.displaySettings = false;
     this.displayInstructions = false;
     this.displayLeaderboard = false;
-    this.displayJoinPage = false;
+    // this.displayJoinPage = false;
   }
 }

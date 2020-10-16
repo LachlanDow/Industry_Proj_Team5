@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-join-game',
@@ -7,20 +9,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JoinGameComponent implements OnInit {
   displayApp = false;
-  constructor() { }
+  displayJoinGameLobby = false;
+  participantID;
+
+  constructor(private http: HttpClient, private data: DataService) {
+    // NOOP
+   }
 
   ngOnInit(): void {
+    this.data.currentMessage.subscribe(message => this.participantID = message);
   }
 
+  joinGame(username, partyCode) {
+    console.log(this.displayJoinGameLobby);
+    const url = `http://35.214.82.56:3000/quiz/${partyCode.value}`;
+    const headers = { 'Content-Type': 'application/json' };
+    const data = {
+      "name": username.value
+    };
+    this.http.patch(url, JSON.stringify(data), { headers: headers }).subscribe(data => {
+      console.log(data);
+      this.displayJoinGameLobby = true;
+    
+      this.participantID = (data as any)._id;
+      this.sendHostId();
+    });
+  }
 
+  sendHostId() {
+    this.data.changeMessage(this.participantID);
+  }
 
   onPress() {
     this.displayApp = true;
-    console.log(this.displayApp);
-  }
-
-  onPressJoin(username, partyCode){
-    console.log(username.value);
-    console.log(partyCode.value);
   }
 }

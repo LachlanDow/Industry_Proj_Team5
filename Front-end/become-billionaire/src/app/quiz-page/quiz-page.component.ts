@@ -1,7 +1,7 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpSentEvent } from '@angular/common/http'
-import { DataService } from '../data.service';
-import { QuizIdService } from '../quiz-id.service';
+import { Component, OnChanges, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
+import { DataService } from '../services/data.service';
+import { QuizIdService } from '../services/quiz-id.service';
 
 @Component({
   selector: 'app-quiz-page',
@@ -30,6 +30,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    console.log("quiz page ng onint")
     this.data.currentMessage.subscribe(message => this.hostId = message);
     this.quizID.currentMessage.subscribe(message => this.quizId = message);
     this.participantID = this.hostId;
@@ -76,7 +77,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
   }
 
   /**
-   * Listens to the events fromthe server to update the questions.
+   * Listens to the events from the server to update the questions.
    */
   getEvent() {
     let localQuiz;
