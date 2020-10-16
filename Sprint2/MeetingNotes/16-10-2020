@@ -1,0 +1,60 @@
+Morning stand-up meeting notes:
+members present:
+Time:11:00 - 11:
+
+Missing: mikhail, paul, matthew
+
+Rauf:
+Completed: got join game working and lobby for when you are hosting
+
+Plans; Get the other lobby working that works when you join game
+Robert:
+Completed: Changed server to send event stream update starught away, aswell as same tasks as Rauf
+
+Plans:Continue this
+
+Matt:
+Completed: Workd with mikhail on hostsettings page
+
+Plans: touch up on styling and design of host settings page
+
+Ryan:
+Completed: working on abit of documentation, creating diagrams on paper about responses for the program, worked on integration
+
+Plans: put on actual charting program, work on integration of unit tests
+
+
+Jason: 
+Completed: Found problem with the category model fixed it, 
+
+Plans: Start with unit testing
+
+Matthew:
+Completed: Made document about uses for the quiz, design UI for the lobby page
+
+Plans: fix lobby page
+
+Alek;
+Completed: finished end screen
+
+Plans:
+
+Mikhail:
+Completed: Worked on host settings page, and create more fuctionality
+
+Plans: Finish
+
+Paul:
+Completed: ill, so not much done
+
+Plans: Unit testing documentation
+
+Lachlan: 
+Completed: Wait page between questions
+
+Plans: continue report, get design and implementation for sprint 2 spoken about
+
+
+
+
+
