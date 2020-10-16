@@ -52,8 +52,8 @@ h3{
     font-family: "Roboto";
     color: #191919;
     width: 25%;
-    max-width: 800px;
-    max-height: 180px;
+    max-width: 6vw;
+    max-height: 3vw;
     height: 25%;
     font-weight: bold;
     border-radius: 0.3vw;
@@ -61,7 +61,7 @@ h3{
     font-size: max(30px);
     padding: 2% 2% 2% 2%;
     border-style: none;
-    margin-left: 2%;
+    margin-left: 4%;
     margin-bottom: 2%;
   }
   .btn{
@@ -108,7 +108,7 @@ h3{
     background-color: teal;
     margin-left: 15%;
     margin-top: 30%;
-    margin-bottom: 20%;
+    margin-bottom: 5%;
 }
 
 .frame {
@@ -165,6 +165,7 @@ h3{
     overflow-y: scroll; 
     height:10vw;
     margin-left: 10%;
+    
     
 }
 ::-webkit-scrollbar {
