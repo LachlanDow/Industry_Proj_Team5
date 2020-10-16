@@ -15,10 +15,12 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle'
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { HttpClientModule } from '@angular/common/http';
-import { JoinGameComponent } from './join-game/join-game.component';
+import { JoinGameComponent } from './join-game/join-game-component';
 import {FormsModule} from '@angular/forms';
 import { LobbyComponent } from './lobby/lobby.component';
+import { WaitScreenComponent } from './wait-screen/wait-screen.component'
 import { JoinGameLobbyComponent } from './join-game-lobby/join-game-lobby.component'
+
 
 
 
@@ -32,7 +34,9 @@ import { JoinGameLobbyComponent } from './join-game-lobby/join-game-lobby.compon
     QuizPageComponent,
     JoinGameComponent,
     LobbyComponent,
+    WaitScreenComponent
     JoinGameLobbyComponent
+
   ],
   imports: [
     BrowserModule,
