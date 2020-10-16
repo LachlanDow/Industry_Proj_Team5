@@ -22,6 +22,9 @@ h1{
   display: block;
   margin-top: -5%;
 }
+.submit {
+    margin-left: -20%;
+}
 
 
 
@@ -54,7 +57,7 @@ h3{
     font-family: "Roboto";
     color: #191919;
     width: 25%;
-    max-width: 6vw;
+    max-width: 7vw;
     max-height: 3vw;
     height: 25%;
     font-weight: bold;
@@ -63,7 +66,8 @@ h3{
     font-size: max(30px);
     padding: 2% 2% 2% 2%;
     border-style: none;
-    margin-left: 4%;
+    margin-left: 1%;
+    margin-right: 1%;
     margin-bottom: 2%;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
@@ -106,8 +110,7 @@ h3{
     font-size: 300%;
     background-color: #FA1772;
     margin-top: 10%;
-    margin-left: 10%;
-    margin-bottom: 10%;
+   
 
 }
 
