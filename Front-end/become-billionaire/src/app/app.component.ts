@@ -44,7 +44,7 @@ export class AppComponent {
     this.displayInstructions = false;
     this.displayLeaderboard = false;
     this.displayJoinPage = false;
-    this.displayHost = false;
+    //this.displayHost = false;
     
   }
 }
