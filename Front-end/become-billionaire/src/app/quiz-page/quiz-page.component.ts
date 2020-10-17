@@ -27,10 +27,11 @@ export class QuizPageComponent implements OnInit, OnChanges {
   quizId;
   quizStarted = false;
   interval = 1000; // ms
-  expected; 
-  config: CountdownConfig; 
+  expected;
+  config: CountdownConfig;
   lastQuestionNumber = 0;
   timeSetForQuestion = false;
+  displayEndScreen = false;
 
 
   @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
@@ -75,13 +76,13 @@ export class QuizPageComponent implements OnInit, OnChanges {
   }
 
   public questionCount() {
-    if(this.quiz.questionNumber == 0) { 
+    if (this.quiz.questionNumber == 0) {
       this.currentQuestion = this.quiz.questionNumber;
     }
-    else if (this.quiz.questionNumber > 0) { 
+    else if (this.quiz.questionNumber > 0) {
       this.currentQuestion = this.quiz.questionNumber - 1;
     }
-    
+
   }
 
   /**
@@ -103,17 +104,20 @@ export class QuizPageComponent implements OnInit, OnChanges {
       quizPage.quiz = JSON.parse(event.data)
       console.log("quiz", quizPage.quiz);
       quizPage.questionCount();
-      console.log("QN ", quizPage.quiz.questionNumber);
-      console.log("LQN ", quizPage.lastQuestionNumber);
-      if (!quizPage.quizStarted){
-        quizPage.config = { 
+      if (quizPage.quiz.questionNumber == -1) {
+        quizPage.displayEndScreen = true;
+        return;
+      }
+
+      if (!quizPage.quizStarted) {
+        quizPage.config = {
           leftTime: quizPage.quiz.timeLimit,
           format: "ss"
         };
-      quizPage.startQuiz();
-      quizPage.quizStarted = true;
-      quizPage.countdown.begin();
-      quizPage.lastQuestionRecievedTime = new Date().getTime();
+        quizPage.startQuiz();
+        quizPage.quizStarted = true;
+        quizPage.countdown.begin();
+        quizPage.lastQuestionRecievedTime = new Date().getTime();
       }
       else if (quizPage.lastQuestionNumber != quizPage.quiz.questionNumber) {
         quizPage.countdown.restart();
@@ -149,8 +153,8 @@ export class QuizPageComponent implements OnInit, OnChanges {
     });
   }
 
-  handleEvent(event) { 
-    
+  handleEvent(event) {
+
   }
 
 

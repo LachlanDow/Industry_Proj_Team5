@@ -1,30 +1,34 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div></div>
-<div class="questionNum">
-    <p>Question:</p>{{quiz.questionNumber}} 
+<div *ngIf="!displayEndScreen">
+    <div class="questionNum">
+        <p>Question:</p>{{quiz.questionNumber}}
+    </div>
+
+    <div class="question">
+        {{quiz.questions[currentQuestion].question}}
+    </div>
+
+    <button type="button" class="btn firstChoice" (click)="answerCheck(1)">{{quiz.questions[currentQuestion].choices[0]}}</button>
+    <button type="button" class="btn secondChoice" (click)="answerCheck(2)">{{quiz.questions[currentQuestion].choices[1]}}</button>
+    <button type="button" class="btn thirdChoice" (click)="answerCheck(3)">{{quiz.questions[currentQuestion].choices[2]}}</button>
+    <button type="button" class="btn fourthChoice" (click)="answerCheck(4)">{{quiz.questions[currentQuestion].choices[3]}}</button>
+
+    <div>
+        <span *ngFor="let icon of resultIcons">
+            <i *ngIf="icon == true">
+                <i class="fa fa-check-circle tick"></i>
+            </i>
+            <i *ngIf="icon == false">
+                <i class="fa fa-times-circle cross"></i>
+            </i>
+        </span>
+    </div>
+
+    <div class="timer">
+        <countdown #cd [config]="config" (event)="handleEvent($event)"></countdown>
+    </div>
 </div>
-<div class="question">
-   {{quiz.questions[currentQuestion].question}}
 
-</div>
-<button type="button" class="btn firstChoice" (click)="answerCheck(1)">{{quiz.questions[currentQuestion].choices[0]}}</button>
-<button type="button" class="btn secondChoice" (click)="answerCheck(2)">{{quiz.questions[currentQuestion].choices[1]}}</button>
-<button type="button" class="btn thirdChoice" (click)="answerCheck(3)">{{quiz.questions[currentQuestion].choices[2]}}</button>
-<button type="button" class="btn fourthChoice" (click)="answerCheck(4)">{{quiz.questions[currentQuestion].choices[3]}}</button>
-
-
-
-<div>
-    <span *ngFor="let icon of resultIcons">
-        <i *ngIf="icon == true">
-            <i class="fa fa-check-circle tick"></i>
-        </i>
-        <i *ngIf="icon == false">
-            <i class="fa fa-times-circle cross"></i>
-        </i>
-    </span>
-</div>
-
-<div class="timer">
-    <countdown #cd [config]="config" (event)="handleEvent($event)"></countdown>
+<div *ngIf="displayEndScreen">
+    <app-end-screen></app-end-screen>
 </div>
