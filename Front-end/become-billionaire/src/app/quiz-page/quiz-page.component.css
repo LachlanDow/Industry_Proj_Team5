@@ -115,9 +115,15 @@
 }
 
 .timer {
-    background-color: aliceblue;
-    width: 500px;
-    height: 500px;
+    font-family: "Roboto";
+    font-size: 50px;
+    height: 50px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    line-height: normal;
+    color: #CEBC6F;
 }
 
 @media only screen and (max-width: 950px) {
@@ -144,14 +150,15 @@
     padding: 1vw;
     color: white;
     overflow: hidden;
+    font-size: 50%;
 }
 
 .dynamicResult {
     color: green;
     text-align: center;
-    font-size: 3vw;
-    margin: 2vw;
+    font-size: 2vw;
     font-weight: 900;
+    padding-bottom: 1vw;
 }
 
 .text {
@@ -187,16 +194,15 @@
 .extraInfo {
     float: left;
     width: 100%;
-    padding-top: 3vw;
+    padding-top: 1vw;
     ;
 }
 
 .infobox {
     padding: 1vw;
-    ;
     text-align: right;
     width: 20%;
-    font-size: 3vw;
+    font-size: 2vw;
     border: 3px dashed darkred;
     float: right;
     font-size: 3vh;
@@ -206,7 +212,7 @@
     float: left;
     width: 100%;
     text-align: center;
-    font-size: 3vw;
+    font-size: 2vw;
     padding-top: 1vw;
     font-weight: 900;
     color: gold;

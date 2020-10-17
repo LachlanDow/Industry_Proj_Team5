@@ -67,7 +67,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
     if (e == this.correctAnswerIndex) {
       this.IsitCorrect = "Correct Answer! Well Done";
       let icon = this.resultIcons.push(true)
-      
+
       this.timeDifference = this.lastAnsweredTime - this.lastQuestionRecievedTime;
       this.currentScore = this.currentScore + this.timeDifference;
       this.sendScore();
@@ -75,7 +75,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
     else {
       this.IsitCorrect = "Wrong Answer! Good luck next time";
       let icon = this.resultIcons.push(false)
-      this.currentScore = this.currentScore + (this.quiz.timeLimit * 1000 );
+      this.currentScore = this.currentScore + (this.quiz.timeLimit * 1000);
       this.timeDifference = this.lastAnsweredTime - this.lastQuestionRecievedTime;
     }
   }
@@ -107,7 +107,6 @@ export class QuizPageComponent implements OnInit, OnChanges {
     let serverEvents = new EventSource(`http://35.214.82.56:3000/stream/${this.participantID}`);
     serverEvents.addEventListener('message', function (event) {
       quizPage.quiz = JSON.parse(event.data)
-      console.log("quiz", quizPage.quiz);
       quizPage.questionCount();
       if (quizPage.quiz.questionNumber == -1) {
         quizPage.displayEndScreen = true;
@@ -129,7 +128,6 @@ export class QuizPageComponent implements OnInit, OnChanges {
         quizPage.lastQuestionNumber = quizPage.quiz.questionNumber
         quizPage.lastQuestionRecievedTime = new Date().getTime();
         quizPage.displayButtons = true;
-        console.log("show buttons",quizPage.displayButtons);
       }
     });
 
@@ -139,7 +137,6 @@ export class QuizPageComponent implements OnInit, OnChanges {
    * Sends score to the server
    */
   sendScore() {
-    console.log("quiz", this.quizId)
     const url = `http://35.214.82.56:3000/quiz/${this.quizId}/${this.participantID}`;
     const headers = { 'Content-Type': 'application/json' };
     const data = {
@@ -153,7 +150,6 @@ export class QuizPageComponent implements OnInit, OnChanges {
    * Starts the quiz
    */
   startQuiz() {
-    console.log("Quiz started")
     const url = `http://35.214.82.56:3000/quiz/${this.quizId}/start`;
     const headers = { 'Content-Type': 'application/json' };
     this.http.post<any>(url, { headers: headers }).subscribe(data => {
@@ -161,26 +157,6 @@ export class QuizPageComponent implements OnInit, OnChanges {
   }
 
   handleEvent(event) {
-
   }
-
-
-  // startCountdown() {
-  //   console.log("seconds",this.quiz.timeLimit)
-  //   this.counter = this.quiz.timeLimit;
-
-
-  //   const interval = setInterval(() => {
-  //     console.log(this.counter);
-  //     this.counter--;
-
-  //     if (this.counter < 0 ) {
-  //       clearInterval(interval);
-  //       console.log('Ding!');
-  //     }
-  //   }, 1000);
-  // }
-
-
 }
 

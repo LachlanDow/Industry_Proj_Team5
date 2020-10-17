@@ -20,6 +20,8 @@ export class HostSettingComponent implements OnInit {
   hostId: number;
   quizId: number;
   display = false;
+  categories: []; 
+
   constructor(private http: HttpClient, private data: DataService, private quizID: QuizIdService) {
     //NOOP
   }
@@ -29,6 +31,7 @@ export class HostSettingComponent implements OnInit {
   }
   ngOnInit(): void {
     this.data.currentMessage.subscribe(message => this.hostId = message)
+    this.getCategories();
   }
   createLobby() {
     this.createQuiz();
@@ -51,16 +54,24 @@ export class HostSettingComponent implements OnInit {
     this.http.post<any>(url, JSON.stringify(data), { headers: headers }).subscribe(data => {
       this.hostId = data.newQuiz.participants[0]._id;
       this.quizId = data.newQuiz._id;
-      console.log("quiz id",data.newQuiz._id);
       this.sendHostId();
     });
   }
 
   sendHostId() {
-    console.log(this.hostId);
     this.data.changeMessage(this.hostId);
     this.quizID.changeMessage(this.quizId);
     this.showLobby = true;
+  }
+
+  getCategories() {
+    const url = "http://35.214.82.56:3000/categories";
+    const headers = { 'Content-Type': 'application/json' };
+    this.http.get<any>(url, { headers: headers }).subscribe(data => {
+      console.log("categories",data);
+      let localCategories = JSON.parse(data);
+      this.categories = localCategories;
+    });
   }
 
 
