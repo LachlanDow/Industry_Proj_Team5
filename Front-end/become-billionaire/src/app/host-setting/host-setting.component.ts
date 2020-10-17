@@ -20,7 +20,8 @@ export class HostSettingComponent implements OnInit {
   hostId: number;
   quizId: number;
   display = false;
-  categories: []; 
+  categories= []; 
+  selectedCategory = "44ded658a5454fecb4c885c44b8cfd13"; 
 
   constructor(private http: HttpClient, private data: DataService, private quizID: QuizIdService) {
     //NOOP
@@ -47,7 +48,7 @@ export class HostSettingComponent implements OnInit {
     const headers = { 'Content-Type': 'application/json' };
     const data = {
       "hostName": this.username,
-      "categoryId": "44ded658a5454fecb4c885c44b8cfd13",
+      "categoryId": this.selectedCategory,
       "timeLimit": this.questionTimeLimit,
       "questionCount": parseInt(this.questionNum)
     };
@@ -69,9 +70,13 @@ export class HostSettingComponent implements OnInit {
     const headers = { 'Content-Type': 'application/json' };
     this.http.get<any>(url, { headers: headers }).subscribe(data => {
       console.log("categories",data);
-      let localCategories = JSON.parse(data);
+      let localCategories = data;
       this.categories = localCategories;
     });
+  }
+
+  setCategory(categoryID) { 
+    this.selectedCategory = categoryID;
   }
 
 
