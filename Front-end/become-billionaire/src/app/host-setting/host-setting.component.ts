@@ -65,9 +65,4 @@ export class HostSettingComponent implements OnInit {
 
 
 }
-export class SelectCustomTriggerExample {
-  toppings = new FormControl();
-
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
-}
 

@@ -29,6 +29,8 @@ export class QuizPageComponent implements OnInit, OnChanges {
   interval = 1000; // ms
   expected; 
   config: CountdownConfig; 
+  lastQuestionNumber = 0;
+  timeSetForQuestion = false;
 
 
   @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
@@ -73,8 +75,13 @@ export class QuizPageComponent implements OnInit, OnChanges {
   }
 
   public questionCount() {
-    this.currentQuestion = this.quiz.questionNumber;
-    this.currentQuestion--;
+    if(this.quiz.questionNumber == 0) { 
+      this.currentQuestion = this.quiz.questionNumber;
+    }
+    else if (this.quiz.questionNumber > 0) { 
+      this.currentQuestion = this.quiz.questionNumber - 1;
+    }
+    
   }
 
   /**
@@ -96,18 +103,23 @@ export class QuizPageComponent implements OnInit, OnChanges {
       quizPage.quiz = JSON.parse(event.data)
       console.log("quiz", quizPage.quiz);
       quizPage.questionCount();
-      quizPage.lastQuestionRecievedTime = new Date().getTime();
-      quizPage.config = { leftTime: quizPage.quiz.timeLimit };
-      
+      console.log("QN ", quizPage.quiz.questionNumber);
+      console.log("LQN ", quizPage.lastQuestionNumber);
       if (!quizPage.quizStarted){
+        quizPage.config = { 
+          leftTime: quizPage.quiz.timeLimit,
+          format: "ss"
+        };
       quizPage.startQuiz();
       quizPage.quizStarted = true;
       quizPage.countdown.begin();
+      quizPage.lastQuestionRecievedTime = new Date().getTime();
       }
-      else {
+      else if (quizPage.lastQuestionNumber != quizPage.quiz.questionNumber) {
         quizPage.countdown.restart();
+        quizPage.lastQuestionNumber = quizPage.quiz.questionNumber
+        quizPage.lastQuestionRecievedTime = new Date().getTime();
       }
-      
     });
 
   };
@@ -116,6 +128,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
    * Sends score to the server
    */
   sendScore() {
+    console.log("quiz", this.quizId)
     const url = `http://35.214.82.56:3000/quiz/${this.quizId}/${this.participantID}`;
     const headers = { 'Content-Type': 'application/json' };
     const data = {
@@ -137,7 +150,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
   }
 
   handleEvent(event) { 
-    console.log(event);
+    
   }
 
 
