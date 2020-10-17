@@ -32,6 +32,8 @@ export class QuizPageComponent implements OnInit, OnChanges {
   lastQuestionNumber = 0;
   timeSetForQuestion = false;
   displayEndScreen = false;
+  displayButtons = true;
+  timeDifference = 0;
 
 
   @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
@@ -59,19 +61,22 @@ export class QuizPageComponent implements OnInit, OnChanges {
    * @param e 
    */
   answerCheck(e: any) {
+    this.displayButtons = false;
     this.getCorrectAnswerIndex();
+    this.lastAnsweredTime = new Date().getTime();
     if (e == this.correctAnswerIndex) {
       this.IsitCorrect = "Correct Answer! Well Done";
       let icon = this.resultIcons.push(true)
-      this.lastAnsweredTime = new Date().getTime();
-      let timeDifference = this.lastAnsweredTime - this.lastQuestionRecievedTime;
-      this.currentScore = this.currentScore + timeDifference;
+      
+      this.timeDifference = this.lastAnsweredTime - this.lastQuestionRecievedTime;
+      this.currentScore = this.currentScore + this.timeDifference;
       this.sendScore();
     }
     else {
       this.IsitCorrect = "Wrong Answer! Good luck next time";
       let icon = this.resultIcons.push(false)
-
+      this.currentScore = this.currentScore + (this.quiz.timeLimit * 1000 );
+      this.timeDifference = this.lastAnsweredTime - this.lastQuestionRecievedTime;
     }
   }
 
@@ -123,6 +128,8 @@ export class QuizPageComponent implements OnInit, OnChanges {
         quizPage.countdown.restart();
         quizPage.lastQuestionNumber = quizPage.quiz.questionNumber
         quizPage.lastQuestionRecievedTime = new Date().getTime();
+        quizPage.displayButtons = true;
+        console.log("show buttons",quizPage.displayButtons);
       }
     });
 

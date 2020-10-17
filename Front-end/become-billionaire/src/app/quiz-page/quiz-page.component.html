@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div *ngIf="!displayEndScreen">
+<div *ngIf="!displayEndScreen && displayButtons">
     <div class="questionNum">
         <p>Question:</p>{{quiz.questionNumber}}
     </div>
@@ -24,11 +24,46 @@
         </span>
     </div>
 
-    <div class="timer">
-        <countdown #cd [config]="config" (event)="handleEvent($event)"></countdown>
-    </div>
+
 </div>
 
 <div *ngIf="displayEndScreen">
     <app-end-screen></app-end-screen>
+</div>
+
+<div *ngIf="!displayButtons">
+
+    <div class="result">
+        <div class="dynamicResult">{{IsitCorrect}}</div>
+
+        <div class="border">
+            <div class="scoring">
+                <div class="text">
+                    Current Score
+                </div>
+                <div class="score">
+                    {{currentScore}}
+                </div>
+            </div>
+
+            <div class="scoreBar"></div>
+            <div class="extraInfo">
+                <div class="text">Response Time</div>
+                <div class="infobox">{{timeDifference}}ms</div>
+            </div>
+
+            <div class="extraInfo">
+                <div class="text">Position</div>
+                <div class="infobox">5</div>
+            </div>
+            <div class="waitCounter">
+                PLEASE WAIT
+                <br><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="timer">
+    <countdown #cd [config]="config" (event)="handleEvent($event)"></countdown>
 </div>
