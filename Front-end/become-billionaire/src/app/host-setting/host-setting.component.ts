@@ -13,7 +13,7 @@ import { QuizIdService } from '../services/quiz-id.service';
 })
 export class HostSettingComponent implements OnInit {
   slidervalue = 75;
-  questionNum = 10;
+  questionNum;
   questionTimeLimit = 10;
   username = "username";
   showLobby = false;
@@ -21,7 +21,7 @@ export class HostSettingComponent implements OnInit {
   quizId: number;
   display = false;
   categories= []; 
-  selectedCategory = "e6ef7f3ced4043d991b541cb49963bc9"; 
+  selectedCategory = "44ded658a5454fecb4c885c44b8cfd13"; 
 
   constructor(private http: HttpClient, private data: DataService, private quizID: QuizIdService) {
     //NOOP
@@ -35,7 +35,6 @@ export class HostSettingComponent implements OnInit {
     this.getCategories();
   }
   createLobby() {
-    console.log(typeof this.questionNum);
     this.createQuiz();
   }
 
@@ -51,9 +50,8 @@ export class HostSettingComponent implements OnInit {
       "hostName": this.username,
       "categoryId": this.selectedCategory,
       "timeLimit": this.questionTimeLimit,
-      "questionCount": this.questionNum
+      "questionCount": parseInt(this.questionNum)
     };
-    console.log(data);
     this.http.post<any>(url, JSON.stringify(data), { headers: headers }).subscribe(data => {
       this.hostId = data.newQuiz.participants[0]._id;
       this.quizId = data.newQuiz._id;
@@ -71,7 +69,6 @@ export class HostSettingComponent implements OnInit {
     const url = "http://35.214.82.56:3000/categories";
     const headers = { 'Content-Type': 'application/json' };
     this.http.get<any>(url, { headers: headers }).subscribe(data => {
-      console.log("categories",data);
       let localCategories = data;
       this.categories = localCategories;
     });

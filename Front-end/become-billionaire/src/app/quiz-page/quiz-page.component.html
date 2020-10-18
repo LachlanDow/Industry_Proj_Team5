@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div class="timer">
+<div class="timer" *ngIf="!displayEndScreen">
     <countdown #cd [config]="config" (event)="handleEvent($event)"></countdown>
 </div>
 <div *ngIf="!displayEndScreen && displayButtons">
@@ -7,14 +7,14 @@
         <p>Question {{quiz.questionNumber}}: {{quiz.questions[currentQuestion].question}}</p>
     </div>
 
-    
+
     <div class="choices">
         <button type="button" class="btn firstChoice" (click)="answerCheck(1)">{{quiz.questions[currentQuestion].choices[0]}}</button>
         <button type="button" class="btn secondChoice" (click)="answerCheck(2)">{{quiz.questions[currentQuestion].choices[1]}}</button>
         <button type="button" class="btn thirdChoice" (click)="answerCheck(3)">{{quiz.questions[currentQuestion].choices[2]}}</button>
         <button type="button" class="btn fourthChoice" (click)="answerCheck(4)">{{quiz.questions[currentQuestion].choices[3]}}</button>
     </div>
-   
+
 
     <div>
         <span *ngFor="let icon of resultIcons">

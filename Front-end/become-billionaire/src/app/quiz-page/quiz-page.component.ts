@@ -44,7 +44,6 @@ export class QuizPageComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    console.log("quiz page ng onint")
     this.data.currentMessage.subscribe(message => this.hostId = message);
     this.quizID.currentMessage.subscribe(message => this.quizId = message);
     this.participantID = this.hostId;
@@ -66,15 +65,14 @@ export class QuizPageComponent implements OnInit, OnChanges {
     this.lastAnsweredTime = new Date().getTime();
     if (e == this.correctAnswerIndex) {
       this.IsitCorrect = "Correct Answer! Well Done";
-      let icon = this.resultIcons.push(true)
-
+      this.resultIcons.push(true)
       this.timeDifference = this.lastAnsweredTime - this.lastQuestionRecievedTime;
       this.currentScore = this.currentScore + this.timeDifference;
       this.sendScore();
     }
     else {
       this.IsitCorrect = "Wrong Answer! Good luck next time";
-      let icon = this.resultIcons.push(false)
+      this.resultIcons.push(false)
       this.currentScore = this.currentScore + (this.quiz.timeLimit * 1000);
       this.timeDifference = this.lastAnsweredTime - this.lastQuestionRecievedTime;
     }
@@ -110,25 +108,31 @@ export class QuizPageComponent implements OnInit, OnChanges {
       quizPage.questionCount();
       if (quizPage.quiz.questionNumber == -1) {
         quizPage.displayEndScreen = true;
+        quizPage.displayButtons = true;
         return;
       }
 
       if (!quizPage.quizStarted) {
+        quizPage.lastQuestionNumber = quizPage.quiz.questionNumber
         quizPage.config = {
           leftTime: quizPage.quiz.timeLimit,
           format: "ss"
         };
+        quizPage.lastQuestionRecievedTime = new Date().getTime();
         quizPage.startQuiz();
         quizPage.quizStarted = true;
         quizPage.countdown.begin();
-        quizPage.lastQuestionRecievedTime = new Date().getTime();
       }
       else if (quizPage.lastQuestionNumber != quizPage.quiz.questionNumber) {
         quizPage.countdown.restart();
         quizPage.lastQuestionNumber = quizPage.quiz.questionNumber
         quizPage.lastQuestionRecievedTime = new Date().getTime();
         quizPage.displayButtons = true;
+        if ((quizPage.resultIcons.length +1) < quizPage.quiz.questionNumber){
+          quizPage.resultIcons.push(false)
+        }
       }
+
     });
 
   };
@@ -157,6 +161,10 @@ export class QuizPageComponent implements OnInit, OnChanges {
   }
 
   handleEvent(event) {
+  }
+
+  isItAnswered(){
+
   }
 }
 
