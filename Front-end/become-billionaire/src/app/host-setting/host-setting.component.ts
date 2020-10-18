@@ -13,15 +13,15 @@ import { QuizIdService } from '../services/quiz-id.service';
 })
 export class HostSettingComponent implements OnInit {
   slidervalue = 75;
-  questionNum;
-  questionTimeLimit;
+  questionNum = 10;
+  questionTimeLimit = 10;
   username = "username";
   showLobby = false;
   hostId: number;
   quizId: number;
   display = false;
   categories= []; 
-  selectedCategory = "44ded658a5454fecb4c885c44b8cfd13"; 
+  selectedCategory = "e6ef7f3ced4043d991b541cb49963bc9"; 
 
   constructor(private http: HttpClient, private data: DataService, private quizID: QuizIdService) {
     //NOOP
@@ -35,6 +35,7 @@ export class HostSettingComponent implements OnInit {
     this.getCategories();
   }
   createLobby() {
+    console.log(typeof this.questionNum);
     this.createQuiz();
   }
 
@@ -50,8 +51,9 @@ export class HostSettingComponent implements OnInit {
       "hostName": this.username,
       "categoryId": this.selectedCategory,
       "timeLimit": this.questionTimeLimit,
-      "questionCount": parseInt(this.questionNum)
+      "questionCount": this.questionNum
     };
+    console.log(data);
     this.http.post<any>(url, JSON.stringify(data), { headers: headers }).subscribe(data => {
       this.hostId = data.newQuiz.participants[0]._id;
       this.quizId = data.newQuiz._id;

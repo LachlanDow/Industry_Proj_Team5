@@ -3,18 +3,18 @@
     <countdown #cd [config]="config" (event)="handleEvent($event)"></countdown>
 </div>
 <div *ngIf="!displayEndScreen && displayButtons">
-    <div class="questionNum">
+    <div class="question">
         <p>Question {{quiz.questionNumber}}: {{quiz.questions[currentQuestion].question}}</p>
     </div>
 
-    <!-- <div class="question">
-        
-    </div> -->
-
-    <button type="button" class="btn firstChoice" (click)="answerCheck(1)">{{quiz.questions[currentQuestion].choices[0]}}</button>
-    <button type="button" class="btn secondChoice" (click)="answerCheck(2)">{{quiz.questions[currentQuestion].choices[1]}}</button>
-    <button type="button" class="btn thirdChoice" (click)="answerCheck(3)">{{quiz.questions[currentQuestion].choices[2]}}</button>
-    <button type="button" class="btn fourthChoice" (click)="answerCheck(4)">{{quiz.questions[currentQuestion].choices[3]}}</button>
+    
+    <div class="choices">
+        <button type="button" class="btn firstChoice" (click)="answerCheck(1)">{{quiz.questions[currentQuestion].choices[0]}}</button>
+        <button type="button" class="btn secondChoice" (click)="answerCheck(2)">{{quiz.questions[currentQuestion].choices[1]}}</button>
+        <button type="button" class="btn thirdChoice" (click)="answerCheck(3)">{{quiz.questions[currentQuestion].choices[2]}}</button>
+        <button type="button" class="btn fourthChoice" (click)="answerCheck(4)">{{quiz.questions[currentQuestion].choices[3]}}</button>
+    </div>
+   
 
     <div>
         <span *ngFor="let icon of resultIcons">
