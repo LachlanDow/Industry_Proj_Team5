@@ -44,6 +44,7 @@
     font-size: auto;
     font-size: max(40px);
     background-color: #50AFF5;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     
     
 }
@@ -122,9 +123,18 @@
     
     }
     .timer { 
-        background-color: aliceblue;
-        width: 8%;
-        height: 10%;
+        background-color: #191919;
+        width: 10%;
+        height: 15%;
+        font-size: max(1.2vw);
+        color: white;
+        border-radius: 0.4vw;
+        border: 0.19vw dashed  #FA1772;
+        float: right;
+        text-align: center;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        margin-right: 10%;
     }
 
 @media only screen and (max-width: 950px) {
@@ -134,7 +144,7 @@
         width: 70%;
         height: 15%;
         font-weight: bold;
-        border-radius: 30px;
+        border-radius: 3vw;
         border-color: black;
         font-size: 7vw;
         margin-left: 15%;
