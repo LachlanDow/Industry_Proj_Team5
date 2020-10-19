@@ -4,6 +4,7 @@ const Category = require("./Category");
 const questionSchema = new Schema({
     question: {
         type: String,
+        required:true
     },
     category: {
         type: Category.schema,
@@ -11,10 +12,12 @@ const questionSchema = new Schema({
     },
  
 answer: {
-  type: String,
+    type: String,
+    required:true
  },
  choices: {
-  type: [String],
+     type: [String],
+     validate: v => Array.isArray(v) && v.length > 0,
  }
 });
 const Question = mongoose.model("Question", questionSchema);

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Quiz = require("../models/Quiz");
-const { CryptPin } = require("../generateID");
+const CryptPin  = require("../generateID");
 const Participant = require("../models/Participant");
 const Category = require("../models/Category");
 const Question = require("../models/Question");
