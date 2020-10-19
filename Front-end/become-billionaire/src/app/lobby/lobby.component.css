@@ -1,0 +1,377 @@
+.test {
+    font-size: 10px;
+    background-color: white;
+    height: 500px;
+    width: 500px;
+}
+
+
+
+div.box {
+    height: 80%;
+    width: 100%;
+    margin-top: 3vw;
+  }
+  
+  div.div1 {
+    float: left;
+    height: 100%;
+    width: 50%;
+    padding-right: 1vw;
+    border-right: 0.2vw solid;
+    border-color: #3B3B3B;
+  }
+  
+  .rightborder {
+    border-right: 0.2vw solid;
+    border-color: #3B3B3B;
+    margin-left: 8vw;
+    height: 20vw;
+    margin-top: 5vw;
+  }
+  
+  
+  
+  
+  div.div2 {
+    height: 410px;
+    width: 40%;
+    float: right;
+    overflow: auto;
+  }
+  
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  
+  div.clear {
+    clear: both;
+    height: 1px;
+    overflow: hidden;
+    margin-top: -1px;
+  }
+  
+  .userInfo {
+    border: 0.2vw solid #3B3B3B;
+    border-radius: 1vw;
+    float: right;
+    text-align: left;
+    height: auto;
+    width: 70%;
+    color: white;
+    margin-right: 8%;
+    padding-top: 2%;
+    padding-left: 2vw;
+    margin-bottom: 2%;
+    position: relative;
+  }
+  
+  .profileIcon {
+    float: right;
+    font-size: 8vw;
+    margin-right: 5%;
+    font-size: max(40px);
+    height: auto;
+    width: auto;
+  }
+  
+  .trophyIcon {
+    float: right;
+    margin-right: 5%;
+    font-size: 8vw;
+    font-size: max(40px);
+    height: auto;
+    width: auto;
+  }
+  
+  
+  
+  
+  .headers {
+    font-family: "Roboto";
+    text-align: center;
+    position: relative;
+    padding-bottom: 2vw;
+    color: white;
+    font-size: max(50px);
+  }
+  
+  .headers2 {
+    font-family: "Roboto";
+    text-align: center;
+    position: relative;
+    padding-bottom: 2vw;
+    padding-left: 5vw;
+    color: gold;
+    font-size: max(70px);
+  }
+  
+  ::ng-deep .mat-progress-bar-fill::after {
+    background-color: #05F57D;
+  }
+  
+  ::ng-deep .mat-progress-bar-buffer {
+    background: #E4E8EB;
+  }
+  
+  ::ng-deep .mat-progress-bar {
+    border-radius: 3px;
+  }
+  
+  .progressBar {
+    width: 16vw;
+    margin-top: 8%;
+    margin-bottom: 2vw;
+  }
+  
+  .progressBarTop {
+    width: 12vw;
+    margin-top: 3%;
+    margin-bottom: 0.4vw;
+  }
+  
+  
+  
+  .Toptimer {
+    border: 0.15vw dashed #FA1772;
+    width: 1vw;
+    margin-top: -1%;
+    margin-left: 1vw;
+    text-align: center;
+    border-radius: 0.5vw;
+  }
+  
+  
+  .btn {
+    border: 0.2vw solid #3B3B3B;
+    border-radius: 2vw;
+    font-family: "Roboto";
+    color: white;
+    width: 25%;
+    max-width: 800px;
+    max-height: 180px;
+    height: 25%;
+    font-weight: bold;
+    border-radius: 30px;
+    border-color: black;
+    font-size: 1.8vw;
+    font-size: max(30px);
+  }
+  
+  .play {
+    background-color: forestgreen;
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 57%;
+    height: 20%;
+    max-width: 800px;
+  }
+  
+  .timer {
+    border: 0.15vw dashed #FA1772;
+    width: 2.5vw;
+    margin-top: -1%;
+    margin-left: 1vw;
+    text-align: center;
+    border-radius: 0.5vw;
+  }
+  
+  .topPlayerInfo {
+    border: 0.2vw solid #3B3B3B;
+    border-radius: 2vw;
+    float: right;
+    text-align: left;
+    height: auto;
+    width: 80%;
+    color: white;
+    margin-right: 8%;
+    margin-left: -10vw;
+    padding-top: 2%;
+    padding-left: 2vw;
+    margin-bottom: 2%;
+    position: relative;
+  
+  }
+  
+  .startGame {
+    background-color: darkseagreen;
+    border: 0.2vw solid #3B3B3B;
+    border-radius: 2vw;
+    float: right;
+    height: auto;
+    width: 80%;
+    color: white;
+    margin-right: 0.5vw;
+    margin-left: 1vw;
+    padding-top: 5%;
+    padding-left: 2vw;
+    margin-bottom: 2%;
+    position: relative;
+  }
+  
+  .nameSize {
+    font-size: max(35px);
+    position: relative;
+  }
+  
+  .nameSizeTop {
+    font-size: max(25px);
+    position: relative;
+  }
+  
+  .startGameText {
+    font-size: max(37px);
+    position: center;
+    margin-left: -1.8vw;
+  
+  }
+  
+  .topPoints {
+    font-size: 1.5vw;
+    font-size: max(20px);
+    position: relative;
+  }
+  
+  .Points {
+    font-size: 2vw;
+    font-size: max(30px);
+    position: relative;
+  }
+  
+  .btnExit {
+    float: left;
+    background-color: #191919;
+    border: none;
+    color: #FA1772;
+    position: fixed;
+    font-size: 3vw;
+    font-size: max(70px);
+    cursor: pointer;
+    margin-top: -3%;
+    margin-left: 8%;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .leftAlign {
+    float: left;
+    padding-right: 1vw;
+  }
+  
+  .rightAlign {
+    float: right;
+    padding-right: 4vw;
+  }
+  
+  
+  
+  @media only screen and (max-width: 980px) {
+  
+    .btnExit {
+      float: left;
+      background-color: #191919;
+      border: none;
+      color: #FA1772;
+      position: fixed;
+      font-size: 3vw;
+      font-size: max(40px);
+      cursor: pointer;
+      margin-top: -3%;
+      margin-left: 8%;
+      position: relative;
+    }
+  
+    .headers {
+      font-family: "Roboto";
+      text-align: center;
+      position: relative;
+      padding-bottom: 2vw;
+      color: white;
+      font-size: max(25px);
+    }
+  
+    .nameSize {
+      font-size: max(22px);
+      position: relative;
+    }
+  
+    .nameSizeTop {
+      font-size: max(20px);
+      position: relative;
+    }
+  
+    .profileIcon {
+      display: none;
+    }
+  
+    .topPoints {
+      font-size: 1.5vw;
+      font-size: max(15px);
+      position: relative;
+    }
+  
+    .Points {
+      font-size: 2vw;
+      font-size: max(20px);
+      position: relative;
+    }
+  
+    .trophyIcon {
+      float: right;
+      margin-right: 5%;
+      font-size: max(20px);
+      height: auto;
+      width: auto;
+    }
+  
+    .Toptimer {
+      border: 0.15vw dashed #FA1772;
+      width: 5vw;
+      margin-top: -1%;
+      margin-left: 1vw;
+      text-align: center;
+      border-radius: 0.5vw;
+    }
+  
+    .timer {
+      border: 0.15vw dashed #FA1772;
+      width: 5vw;
+      margin-top: -1%;
+      margin-left: 1vw;
+      text-align: center;
+      border-radius: 0.5vw;
+    }
+  
+    .topPlayerInfo {
+      border: 0.2vw solid #3B3B3B;
+      border-radius: 2vw;
+      float: right;
+      text-align: left;
+      height: auto;
+      width: 80%;
+      color: white;
+      margin-right: 8%;
+      margin-left: -10vw;
+      padding-top: 2%;
+      padding-left: 2vw;
+      margin-bottom: 2%;
+      position: relative;
+    }
+  
+    .userInfo {
+      border: 0.2vw solid #3B3B3B;
+      border-radius: 2vw;
+      float: right;
+      text-align: left;
+      height: auto;
+      width: 70%;
+      color: white;
+      margin-right: 8%;
+      padding-top: 2%;
+      padding-left: 2vw;
+      margin-bottom: 2%;
+      position: relative;
+    }
+  }
+  

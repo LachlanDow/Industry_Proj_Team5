@@ -1,29 +1,46 @@
 .question {
     font-family: "Roboto";
-    /* font-size: 50px; */
-    /* font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width]))); */
-    font-size: calc(10px + (50 - 10) * ((100vw - 300px) / (1600 - 300)));
-    height: 50px;
-    background-color: transparent;
+    font-size: 3vw;
+    font-size: max(40px);
+    width: 52vw;
+    height: 2vw;
+    max-width: 90%;
     color: white;
     font-weight: bold;
     text-align: center;
-    padding-top: 2%;
-    padding-bottom: 3%;
     line-height: normal;
-    max-height: 50px;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 10%;
+}
+
+.questionNum {
+    font-family: "Roboto";
+    font-size: 3vw;
+    font-size: max(40px);
+    width: 52vw;
+    height: 2vw;
+    max-width: 90%;
+    color: #CEBC6F;
+    font-weight: bold;
+    text-align: center;
+    line-height: normal;
+    margin-left: 6%;
+    margin-top: 1%;
 }
 
 .btn {
     font-family: "Roboto";
     color: #191919;
+    position: relative;
     width: 35%;
-    height: 25%;
+    height: 55%;
     font-weight: bold;
     border-radius: 30px;
     border-color: black;
     /* font-size: 3vw; */
-    font-size: calc(14px + (40 - 14) * ((100vw - 300px) / (1600 - 300)));
+    font-size: auto;
+    font-size: max(35px);
     background-color: #50AFF5;
 }
 
@@ -88,7 +105,29 @@
     line-height: normal;
 }
 
-@media only screen and (max-width: 800px) {
+.options {
+    padding-top: 5%;
+    width: 85%;
+    height: 90%;
+    max-width: 1100px;
+    max-height: 700px;
+    margin: auto;
+    border: 3px solid rgba(255, 255, 255, 0);
+}
+
+.timer {
+    font-family: "Roboto";
+    font-size: 50px;
+    height: 50px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    line-height: normal;
+    color: #CEBC6F;
+}
+
+@media only screen and (max-width: 950px) {
     .btn {
         font-family: "Roboto";
         color: #191919;
@@ -101,4 +140,88 @@
         margin-left: 15%;
         ;
     }
+}
+
+.border {
+    margin: auto;
+    width: 50%;
+    height: 100%;
+    border: 3px solid #3B3B3B;
+    border-radius: 25px;
+    padding: 1vw;
+    color: white;
+    overflow: hidden;
+    font-size: 50%;
+}
+
+.dynamicResult {
+    color: green;
+    text-align: center;
+    font-size: 2vw;
+    font-weight: 900;
+    padding-bottom: 1vw;
+}
+
+.text {
+    float: left;
+    font-size: 3vw;
+    width: 65%;
+    text-align: left;
+    padding: 1vw;
+}
+
+.score {
+    color: gold;
+    float: right;
+    text-align: right;
+    width: 20%;
+    padding: 1vw;
+    font-size: 3vw;
+    ;
+}
+
+.scoring {
+    padding: 0.5vw;
+    float: right;
+    width: 100%;
+}
+
+.scoreBar {
+    border: 3px solid green;
+    width: 95%;
+    float: left;
+}
+
+.extraInfo {
+    float: left;
+    width: 100%;
+    padding-top: 1vw;
+    ;
+}
+
+.infobox {
+    padding: 1vw;
+    text-align: left;
+    width: 20%;
+    font-size: 1.5vw;
+    border: 3px dashed darkred;
+    float: right;
+}
+
+.waitCounter {
+    float: left;
+    width: 100%;
+    text-align: center;
+    font-size: 2vw;
+    padding-top: 1vw;
+    font-weight: 900;
+    color: gold;
+}
+
+.tick {
+    font-size: 48px;
+    color: green;
+    padding-top: 1%;
+    padding-left: 2%;
+    font-size: 30px;
 }

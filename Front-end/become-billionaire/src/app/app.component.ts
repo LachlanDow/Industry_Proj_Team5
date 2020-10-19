@@ -1,22 +1,24 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent  {
+export class AppComponent {
   title = 'become-billionaire';
   display = false;
   settingsDisplay = false;
   displaySettings = false;
   displayInstructions = false;
   displayLeaderboard = false;
+  displayJoinPage = false;
+  displayHost = false;
 
   onPress() {
     this.display = true;
-    console.log(this.display);
   }
+
   onSettingsPress() {
     this.displaySettings = true;
   }
@@ -24,12 +26,25 @@ export class AppComponent  {
   onInstructionsPress() {
     this.displayInstructions = true;
   }
+
   onLeaderboardPress() {
     this.displayLeaderboard = true;
   }
 
-  ngAfterViewChecked(){ 
+  onJoinPress() {
+    this.displayJoinPage = true;
+  }
+
+  onHostPress() {
+    this.displayHost = true;
+  }
+
+  ngAfterViewChecked() {
     this.displaySettings = false;
     this.displayInstructions = false;
+    this.displayLeaderboard = false;
+    //this.displayJoinPage = false;
+    // this.displayHost = false;
+
   }
 }
