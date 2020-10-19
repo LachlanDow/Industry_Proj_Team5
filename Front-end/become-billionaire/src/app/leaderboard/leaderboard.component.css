@@ -16,6 +16,7 @@ div.box {
     padding-right: 1vw;
     border-right: 0.2vw solid;
     border-color: #3B3B3B;
+    margin-left: -8%;
     
   }
   .rightborder{
@@ -32,6 +33,7 @@ div.box {
     width: 40%;
     float: right;
     overflow:auto;
+   
    
  
     
@@ -183,8 +185,8 @@ div.box {
   font-size: 3vw;
   font-size: max(70px);
   cursor: pointer;  
-  margin-top: -3%;
-  margin-left: 8%;  
+  margin-top: -2%;
+  margin-left: 3%;  
   position: relative;
   z-index: 1;
 }
@@ -210,18 +212,21 @@ div.box {
     font-size: 3vw;
     font-size: max(40px);
     cursor: pointer;  
-    margin-top: -3%;
+    margin-top: -1%;
     margin-left: 8%;  
     position: relative;
   }
 
   .headers {
     font-family: "Roboto";
-    text-align: center;
+    text-align: left;
+    margin-left: 32%;
+    margin-top: 6%;
     position: relative;
     padding-bottom: 2vw;
     color: white; 
     font-size: max(25px);
+   
   }
   .nameSize {
     font-size: max(22px);
@@ -299,6 +304,21 @@ div.box {
   margin-bottom: 2%;
   position: relative;
   
+  
+}
+div.div1 {
+    
+  display: none;
+  
+}
+div.div2 {
+    
+  height: 410px;
+  width: 100%;
+  float: left;
+  overflow:auto;
+ 
+
   
 }
 }
