@@ -1,5 +1,6 @@
 const Participant = require("./models/Participant");
 const Quiz = require("./models/Quiz");
+const Leaderboard = require("./models/Leaderboard");
 
 var eventsHandler =  async function eventsHandler(req, res) {
 // Mandatory headers and http status to keep connection open. Also header to stop CORS from being disallowed on browser.
@@ -58,6 +59,7 @@ async function gameLoop(quiz) {
         quiz.questionNumber = -1;
         const updatedQuiz = await quiz.save();
         sendEventsToAllInQuiz(quiz.participants, updatedQuiz);
+        updateLeaderboard(quiz.participants);
     }
     
 }
@@ -66,6 +68,37 @@ var gameLoopStart = async function gameLoopStart(quiz) {
     quiz.questionNumber++;
     timerHandler = setInterval(gameLoop, quiz.timeLimit * 1000, quiz);
 }
+
+async function updateLeaderboard(quizParticipants) { 
+   const leaderboard = await Leaderboard.findById("main");
+   let sortedQuizParticipants = quizParticipants.sort(compare);
+
+   if(leaderboard.participants.length == 0) { 
+       if(leaderboard.maxParticipantCount < sortedQuizParticipants.length) { 
+        sortedQuizParticipants.length = leaderboard.maxParticipantCount;
+       }
+       leaderboard.participants = sortedQuizParticipants
+       await leaderboard.save();
+       return;
+    }
+
+    let currentBottomOfLB = leaderboard.participants[leaderboard.participants.length-1]
+
+    sortedQuizParticipants = sortedQuizParticipants.filter(participant => participant.length < currentBottomOfLB);
+    leaderboard.participants = leaderboard.participants.concat(sortedQuizParticipants);
+    leaderboard.participants = leaderboard.participants.sort(compare);
+    if(leaderboard.maxParticipantCount > leaderboard.participants.length) { 
+        leaderboard.participants.length = leaderboard.maxParticipantCount;
+       }
+
+   await leaderboard.save();
+}
+
+var compare = function(a, b) {
+    return parseInt(a.score) - parseInt(b.score);
+  }
+  
+  
 
 //Associative array to store participant. Works like a hash table or dictionary data structure
 //Participant IDs are used as keys, and res objects are values. Allows for quick look up of participant res object needed for SSE.
