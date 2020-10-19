@@ -57,6 +57,7 @@ async function gameLoop(quiz) {
     else { 
         clearInterval(timerHandler);
         quiz.questionNumber = -1;
+        quiz.participants = quiz.participants.sort(compare);
         const updatedQuiz = await quiz.save();
         sendEventsToAllInQuiz(quiz.participants, updatedQuiz);
         updateLeaderboard(quiz.participants);
