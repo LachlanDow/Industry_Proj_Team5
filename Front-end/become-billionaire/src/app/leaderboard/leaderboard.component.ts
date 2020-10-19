@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import  {AppComponent } from '../app.component'
 
 @Component({
   selector: 'app-leaderboard',
@@ -10,7 +11,7 @@ export class LeaderboardComponent implements OnInit {
   participantList;
   display = false;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private appComponent: AppComponent) {
   }
 
   ngOnInit(): void {
@@ -19,6 +20,7 @@ export class LeaderboardComponent implements OnInit {
 
   onPress() {
     this.display = true;
+    this.appComponent.displayLeaderboard = false;
   }
 
   getLeaderboardData() {
