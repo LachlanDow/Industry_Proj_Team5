@@ -25,7 +25,7 @@
     font-weight: bold;
     text-align: center;
     line-height: normal;
-    margin-left: 6%;
+    margin-left: 8%;
     margin-top: 1%;
 }
 
@@ -124,14 +124,21 @@
 
 .timer {
     font-family: "Roboto";
-    font-size: 50px;
-    height: 50px;
+    font-size: max(2vw);
+    
+    width: auto;
     font-weight: bold;
     text-align: center;
-    padding-top: 2%;
-    padding-bottom: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 1.5%;
+    padding-right: 1.5%;
     line-height: normal;
     color: #CEBC6F;
+    float:right;
+    margin-right: 5%;
+    border: 3px solid #CEBC6F;
+    border-radius: 50%;
 }
 
 
