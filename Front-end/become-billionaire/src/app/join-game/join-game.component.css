@@ -30,7 +30,7 @@
   }
   .btnExit{
     float: left;
-    background-color: #191919;
+    background-color: transparent;
     border: none;
     color: #FA1772;
     position: fixed;   
