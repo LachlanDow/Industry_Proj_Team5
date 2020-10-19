@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import  {AppComponent } from '../app.component'
 
 
 @Component({
@@ -27,7 +28,7 @@ export class EndScreenComponent implements OnInit {
   // can add code later to auto sort players into the array if necessary 
 
 
-  constructor() { }
+  constructor( private appComponent: AppComponent) { }
 
   ngOnInit(): void {
   }
@@ -36,7 +37,10 @@ export class EndScreenComponent implements OnInit {
 
   onPress() {
     this.display = true;
+    this.appComponent.displayHost = false;
   }
+
+
 
 }
 
