@@ -10,21 +10,15 @@
             <button type="button" class="startGame" (click)="onPress()">
                 <h1 class="startGameText">Start Game</h1>
             </button>
-
         </div>
 
         <h1 class="headers">Current Lobby</h1>
+
         <div class="div2">
             <div class="topPlayerInfo" *ngFor="let participant of localParticipants">
                 <h1 class="nameSizeTop">{{participant.name}}</h1>
             </div>
         </div>
-
-
-        <!-- <div class="clear">
-
-        </div> -->
-
     </div>
 </div>
 <div *ngIf="display">

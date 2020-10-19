@@ -14,12 +14,15 @@ import { QuizIdService } from '../services/quiz-id.service';
 export class HostSettingComponent implements OnInit {
   slidervalue = 75;
   questionNum;
-  questionTimeLimit;
+  questionTimeLimit = 10;
   username = "username";
   showLobby = false;
   hostId: number;
   quizId: number;
   display = false;
+  categories= []; 
+  selectedCategory = "44ded658a5454fecb4c885c44b8cfd13"; 
+
   constructor(private http: HttpClient, private data: DataService, private quizID: QuizIdService) {
     //NOOP
   }
@@ -29,6 +32,7 @@ export class HostSettingComponent implements OnInit {
   }
   ngOnInit(): void {
     this.data.currentMessage.subscribe(message => this.hostId = message)
+    this.getCategories();
   }
   createLobby() {
     this.createQuiz();
@@ -44,30 +48,36 @@ export class HostSettingComponent implements OnInit {
     const headers = { 'Content-Type': 'application/json' };
     const data = {
       "hostName": this.username,
-      "categoryId": "44ded658a5454fecb4c885c44b8cfd13",
+      "categoryId": this.selectedCategory,
       "timeLimit": this.questionTimeLimit,
       "questionCount": parseInt(this.questionNum)
     };
     this.http.post<any>(url, JSON.stringify(data), { headers: headers }).subscribe(data => {
       this.hostId = data.newQuiz.participants[0]._id;
       this.quizId = data.newQuiz._id;
-      console.log("quiz id",data.newQuiz._id);
       this.sendHostId();
     });
   }
 
   sendHostId() {
-    console.log(this.hostId);
     this.data.changeMessage(this.hostId);
     this.quizID.changeMessage(this.quizId);
     this.showLobby = true;
   }
 
+  getCategories() {
+    const url = "http://35.214.82.56:3000/categories";
+    const headers = { 'Content-Type': 'application/json' };
+    this.http.get<any>(url, { headers: headers }).subscribe(data => {
+      let localCategories = data;
+      this.categories = localCategories;
+    });
+  }
 
-}
-export class SelectCustomTriggerExample {
-  toppings = new FormControl();
+  setCategory(categoryID) { 
+    this.selectedCategory = categoryID;
+  }
 
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+
 }
 
