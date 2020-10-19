@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -39,12 +40,12 @@ export class AppComponent {
     this.displayHost = true;
   }
 
-  ngAfterViewChecked() {
+  ngAfterViewChecked () {
     this.displaySettings = false;
     this.displayInstructions = false;
-    // this.displayLeaderboard = false;
-    //this.displayJoinPage = false;
-    // this.displayHost = false;
-
+    this.displayLeaderboard = false;
+    this.displayJoinPage = false;
   }
+
+
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { QuizIdService } from '../services/quiz-id.service';
+import  { HostSettingComponent } from '../host-setting/host-setting.component'
 
 @Component({
   selector: 'app-lobby',
@@ -14,7 +15,7 @@ export class LobbyComponent implements OnInit {
 
   display = false;
 
-  constructor(private data: DataService, private quizID: QuizIdService) { }
+  constructor(private data: DataService, private quizID: QuizIdService, private hostComponent: HostSettingComponent) { }
 
   ngOnInit(): void {
     this.data.currentMessage.subscribe(message => this.participantID = message);
@@ -40,6 +41,7 @@ export class LobbyComponent implements OnInit {
 
   onPress() {
     this.display = true;
+    this.hostComponent.showLobby = false;
   }
 
 }
