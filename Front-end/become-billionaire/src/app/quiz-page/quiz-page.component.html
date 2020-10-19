@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div class="timer" *ngIf="!displayEndScreen">
+
     <countdown #cd [config]="config" (event)="handleEvent($event)"></countdown>
 </div>
 <div *ngIf="!displayEndScreen && displayButtons">
@@ -34,6 +36,7 @@
     <app-end-screen></app-end-screen>
 </div>
 
+
 <div *ngIf="!displayButtons">
 
     <div class="result">
@@ -66,3 +69,4 @@
         </div>
     </div>
 </div>
+

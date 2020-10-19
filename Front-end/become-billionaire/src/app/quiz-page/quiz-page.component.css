@@ -38,10 +38,14 @@
     font-weight: bold;
     border-radius: 30px;
     border-color: black;
+    padding-bottom: 3%;
+    padding-top: 3%;
     /* font-size: 3vw; */
     font-size: auto;
-    font-size: max(35px);
+    font-size: max(40px);
     background-color: #50AFF5;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 .firstChoice {
@@ -113,7 +117,10 @@
     max-height: 700px;
     margin: auto;
     border: 3px solid rgba(255, 255, 255, 0);
-}
+    }
+
+
+
 
 .timer {
     font-family: "Roboto";
@@ -127,6 +134,7 @@
     color: #CEBC6F;
 }
 
+
 @media only screen and (max-width: 950px) {
     .btn {
         font-family: "Roboto";
@@ -134,7 +142,7 @@
         width: 70%;
         height: 15%;
         font-weight: bold;
-        border-radius: 30px;
+        border-radius: 3vw;
         border-color: black;
         font-size: 7vw;
         margin-left: 15%;
