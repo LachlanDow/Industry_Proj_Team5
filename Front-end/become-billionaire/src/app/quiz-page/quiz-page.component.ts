@@ -27,8 +27,13 @@ export class QuizPageComponent implements OnInit, OnChanges {
   quizId;
   quizStarted = false;
   interval = 1000; // ms
-  expected; 
-  config: CountdownConfig; 
+  expected;
+  config: CountdownConfig;
+  lastQuestionNumber = 0;
+  timeSetForQuestion = false;
+  displayEndScreen = false;
+  displayButtons = true;
+  timeDifference = 0;
 
 
   @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
@@ -39,7 +44,6 @@ export class QuizPageComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    console.log("quiz page ng onint")
     this.data.currentMessage.subscribe(message => this.hostId = message);
     this.quizID.currentMessage.subscribe(message => this.quizId = message);
     this.participantID = this.hostId;
@@ -56,25 +60,32 @@ export class QuizPageComponent implements OnInit, OnChanges {
    * @param e 
    */
   answerCheck(e: any) {
+    this.displayButtons = false;
     this.getCorrectAnswerIndex();
+    this.lastAnsweredTime = new Date().getTime();
     if (e == this.correctAnswerIndex) {
       this.IsitCorrect = "Correct Answer! Well Done";
-      let icon = this.resultIcons.push(true)
-      this.lastAnsweredTime = new Date().getTime();
-      let timeDifference = this.lastAnsweredTime - this.lastQuestionRecievedTime;
-      this.currentScore = this.currentScore + timeDifference;
+      this.resultIcons.push(true)
+      this.timeDifference = this.lastAnsweredTime - this.lastQuestionRecievedTime;
+      this.currentScore = this.currentScore + this.timeDifference;
       this.sendScore();
     }
     else {
       this.IsitCorrect = "Wrong Answer! Good luck next time";
-      let icon = this.resultIcons.push(false)
-
+      this.resultIcons.push(false)
+      this.currentScore = this.currentScore + (this.quiz.timeLimit * 1000);
+      this.timeDifference = this.lastAnsweredTime - this.lastQuestionRecievedTime;
     }
   }
 
   public questionCount() {
-    this.currentQuestion = this.quiz.questionNumber;
-    this.currentQuestion--;
+    if (this.quiz.questionNumber == 0) {
+      this.currentQuestion = this.quiz.questionNumber;
+    }
+    else if (this.quiz.questionNumber > 0) {
+      this.currentQuestion = this.quiz.questionNumber - 1;
+    }
+
   }
 
   /**
@@ -94,20 +105,34 @@ export class QuizPageComponent implements OnInit, OnChanges {
     let serverEvents = new EventSource(`http://35.214.82.56:3000/stream/${this.participantID}`);
     serverEvents.addEventListener('message', function (event) {
       quizPage.quiz = JSON.parse(event.data)
-      console.log("quiz", quizPage.quiz);
       quizPage.questionCount();
-      quizPage.lastQuestionRecievedTime = new Date().getTime();
-      quizPage.config = { leftTime: quizPage.quiz.timeLimit };
-      
-      if (!quizPage.quizStarted){
-      quizPage.startQuiz();
-      quizPage.quizStarted = true;
-      quizPage.countdown.begin();
+      if (quizPage.quiz.questionNumber == -1) {
+        quizPage.displayEndScreen = true;
+        quizPage.displayButtons = true;
+        return;
       }
-      else {
+
+      if (!quizPage.quizStarted) {
+        quizPage.lastQuestionNumber = quizPage.quiz.questionNumber
+        quizPage.config = {
+          leftTime: quizPage.quiz.timeLimit,
+          format: "ss"
+        };
+        quizPage.lastQuestionRecievedTime = new Date().getTime();
+        quizPage.startQuiz();
+        quizPage.quizStarted = true;
+        quizPage.countdown.begin();
+      }
+      else if (quizPage.lastQuestionNumber != quizPage.quiz.questionNumber) {
         quizPage.countdown.restart();
+        quizPage.lastQuestionNumber = quizPage.quiz.questionNumber
+        quizPage.lastQuestionRecievedTime = new Date().getTime();
+        quizPage.displayButtons = true;
+        if ((quizPage.resultIcons.length +1) < quizPage.quiz.questionNumber){
+          quizPage.resultIcons.push(false)
+        }
       }
-      
+
     });
 
   };
@@ -129,34 +154,17 @@ export class QuizPageComponent implements OnInit, OnChanges {
    * Starts the quiz
    */
   startQuiz() {
-    console.log("Quiz started")
     const url = `http://35.214.82.56:3000/quiz/${this.quizId}/start`;
     const headers = { 'Content-Type': 'application/json' };
     this.http.post<any>(url, { headers: headers }).subscribe(data => {
     });
   }
 
-  handleEvent(event) { 
-    console.log(event);
+  handleEvent(event) {
   }
 
+  isItAnswered(){
 
-  // startCountdown() {
-  //   console.log("seconds",this.quiz.timeLimit)
-  //   this.counter = this.quiz.timeLimit;
-
-
-  //   const interval = setInterval(() => {
-  //     console.log(this.counter);
-  //     this.counter--;
-
-  //     if (this.counter < 0 ) {
-  //       clearInterval(interval);
-  //       console.log('Ding!');
-  //     }
-  //   }, 1000);
-  // }
-
-
+  }
 }
 
