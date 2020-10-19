@@ -41,7 +41,10 @@ export class LobbyComponent implements OnInit {
 
   onPress() {
     this.display = true;
-    this.hostComponent.showLobby = false;
   }
+
+  onPressExit() {
+    this.hostComponent.showLobby = false;
+    }
 
 }
