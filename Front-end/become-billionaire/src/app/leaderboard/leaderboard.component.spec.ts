@@ -23,4 +23,12 @@ describe('LeaderboardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Pressing leaderboard button turns display leaderBoard True', () => {
+    const fixture = TestBed.createComponent(LeaderboardComponent);
+    const app = fixture.componentInstance;
+    app.onPress();
+    expect(app.display).toBeTruthy();
+  });
+
 });

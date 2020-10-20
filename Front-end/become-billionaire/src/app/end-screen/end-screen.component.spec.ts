@@ -23,4 +23,11 @@ describe('EndScreenComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Pressing backbuttons button turns display  True', () => {
+    const fixture = TestBed.createComponent(EndScreenComponent);
+    const app = fixture.componentInstance;
+    app.onPress();
+    expect(app.display).toBeTruthy();
+  });
 });
