@@ -56,9 +56,7 @@ async function gameLoop(quiz) {
     else {
         clearInterval(timerHandler);
         quiz.questionNumber = -1;
-        if(quiz.participants.length > 1) { 
-            quiz.participants = quiz.participants.sort(compare);
-        }
+        quiz.participants = quiz.participants.sort(compare);
         const updatedQuiz = await quiz.save();
         sendEventsToAllInQuiz(quiz.participants, updatedQuiz);
         updateLeaderboard(quiz.participants);
@@ -74,15 +72,6 @@ var gameLoopStart = async function gameLoopStart(quiz) {
 async function updateLeaderboard(quizParticipants) {
     const leaderboard = await Leaderboard.findById("main");
     let sortedQuizParticipants = quizParticipants.sort(compare);
-
-    if (leaderboard.participants.length == 0) {
-        if (leaderboard.maxParticipantCount < sortedQuizParticipants.length) {
-            sortedQuizParticipants.length = leaderboard.maxParticipantCount;
-        }
-        leaderboard.participants = sortedQuizParticipants
-        await leaderboard.save();
-        return;
-    }
 
     if (leaderboard.participants.length > leaderboard.maxParticipantCount) {
         let currentBottomOfLB = leaderboard.participants[leaderboard.participants.length - 1]
