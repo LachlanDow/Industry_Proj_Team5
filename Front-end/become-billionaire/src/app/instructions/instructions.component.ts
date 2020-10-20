@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import  {AppComponent } from '../app.component'
 
 @Component({
   selector: 'app-instructions',
@@ -8,14 +9,12 @@ import { Component } from '@angular/core';
 export class InstructionsComponent  {
   clicked_back = false;
 
-  constructor() { }
+  constructor(private appComponent: AppComponent) { }
 
-  ngAfterViewChecked(){ 
-    this.clicked_back = false;
-  }
 
   onClickBack() {
    this.clicked_back = true;
+   this.appComponent.displayInstructions = false;
   }
 
 }
