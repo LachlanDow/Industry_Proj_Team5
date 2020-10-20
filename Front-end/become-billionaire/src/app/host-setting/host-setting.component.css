@@ -82,6 +82,8 @@ h3{
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
+  
+
 .btn{
     background-color:#50AFF5;
     
@@ -245,6 +247,7 @@ h3{
     font-size: max(35px);
     margin-left: -10%;
 }
+
 .btnExit{
   float: left;
   background-color: #191919;
@@ -258,7 +261,9 @@ h3{
   margin-left: -3%;  
   position: relative;
   z-index: 1;
-}
+  
+  }
+
 .left{
     float: left;
     width: 100%;

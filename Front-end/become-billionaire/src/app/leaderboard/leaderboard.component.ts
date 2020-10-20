@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
+import  {AppComponent } from '../app.component'
 
 @Component({
   selector: 'app-leaderboard',
@@ -6,22 +8,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./leaderboard.component.css']
 })
 export class LeaderboardComponent implements OnInit {
+  participantList;
   display = false;
-  
-  userScore = 76;
-  userScore1 = 86;
-  userScore2 = 82;
-  userScore3 = 78;
-  userScore4 = 72;
-  userScore5 = 68;
-  userScore6 = 64;
-  constructor() { 
+
+  constructor(private http: HttpClient, private appComponent: AppComponent) {
   }
 
   ngOnInit(): void {
+    this.getLeaderboardData();
   }
- 
+
   onPress() {
     this.display = true;
+    this.appComponent.displayLeaderboard = false;
+  }
+
+  getLeaderboardData() {
+
+
+    const url = "http://35.214.82.56:3000/leaderboards/main";
+    const headers = { 'Content-Type': 'application/json' };
+    this.http.get<any>(url, { headers: headers }).subscribe(data => {
+      console.log(data);
+      this.participantList = data[0].participants;
+      console.log(this.participantList);
+    });
+
   }
 }

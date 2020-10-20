@@ -1,6 +1,7 @@
 import { Component,Input} from '@angular/core';
 import { Howl } from 'howler';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -111,6 +112,7 @@ export class AppComponent {
   }
   
 
+
   ngAfterViewChecked() {
     
     this.displaySettings = false;
@@ -119,5 +121,6 @@ export class AppComponent {
     //this.displayJoinPage = false;
     // this.displayHost = false;
 
-  }
+
+
 }

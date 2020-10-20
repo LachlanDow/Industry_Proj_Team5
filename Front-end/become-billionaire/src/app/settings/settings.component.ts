@@ -3,8 +3,6 @@ import { AppPage } from 'e2e/src/app.po';
 import { AppComponent } from '../app.component';
 import { Howl } from 'howler';
 
-
-
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
@@ -35,7 +33,7 @@ export class SettingsComponent implements OnInit {
   onPress() {
     this.display = true;
     console.log(this.display);
-    
+    this.appComponent.displaySettings = false;
   }
 
 }

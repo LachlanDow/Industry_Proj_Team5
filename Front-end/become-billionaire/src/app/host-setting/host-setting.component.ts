@@ -4,6 +4,7 @@ import { MatSliderChange } from '@angular/material/slider';
 import { HttpClient, HttpErrorResponse, HttpSentEvent } from '@angular/common/http'
 import { DataService } from '../services/data.service';
 import { QuizIdService } from '../services/quiz-id.service';
+import  {AppComponent } from '../app.component'
 
 @Component({
   selector: 'app-host-setting',
@@ -23,12 +24,12 @@ export class HostSettingComponent implements OnInit {
   categories= []; 
   selectedCategory = "44ded658a5454fecb4c885c44b8cfd13"; 
 
-  constructor(private http: HttpClient, private data: DataService, private quizID: QuizIdService) {
+  constructor(private http: HttpClient, private data: DataService, private quizID: QuizIdService, private appComponent: AppComponent) {
     //NOOP
   }
   gohome() {
     this.display = true;
-    
+    this.appComponent.displayHost = false;
   }
   ngOnInit(): void {
     this.data.currentMessage.subscribe(message => this.hostId = message)
