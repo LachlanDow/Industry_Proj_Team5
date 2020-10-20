@@ -111,16 +111,4 @@ export class AppComponent {
     this.displayHost = true;
   }
   
-
-
-  ngAfterViewChecked() {
-    
-    this.displaySettings = false;
-    this.displayInstructions = false;
-    this.displayLeaderboard = false;
-    //this.displayJoinPage = false;
-    // this.displayHost = false;
-  }
-
-
 }
