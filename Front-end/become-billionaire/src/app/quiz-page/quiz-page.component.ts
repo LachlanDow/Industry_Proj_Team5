@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { DataService } from '../services/data.service';
 import { QuizIdService } from '../services/quiz-id.service';
 import { CountdownComponent, CountdownConfig } from 'ngx-countdown';
+import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -39,7 +40,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
   @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
 
 
-  constructor(private http: HttpClient, private data: DataService, private quizID: QuizIdService) {
+  constructor(private http: HttpClient, private data: DataService, private quizID: QuizIdService, private appComponent: AppComponent) {
     //NOOP
   }
 
@@ -53,6 +54,12 @@ export class QuizPageComponent implements OnInit, OnChanges {
   ngOnChanges(): void {
     //NOOP
   }
+  playCorrect(){
+    this.appComponent.correctSound();
+  }
+  playWrong(){
+    this.appComponent.wrongSound();
+  }
 
   /**
    * Check if the clicked answer is the correct one 
@@ -65,6 +72,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
     this.lastAnsweredTime = new Date().getTime();
     if (e == this.correctAnswerIndex) {
       this.IsitCorrect = "Correct Answer! Well Done";
+      this.playCorrect();
       this.resultIcons.push(true)
       this.timeDifference = this.lastAnsweredTime - this.lastQuestionRecievedTime;
       this.currentScore = this.currentScore + this.timeDifference;
@@ -72,6 +80,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
     }
     else {
       this.IsitCorrect = "Wrong Answer! Good luck next time";
+      this.playWrong();
       this.resultIcons.push(false)
       this.currentScore = this.currentScore + (this.quiz.timeLimit * 1000);
       this.timeDifference = this.lastAnsweredTime - this.lastQuestionRecievedTime;

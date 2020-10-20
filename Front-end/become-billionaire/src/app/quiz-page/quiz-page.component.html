@@ -6,7 +6,7 @@
 </div>
 <div *ngIf="!displayEndScreen && displayButtons">
     <div class="question">
-        <p>Question {{quiz.questionNumber}}: {{quiz.questions[currentQuestion].question}}</p>
+        <p class="questionNum">Question {{quiz.questionNumber}}:</p> <p>{{quiz.questions[currentQuestion].question}}</p>
     </div>
 
 
@@ -69,4 +69,5 @@
         </div>
     </div>
 </div>
+
 
