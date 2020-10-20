@@ -17,6 +17,9 @@ export class AppComponent {
   displayJoinPage = false;
   displayHost = false;
   @Input() sound = new Howl({src: ['https://dmail-my.sharepoint.com/personal/mvrobb_dundee_ac_uk/Documents/Uni/4th%20year/music/MenuMusic.mp3?App=OneDriveWebVideo']});
+  @Input() correct = new Howl({src: ['https://dmail-my.sharepoint.com/personal/mvrobb_dundee_ac_uk/Documents/Uni/4th%20Year/correct.mp3?App=OneDriveWebVideo']});
+  @Input() wrong = new Howl({src: ['https://dmail-my.sharepoint.com/personal/mvrobb_dundee_ac_uk/Documents/Uni/4th%20Year/wrong.mp3?App=OneDriveWebVideo']});
+
   classToggled = false;
   highContrast = false;
   playing=false;
@@ -39,6 +42,12 @@ export class AppComponent {
       this.playing=false;
     }
     
+  }
+  public correctSound() {
+    this.correct.play();
+  }
+  public wrongSound() {
+    this.wrong.play();
   }
   onPress() {
     this.display = true;
