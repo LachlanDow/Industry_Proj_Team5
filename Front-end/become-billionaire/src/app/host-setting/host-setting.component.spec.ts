@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http'
 import { HostSettingComponent } from './host-setting.component';
+import  {AppComponent } from '../app.component'
+
 
 describe('HostSettingComponent', () => {
   let component: HostSettingComponent;
@@ -8,13 +10,16 @@ describe('HostSettingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HostSettingComponent ]
+      declarations: [ HostSettingComponent,AppComponent ],
+      imports: [HttpClientModule],
+      providers: [AppComponent]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HostSettingComponent);
+    
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

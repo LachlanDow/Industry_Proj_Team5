@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http'
 import { JoinGameLobbyComponent } from './join-game-lobby.component';
 
 describe('JoinGameLobbyComponent', () => {
@@ -8,7 +8,8 @@ describe('JoinGameLobbyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ JoinGameLobbyComponent ]
+      declarations: [ JoinGameLobbyComponent ],
+      imports: [HttpClientModule],
     })
     .compileComponents();
   });

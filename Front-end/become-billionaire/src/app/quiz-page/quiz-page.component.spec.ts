@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http'
 import { QuizPageComponent } from './quiz-page.component';
 
 describe('QuizPageComponent', () => {
@@ -8,7 +8,8 @@ describe('QuizPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QuizPageComponent ]
+      declarations: [ QuizPageComponent ],
+      imports: [HttpClientModule],
     })
     .compileComponents();
   });

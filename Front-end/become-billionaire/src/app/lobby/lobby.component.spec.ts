@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http'
 import { LobbyComponent } from './lobby.component';
+import  { HostSettingComponent } from '../host-setting/host-setting.component'
+import { AppComponent } from '../app.component';
 
 describe('LobbyComponent', () => {
   let component: LobbyComponent;
@@ -8,7 +10,9 @@ describe('LobbyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LobbyComponent ]
+      declarations: [ LobbyComponent, ],
+      imports: [HttpClientModule],
+      providers: [HostSettingComponent,AppComponent]
     })
     .compileComponents();
   });

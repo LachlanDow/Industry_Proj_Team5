@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http'
 import { WaitScreenComponent } from './wait-screen.component';
 
 describe('WaitScreenComponent', () => {
@@ -8,7 +8,8 @@ describe('WaitScreenComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WaitScreenComponent ]
+      declarations: [ WaitScreenComponent ],
+      imports: [HttpClientModule],
     })
     .compileComponents();
   });

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http'
 import { EndScreenComponent } from './end-screen.component';
 
 describe('EndScreenComponent', () => {
@@ -8,7 +8,8 @@ describe('EndScreenComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EndScreenComponent ]
+      declarations: [ EndScreenComponent ],
+      imports: [HttpClientModule],
     })
     .compileComponents();
   });
