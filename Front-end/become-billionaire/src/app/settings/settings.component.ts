@@ -21,7 +21,9 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
   }
- 
+ toggleSFX() {
+   this.appComponent.toggleSFX();
+ }
   playMusic() {
     this.appComponent.toggleMusic();
   }

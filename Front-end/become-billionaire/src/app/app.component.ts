@@ -23,6 +23,7 @@ export class AppComponent {
   classToggled = false;
   highContrast = false;
   playing=false;
+  sfx = false;
 
   
   public toggleField() {
@@ -43,11 +44,26 @@ export class AppComponent {
     }
     
   }
+  public toggleSFX() {
+    if(this.sfx==false)
+    {
+      this.sfx=true;
+    }
+    else{
+      this.sfx=false;
+    }
+  }
   public correctSound() {
-    this.correct.play();
+    if(this.sfx==true){
+      this.correct.play();
+    }
+    
   }
   public wrongSound() {
-    this.wrong.play();
+    if(this.sfx==true){
+      this.wrong.play();
+    }
+    
   }
   onPress() {
     this.display = true;
