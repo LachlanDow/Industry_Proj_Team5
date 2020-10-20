@@ -47,19 +47,20 @@ var sendEventsToAllInQuiz = function sendEventsToAllInQuiz(particpantsInQuiz, ev
 var timerHandler;
 
 async function gameLoop(quiz) {
-    quiz.questionNumber++;
+    let updatedQuiz = await Quiz.findById(quiz._id);
+    updatedQuiz.questionNumber++;
 
-    if (quiz.questionNumber <= quiz.questionCount) {
-        const updatedQuiz = await quiz.save();
-        sendEventsToAllInQuiz(quiz.participants, updatedQuiz);
+    if (updatedQuiz.questionNumber <= updatedQuiz.questionCount) {
+        updatedQuiz = await updatedQuiz.save();
+        sendEventsToAllInQuiz(updatedQuiz.participants, updatedQuiz);
     }
     else {
         clearInterval(timerHandler);
-        quiz.questionNumber = -1;
-        quiz.participants = quiz.participants.sort(compare);
-        const updatedQuiz = await quiz.save();
-        sendEventsToAllInQuiz(quiz.participants, updatedQuiz);
-        updateLeaderboard(quiz.participants);
+        updatedQuiz.questionNumber = -1;
+        updatedQuiz.participants = updatedQuiz.participants.sort(compare);
+        updatedQuiz = await updatedQuiz.save();
+        sendEventsToAllInQuiz(updatedQuiz.participants, updatedQuiz);
+        updateLeaderboard(updatedQuiz.participants);
     }
 
 }
