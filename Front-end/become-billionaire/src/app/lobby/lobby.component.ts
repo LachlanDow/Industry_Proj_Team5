@@ -30,7 +30,6 @@ export class LobbyComponent implements OnInit {
  getEvent() {
   let localQuiz;
   let quizPage = this;
-  console.log("sdfsdkfhj",this.participantID)
   let serverEvents = new EventSource(`http://35.214.82.56:3000/stream/${this.participantID}`);
   serverEvents.addEventListener('message', function (event) {
     let localData = JSON.parse(event.data);

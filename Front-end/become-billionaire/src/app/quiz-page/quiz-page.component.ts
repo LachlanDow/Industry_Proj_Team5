@@ -119,7 +119,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
           format: "ss"
         };
         quizPage.lastQuestionRecievedTime = new Date().getTime();
-        quizPage.startQuiz();
+        quizPage.startQuiz();  
         quizPage.quizStarted = true;
         quizPage.countdown.begin();
       }
@@ -141,10 +141,22 @@ export class QuizPageComponent implements OnInit, OnChanges {
    * Sends score to the server
    */
   sendScore() {
+    var correct, incorrect, average;
+    var correctList = this.resultIcons.filter(function(value) {
+      return value == true;
+    });
+
+    correct = correctList.length;
+    incorrect = this.resultIcons.length - correct;
+    average = this.currentScore/this.resultIcons.length;
+
     const url = `http://35.214.82.56:3000/quiz/${this.quizId}/${this.participantID}`;
     const headers = { 'Content-Type': 'application/json' };
     const data = {
-      "score": this.currentScore
+      "score": this.currentScore,
+      "correctAnswers": correct,
+      "incorrectAnswers": incorrect,
+      "averageAnswerTime": average
     };
     this.http.patch(url, JSON.stringify(data), { headers: headers }).subscribe(data => {
     });
