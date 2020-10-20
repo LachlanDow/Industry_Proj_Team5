@@ -120,7 +120,7 @@ export class AppComponent {
     this.displayLeaderboard = false;
     //this.displayJoinPage = false;
     // this.displayHost = false;
-
+  }
 
 
 }
