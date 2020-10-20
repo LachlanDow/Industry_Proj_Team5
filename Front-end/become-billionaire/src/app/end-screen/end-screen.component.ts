@@ -38,6 +38,7 @@ export class EndScreenComponent implements OnInit {
   onPress() {
     this.display = true;
     this.appComponent.displayHost = false;
+    this.appComponent.displayJoinPage = false;
   }
 
 
