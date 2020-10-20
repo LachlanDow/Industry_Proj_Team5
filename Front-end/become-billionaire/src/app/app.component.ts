@@ -1,4 +1,5 @@
-import { Component} from '@angular/core';
+import { Component,Input} from '@angular/core';
+import { Howl } from 'howler';
 
 @Component({
   selector: 'app-root',
@@ -15,21 +16,48 @@ export class AppComponent {
   displayLeaderboard = false;
   displayJoinPage = false;
   displayHost = false;
-  
-  
+  @Input() sound = new Howl({src: ['https://dmail-my.sharepoint.com/personal/mvrobb_dundee_ac_uk/Documents/Uni/4th%20year/music/MenuMusic.mp3?App=OneDriveWebVideo']});
+  classToggled = false;
+  highContrast = false;
+  playing=false;
 
+  
+  public toggleField() {
+    this.classToggled = !this.classToggled;  
+  }
+  public toggleHighContrast() {
+    this.highContrast = !this.highContrast;  
+  }
+  public toggleMusic() {
+    if(this.playing==false)
+    {
+      this.sound.play(); 
+      this.playing=true;
+    }
+    else {
+      this.sound.pause();
+      this.playing=false;
+    }
+    
+  }
   onPress() {
     this.display = true;
+  }
+  playMusic() {
+    
+    this.sound.play();
   }
 
   onSettingsPress() {
     this.displaySettings = true;
+    
     
 
   }
 
   onInstructionsPress() {
     this.displayInstructions = true;
+    
   }
 
   onLeaderboardPress() {
@@ -46,6 +74,7 @@ export class AppComponent {
   
 
   ngAfterViewChecked() {
+    
     this.displaySettings = false;
     this.displayInstructions = false;
     this.displayLeaderboard = false;

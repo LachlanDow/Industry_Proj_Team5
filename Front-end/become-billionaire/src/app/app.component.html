@@ -2,13 +2,15 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia" type="text/css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<body class="body">
-    <audio controls autoplay>
-        <source src="./MenuMusic.mp3" type="audio/mpeg">
-        
-      </audio>
+<body class="body"
+[class.toggled]="classToggled" >
+    
+    <button 
+    id="sidebarToggle" 
+    (click)="toggleHighContrast()">High Contrast</button>
+    
     <p class="title">BILLIONAIRE GOLF</p>
-    <div class="options" *ngIf="!displaySettings && !displayInstructions && !displayHost && !displayLeaderboard && !displayJoinPage">
+    <div class="options" [class.highcontrast]="highContrast" *ngIf="!displaySettings && !displayInstructions && !displayHost && !displayLeaderboard && !displayJoinPage">
 
 
         <button type="button" class="btn play top" (click)="onHostPress()">Play!</button>
@@ -33,4 +35,5 @@
     <div class="options " *ngIf="displayJoinPage">
         <app-join-game></app-join-game>
     </div>
+   
 </body>
