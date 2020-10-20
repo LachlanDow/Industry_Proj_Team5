@@ -27,4 +27,11 @@ describe('HostSettingComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Pressing leaderboard button turns display leaderBoard True', () => {
+    const fixture = TestBed.createComponent(HostSettingComponent);
+    const app = fixture.componentInstance;
+    app.gohome();
+    expect(app.display).toBeTruthy();
+  });
 });
