@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const Powerup = require("./Powerup");
 
 const participantSchema = new Schema({ 
     name: {
@@ -9,7 +10,8 @@ const participantSchema = new Schema({
     score: {
         type: Number,
         required: true
-    }
+    },
+    powerups: { type: [Powerup.schema], validate: v => Array.isArray(v) && v.length > 0 },
     
 });
 

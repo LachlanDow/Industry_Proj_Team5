@@ -5,8 +5,9 @@ const CryptPin  = require("../generateID");
 const Participant = require("../models/Participant");
 const Category = require("../models/Category");
 const Question = require("../models/Question");
+const Powerup = require("../models/Powerup");
 const SSE = require('../ServerSentEvents');
-
+const powerupRouter = require("./Powerup.js");
 // Get All quizzes from db
 router.get("/", async (req, res) => {
     try {
@@ -21,9 +22,12 @@ router.get("/", async (req, res) => {
 //and selects questions. TODO - move question selection to another function and provide functionality to pick random questions
 //from different categories
 router.post("/", async (req, res) => {
+    
     const participant = new Participant({
         name: req.body.hostName,
-        score: 0
+        score: 0,
+        powerups:fetch('/powerups')
+       
     });
 
     const questionList = await Question.find({ "category._id": String(req.body.categoryId) }).limit(req.body.questionCount);
