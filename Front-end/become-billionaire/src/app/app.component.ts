@@ -19,6 +19,7 @@ export class AppComponent {
   @Input() sound = new Howl({src: ['https://dmail-my.sharepoint.com/personal/mvrobb_dundee_ac_uk/Documents/Uni/4th%20year/music/MenuMusic.mp3?App=OneDriveWebVideo']});
   @Input() correct = new Howl({src: ['https://dmail-my.sharepoint.com/personal/mvrobb_dundee_ac_uk/Documents/Uni/4th%20Year/correct.mp3?App=OneDriveWebVideo']});
   @Input() wrong = new Howl({src: ['https://dmail-my.sharepoint.com/personal/mvrobb_dundee_ac_uk/Documents/Uni/4th%20Year/wrong.mp3?App=OneDriveWebVideo']});
+  @Input() button = new Howl({src: ['https://dmail-my.sharepoint.com/personal/mvrobb_dundee_ac_uk/Documents/Uni/4th%20Year/button.mp3?App=OneDriveWebVideo']});
 
   classToggled = false;
   highContrast = false;
@@ -65,8 +66,15 @@ export class AppComponent {
     }
     
   }
+  public buttonSound(){
+    if(this.sfx==true){
+      this.button.play();
+    }
+    
+  }
   onPress() {
     this.display = true;
+    this.buttonSound();
   }
   playMusic() {
     
@@ -74,6 +82,7 @@ export class AppComponent {
   }
 
   onSettingsPress() {
+    this.buttonSound();
     this.displaySettings = true;
     
     
@@ -81,19 +90,23 @@ export class AppComponent {
   }
 
   onInstructionsPress() {
+    this.buttonSound();
     this.displayInstructions = true;
     
   }
 
   onLeaderboardPress() {
+    this.buttonSound();
     this.displayLeaderboard = true;
   }
 
   onJoinPress() {
+    this.buttonSound();
     this.displayJoinPage = true;
   }
 
   onHostPress() {
+    this.buttonSound();
     this.displayHost = true;
   }
   
