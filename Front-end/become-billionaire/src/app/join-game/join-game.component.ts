@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { DataService } from '../services/data.service';
+
+
+export class User {
+  constructor(public username: string, public partyCode: string) {
+  }
+}
 
 @Component({
   selector: 'app-join-game',
@@ -8,8 +14,9 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./join-game.component.css']
 })
 export class JoinGameComponent implements OnInit {
-  displayApp = false;
-  displayJoinGameLobby = false;
+   displayApp = false;
+   displayJoinGameLobby = false;
+  @Output() userEnter = new EventEmitter<User>();
   participantID;
 
   constructor(private http: HttpClient, private data: DataService) {
@@ -21,6 +28,7 @@ export class JoinGameComponent implements OnInit {
   }
 
   joinGame(username, partyCode) {
+    this.userEnter.emit(new User(username,partyCode));
     console.log(this.displayJoinGameLobby);
     const url = `http://35.214.82.56:3000/quiz/${partyCode.value}`;
     const headers = { 'Content-Type': 'application/json' };
