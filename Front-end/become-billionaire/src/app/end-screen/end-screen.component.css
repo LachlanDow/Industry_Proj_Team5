@@ -6,16 +6,6 @@ div.box {
     margin-top: 3vw;
   }
   
-  div.div1 {
-    
-    float: left;
-    height: 100%;
-    width: 50%;
-    padding-right: 1vw;
-    border-right: 0.2vw solid;
-    border-color: #3B3B3B;
-    
-  }
   .rightborder{
     border-right: 0.2vw solid;
     border-color: #3B3B3B;
@@ -27,8 +17,7 @@ div.box {
   div.div2 {
     
     height: 410px;
-    width: 40%;
-    float: right;
+    width: 100%;
     overflow:auto;
    
  
