@@ -26,7 +26,7 @@
 
     <div>
         <mat-button-toggle-group class=btnBox multiple name="fontStyle" aria-label="Font Style">
-            <mat-button-toggle class="btn" [ngStyle]="{'background-color': getRandomColor()}" value="category._id" *ngFor="let category of categories" (click)="setCategory(category._id)">{{category.name}}</mat-button-toggle>
+            <mat-button-toggle class="btn" value="category._id" *ngFor="let category of categories" (click)="setCategory(category._id)">{{category.name}}</mat-button-toggle>
         </mat-button-toggle-group>
     </div>
 </div>
