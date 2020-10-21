@@ -6,7 +6,8 @@
 </div>
 <div *ngIf="!displayEndScreen && displayButtons">
     <div class="question">
-        <p class="questionNum">Question {{quiz.questionNumber}}:</p> <p>{{quiz.questions[currentQuestion].question}}</p>
+        <p class="questionNum">Question {{quiz.questionNumber}}:</p>
+        <p>{{quiz.questions[currentQuestion].question}}</p>
     </div>
 
 
@@ -71,3 +72,10 @@
 </div>
 
 
+<!-- Power up menu -->
+<div class="powerUps" *ngIf="displayButtons && !displayEndScreen" id="divshow">
+    <p class="powertitle">POWER-UPS</p>
+    <button type="button" class="powerbtn power1" (click)="powerUpActivate('clear')">50/50</button>
+    <button type="button" class="powerbtn power2" (click)="powerUpActivate('handicap')">Handicap</button>
+    <button type="button" class="powerbtn power3" (click)="powerUpActivate('double')">Double</button>
+</div>
