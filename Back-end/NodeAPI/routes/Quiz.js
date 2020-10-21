@@ -75,11 +75,15 @@ router.post("/", async (req, res) => {
 
   //Join Quiz. Patch to quiz endpoint with quizID after slash. This notifies all other participants in quiz.
 router.patch("/:id", getQuiz, async (req, res) => {
+  var response = await fetch('http://127.0.0.1:3000/powerups');
+  json = await response.json();
+
   var participant;
   if (req.body.name != null) {
     participant = new Participant ({
       name: req.body.name,
-      score: 0
+      score: 0,
+      powerups: json
     });
     res.quiz.participants.push(participant);
   }
