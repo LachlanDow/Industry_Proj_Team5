@@ -17,10 +17,10 @@ export class AppComponent {
   displayLeaderboard = false;
   displayJoinPage = false;
   displayHost = false;
-  @Input() sound = new Howl({src: ['https://dmail-my.sharepoint.com/personal/mvrobb_dundee_ac_uk/Documents/Uni/4th%20year/music/MenuMusic.mp3?App=OneDriveWebVideo']});
-  @Input() correct = new Howl({src: ['https://dmail-my.sharepoint.com/personal/mvrobb_dundee_ac_uk/Documents/Uni/4th%20Year/correct.mp3?App=OneDriveWebVideo']});
-  @Input() wrong = new Howl({src: ['https://dmail-my.sharepoint.com/personal/mvrobb_dundee_ac_uk/Documents/Uni/4th%20Year/wrong.mp3?App=OneDriveWebVideo']});
-  @Input() button = new Howl({src: ['https://dmail-my.sharepoint.com/personal/mvrobb_dundee_ac_uk/Documents/Uni/4th%20Year/button.mp3?App=OneDriveWebVideo']});
+  @Input() sound = new Howl({src: ['assets/MenuMusic.mp3']});
+  @Input() correct = new Howl({src: ['assets/correct.mp3']});
+  @Input() wrong = new Howl({src: ['assets/wrong.mp3']});
+  @Input() button = new Howl({src: ['assets/button.mp3']});
 
   classToggled = false;
   highContrast = false;

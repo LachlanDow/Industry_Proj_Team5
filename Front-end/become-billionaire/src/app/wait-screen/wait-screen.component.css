@@ -51,7 +51,8 @@
     text-align: right;
     width:20%;
     font-size: 3vw;
-    border: 3px dashed darkred;
+    border-radius: 1vw;
+    border: 3px dashed #FA1772;
     float:right;
 }
 .waitCounter{

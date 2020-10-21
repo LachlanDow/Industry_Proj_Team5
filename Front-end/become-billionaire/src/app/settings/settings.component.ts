@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppPage } from 'e2e/src/app.po';
 import { AppComponent } from '../app.component';
-import { Howl } from 'howler';
 
 @Component({
   selector: 'app-settings',
