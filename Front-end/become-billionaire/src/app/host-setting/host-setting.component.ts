@@ -23,6 +23,7 @@ export class HostSettingComponent implements OnInit {
   display = false;
   categories= []; 
   selectedCategory = "44ded658a5454fecb4c885c44b8cfd13"; 
+  
 
   constructor(private http: HttpClient, private data: DataService, private quizID: QuizIdService, private appComponent: AppComponent) {
     //NOOP

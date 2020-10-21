@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, ViewChild } from '@angular/core';
+import { Component, OnChanges, OnInit, ViewChild, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { DataService } from '../services/data.service';
 import { QuizIdService } from '../services/quiz-id.service';
@@ -35,6 +35,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
   displayEndScreen = false;
   displayButtons = true;
   timeDifference = 0;
+  @Input() isHost;
 
 
   @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
@@ -84,6 +85,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
       this.resultIcons.push(false)
       this.currentScore = this.currentScore + (this.quiz.timeLimit * 1000);
       this.timeDifference = this.lastAnsweredTime - this.lastQuestionRecievedTime;
+      this.sendScore();
     }
   }
 
@@ -118,6 +120,12 @@ export class QuizPageComponent implements OnInit, OnChanges {
       if (quizPage.quiz.questionNumber == -1) {
         quizPage.displayEndScreen = true;
         quizPage.displayButtons = true;
+
+        if(quizPage.resultIcons.length < quizPage.quiz.questionCount) { 
+          quizPage.resultIcons.push(false)
+          quizPage.currentScore = quizPage.currentScore + (quizPage.quiz.timeLimit * 1000);
+          quizPage.sendScore();
+        }
         return;
       }
 
@@ -128,7 +136,11 @@ export class QuizPageComponent implements OnInit, OnChanges {
           format: "ss"
         };
         quizPage.lastQuestionRecievedTime = new Date().getTime();
-        quizPage.startQuiz();
+        if(quizPage.isHost) { 
+          quizPage.startQuiz();
+        }
+            
+        
         quizPage.quizStarted = true;
         quizPage.countdown.begin();
       }
@@ -137,8 +149,16 @@ export class QuizPageComponent implements OnInit, OnChanges {
         quizPage.lastQuestionNumber = quizPage.quiz.questionNumber
         quizPage.lastQuestionRecievedTime = new Date().getTime();
         quizPage.displayButtons = true;
-        if ((quizPage.resultIcons.length +1) < quizPage.quiz.questionNumber){
+
+        console.log("CS", quizPage.currentScore);
+        console.log("QN", quizPage.quiz.questionNumber);
+
+        
+
+        if ((quizPage.resultIcons.length + 1) < quizPage.quiz.questionNumber){
           quizPage.resultIcons.push(false)
+          quizPage.currentScore = quizPage.currentScore + (quizPage.quiz.timeLimit * 1000);
+          quizPage.sendScore();
         }
       }
 
@@ -150,10 +170,22 @@ export class QuizPageComponent implements OnInit, OnChanges {
    * Sends score to the server
    */
   sendScore() {
+    var correct, incorrect, average;
+    var correctList = this.resultIcons.filter(function(value) {
+      return value == true;
+    });
+
+    correct = correctList.length;
+    incorrect = this.resultIcons.length - correct;
+    average = this.currentScore/this.resultIcons.length;
+
     const url = `http://35.214.82.56:3000/quiz/${this.quizId}/${this.participantID}`;
     const headers = { 'Content-Type': 'application/json' };
     const data = {
-      "score": this.currentScore
+      "score": this.currentScore,
+      "correctAnswers": correct,
+      "incorrectAnswers": incorrect,
+      "averageAnswerTime": average
     };
     this.http.patch(url, JSON.stringify(data), { headers: headers }).subscribe(data => {
     });
