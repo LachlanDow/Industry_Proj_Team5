@@ -158,6 +158,11 @@ h3{
     position: relative;
     z-index: 1;
   }
+  .btnExit:hover{
+    
+    color: #ac104f;
+    
+  }
 
   .headers {
     font-family: "Roboto";
