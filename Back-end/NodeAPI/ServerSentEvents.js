@@ -46,15 +46,18 @@ particpantsInQuiz.forEach(function (participant) {
 
 var timerHandler;
 
-  async function gameLoop(quiz) {
+async function gameLoop(quiz) {
     let updatedQuiz = await Quiz.findById(quiz._id);
     updatedQuiz.questionNumber++;
 
     if (updatedQuiz.questionNumber <= updatedQuiz.questionCount) {
-        for (i = 0; i < updatedQuiz.participants.length-1; i++) {
-            for (j = 0; j < updatedQuiz.participants[0].powerups.length-1; j++) {
-                updatedQuiz.participant[i].powerups[j].active = false;
-                console.log(updatedQuiz.participant[i].powerups);
+        for (i = 0; i < updatedQuiz.participants.length; i++) {
+            for (j = 0; j < updatedQuiz.participants[0].powerups.length; j++) {
+                if(updatedQuiz.participants[i].powerups[j].active) { 
+                    updatedQuiz.participants[i].powerups[j].active = false;
+                    updatedQuiz.participants[i].powerups[j].available = false;
+                }
+                
             }
           }
         
@@ -64,7 +67,6 @@ var timerHandler;
     else {
         clearInterval(timerHandler);
         updatedQuiz.questionNumber = -1;
-        updatedQuiz.participants = updatedQuiz.participants.sort(compare);
         updatedQuiz = await updatedQuiz.save();
         sendEventsToAllInQuiz(updatedQuiz.participants, updatedQuiz);
     }
