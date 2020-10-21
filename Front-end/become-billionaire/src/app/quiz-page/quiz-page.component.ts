@@ -49,7 +49,9 @@ export class QuizPageComponent implements OnInit, OnChanges {
     this.quizID.currentMessage.subscribe(message => this.quizId = message);
     this.participantID = this.hostId;
     this.getEvent();
+    this.appComponent.toggleShow();
   }
+
 
   ngOnChanges(): void {
     //NOOP
