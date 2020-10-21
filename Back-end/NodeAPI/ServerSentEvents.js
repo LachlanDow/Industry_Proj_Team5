@@ -46,27 +46,29 @@ particpantsInQuiz.forEach(function (participant) {
 
 var timerHandler;
 
-async function gameLoop(quiz) { 
-    quiz.questionNumber++;
+  async function gameLoop(quiz) {
+    let updatedQuiz = await Quiz.findById(quiz._id);
+    updatedQuiz.questionNumber++;
 
-    if(quiz.questionNumber <= quiz.questionCount) { 
-        for (i = 0; i < quiz.participants.length-1; i++) {
-            for (j = 0; j < quiz.participants[0].powerups.length-1; j++) {
-                if(participant[i].powerups[j].active) { 
-                    participant[i].powerups[j].active = false;
-                }
+    if (updatedQuiz.questionNumber <= updatedQuiz.questionCount) {
+        for (i = 0; i < updatedQuiz.participants.length-1; i++) {
+            for (j = 0; j < updatedQuiz.participants[0].powerups.length-1; j++) {
+                updatedQuiz.participant[i].powerups[j].active = false;
+                console.log(updatedQuiz.participant[i].powerups);
             }
           }
-        const updatedQuiz = await quiz.save();
-        sendEventsToAllInQuiz(quiz.participants, updatedQuiz);
+        
+        updatedQuiz = await updatedQuiz.save();
+        sendEventsToAllInQuiz(updatedQuiz.participants, updatedQuiz);
     }
-    else { 
+    else {
         clearInterval(timerHandler);
-        quiz.questionNumber = -1;
-        const updatedQuiz = await quiz.save();
-        sendEventsToAllInQuiz(quiz.participants, updatedQuiz);
+        updatedQuiz.questionNumber = -1;
+        updatedQuiz.participants = updatedQuiz.participants.sort(compare);
+        updatedQuiz = await updatedQuiz.save();
+        sendEventsToAllInQuiz(updatedQuiz.participants, updatedQuiz);
     }
-    
+
 }
 
 var gameLoopStart = async function gameLoopStart(quiz) { 
