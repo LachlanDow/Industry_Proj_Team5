@@ -108,7 +108,49 @@ router.patch("/:id", getQuiz, async (req, res) => {
       res.status(400).json({ message: err.message });
     }
   });
-   
+
+//activate participant powerup
+router.patch("/:id/:participantId/powerup", getQuiz, async (req, res) => {
+    //Find the participant in the quiz by their participant ID, and change to the powerup send in request body
+    var part = res.quiz.participants.find(p => p.id == req.params.participantId)
+    part.powerups.forEach(powerup => {
+        if (powerup.name == req.body.powerupName) {
+            powerup.active = true;
+        }
+
+    });
+
+    try {
+        const updatedQuiz = await res.quiz.save();
+        res.json(updatedQuiz);
+        SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
+//make participant powerup available
+router.patch("/:id/:participantId/availablepowerup", getQuiz, async (req, res) => {
+    //Find the participant in the quiz by their participant ID, and change to the powerup send in request body
+    var part = res.quiz.participants.find(p => p.id == req.params.participantId)
+    part.powerups.forEach(powerup => {
+        if (powerup.name == req.body.powerupName) {
+            powerup.available = true;
+        }
+
+    });
+
+    try {
+        const updatedQuiz = await res.quiz.save();
+        res.json(updatedQuiz);
+        SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
+
+
  
 
 //getQuiz middleware - this allows multiple functions above which do the same thing (get quiz by id) to reuse the same code
