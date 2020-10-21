@@ -50,7 +50,9 @@ export class QuizPageComponent implements OnInit, OnChanges {
     this.quizID.currentMessage.subscribe(message => this.quizId = message);
     this.participantID = this.hostId;
     this.getEvent();
+    this.appComponent.toggleShow();
   }
+
 
   ngOnChanges(): void {
     //NOOP
@@ -118,6 +120,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
       quizPage.quiz = JSON.parse(event.data)
       quizPage.questionCount();
       if (quizPage.quiz.questionNumber == -1) {
+        quizPage.appComponent.toggleShow();
         quizPage.displayEndScreen = true;
         quizPage.displayButtons = true;
 

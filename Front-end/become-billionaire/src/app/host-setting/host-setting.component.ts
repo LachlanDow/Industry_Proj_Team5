@@ -31,6 +31,7 @@ export class HostSettingComponent implements OnInit {
   gohome() {
     this.display = true;
     this.appComponent.displayHost = false;
+    
   }
   ngOnInit(): void {
     this.data.currentMessage.subscribe(message => this.hostId = message)
@@ -43,6 +44,7 @@ export class HostSettingComponent implements OnInit {
   createLobby() {
     this.createQuiz();
   }
+  
 
   onInputChange(event: MatSliderChange) {
     this.questionTimeLimit = event.value;
