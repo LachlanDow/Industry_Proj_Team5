@@ -23,4 +23,7 @@ describe('QuizPageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+
 });

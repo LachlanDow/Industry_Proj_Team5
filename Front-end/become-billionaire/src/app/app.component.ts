@@ -15,6 +15,7 @@ export class AppComponent {
   displayLeaderboard = false;
   displayJoinPage = false;
   displayHost = false;
+  debugElement: any;
 
   onPress() {
     this.display = true;

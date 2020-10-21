@@ -18,6 +18,7 @@ export class JoinGameComponent implements OnInit {
    @Input() displayApp = false;
    @Input() displayJoinGameLobby = false;
    participantID;
+   userData: User;
 
   constructor(private http: HttpClient, private data: DataService) {
     // NOOP
@@ -28,7 +29,6 @@ export class JoinGameComponent implements OnInit {
   }
 
   joinGame(username, partyCode) {
-
     console.log(this.displayJoinGameLobby);
     const url = `http://35.214.82.56:3000/quiz/${partyCode.value}`;
     const headers = { 'Content-Type': 'application/json' };

@@ -34,4 +34,16 @@ describe('HostSettingComponent', () => {
     app.gohome();
     expect(app.display).toBeTruthy();
   });
+  it('Initialise Quiz Settings', () => {
+    const fixture = TestBed.createComponent(HostSettingComponent);
+    const app = fixture.componentInstance;
+    app.questionTimeLimit = 10;
+    app.username = "testUsername";
+    app.questionNum = 5;
+    app.selectedCategory = "General"
+    app.createQuiz();
+    app.sendHostId();
+    expect(app.showLobby).toBeTruthy();
+
+  });
 });

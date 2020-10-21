@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http'
 
 
 
+
 describe('JoinGameComponent', () => {
   let component: JoinGameComponent;
   let fixture: ComponentFixture<JoinGameComponent>;
@@ -43,5 +44,13 @@ describe('JoinGameComponent', () => {
     expect(component.displayJoinGameLobby).toBeTruthy();
   });
 
+  it('display app should be true after back button clicked', () =>{
+    component.onPress()
+    expect(component.displayApp).toBeTruthy();
+  });
+  it('display JoinGameLobby should be true after join game is pressed', () =>{
+    component.startGame();
+    expect(component.displayJoinGameLobby).toBeTruthy();
+  });
 
 });
