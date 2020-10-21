@@ -7,6 +7,7 @@ const Category = require("../models/Category");
 const Question = require("../models/Question");
 const Powerup = require("../models/Powerup");
 const SSE = require('../ServerSentEvents');
+const fetch = require('node-fetch');
 const powerupRouter = require("./Powerup.js");
 // Get All quizzes from db
 router.get("/", async (req, res) => {
@@ -22,13 +23,18 @@ router.get("/", async (req, res) => {
 //and selects questions. TODO - move question selection to another function and provide functionality to pick random questions
 //from different categories
 router.post("/", async (req, res) => {
+    var response = await fetch('http://127.0.0.1:3000/powerups');
+    json = await response.json();
+    
     
     const participant = new Participant({
         name: req.body.hostName,
         score: 0,
-        powerups:fetch('/powerups')
+        powerups: json
+
        
     });
+ 
 
     const questionList = await Question.find({ "category._id": String(req.body.categoryId) }).limit(req.body.questionCount);
    
