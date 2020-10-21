@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { JoinGameComponent, User } from './join-game.component';
 import { HttpClientModule } from '@angular/common/http'
+import { __assign } from 'tslib';
 
 
 

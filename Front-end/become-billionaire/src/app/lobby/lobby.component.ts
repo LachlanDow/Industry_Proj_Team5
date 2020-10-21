@@ -11,7 +11,7 @@ import  { HostSettingComponent } from '../host-setting/host-setting.component'
 export class LobbyComponent implements OnInit {
   participantID;
   localParticipants;
-  quizId
+  quizId;
 
   display = false;
 

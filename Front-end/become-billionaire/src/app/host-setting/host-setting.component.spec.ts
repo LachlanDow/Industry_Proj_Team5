@@ -34,7 +34,7 @@ describe('HostSettingComponent', () => {
     app.gohome();
     expect(app.display).toBeTruthy();
   });
-  it('Initialise Quiz Settings', () => {
+  it('Initialise Quiz Settings and display lobby', () => {
     const fixture = TestBed.createComponent(HostSettingComponent);
     const app = fixture.componentInstance;
     app.questionTimeLimit = 10;

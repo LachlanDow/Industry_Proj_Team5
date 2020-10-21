@@ -75,4 +75,5 @@ describe('AppComponent', () => {
     app.onInstructionsPress();
     expect(app.displayInstructions).toBeTruthy();
   });
+  
 });
