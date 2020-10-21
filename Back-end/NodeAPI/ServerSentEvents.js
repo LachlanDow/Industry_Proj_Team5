@@ -11,7 +11,7 @@ const headers = {
 };
 res.writeHead(200, headers);
 const quiz = await Quiz.find({ "participants._id": req.params.participantId });
-console.log(quiz);
+res.connection.setTimeout(0);
 //Adds participants res object to associative array
 try { 
     participantList[req.params.participantId] = res;
