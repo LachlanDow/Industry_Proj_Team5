@@ -50,6 +50,13 @@ async function gameLoop(quiz) {
     quiz.questionNumber++;
 
     if(quiz.questionNumber <= quiz.questionCount) { 
+        for (i = 0; i < quiz.participants.length-1; i++) {
+            for (j = 0; j < quiz.participants[0].powerups.length-1; j++) {
+                if(participant[i].powerups[j].active) { 
+                    participant[i].powerups[j].active = false;
+                }
+            }
+          }
         const updatedQuiz = await quiz.save();
         sendEventsToAllInQuiz(quiz.participants, updatedQuiz);
     }
