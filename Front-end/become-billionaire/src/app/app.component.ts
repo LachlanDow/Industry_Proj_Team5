@@ -17,6 +17,7 @@ export class AppComponent {
   displayLeaderboard = false;
   displayJoinPage = false;
   displayHost = false;
+  isShown: boolean = false ; // hidden by default
   @Input() sound = new Howl({src: ['assets/MenuMusic.mp3']});
   @Input() correct = new Howl({src: ['assets/correct.mp3']});
   @Input() wrong = new Howl({src: ['assets/wrong.mp3']});
@@ -46,6 +47,11 @@ export class AppComponent {
     }
     
   }
+  toggleShow() {
+
+    this.isShown = ! this.isShown;
+    
+    }
   public toggleSFX() {
     if(this.sfx==false)
     {

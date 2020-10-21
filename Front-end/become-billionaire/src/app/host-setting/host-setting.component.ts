@@ -23,6 +23,7 @@ export class HostSettingComponent implements OnInit {
   display = false;
   categories= []; 
   selectedCategory = "44ded658a5454fecb4c885c44b8cfd13"; 
+  
 
   constructor(private http: HttpClient, private data: DataService, private quizID: QuizIdService, private appComponent: AppComponent) {
     //NOOP
@@ -30,6 +31,7 @@ export class HostSettingComponent implements OnInit {
   gohome() {
     this.display = true;
     this.appComponent.displayHost = false;
+    
   }
   ngOnInit(): void {
     this.data.currentMessage.subscribe(message => this.hostId = message)
@@ -42,6 +44,7 @@ export class HostSettingComponent implements OnInit {
   createLobby() {
     this.createQuiz();
   }
+  
 
   onInputChange(event: MatSliderChange) {
     this.questionTimeLimit = event.value;

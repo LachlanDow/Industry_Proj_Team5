@@ -5,19 +5,27 @@
 
 <body class="body"
 [class.toggled]="classToggled" >
-    
-    
-    <p class="title animated bounce">BILLIONAIRE GOLF</p>
-    <div class="options" [class.highcontrast]="highContrast" *ngIf="!displaySettings && !displayInstructions && !displayHost && !displayLeaderboard && !displayJoinPage">
 
+    <!-- Power up menu -->
+    <p class="title">BILLIONAIRE GOLF</p>
+    <div class="powerUps" *ngIf="isShown" id="divshow">
+        <p class="powertitle" >POWER-UPS</p>
+        <button type="button" class="powerbtn power1" >50/50</button>
+        <button type="button" class="powerbtn power2" >Handicap</button>
+        <button type="button" class="powerbtn power3" >Double</button>
+    </div>
 
+    <!-- Main Quiz Menu -->
+    <div class="options" *ngIf="!displaySettings && !displayInstructions && !displayHost && !displayLeaderboard && !displayJoinPage">
+        <button type="button" class="fa fa-certificate fa-10x powerupToggle" (click)="toggleShow()"></button>
         <button type="button" class="btn play top" (click)="onHostPress()">Play!</button>
+       
         <button type="button" class="btn join" (click)="onJoinPress()">Join Game</button>
-
         <button type="button" class="btn leaderboard" (click)="onLeaderboardPress()">Leaderboard</button>
         <button type="button" class="btn instructions" (click)="onInstructionsPress()">Instructions</button>
         <button type=" button " class="btn settings " (click)="onSettingsPress() ">Settings</button>
     </div>
+    
     <div class="options " *ngIf="displayHost ">
         <app-host-setting></app-host-setting>
     </div>
