@@ -12,7 +12,6 @@ var eventsHandler = async function eventsHandler(req, res) {
     };
     res.writeHead(200, headers);
     const quiz = await Quiz.find({ "participants._id": req.params.participantId });
-    console.log(quiz);
     //Adds participants res object to associative array
     try {
         participantList[req.params.participantId] = res;
@@ -20,6 +19,8 @@ var eventsHandler = async function eventsHandler(req, res) {
         console.log(e);
     }
     res.write(`data: ${JSON.stringify(quiz[0])}\n\n`);
+    //stops server from disconnecting to client
+    res.connection.setTimeout(0);
 
     //When client closes connection, update the clients list to remove client
     req.on('close', () => {
