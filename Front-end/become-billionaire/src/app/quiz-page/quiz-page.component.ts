@@ -118,6 +118,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
       quizPage.quiz = JSON.parse(event.data)
       quizPage.questionCount();
       if (quizPage.quiz.questionNumber == -1) {
+        quizPage.appComponent.toggleShow();
         quizPage.displayEndScreen = true;
         quizPage.displayButtons = true;
         return;
