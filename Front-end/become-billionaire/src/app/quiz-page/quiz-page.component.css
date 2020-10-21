@@ -28,6 +28,15 @@
     margin-left: 8%;
     margin-top: 1%;
 }
+.dynamicResult {
+    color: green;
+    text-align: center;
+    font-size: 2vw;
+    font-weight: 900;
+    padding-bottom: 1vw;
+    margin-top: 8%;
+    margin-left: 8%;
+}
 
 .btn {
     font-family: "Roboto";
@@ -50,14 +59,14 @@
 
 .firstChoice {
     background-color: #0480fc;
-    margin-top: 5%;
+    margin-top: 3%;
     margin-left: 10%;
     margin-right: 0%;
 }
 
 .secondChoice {
     background-color: #fa105f;
-    margin-top: 5%;
+    margin-top: 3%;
     margin-left: 10%;
     margin-right: 0%;
 }
@@ -95,6 +104,7 @@
 .choices {
     height: auto;
     width: auto;
+    
 }
 
 .questionCount {
@@ -136,26 +146,12 @@
     line-height: normal;
     color: #CEBC6F;
     float:right;
-    margin-right: 5%;
+    margin-right: 2%;
     border: 3px solid #CEBC6F;
     border-radius: 50%;
 }
 
 
-@media only screen and (max-width: 950px) {
-    .btn {
-        font-family: "Roboto";
-        color: #191919;
-        width: 70%;
-        height: 15%;
-        font-weight: bold;
-        border-radius: 3vw;
-        border-color: black;
-        font-size: 7vw;
-        margin-left: 15%;
-        ;
-    }
-}
 
 .border {
     margin: auto;
@@ -170,7 +166,7 @@
 }
 
 .dynamicResult {
-    color: green;
+    color: rgb(255, 255, 255);
     text-align: center;
     font-size: 2vw;
     font-weight: 900;
@@ -186,7 +182,7 @@
 }
 
 .score {
-    color: gold;
+    color: #CEBC6F;
     float: right;
     text-align: right;
     width: 20%;
@@ -211,7 +207,7 @@
     float: left;
     width: 100%;
     padding-top: 1vw;
-    ;
+    
 }
 
 .infobox {
@@ -219,7 +215,8 @@
     text-align: left;
     width: 20%;
     font-size: 1.5vw;
-    border: 3px dashed darkred;
+    border-radius: 1vw;
+    border: 3px dashed #FA1772;
     float: right;
 }
 
@@ -230,7 +227,7 @@
     font-size: 2vw;
     padding-top: 1vw;
     font-weight: 900;
-    color: gold;
+    color: #CEBC6F;
 }
 
 .tick {
@@ -239,4 +236,19 @@
     padding-top: 1%;
     padding-left: 2%;
     font-size: 30px;
+}
+
+@media only screen and (max-width: 950px) {
+    .btn {
+        font-family: "Roboto";
+        color: #191919;
+        width: 70%;
+        height: 15%;
+        font-weight: bold;
+        border-radius: 3vw;
+        border-color: black;
+        font-size: 7vw;
+        margin-left: 15%;
+        ;
+    }
 }
