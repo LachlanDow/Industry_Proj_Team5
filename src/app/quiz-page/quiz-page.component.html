@@ -1,0 +1,83 @@
+<html lang="en">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Power up menu -->
+<div class="powerUps" *ngIf="displayButtons && !displayEndScreen" id="divshow">
+    <p class="powertitle">POWER-UPS</p>
+    <button type="button" class="powerbtn power1" *ngIf="fiftyPowerup" (click)="powerUpActivate('clear')">50/50</button>
+    <button type="button" class="powerbtn power2" *ngIf="handicapPowerup" (click)="powerUpActivate('handicap')">Handicap</button>
+    <button type="button" class="powerbtn power3" *ngIf="doublePowerup" (click)="powerUpActivate('double')">Double</button>
+</div>
+
+<div class="timer" *ngIf="!displayEndScreen">
+
+    <countdown #cd [config]="config" (event)="handleEvent($event)"></countdown>
+</div>
+<div *ngIf="!displayEndScreen && displayButtons">
+    <div class="question">
+        <p class="questionNum">Question {{quiz.questionNumber}}:</p> <p class="question">{{quiz.questions[currentQuestion].question}}</p>
+    </div>
+
+
+    <div class="choices">
+        <button type="button" class="btn firstChoice" *ngIf="questionsToShowList[0]" (click)="answerCheck(1)">{{quiz.questions[currentQuestion].choices[0]}}</button>
+        <button type="button" class="btn secondChoice" *ngIf="questionsToShowList[1]" (click)="answerCheck(2)">{{quiz.questions[currentQuestion].choices[1]}}</button>
+        <button type="button" class="btn thirdChoice" *ngIf="questionsToShowList[2]" (click)="answerCheck(3)">{{quiz.questions[currentQuestion].choices[2]}}</button>
+        <button type="button" class="btn fourthChoice" *ngIf="questionsToShowList[3]" (click)="answerCheck(4)">{{quiz.questions[currentQuestion].choices[3]}}</button>
+    </div>
+
+
+    <div>
+        <span *ngFor="let icon of resultIcons">
+            <i *ngIf="icon == true">
+                <i class="fa fa-check-circle tick"></i>
+            </i>
+            <i *ngIf="icon == false">
+                <i class="fa fa-times-circle cross"></i>
+            </i>
+        </span>
+    </div>
+
+
+</div>
+
+<div *ngIf="displayEndScreen">
+    <app-end-screen></app-end-screen>
+</div>
+
+
+<div *ngIf="!displayButtons">
+
+    <div class="result">
+        <div [class.toggled]="classToggled" class="dynamicResult">{{IsitCorrect}}</div>
+      
+
+
+        <div class="border">
+            <div class="scoring">
+                <div class="text">
+                    Current Score
+                </div>
+                <div class="score">
+                    {{currentScore}}
+                </div>
+            </div>
+
+            <div class="scoreBar"></div>
+            <div class="extraInfo">
+                <div class="text">Response Time</div>
+                <div class="infobox">{{timeDifference}}ms</div>
+            </div>
+
+            <div class="extraInfo">
+                <div class="text">Position</div>
+                <div class="infobox">{{currentPosition}}</div>
+            </div>
+            <div class="waitCounter">
+                PLEASE WAIT
+                <br><br>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,34 @@
+<html lang="en">
+<div class="instructions" *ngIf="!clicked_back">
+
+    <button type="button" class="fa fa-arrow-circle-left fa-2x btnExit" (click)="onClickBack()"></button>
+
+    <h1 class="ins_title">Instructions</h1>
+    <div class="box">
+        <div class="div1">
+            <button type="button" class="btnChange" (click)="changeTextStart()">Starting a Game</button>
+            <button type="button" class="btnChange2"(click)="changeTextJoin()">Joining a Game</button>
+            <button type="button" class="btnChange"(click)="changeTextHow()">How to Play</button>
+            <button type="button" class="btnChange"(click)="changeTextScore()">Scoring</button>
+            <button type="button" class="btnChange2"(click)="changeTextPower()">Powerups</button>
+            <button type="button" class="btnChange2"(click)="changeTextSettings()">Settings</button>
+        </div>
+        <div class="div2">
+
+            <div class="frame">
+                <p class="textmain2" id="mainText">
+                    Press one of the buttons to view the instructions.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    
+    <div class="test" *ngIf="clicked_back">
+        <app-landing-page></app-landing-page>
+    </div>
+
+
+</div>
+</html>
