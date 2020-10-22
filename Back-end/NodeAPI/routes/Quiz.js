@@ -52,10 +52,11 @@ router.post("/", async (req, res) => {
         averageAnswerTime: 0,
         powerups: json
     });
- 
-
-    const questionList = await Question.find({ "category._id": String(req.body.categoryId) }).limit(req.body.questionCount);
-
+    var categoryquestion = await Question.find({ "category._id": String(req.body.categoryId) });
+    shuffleArray(categoryquestion);
+    
+    var questionList = categoryquestion.slice(0, req.body.questionCount);
+    
       const quizToCreate = new Quiz({
           _id: CryptPin(),
           participants: [participant],
@@ -259,6 +260,16 @@ async function getQuiz(req, res, next) {
   }
   res.quiz = quiz;
   next();
+}
+
+
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
 }
 
 module.exports = router;

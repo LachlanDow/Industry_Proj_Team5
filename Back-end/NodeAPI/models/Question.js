@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Category = require("./Category");
+const random = require('mongoose-simple-random');
 const questionSchema = new Schema({
     question: {
         type: String,
@@ -20,5 +21,6 @@ answer: {
      validate: v => Array.isArray(v) && v.length > 0,
  }
 });
+questionSchema.plugin(random);
 const Question = mongoose.model("Question", questionSchema);
 module.exports = Question;
