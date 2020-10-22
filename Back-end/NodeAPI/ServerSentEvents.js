@@ -65,7 +65,6 @@ var sendEventsToAllInQuiz = function sendEventsToAllInQuiz(particpantsInQuiz, ev
     });
 }
 
-var timerHandler;
 
 async function gameLoop(quiz) {
     let updatedQuiz = await Quiz.findById(quiz._id);
@@ -85,7 +84,7 @@ async function gameLoop(quiz) {
         sendEventsToAllInQuiz(updatedQuiz.participants, updatedQuiz);
     }
     else {
-        clearInterval(timerHandler);
+        clearInterval(quizTimerHandlers[quiz._id]);
         updatedQuiz.questionNumber = -1;
         updatedQuiz.participants = updatedQuiz.participants.sort(compare);
         updatedQuiz = await updatedQuiz.save();
@@ -97,7 +96,8 @@ async function gameLoop(quiz) {
 
 var gameLoopStart = async function gameLoopStart(quiz) {
     quiz.questionNumber++;
-    timerHandler = setInterval(gameLoop, quiz.timeLimit * 1000, quiz);
+    let timerHandler = setInterval(gameLoop, quiz.timeLimit * 1000, quiz);
+    quizTimerHandlers[quiz._id] = timerHandler;
 }
 
 async function updateLeaderboard(quizParticipants) {
@@ -127,6 +127,7 @@ var compare = function (a, b) {
 //Associative array to store participant. Works like a hash table or dictionary data structure
 //Participant IDs are used as keys, and res objects are values. Allows for quick look up of participant res object needed for SSE.
 var participantList = {}
+var quizTimerHandlers = {}
 
 
 //Exports methods so they are usable by other files

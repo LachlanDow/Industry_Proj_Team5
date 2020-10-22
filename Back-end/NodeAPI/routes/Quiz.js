@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Quiz = require("../models/Quiz");
-const CryptPin  = require("../generateID");
+const CryptPin = require("../generateID");
 const Participant = require("../models/Participant");
 const Category = require("../models/Category");
 const Question = require("../models/Question");
@@ -41,39 +41,39 @@ router.post("/", async (req, res) => {
       console.log(err);
     }
   }
-    var response = await fetch('http://127.0.0.1:3000/powerups');
-    json = await response.json();
-    
-    const participant = new Participant({
-        name: req.body.hostName,
-        score: 0,
-        correctAnswers: 0,
-        incorrectAnswers: 0,
-        averageAnswerTime: 0,
-        powerups: json
-    });
-    var categoryquestion = await Question.find({ "category._id": String(req.body.categoryId) });
-    shuffleArray(categoryquestion);
-    
-    var questionList = categoryquestion.slice(0, req.body.questionCount);
-    
-      const quizToCreate = new Quiz({
-          _id: CryptPin(),
-          participants: [participant],
-          categoryId: req.body.categoryId,
-      timeLimit: req.body.timeLimit,
-      questionCount: req.body.questionCount,
-      questions: questionList,
-      questionNumber: 0
-    });
+  var response = await fetch('http://127.0.0.1:3000/powerups');
+  json = await response.json();
 
-    try {
-      const newQuiz = await quizToCreate.save();
-      res.status(201).json({ newQuiz });
-    } catch (err) {
-      res.status(400).json({ message: err.message });
-    }
-  
+  const participant = new Participant({
+    name: req.body.hostName,
+    score: 0,
+    correctAnswers: 0,
+    incorrectAnswers: 0,
+    averageAnswerTime: 0,
+    powerups: json
+  });
+  var categoryquestion = await Question.find({ "category._id": String(req.body.categoryId) });
+  shuffleArray(categoryquestion);
+
+  var questionList = categoryquestion.slice(0, req.body.questionCount);
+
+  const quizToCreate = new Quiz({
+    _id: CryptPin(),
+    participants: [participant],
+    categoryId: req.body.categoryId,
+    timeLimit: req.body.timeLimit,
+    questionCount: req.body.questionCount,
+    questions: questionList,
+    questionNumber: 0
+  });
+
+  try {
+    const newQuiz = await quizToCreate.save();
+    res.status(201).json({ newQuiz });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+
 });
 
 
@@ -96,7 +96,7 @@ router.post("/:id/start", getQuiz, async (req, res) => {
 
 //Join Quiz. Patch to quiz endpoint with quizID after slash. This notifies all other participants in quiz.
 router.patch("/:id", getQuiz, async (req, res) => {
-  var response = await fetch('http://127.0.0.1y:3000/powerups');
+  var response = await fetch('http://127.0.0.1:3000/powerups');
   json = await response.json();
 
   var participant;
@@ -126,19 +126,19 @@ router.patch("/:id/:participantId", getQuiz, async (req, res) => {
   if (participant != null) {
     //If parameter provided, set corresponding property of participant
     if (req.body.score != null) {
-   var roundscore = req.body.score;
+      var roundscore = req.body.score;
       //implement handicap
       if (participant.powerups[1].active == false) {
-         
-              for (var part = 0; part < res.quiz.participants.length; ++part) {
-                  if (res.quiz.participants[part].powerups[1].active == true) {
-                      roundscore = (roundscore * 2)
-                      break;
 
-                  }
-              }
+        for (var part = 0; part < res.quiz.participants.length; ++part) {
+          if (res.quiz.participants[part].powerups[1].active == true) {
+            roundscore = (roundscore * 2)
+            break;
+
+          }
+        }
       }
-    
+
       participant.score = participant.score + roundscore;
     }
     if (req.body.correctAnswers != null) {
@@ -150,7 +150,36 @@ router.patch("/:id/:participantId", getQuiz, async (req, res) => {
     if (req.body.averageAnswerTime != null) {
       participant.averageAnswerTime = req.body.averageAnswerTime;
     }
-     
+
+    try {
+      res.quiz.participants = res.quiz.participants.sort(compare);
+      const updatedQuiz = await res.quiz.save();
+      res.json(updatedQuiz);
+      SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
+    } catch (err) {
+      res.status(400).json({ message: err.message });
+    }
+  }
+
+});
+
+var compare = function (a, b) {
+  return parseInt(a.score) - parseInt(b.score);
+}
+
+
+//activate participant powerup
+router.patch("/:id/:participantId/powerup", getQuiz, async (req, res) => {
+  //Find the participant in the quiz by their participant ID, and change to the powerup send in request body
+  var part = res.quiz.participants.find(p => p.id == req.params.participantId)
+  if (part != null) {
+    part.powerups.forEach(powerup => {
+      if (powerup.name == req.body.powerupName) {
+        powerup.active = true;
+      }
+
+    });
+
     try {
       const updatedQuiz = await res.quiz.save();
       res.json(updatedQuiz);
@@ -162,90 +191,80 @@ router.patch("/:id/:participantId", getQuiz, async (req, res) => {
 
 });
 
-//activate participant powerup
-router.patch("/:id/:participantId/powerup", getQuiz, async (req, res) => {
-    //Find the participant in the quiz by their participant ID, and change to the powerup send in request body
-    var part = res.quiz.participants.find(p => p.id == req.params.participantId)
-    part.powerups.forEach(powerup => {
-        if (powerup.name == req.body.powerupName) {
-            powerup.active = true;
-        }
-
-    });
-
-    try {
-        const updatedQuiz = await res.quiz.save();
-        res.json(updatedQuiz);
-        SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
-    } catch (err) {
-        res.status(400).json({ message: err.message });
-    }
-});
-
 
 
 //deactivate participant powerup
 router.patch("/:id/:participantId/removepowerup", getQuiz, async (req, res) => {
-    //Find the participant in the quiz by their participant ID, and change to the powerup send in request body
-    var part = res.quiz.participants.find(p => p.id == req.params.participantId)
+  //Find the participant in the quiz by their participant ID, and change to the powerup send in request body
+  var part = res.quiz.participants.find(p => p.id == req.params.participantId)
+  if (part != null) {
     part.powerups.forEach(powerup => {
-        if (powerup.name == req.body.powerupName) {
-            powerup.active = false;
-        }
+      if (powerup.name == req.body.powerupName) {
+        powerup.active = false;
+      }
 
     });
 
     try {
-        const updatedQuiz = await res.quiz.save();
-        res.json(updatedQuiz);
-        SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
+      const updatedQuiz = await res.quiz.save();
+      res.json(updatedQuiz);
+      SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
     } catch (err) {
-        res.status(400).json({ message: err.message });
+      res.status(400).json({ message: err.message });
     }
+  }
+
 });
 
 
 //make participant powerup available
 router.patch("/:id/:participantId/availablepowerup", getQuiz, async (req, res) => {
-    //Find the participant in the quiz by their participant ID, and change to the powerup send in request body
-    var part = res.quiz.participants.find(p => p.id == req.params.participantId)
+  var part = res.quiz.participants.find(p => p.id == req.params.participantId)
+  if (part != null) {
     part.powerups.forEach(powerup => {
-        if (powerup.name == req.body.powerupName) {
-            powerup.available = true;
-        }
+      if (powerup.name == req.body.powerupName) {
+        powerup.available = true;
+      }
 
     });
 
     try {
-        const updatedQuiz = await res.quiz.save();
-        res.json(updatedQuiz);
-        SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
+      const updatedQuiz = await res.quiz.save();
+      res.json(updatedQuiz);
+      SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
     } catch (err) {
-        res.status(400).json({ message: err.message });
+      res.status(400).json({ message: err.message });
     }
+  }
+  //Find the participant in the quiz by their participant ID, and change to the powerup send in request body
+
+
 });
 
 //make participant powerup unavailable
 router.patch("/:id/:participantId/unavailablepowerup", getQuiz, async (req, res) => {
-    //Find the participant in the quiz by their participant ID, and change to the powerup send in request body
-    var part = res.quiz.participants.find(p => p.id == req.params.participantId)
+  //Find the participant in the quiz by their participant ID, and change to the powerup send in request body
+  var part = res.quiz.participants.find(p => p.id == req.params.participantId)
+  if (part != null) {
     part.powerups.forEach(powerup => {
-        if (powerup.name == req.body.powerupName) {
-            powerup.available = false;
-        }
+      if (powerup.name == req.body.powerupName) {
+        powerup.available = false;
+      }
 
     });
 
     try {
-        const updatedQuiz = await res.quiz.save();
-        res.json(updatedQuiz);
-        SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
+      const updatedQuiz = await res.quiz.save();
+      res.json(updatedQuiz);
+      SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
     } catch (err) {
-        res.status(400).json({ message: err.message });
+      res.status(400).json({ message: err.message });
     }
+  }
+
 });
 
- 
+
 
 //getQuiz middleware - this allows multiple functions above which do the same thing (get quiz by id) to reuse the same code
 async function getQuiz(req, res, next) {
@@ -264,12 +283,12 @@ async function getQuiz(req, res, next) {
 
 
 function shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
+  for (var i = array.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
 }
 
 module.exports = router;

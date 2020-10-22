@@ -1,10 +1,13 @@
 <script>
     //Example front end code, showing how to create event source from api and add an eventListener to this event source.
     //Replace the participant ID below with users participant ID
-    var serverEvents = new EventSource('http://localhost:3000/stream/5f896dfad284e80808a13f49');
+    var serverEvents = new EventSource('http:///localhost:3000/stream/5f91c8ed26b32d35d8d9fd92');
     serverEvents.addEventListener('message', function(event){
         var quiz = JSON.parse(event.data);
-        console.log(quiz);
+        var today = new Date();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        
+        console.log(`Event recieved at ${time}`, quiz.questionNumber);
     });
 
 
