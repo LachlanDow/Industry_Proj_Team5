@@ -6,6 +6,7 @@ import { CountdownComponent, CountdownConfig } from 'ngx-countdown';
 import { AppComponent } from '../app.component';
 import { getCurrencySymbol } from '@angular/common';
 import { count } from 'console';
+import { PassThrough } from 'stream';
 
 
 @Component({
@@ -48,6 +49,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
   powerupListIndex = 0;
   fiftyPowerupActivated = false;
   questionsToShowList = [];
+  classToggled = false;
 
 
   @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
@@ -76,6 +78,15 @@ export class QuizPageComponent implements OnInit, OnChanges {
     this.appComponent.wrongSound();
   }
 
+  public toggleField() {
+    this.classToggled = !this.classToggled;  
+  }
+  public toggleCorrect() {
+    if(this.classToggled == true){
+      this.classToggled = false;
+    }
+  }
+
   /**
    * Check if the clicked answer is the correct one 
    *  - if it's correct it calculates the score and sends it the server
@@ -85,6 +96,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
     this.displayButtons = false;
     this.lastAnsweredTime = new Date().getTime();
     if (e == this.correctAnswerIndex) {
+      this.toggleCorrect();
       this.IsitCorrect = "Correct Answer! Well Done";
       this.playCorrect();
       this.resultIcons.push(true)
@@ -92,6 +104,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
       this.sendScore();
     }
     else {
+      this.toggleField();
       this.IsitCorrect = "Wrong Answer! Good luck next time";
       this.playWrong();
       this.resultIcons.push(false)

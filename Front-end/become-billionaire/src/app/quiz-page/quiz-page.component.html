@@ -1,5 +1,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<!-- Power up menu -->
+<div class="powerUps" *ngIf="displayButtons && !displayEndScreen" id="divshow">
+    <p class="powertitle">POWER-UPS</p>
+    <button type="button" class="powerbtn power1" *ngIf="fiftyPowerup" (click)="powerUpActivate('clear')">50/50</button>
+    <button type="button" class="powerbtn power2" *ngIf="handicapPowerup" (click)="powerUpActivate('handicap')">Handicap</button>
+    <button type="button" class="powerbtn power3" *ngIf="doublePowerup" (click)="powerUpActivate('double')">Double</button>
+</div>
+
 <div class="timer" *ngIf="!displayEndScreen">
 
     <countdown #cd [config]="config" (event)="handleEvent($event)"></countdown>
@@ -40,7 +48,9 @@
 <div *ngIf="!displayButtons">
 
     <div class="result">
-        <div [class.toggled]="changeColor" class="dynamicResult">{{IsitCorrect}}</div>
+        <div [class.toggled]="classToggled" class="dynamicResult">{{IsitCorrect}}</div>
+      
+
 
         <div class="border">
             <div class="scoring">
@@ -71,10 +81,3 @@
 </div>
 
 
-<!-- Power up menu -->
-<div class="powerUps" *ngIf="displayButtons && !displayEndScreen" id="divshow">
-    <p class="powertitle">POWER-UPS</p>
-    <button type="button" class="powerbtn power1" *ngIf="fiftyPowerup" (click)="powerUpActivate('clear')">50/50</button>
-    <button type="button" class="powerbtn power2" *ngIf="handicapPowerup" (click)="powerUpActivate('handicap')">Handicap</button>
-    <button type="button" class="powerbtn power3" *ngIf="doublePowerup" (click)="powerUpActivate('double')">Double</button>
-</div>
