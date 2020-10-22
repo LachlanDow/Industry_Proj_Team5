@@ -36,7 +36,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
   displayEndScreen = false;
   displayButtons = true;
   timeDifference = 0;
-  
+  currentScore = 0;
   @Input() isHost;
   lastPowerUpQNumber;
   powerUpRandomNumber = [] as any;
@@ -48,6 +48,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
   powerupListIndex = 0;
   fiftyPowerupActivated = false;
   questionsToShowList = [];
+  currentPosition;
 
 
   @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
@@ -176,8 +177,6 @@ export class QuizPageComponent implements OnInit, OnChanges {
           quizPage.sendScore();
         }
 
-
-
       }
 
     });
@@ -192,9 +191,11 @@ export class QuizPageComponent implements OnInit, OnChanges {
       return value == true;
     });
 
+    this.currentScore = this.currentScore + this.timeDifference;
+
     correct = correctList.length;
     incorrect = this.resultIcons.length - correct;
-    average = this.timeDifference / this.resultIcons.length;
+    average = this.currentScore / this.resultIcons.length;
     if (this.doublePowerupActivated) {
       if (this.IsitCorrect == "Correct Answer! Well Done") {
         this.timeDifference = this.timeDifference / 2;
@@ -213,7 +214,14 @@ export class QuizPageComponent implements OnInit, OnChanges {
       "incorrectAnswers": incorrect,
       "averageAnswerTime": average
     };
-    this.http.patch(url, JSON.stringify(data), { headers: headers }).subscribe(data => {
+    this.http.patch<any>(url, JSON.stringify(data), { headers: headers }).subscribe(response => {
+      let participants = response.participants;
+      for(let i = 0; i < participants.length; i++) {
+        if(participants[i]._id = this.participantID) { 
+          this.currentPosition = i+1;
+        } 
+        
+      }
     });
   }
 
