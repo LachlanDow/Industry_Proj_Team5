@@ -11,7 +11,7 @@ const headers = {
 };
 res.writeHead(200, headers);
 const quiz = await Quiz.find({ "participants._id": req.params.participantId });
-console.log(quiz);
+res.connection.setTimeout(0);
 //Adds participants res object to associative array
 try { 
     participantList[req.params.participantId] = res;
@@ -46,20 +46,31 @@ particpantsInQuiz.forEach(function (participant) {
 
 var timerHandler;
 
-async function gameLoop(quiz) { 
-    quiz.questionNumber++;
+async function gameLoop(quiz) {
+    let updatedQuiz = await Quiz.findById(quiz._id);
+    updatedQuiz.questionNumber++;
 
-    if(quiz.questionNumber <= quiz.questionCount) { 
-        const updatedQuiz = await quiz.save();
-        sendEventsToAllInQuiz(quiz.participants, updatedQuiz);
+    if (updatedQuiz.questionNumber <= updatedQuiz.questionCount) {
+        for (i = 0; i < updatedQuiz.participants.length; i++) {
+            for (j = 0; j < updatedQuiz.participants[0].powerups.length; j++) {
+                if(updatedQuiz.participants[i].powerups[j].active) { 
+                    updatedQuiz.participants[i].powerups[j].active = false;
+                    updatedQuiz.participants[i].powerups[j].available = false;
+                }
+                
+            }
+          }
+        
+        updatedQuiz = await updatedQuiz.save();
+        sendEventsToAllInQuiz(updatedQuiz.participants, updatedQuiz);
     }
-    else { 
+    else {
         clearInterval(timerHandler);
-        quiz.questionNumber = -1;
-        const updatedQuiz = await quiz.save();
-        sendEventsToAllInQuiz(quiz.participants, updatedQuiz);
+        updatedQuiz.questionNumber = -1;
+        updatedQuiz = await updatedQuiz.save();
+        sendEventsToAllInQuiz(updatedQuiz.participants, updatedQuiz);
     }
-    
+
 }
 
 var gameLoopStart = async function gameLoopStart(quiz) { 
