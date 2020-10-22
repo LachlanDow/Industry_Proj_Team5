@@ -4,6 +4,7 @@ import { DataService } from '../services/data.service';
 import { QuizIdService } from '../services/quiz-id.service';
 import { CountdownComponent, CountdownConfig } from 'ngx-countdown';
 import { AppComponent } from '../app.component';
+import { count } from 'console';
 
 
 @Component({
@@ -36,13 +37,14 @@ export class QuizPageComponent implements OnInit, OnChanges {
   timeDifference = 0;
   @Input() isHost;
   lastPowerUpQNumber;
-  powerUpRandomNumber = [] as  any;
-  handicapPowerup =false;
-  doublePowerup=false;
-  fiftyPowerup=false;
-  powerupList = ["handicap" , "clear", "double" ];
+  powerUpRandomNumber = [] as any;
+  handicapPowerup = false;
+  doublePowerup = false;
+  fiftyPowerup = false;
+  powerupList = ["handicap", "clear", "double"];
   powerupListIndex = 0;
-  fiftyPowerupActivated=false;
+  fiftyPowerupActivated = false;
+  questionsToShowList = [];
 
 
   @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
@@ -58,7 +60,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
     this.participantID = this.hostId;
     this.getEvent();
     this.appComponent.toggleShow();
-    
+
   }
 
   ngOnChanges(): void {
@@ -78,7 +80,6 @@ export class QuizPageComponent implements OnInit, OnChanges {
    */
   answerCheck(e: any) {
     this.displayButtons = false;
-    this.getCorrectAnswerIndex();
     this.lastAnsweredTime = new Date().getTime();
     if (e == this.correctAnswerIndex) {
       this.IsitCorrect = "Correct Answer! Well Done";
@@ -150,15 +151,17 @@ export class QuizPageComponent implements OnInit, OnChanges {
 
         quizPage.quizStarted = true;
         quizPage.countdown.begin();
+        quizPage.questionsToShowList = [true, true, true, true];
       }
       else if (quizPage.lastQuestionNumber != quizPage.quiz.questionNumber) {
+        quizPage.getCorrectAnswerIndex();
         console.log("random number", quizPage.powerUpRandomNumber);
-        for (let i = 0; i < quizPage.powerUpRandomNumber.length; i++ ){
-          if (quizPage.powerUpRandomNumber[i] == quizPage.quiz.questionNumber){
-          quizPage.powerUpAvailable();
-        }
-          
+        for (let i = 0; i < quizPage.powerUpRandomNumber.length; i++) {
+          if (quizPage.powerUpRandomNumber[i] == quizPage.quiz.questionNumber) {
+            quizPage.powerUpAvailable();
+          }
         };
+        quizPage.questionsToShowList = [true, true, true, true];
         quizPage.countdown.restart();
         quizPage.lastQuestionNumber = quizPage.quiz.questionNumber
         quizPage.lastQuestionRecievedTime = new Date().getTime();
@@ -169,8 +172,10 @@ export class QuizPageComponent implements OnInit, OnChanges {
           quizPage.timeDifference = (quizPage.quiz.timeLimit * 1000);
           quizPage.sendScore();
         }
-      }
 
+     
+
+      }
 
     });
   };
@@ -226,11 +231,11 @@ export class QuizPageComponent implements OnInit, OnChanges {
     this.http.patch(url, JSON.stringify(data), { headers: headers }).subscribe(data => {
       console.log("powerup patch", data);
     });
-    if (this.powerupList[this.powerupListIndex] == "clear"){
+    if (this.powerupList[this.powerupListIndex] == "clear") {
       this.fiftyPowerup = true;
     }
-    else if (this.powerupList[this.powerupListIndex] == "handicap"){
-      this.handicapPowerup == true;
+    else if (this.powerupList[this.powerupListIndex] == "handicap") {
+      this.handicapPowerup = true;
     }
     else if (this.powerupList[this.powerupListIndex] == "double") {
       this.doublePowerup = true;
@@ -240,17 +245,16 @@ export class QuizPageComponent implements OnInit, OnChanges {
 
   //activates power up
   powerUpActivate(powerup: string) {
-    if (powerup == "clear"){
+    if (powerup == "clear") {
       this.fiftyPowerup = false;
-      this.fiftyPowerupActivated = true;
+      this.activateFiftyPowerup();
     }
-    else if (powerup == "handicap"){
-      this.handicapPowerup == false;
+    else if (powerup == "handicap") {
+      this.handicapPowerup = false;
     }
     else if (powerup == "double") {
       this.doublePowerup = false;
     };
-    console.log("name of pwerup",powerup)
     this.lastPowerUpQNumber = this.quiz.questionNumber;
     const url = `http://35.214.82.56:3000/quiz/${this.quizId}/${this.participantID}/powerup`;
     const headers = { 'Content-Type': 'application/json' };
@@ -264,13 +268,25 @@ export class QuizPageComponent implements OnInit, OnChanges {
 
   //generated array of random numbers to activate power up at random times 
   randomNumber() {
-    for ( let i = 0; i<3; i++){ 
-    this.powerUpRandomNumber.push(Math.floor(Math.random() * this.quiz.questionCount) + 1);
+    for (let i = 0; i < 3; i++) {
+      this.powerUpRandomNumber.push(Math.floor(Math.random() * this.quiz.questionCount) + 1);
     }
   }
 
   activateFiftyPowerup() {
-    // if (){}
+    let counter = 0; 
+    
+    for(let i = 0; i < this.questionsToShowList.length; i++) { 
+      console.log(this.correctAnswerIndex);
+      if(i != (this.correctAnswerIndex -1)) { 
+        console.log(this.questionsToShowList);
+        this.questionsToShowList[i] = false;
+        counter++;
+      }
+      if(counter == 2) { 
+        break;
+      }
+    }
 
   }
 

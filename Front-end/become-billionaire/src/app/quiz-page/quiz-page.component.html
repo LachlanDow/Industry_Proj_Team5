@@ -12,10 +12,10 @@
 
 
     <div class="choices">
-        <button type="button" class="btn firstChoice" (click)="answerCheck(1)">{{quiz.questions[currentQuestion].choices[0]}}</button>
-        <button type="button" class="btn secondChoice" (click)="answerCheck(2)">{{quiz.questions[currentQuestion].choices[1]}}</button>
-        <button type="button" class="btn thirdChoice" (click)="answerCheck(3)">{{quiz.questions[currentQuestion].choices[2]}}</button>
-        <button type="button" class="btn fourthChoice" (click)="answerCheck(4)">{{quiz.questions[currentQuestion].choices[3]}}</button>
+        <button type="button" class="btn firstChoice" *ngIf="questionsToShowList[0]" (click)="answerCheck(1)">{{quiz.questions[currentQuestion].choices[0]}}</button>
+        <button type="button" class="btn secondChoice" *ngIf="questionsToShowList[1]" (click)="answerCheck(2)">{{quiz.questions[currentQuestion].choices[1]}}</button>
+        <button type="button" class="btn thirdChoice" *ngIf="questionsToShowList[2]" (click)="answerCheck(3)">{{quiz.questions[currentQuestion].choices[2]}}</button>
+        <button type="button" class="btn fourthChoice" *ngIf="questionsToShowList[3]" (click)="answerCheck(4)">{{quiz.questions[currentQuestion].choices[3]}}</button>
     </div>
 
 
@@ -75,7 +75,7 @@
 <!-- Power up menu -->
 <div class="powerUps" *ngIf="displayButtons && !displayEndScreen" id="divshow">
     <p class="powertitle">POWER-UPS</p>
-    <button type="button" class="powerbtn power1" (click)="powerUpActivate('clear')">50/50</button>
-    <button type="button" class="powerbtn power2" (click)="powerUpActivate('handicap')">Handicap</button>
-    <button type="button" class="powerbtn power3" (click)="powerUpActivate('double')">Double</button>
+    <button type="button" class="powerbtn power1" *ngIf="fiftyPowerup" (click)="powerUpActivate('clear')">50/50</button>
+    <button type="button" class="powerbtn power2" *ngIf="handicapPowerup" (click)="powerUpActivate('handicap')">Handicap</button>
+    <button type="button" class="powerbtn power3" *ngIf="doublePowerup" (click)="powerUpActivate('double')">Double</button>
 </div>
