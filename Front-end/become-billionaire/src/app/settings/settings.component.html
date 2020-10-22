@@ -1,3 +1,10 @@
+<html lang="en">
+
+<div id="parent" style="width: 30%; float:right;">
+    <button type="button" class="fa fa-times-circle fa-2x profileIcon btnExit" tabindex="0" (click)="onPress()"></button>
+    <i class="fa fa-cogs fa-5x big-icon"></i>
+</div><!--PARENT DIV-->
+
 <div id="parent" style="width: 40%; float: left; height:100%">
    <div class="child"> <h1 class="title">Settings</h1></div>
    <div class="frame">
@@ -5,8 +12,8 @@
     <div class="child">
         <h3>Music</h3>
         <label class="switch">
-          <input type="checkbox" (click)="playMusic()">
-          <span class="slider round"></span>
+          <input type="checkbox"  (click)="playMusic()">
+          <span class="slider round"  ></span>
         </label>
     </div><!--CHILD DIV -->
     <div class="child">  
@@ -28,8 +35,5 @@
 </div>
 </div><!--PARENT DIV-->
 
-<div id="parent" style="width: 30%; float:right;">
-    <button type="button" class="fa fa-times-circle fa-2x profileIcon btnExit" (click)="onPress()"></button>
-    <i class="fa fa-cogs fa-5x big-icon"></i>
-</div><!--PARENT DIV-->
 
+</html>
