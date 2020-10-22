@@ -32,6 +32,7 @@ var buf= crypto.randomBytes(3);
   return buf.toString('hex');
 };
 
+//exports.cryptPin = cryptPin
 module.exports = function () {
     const crypto = require('crypto');
     var buf = crypto.randomBytes(3);
