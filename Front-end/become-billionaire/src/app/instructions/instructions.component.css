@@ -8,6 +8,22 @@
     padding-bottom: 2%;
     margin-left: 12%;
 }
+
+.btnExit{
+  float: left;
+  background-color: #191919;
+  border: none;
+  color: #FA1772;
+  position: fixed;
+  font-size: 3vw;
+  font-size: max(70px);
+  cursor: pointer;
+  margin-top: 3%;
+  margin-left: 3%;
+  position: relative;
+  z-index: 1;
+  
+}
 .btn{
     float: right;
     background-color: #191919;

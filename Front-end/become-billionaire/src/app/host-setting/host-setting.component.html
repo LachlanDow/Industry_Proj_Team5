@@ -1,4 +1,4 @@
-
+<html lang="en">
 <div class="a" *ngIf="!showLobby && !display">
 
     <button type="button" class="fa fa-arrow-circle-left fa-2x btnExit"(click)="gohome()"></button>
@@ -28,8 +28,10 @@
     <div>
         
         <mat-button-toggle-group class=btnBox multiple name="fontStyle" aria-label="Font Style">
+
             <h2 class="categories"> Categories: </h2>
             <mat-button-toggle class="btn" value="category._id" *ngFor="let category of categories" (click)="setCategory(category._id)">{{category.name}}</mat-button-toggle>
+
         </mat-button-toggle-group>
     </div>
 </div>
@@ -41,4 +43,4 @@
 <div *ngIf="display">
     <app></app>
 </div>
-
+</html>

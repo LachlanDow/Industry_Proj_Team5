@@ -35,6 +35,8 @@
   .slider:hover {
     background-color: rgb(214, 214, 214);
   }
+
+
   
   
   .slider:before {
@@ -54,7 +56,7 @@
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    outline: 2px solid #2196F3;
   }
   
   input:checked + .slider:before {
@@ -129,14 +131,18 @@
     
   }
   .btnExit{
-    float: right;
+    float: left;
     background-color: #191919;
     border: none;
     color: #FA1772;
-    padding: 3%;    
-    font-size: max(7vw);
-    cursor: pointer;  
-    margin-right: 15%;
+    position: fixed;
+    font-size: 3vw;
+    font-size: max(70px);
+    cursor: pointer;
+    margin-top: -2%;
+    margin-left: 3%;
+    position: relative;
+    z-index: 1;
     
   }
   h1{
