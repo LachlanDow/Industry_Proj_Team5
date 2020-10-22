@@ -5,39 +5,57 @@ const CryptPin  = require("../generateID");
 const Participant = require("../models/Participant");
 const Category = require("../models/Category");
 const Question = require("../models/Question");
+const Leaderboard = require("../models/Leaderboard");
 const Powerup = require("../models/Powerup");
+
 const SSE = require('../ServerSentEvents');
 const fetch = require('node-fetch');
 const powerupRouter = require("./Powerup.js");
 // Get All quizzes from db
 router.get("/", async (req, res) => {
-    try {
-      const quiz = await Quiz.find()
-      res.json(quiz)
-    } catch (err) {
-      res.status(500).json({message: err.message})
-    }
-  });
+  try {
+    const quiz = await Quiz.find()
+    res.json(quiz)
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+});
 
 //Create new quiz. This adds the host as a participant, selects the category, timelimit, question count
 //and selects questions. TODO - move question selection to another function and provide functionality to pick random questions
 //from different categories
 router.post("/", async (req, res) => {
+  //If there is no leaderboard with ID 'main', create this leaderboard
+  //This strategy makes it easier to extend later on if we wished to have leaderboards for different categories etc
+  //Also set a max participant count - how many will be stored in the leaderboard at any given time
+  if (await Leaderboard.findById("main") == null) {
+    const leaderBoard = new Leaderboard({
+      _id: "main",
+      participants: [],
+      maxParticipantCount: 10
+    });
+    try {
+      await leaderBoard.save()
+    }
+    catch (err) {
+      console.log(err);
+    }
+  }
     var response = await fetch('http://127.0.0.1:3000/powerups');
     json = await response.json();
-    
     
     const participant = new Participant({
         name: req.body.hostName,
         score: 0,
+        correctAnswers: 0,
+        incorrectAnswers: 0,
+        averageAnswerTime: 0,
         powerups: json
-
-       
     });
  
 
     const questionList = await Question.find({ "category._id": String(req.body.categoryId) }).limit(req.body.questionCount);
-   
+
       const quizToCreate = new Quiz({
           _id: CryptPin(),
           participants: [participant],
@@ -47,61 +65,69 @@ router.post("/", async (req, res) => {
       questions: questionList,
       questionNumber: 0
     });
+
     try {
       const newQuiz = await quizToCreate.save();
       res.status(201).json({ newQuiz });
     } catch (err) {
       res.status(400).json({ message: err.message });
     }
-  });
-
   
-  // Get quiz by ID - this is the equivalent of get quiz state
-  router.get("/:id", getQuiz, (req, res) => {
-    res.json(res.quiz);
-  });
+});
 
-  // Start quiz
-  router.post("/:id/start", getQuiz, async (req, res) => {
-    SSE.data.gameLoopStart(res.quiz);
-    try {
-      const updatedQuiz = await res.quiz.save();
-      res.json(updatedQuiz);
-      SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
-    } catch (err) {
-      res.status(400).json({ message: err.message });
-    }
-  });
 
-  //Join Quiz. Patch to quiz endpoint with quizID after slash. This notifies all other participants in quiz.
-router.patch("/:id", getQuiz, async (req, res) => {
-  var response = await fetch('http://127.0.0.1:3000/powerups');
-  json = await response.json();
+// Get quiz by ID - this is the equivalent of get quiz state
+router.get("/:id", getQuiz, (req, res) => {
+  res.json(res.quiz);
+});
 
-  var participant;
-  if (req.body.name != null) {
-    participant = new Participant ({
-      name: req.body.name,
-      score: 0,
-      powerups: json
-    });
-    res.quiz.participants.push(participant);
-  }
+// Start quiz
+router.post("/:id/start", getQuiz, async (req, res) => {
+  SSE.data.gameLoopStart(res.quiz);
   try {
     const updatedQuiz = await res.quiz.save();
-    res.json(participant);
+    res.json(updatedQuiz);
     SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
 
-  //Update participant score
-  router.patch("/:id/:participantId", getQuiz, async (req, res) => {
-    //Find the participant in the quiz by their participant ID, and change to the score send in request body
-      var roundscore = req.body.score;
+//Join Quiz. Patch to quiz endpoint with quizID after slash. This notifies all other participants in quiz.
+router.patch("/:id", getQuiz, async (req, res) => {
+  var response = await fetch('http://127.0.0.1y:3000/powerups');
+  json = await response.json();
+
+  var participant;
+  if (req.body.name != null) {
+    participant = new Participant({
+      name: req.body.name,
+      score: 0,
+      correctAnswers: 0,
+      incorrectAnswers: 0,
+      averageAnswerTime: 0,
+      powerups: json
+    });
+    res.quiz.participants.push(participant);
+    try {
+      const updatedQuiz = await res.quiz.save();
+      res.json(participant);
+      SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
+    } catch (err) {
+      res.status(400).json({ message: err.message });
+    }
+  }
+});
+
+//Update participant score
+router.patch("/:id/:participantId", getQuiz, async (req, res) => {
+  const participant = res.quiz.participants.find(p => p.id == req.params.participantId);
+  if (participant != null) {
+    //If parameter provided, set corresponding property of participant
+    if (req.body.score != null) {
+   var roundscore = req.body.score;
       //implement handicap
-      if (res.quiz.participants.find(p => p.id == req.params.participantId).powerups[1].active == false) {
+      if (participant.powerups[1].active == false) {
          
               for (var part = 0; part < res.quiz.participants.length; ++part) {
                   if (res.quiz.participants[part].powerups[1].active == true) {
@@ -110,11 +136,20 @@ router.patch("/:id", getQuiz, async (req, res) => {
 
                   }
               }
-          
       }
-
-
-      res.quiz.participants.find(p => p.id == req.params.participantId).score = res.quiz.participants.find(p => p.id == req.params.participantId).score + roundscore;
+    
+      participant.score = participant.score + roundscore;
+    }
+    if (req.body.correctAnswers != null) {
+      participant.correctAnswers = req.body.correctAnswers;
+    }
+    if (req.body.incorrectAnswers != null) {
+      participant.incorrectAnswers = req.body.incorrectAnswers;
+    }
+    if (req.body.averageAnswerTime != null) {
+      participant.averageAnswerTime = req.body.averageAnswerTime;
+    }
+     
     try {
       const updatedQuiz = await res.quiz.save();
       res.json(updatedQuiz);
@@ -122,7 +157,9 @@ router.patch("/:id", getQuiz, async (req, res) => {
     } catch (err) {
       res.status(400).json({ message: err.message });
     }
-  });
+  }
+
+});
 
 //activate participant powerup
 router.patch("/:id/:participantId/powerup", getQuiz, async (req, res) => {
@@ -224,4 +261,4 @@ async function getQuiz(req, res, next) {
   next();
 }
 
-  module.exports = router;
+module.exports = router;

@@ -19,11 +19,13 @@ app.use(cors());
 const questionsRouter = require("./routes/Question");
 const quizRouter = require("./routes/Quiz");
 const categoriesRouter = require("./routes/Category");
+const leaderboardsRouter = require("./routes/Leaderboard");
 const powerupRouter = require("./routes/Powerup");
 
 app.use("/questions", questionsRouter);
 app.use("/quiz", quizRouter);
 app.use("/categories", categoriesRouter);
+app.use("/leaderboards", leaderboardsRouter);
 app.use("/powerups", powerupRouter);
 
 //App listen on specified port
