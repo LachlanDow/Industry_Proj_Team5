@@ -121,14 +121,13 @@ router.patch("/:id", getQuiz, async (req, res) => {
 
 //Update participant score
 router.patch("/:id/:participantId", getQuiz, async (req, res) => {
-  if (participant != null) {
-  //Find the participant in the quiz by their participant ID
   const participant = res.quiz.participants.find(p => p.id == req.params.participantId);
+  if (participant != null) {
     //If parameter provided, set corresponding property of participant
     if (req.body.score != null) {
    var roundscore = req.body.score;
       //implement handicap
-      if (res.quiz.participants.find(p => p.id == req.params.participantId).powerups[1].active == false) {
+      if (participant.powerups[1].active == false) {
          
               for (var part = 0; part < res.quiz.participants.length; ++part) {
                   if (res.quiz.participants[part].powerups[1].active == true) {
