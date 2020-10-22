@@ -4,6 +4,7 @@ import { DataService } from '../services/data.service';
 import { QuizIdService } from '../services/quiz-id.service';
 import { CountdownComponent, CountdownConfig } from 'ngx-countdown';
 import { AppComponent } from '../app.component';
+import { getCurrencySymbol } from '@angular/common';
 import { count } from 'console';
 
 
@@ -35,6 +36,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
   displayEndScreen = false;
   displayButtons = true;
   timeDifference = 0;
+  
   @Input() isHost;
   lastPowerUpQNumber;
   powerUpRandomNumber = [] as any;
@@ -97,6 +99,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
       this.sendScore();
     }
   }
+
 
   public questionCount() {
     if (this.quiz.questionNumber == 0) {

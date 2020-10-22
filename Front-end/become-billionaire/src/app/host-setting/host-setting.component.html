@@ -3,6 +3,7 @@
 
     <button type="button" class="fa fa-arrow-circle-left fa-2x btnExit"(click)="gohome()"></button>
     <h1 class="headers">Host Settings</h1>
+    
     <div class="left">
         <div class="frame">
             <h1> Time Per Question </h1>
@@ -11,7 +12,7 @@
             <h1 class="num_Quest"> Number Of Questions<input type="number" class="questbox" (change)='questionNum=$event.target.value' [value]="questionNum"> </h1>
         </div>
 
-        <h1 class="category_title"> Categories: </h1>
+        
 
     </div>
 
@@ -23,9 +24,11 @@
             <button class="start" type="button" (click)="createLobby()">Create Game</button>
         </form>
     </div>
-
+   
     <div>
+        
         <mat-button-toggle-group class=btnBox multiple name="fontStyle" aria-label="Font Style">
+            <h2 class="categories"> Categories: </h2>
             <mat-button-toggle class="btn" value="category._id" *ngFor="let category of categories" (click)="setCategory(category._id)">{{category.name}}</mat-button-toggle>
         </mat-button-toggle-group>
     </div>
