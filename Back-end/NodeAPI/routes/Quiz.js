@@ -152,6 +152,7 @@ router.patch("/:id/:participantId", getQuiz, async (req, res) => {
     }
 
     try {
+      quiz.participants = quiz.participants.sort(compare);
       const updatedQuiz = await res.quiz.save();
       res.json(updatedQuiz);
       SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
@@ -161,6 +162,11 @@ router.patch("/:id/:participantId", getQuiz, async (req, res) => {
   }
 
 });
+
+var compare = function (a, b) {
+  return parseInt(a.score) - parseInt(b.score);
+}
+
 
 //activate participant powerup
 router.patch("/:id/:participantId/powerup", getQuiz, async (req, res) => {
