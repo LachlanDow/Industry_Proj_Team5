@@ -4,9 +4,6 @@ import { DataService } from '../services/data.service';
 import { QuizIdService } from '../services/quiz-id.service';
 import { CountdownComponent, CountdownConfig } from 'ngx-countdown';
 import { AppComponent } from '../app.component';
-import { getCurrencySymbol } from '@angular/common';
-import { count } from 'console';
-import { PassThrough } from 'stream';
 
 
 @Component({
@@ -48,7 +45,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
   powerupList = ["handicap", "clear", "double"];
   powerupListIndex = 0;
   fiftyPowerupActivated = false;
-  questionsToShowList = [];
+  questionsToShowList = [true, true, true, true];
   currentPosition;
   classToggled = false;
 
@@ -200,6 +197,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
    * Sends score to the server
    */
   sendScore() {
+    this.timeDifference = Math.round((this.timeDifference/1000) * 100) / 100;
     var correct, incorrect, average;
     var correctList = this.resultIcons.filter(function (value) {
       return value == true;
@@ -209,7 +207,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
 
     correct = correctList.length;
     incorrect = this.resultIcons.length - correct;
-    average = this.currentScore / this.resultIcons.length;
+    average =  this.currentScore / this.resultIcons.length;
     if (this.doublePowerupActivated) {
       if (this.IsitCorrect == "Correct Answer! Well Done") {
         this.timeDifference = this.timeDifference / 2;
@@ -219,7 +217,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
       }
       this.doublePowerupActivated = false;
     }
-
+    
     const url = `http://35.214.82.56:3000/quiz/${this.quizId}/${this.participantID}`;
     const headers = { 'Content-Type': 'application/json' };
     const data = {
@@ -234,7 +232,6 @@ export class QuizPageComponent implements OnInit, OnChanges {
         if(participants[i]._id = this.participantID) { 
           this.currentPosition = i+1;
         } 
-        
       }
     });
   }

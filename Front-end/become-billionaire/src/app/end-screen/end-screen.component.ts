@@ -28,7 +28,6 @@ export class EndScreenComponent implements OnInit {
     const headers = { 'Content-Type': 'application/json' };
     this.http.get<any>(url, { headers: headers }).subscribe(data => {
       this.participantList = data.participants;
-      console.log("participant list", this.participantList);
     });
   }
 
