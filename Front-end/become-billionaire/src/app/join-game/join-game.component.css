@@ -68,6 +68,7 @@
     font-size: 2vw;
     text-align: center;
     color:white;
+    border-style: none;
 
   }
   .btnJoin{
@@ -81,4 +82,9 @@
     max-width: 800px;
     font-family: "Roboto";
     border-radius: 25px;
+    border-style: none;
+  }
+  .btnJoin:hover{
+    background-color: #3480b6;
+  
   }

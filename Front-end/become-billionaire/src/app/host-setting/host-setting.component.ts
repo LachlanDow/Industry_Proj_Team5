@@ -23,6 +23,7 @@ export class HostSettingComponent implements OnInit {
   display = false;
   categories= []; 
   selectedCategory = "44ded658a5454fecb4c885c44b8cfd13"; 
+  
 
   constructor(private http: HttpClient, private data: DataService, private quizID: QuizIdService, private appComponent: AppComponent) {
     //NOOP
@@ -30,14 +31,20 @@ export class HostSettingComponent implements OnInit {
   gohome() {
     this.display = true;
     this.appComponent.displayHost = false;
+    
   }
   ngOnInit(): void {
     this.data.currentMessage.subscribe(message => this.hostId = message)
     this.getCategories();
   }
+  getRandomColor() {
+    var color = Math.floor(0x1000000 * Math.random()).toString(16);
+    return '#' + ('000000' + color).slice(-6);
+  }
   createLobby() {
     this.createQuiz();
   }
+  
 
   onInputChange(event: MatSliderChange) {
     this.questionTimeLimit = event.value;

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { DataService } from '../services/data.service';
+import  {AppComponent } from '../app.component'
 
 export class User {
   constructor(public username: string, public partyCode: string) {
@@ -20,7 +21,7 @@ export class JoinGameComponent implements OnInit {
    participantID;
    userData: User;
 
-  constructor(private http: HttpClient, private data: DataService) {
+  constructor(private http: HttpClient, private data: DataService, private appComponent: AppComponent) {
     // NOOP
    }
 
@@ -54,5 +55,6 @@ export class JoinGameComponent implements OnInit {
 
   onPress() {
     this.displayApp = true;
+    this.appComponent.displayJoinPage = false;
   }
 }

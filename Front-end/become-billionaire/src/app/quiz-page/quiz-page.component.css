@@ -25,8 +25,18 @@
     font-weight: bold;
     text-align: center;
     line-height: normal;
-    margin-left: 6%;
+    margin-left: 8%;
     margin-top: 1%;
+}
+
+.dynamicResult {
+    color: green;
+    text-align: center;
+    font-size: 2vw;
+    font-weight: 900;
+    padding-bottom: 1vw;
+    margin-top: 8%;
+    margin-left: 8%;
 }
 
 .btn {
@@ -45,19 +55,18 @@
     font-size: max(40px);
     background-color: #50AFF5;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }
 
 .firstChoice {
     background-color: #0480fc;
-    margin-top: 5%;
+    margin-top: 3%;
     margin-left: 10%;
     margin-right: 0%;
 }
 
 .secondChoice {
     background-color: #fa105f;
-    margin-top: 5%;
+    margin-top: 3%;
     margin-left: 10%;
     margin-right: 0%;
 }
@@ -117,37 +126,24 @@
     max-height: 700px;
     margin: auto;
     border: 3px solid rgba(255, 255, 255, 0);
-    }
-
-
-
+}
 
 .timer {
     font-family: "Roboto";
-    font-size: 50px;
-    height: 50px;
+    font-size: max(2vw);
+    width: auto;
     font-weight: bold;
     text-align: center;
-    padding-top: 2%;
-    padding-bottom: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 1.5%;
+    padding-right: 1.5%;
     line-height: normal;
     color: #CEBC6F;
-}
-
-
-@media only screen and (max-width: 950px) {
-    .btn {
-        font-family: "Roboto";
-        color: #191919;
-        width: 70%;
-        height: 15%;
-        font-weight: bold;
-        border-radius: 3vw;
-        border-color: black;
-        font-size: 7vw;
-        margin-left: 15%;
-        ;
-    }
+    float: right;
+    margin-right: 2%;
+    border: 3px solid #CEBC6F;
+    border-radius: 50%;
 }
 
 .border {
@@ -163,7 +159,7 @@
 }
 
 .dynamicResult {
-    color: green;
+    color: rgb(255, 255, 255);
     text-align: center;
     font-size: 2vw;
     font-weight: 900;
@@ -179,7 +175,7 @@
 }
 
 .score {
-    color: gold;
+    color: #CEBC6F;
     float: right;
     text-align: right;
     width: 20%;
@@ -204,7 +200,6 @@
     float: left;
     width: 100%;
     padding-top: 1vw;
-    ;
 }
 
 .infobox {
@@ -212,7 +207,8 @@
     text-align: left;
     width: 20%;
     font-size: 1.5vw;
-    border: 3px dashed darkred;
+    border-radius: 1vw;
+    border: 3px dashed #FA1772;
     float: right;
 }
 
@@ -223,7 +219,7 @@
     font-size: 2vw;
     padding-top: 1vw;
     font-weight: 900;
-    color: gold;
+    color: #CEBC6F;
 }
 
 .tick {
@@ -232,4 +228,79 @@
     padding-top: 1%;
     padding-left: 2%;
     font-size: 30px;
+}
+
+@media only screen and (max-width: 950px) {
+    .btn {
+        font-family: "Roboto";
+        color: #191919;
+        width: 70%;
+        height: 15%;
+        font-weight: bold;
+        border-radius: 3vw;
+        border-color: black;
+        font-size: 7vw;
+        margin-left: 15%;
+        ;
+    }
+}
+
+.powerUps {
+    background-image: url(../pattern.png);
+    width: 15%;
+    height: 35%;
+    float: right;
+    margin-right: 1%;
+    max-width: 1400px;
+    max-height: 700px;
+    background-color: #191919;
+    border: 5px solid #000000;
+    border-radius: 25px;
+    box-shadow: 3px 4px #000000;
+}
+
+.powerupToggle {
+    float: right;
+    border-radius: 10vw;
+    margin-right: 2.5%;
+    margin-top: 1%;
+    width: 2vw;
+    height: 1.8vw;
+    border: none;
+    color: Yellow;
+    outline: none;
+    background-color: #191919;
+    font-size: max(3vw);
+}
+
+.powerupToggle:hover {
+    float: right;
+    border-radius: 10vw;
+    margin-right: 2.5%;
+    margin-top: 1%;
+    width: 2vw;
+    height: 1.8vw;
+    border: none;
+    color: rgb(177, 177, 4);
+    outline: none;
+    background-color: #191919;
+    font-size: max(3vw);
+}
+
+.powerbtn {
+    font-family: "Roboto";
+    color: #191919;
+    width: 90%;
+    margin-left: 5%;
+    max-width: 500px;
+    max-height: 180px;
+    height: 23%;
+    font-weight: bold;
+    margin-bottom: 4%;
+    border-radius: 1.3vw;
+    border: 5px solid #000000;
+    font-size: 1.8vw;
+    font-size: max(30px);
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
 }

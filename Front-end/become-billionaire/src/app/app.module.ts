@@ -27,8 +27,8 @@ import { WaitScreenComponent } from './wait-screen/wait-screen.component'
 
 
 
-
 @NgModule({
+  
   declarations: [
     AppComponent,
     HostSettingComponent,
@@ -60,4 +60,5 @@ import { WaitScreenComponent } from './wait-screen/wait-screen.component'
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
