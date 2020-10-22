@@ -38,9 +38,6 @@
     margin-left: 13%;
 }
 
-.redText{
-    color: red;
-  }
 
 
 .btn {
@@ -81,6 +78,9 @@
     margin-left: 10%;
     margin-right: 0%;
 }
+.toggled {
+    color: red;
+  }
 
 .fourthChoice {
     background-color: #888888;
@@ -88,7 +88,9 @@
     margin-left: 10%;
     margin-right: 0%;
 }
-
+.toggled {
+    color: red;
+  }
 .tick {
     font-size: 48px;
     color: green;
@@ -164,13 +166,7 @@
     font-size: 50%;
 }
 
-.dynamicResult {
-    color: rgb(62, 225, 40);
-    text-align: center;
-    font-size: 2vw;
-    font-weight: 900;
-    padding-bottom: 1vw;
-}
+
 
 .text {
     float: left;
@@ -255,43 +251,26 @@
     background-image: url(../pattern.png);
     width: 15%;
     height: 35%;
-    float: right;
-    margin-right: 1%;
+    margin-left: 66%;
     max-width: 1400px;
     max-height: 700px;
     background-color: #191919;
     border: 5px solid #000000;
     border-radius: 25px;
     box-shadow: 3px 4px #000000;
+    position: absolute;
+}
+.powertitle {
+    font-family: "PhosphateInline";
+    text-align: center;
+    padding-top: 10%;
+    padding-bottom: 3%;
+    color: #cebc6f;
+    font-size: max(1.2vw);
+    text-shadow: 6px 6px #000000;
 }
 
-.powerupToggle {
-    float: right;
-    border-radius: 10vw;
-    margin-right: 2.5%;
-    margin-top: 1%;
-    width: 2vw;
-    height: 1.8vw;
-    border: none;
-    color: Yellow;
-    outline: none;
-    background-color: #191919;
-    font-size: max(3vw);
-}
 
-.powerupToggle:hover {
-    float: right;
-    border-radius: 10vw;
-    margin-right: 2.5%;
-    margin-top: 1%;
-    width: 2vw;
-    height: 1.8vw;
-    border: none;
-    color: rgb(177, 177, 4);
-    outline: none;
-    background-color: #191919;
-    font-size: max(3vw);
-}
 
 .powerbtn {
     font-family: "Roboto";
@@ -309,4 +288,27 @@
     font-size: max(30px);
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     cursor: pointer;
+}
+.power1 {
+    background-color: #FC0441;
+}
+
+.power1:hover {
+    background-color: #bb0432;
+}
+
+.power2 {
+    background-color: #0480FC;
+}
+
+.power2:hover {
+    background-color: #0959a9;
+}
+
+.power3 {
+    background-color: #16AC9A;
+}
+
+.power3:hover {
+    background-color: #0d7468;
 }
