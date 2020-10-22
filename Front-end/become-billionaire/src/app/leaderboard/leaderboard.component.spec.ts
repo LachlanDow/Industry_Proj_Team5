@@ -30,5 +30,4 @@ describe('LeaderboardComponent', () => {
     app.onPress();
     expect(app.display).toBeTruthy();
   });
-
 });

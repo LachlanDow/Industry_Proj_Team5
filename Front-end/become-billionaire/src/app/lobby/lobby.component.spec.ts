@@ -26,4 +26,9 @@ describe('LobbyComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('position  should be displayed in div', ()=> {
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('.nameSizeTop').textContent).toContain('4');
+  });
 });
