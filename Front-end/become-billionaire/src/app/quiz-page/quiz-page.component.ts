@@ -42,6 +42,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
   fiftyPowerup=false;
   powerupList = ["handicap" , "clear", "double" ];
   powerupListIndex = 0;
+  fiftyPowerupActivated=false;
 
 
   @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
@@ -215,6 +216,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
   isItAnswered() {
   }
 
+  //makes the power ups available 
   powerUpAvailable() {
     const url = `http://35.214.82.56:3000/quiz/${this.quizId}/${this.participantID}/availablepowerup`;
     const headers = { 'Content-Type': 'application/json' };
@@ -224,10 +226,30 @@ export class QuizPageComponent implements OnInit, OnChanges {
     this.http.patch(url, JSON.stringify(data), { headers: headers }).subscribe(data => {
       console.log("powerup patch", data);
     });
+    if (this.powerupList[this.powerupListIndex] == "clear"){
+      this.fiftyPowerup = true;
+    }
+    else if (this.powerupList[this.powerupListIndex] == "handicap"){
+      this.handicapPowerup == true;
+    }
+    else if (this.powerupList[this.powerupListIndex] == "double") {
+      this.doublePowerup = true;
+    }
     this.powerupListIndex++;
   }
 
+  //activates power up
   powerUpActivate(powerup: string) {
+    if (powerup == "clear"){
+      this.fiftyPowerup = false;
+      this.fiftyPowerupActivated = true;
+    }
+    else if (powerup == "handicap"){
+      this.handicapPowerup == false;
+    }
+    else if (powerup == "double") {
+      this.doublePowerup = false;
+    };
     console.log("name of pwerup",powerup)
     this.lastPowerUpQNumber = this.quiz.questionNumber;
     const url = `http://35.214.82.56:3000/quiz/${this.quizId}/${this.participantID}/powerup`;
@@ -240,10 +262,16 @@ export class QuizPageComponent implements OnInit, OnChanges {
     });
   }
 
+  //generated array of random numbers to activate power up at random times 
   randomNumber() {
     for ( let i = 0; i<3; i++){ 
     this.powerUpRandomNumber.push(Math.floor(Math.random() * this.quiz.questionCount) + 1);
     }
+  }
+
+  activateFiftyPowerup() {
+    // if (){}
+
   }
 
 }
