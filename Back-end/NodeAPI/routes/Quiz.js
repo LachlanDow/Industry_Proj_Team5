@@ -35,21 +35,22 @@ router.post("/", async (req, res) => {
       maxParticipantCount: 10
     });
 
-    var response = await fetch('http://35.214.82.56:3000/powerups');
+    var response = await fetch('http://127.0.0.1:3000/powerups');
     json = await response.json();
     
     
     const participant = new Participant({
         name: req.body.hostName,
         score: 0,
+        correctAnswers: 0,
+        incorrectAnswers: 0,
+        averageAnswerTime: 0,
         powerups: json
-
-       
     });
  
 
     const questionList = await Question.find({ "category._id": String(req.body.categoryId) }).limit(req.body.questionCount);
-   
+
       const quizToCreate = new Quiz({
           _id: CryptPin(),
           participants: [participant],
@@ -65,31 +66,12 @@ router.post("/", async (req, res) => {
     catch (err) {
       console.log(err);
     }
-  }
-
-
-  const participant = new Participant({
-    name: req.body.hostName,
-    score: 0,
-    correctAnswers: 0,
-    incorrectAnswers: 0,
-    averageAnswerTime: 0
-  });
-  const questionList = await Question.find({ "category._id": String(req.body.categoryId) }).limit(req.body.questionCount);
-  const quizToCreate = new Quiz({
-    _id: CryptPin(),
-    participants: [participant],
-    categoryId: req.body.categoryId,
-    timeLimit: req.body.timeLimit,
-    questionCount: req.body.questionCount,
-    questions: questionList,
-    questionNumber: 0
-  });
-  try {
-    const newQuiz = await quizToCreate.save();
-    res.status(201).json({ newQuiz });
-  } catch (err) {
-    res.status(400).json({ message: err.message });
+    try {
+      const newQuiz = await quizToCreate.save();
+      res.status(201).json({ newQuiz });
+    } catch (err) {
+      res.status(400).json({ message: err.message });
+    }
   }
 });
 
@@ -113,7 +95,7 @@ router.post("/:id/start", getQuiz, async (req, res) => {
 
 //Join Quiz. Patch to quiz endpoint with quizID after slash. This notifies all other participants in quiz.
 router.patch("/:id", getQuiz, async (req, res) => {
-  var response = await fetch('http://35.214.82.56:3000/powerups');
+  var response = await fetch('http://127.0.0.1y:3000/powerups');
   json = await response.json();
 
   var participant;
