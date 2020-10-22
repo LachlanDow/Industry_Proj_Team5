@@ -15,7 +15,8 @@
 </div>
 <div *ngIf="!displayEndScreen && displayButtons">
     <div class="question">
-        <p class="questionNum">Question {{quiz.questionNumber}}:</p> <p class="question">{{quiz.questions[currentQuestion].question}}</p>
+        <p class="questionNum">Question {{quiz.questionNumber}}:</p>
+        <p class="question">{{quiz.questions[currentQuestion].question}}</p>
     </div>
 
 
@@ -50,7 +51,7 @@
 
     <div class="result">
         <div [class.toggled]="classToggled" class="dynamicResult">{{IsitCorrect}}</div>
-      
+
 
 
         <div class="border">
@@ -66,7 +67,7 @@
             <div class="scoreBar"></div>
             <div class="extraInfo">
                 <div class="text">Response Time</div>
-                <div class="infobox">{{timeDifference}}ms</div>
+                <div class="infobox">{{timeDifference}}s</div>
             </div>
 
             <div class="extraInfo">
@@ -80,4 +81,5 @@
         </div>
     </div>
 </div>
+
 </html>
