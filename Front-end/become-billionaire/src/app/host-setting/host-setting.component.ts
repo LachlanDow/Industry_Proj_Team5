@@ -34,6 +34,7 @@ export class HostSettingComponent implements OnInit {
     
   }
   ngOnInit(): void {
+    this.questionNum = 3;
     this.data.currentMessage.subscribe(message => this.hostId = message)
     this.getCategories();
   }
