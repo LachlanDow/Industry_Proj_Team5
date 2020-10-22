@@ -41,6 +41,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
   handicapPowerup = false;
   doublePowerup = false;
   fiftyPowerup = false;
+  doublePowerupActivated = false;
   powerupList = ["handicap", "clear", "double"];
   powerupListIndex = 0;
   fiftyPowerupActivated = false;
@@ -155,7 +156,6 @@ export class QuizPageComponent implements OnInit, OnChanges {
       }
       else if (quizPage.lastQuestionNumber != quizPage.quiz.questionNumber) {
         quizPage.getCorrectAnswerIndex();
-        console.log("random number", quizPage.powerUpRandomNumber);
         for (let i = 0; i < quizPage.powerUpRandomNumber.length; i++) {
           if (quizPage.powerUpRandomNumber[i] == quizPage.quiz.questionNumber) {
             quizPage.powerUpAvailable();
@@ -173,7 +173,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
           quizPage.sendScore();
         }
 
-     
+
 
       }
 
@@ -192,6 +192,15 @@ export class QuizPageComponent implements OnInit, OnChanges {
     correct = correctList.length;
     incorrect = this.resultIcons.length - correct;
     average = this.timeDifference / this.resultIcons.length;
+    if (this.doublePowerupActivated) {
+      if (this.IsitCorrect == "Correct Answer! Well Done") {
+        this.timeDifference = this.timeDifference / 2;
+      }
+      else { 
+        this.timeDifference = this.timeDifference * 2;
+      }
+      this.doublePowerupActivated = false;
+    }
 
     const url = `http://35.214.82.56:3000/quiz/${this.quizId}/${this.participantID}`;
     const headers = { 'Content-Type': 'application/json' };
@@ -229,7 +238,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
       "powerupName": this.powerupList[this.powerupListIndex]
     };
     this.http.patch(url, JSON.stringify(data), { headers: headers }).subscribe(data => {
-      console.log("powerup patch", data);
+      
     });
     if (this.powerupList[this.powerupListIndex] == "clear") {
       this.fiftyPowerup = true;
@@ -254,6 +263,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
     }
     else if (powerup == "double") {
       this.doublePowerup = false;
+      this.doublePowerupActivated = true;
     };
     this.lastPowerUpQNumber = this.quiz.questionNumber;
     const url = `http://35.214.82.56:3000/quiz/${this.quizId}/${this.participantID}/powerup`;
@@ -262,7 +272,6 @@ export class QuizPageComponent implements OnInit, OnChanges {
       "powerupName": powerup
     };
     this.http.patch(url, JSON.stringify(data), { headers: headers }).subscribe(data => {
-      console.log("powerup patch activate", data);
     });
   }
 
@@ -274,16 +283,14 @@ export class QuizPageComponent implements OnInit, OnChanges {
   }
 
   activateFiftyPowerup() {
-    let counter = 0; 
-    
-    for(let i = 0; i < this.questionsToShowList.length; i++) { 
-      console.log(this.correctAnswerIndex);
-      if(i != (this.correctAnswerIndex -1)) { 
-        console.log(this.questionsToShowList);
+    let counter = 0;
+
+    for (let i = 0; i < this.questionsToShowList.length; i++) {
+      if (i != (this.correctAnswerIndex - 1)) {
         this.questionsToShowList[i] = false;
         counter++;
       }
-      if(counter == 2) { 
+      if (counter == 2) {
         break;
       }
     }
