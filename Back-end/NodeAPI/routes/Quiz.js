@@ -34,10 +34,15 @@ router.post("/", async (req, res) => {
       participants: [],
       maxParticipantCount: 10
     });
-
+    try {
+      await leaderBoard.save()
+    }
+    catch (err) {
+      console.log(err);
+    }
+  }
     var response = await fetch('http://127.0.0.1:3000/powerups');
     json = await response.json();
-    
     
     const participant = new Participant({
         name: req.body.hostName,
@@ -60,19 +65,14 @@ router.post("/", async (req, res) => {
       questions: questionList,
       questionNumber: 0
     });
-    try {
-      await leaderBoard.save()
-    }
-    catch (err) {
-      console.log(err);
-    }
+
     try {
       const newQuiz = await quizToCreate.save();
       res.status(201).json({ newQuiz });
     } catch (err) {
       res.status(400).json({ message: err.message });
     }
-  }
+  
 });
 
 
