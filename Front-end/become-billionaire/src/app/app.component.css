@@ -1,241 +1,169 @@
-
 .body {
-background: linear-gradient( rgba(0, 0, 0, 0.363), rgba(11, 125, 117, 0.598) ), url(./background.jpg);
-/* filter: invert(100%); */
-  
+    background: linear-gradient( rgba(0, 0, 0, 0.363), rgba(11, 125, 117, 0.598)), url(./background.jpg);
+    /* filter: invert(100%); */
 }
 
 .toggled {
-  filter: invert(100%);
+    filter: invert(100%);
 }
+
 .highcontrast {
-  background-color: invert;
+    background-color: invert;
 }
 
-.title{
-font-family: "PhosphateInline";
-text-align: center;
-padding-top: 7%;
-padding-bottom: 3%;
-color: #cebc6f;
-font-size: max(6vw);
-text-shadow: 6px 6px #000000;
-
-
-}
-.powertitle{
-  font-family: "PhosphateInline";
-  text-align: center;
-  padding-top: 10%;
-  padding-bottom: 3%;
-  color: #cebc6f;
-  font-size: max(1.9vw);
-  text-shadow: 6px 6px #000000;
-  
-  
-  }
-
-
-.options{
-background-image: url(./pattern.png);
-
-width: 65%;
-height: 65%;
-max-width: 1400px;
-max-height: 700px;
-background-color: #191919;
-margin: auto; 
-border: 5px solid #000000;
-border-radius: 25px;
-box-shadow: 3px 4px #000000;
-
-}
-.power1{
-  background-color: #FC0441;
-}
-.power1:hover{
-  background-color: #bb0432;
+.title {
+    font-family: "PhosphateInline";
+    text-align: center;
+    padding-top: 7%;
+    padding-bottom: 3%;
+    color: #cebc6f;
+    font-size: max(6vw);
+    text-shadow: 6px 6px #000000;
 }
 
-.power2{
-  background-color: #0480FC;
+.powertitle {
+    font-family: "PhosphateInline";
+    text-align: center;
+    padding-top: 10%;
+    padding-bottom: 3%;
+    color: #cebc6f;
+    font-size: max(1.9vw);
+    text-shadow: 6px 6px #000000;
 }
-.power2:hover{
-  background-color: #0959a9;
-}
-.power3{
-  background-color: #16AC9A;
-}
-.power3:hover{
-  background-color: #0d7468;
-}
-.powerUps{
-  background-image: url(./pattern.png);
-  
-  width: 15%;
-  height: 35%;
-  float:right;
-  margin-right: 1%;
-  max-width: 1400px;
-  max-height: 700px;
-  background-color: #191919;
-  
-  border: 5px solid #000000;
-  border-radius: 25px;
-  box-shadow: 3px 4px #000000;
-  
-  }
-  .powerupToggle{
-    float: right;
-    border-radius: 10vw;
-    margin-right: 2.5%;
-    margin-top: 1%;
-    width: 2vw;
-    height: 1.8vw;
-    border:none;
-    color: Yellow;
-    outline:none;
+
+.options {
+    background-image: url(./pattern.png);
+    width: 65%;
+    height: 65%;
+    max-width: 1400px;
+    max-height: 700px;
     background-color: #191919;
-    font-size: max(3vw);
+    margin: auto;
+    border: 5px solid #000000;
+    border-radius: 25px;
+    box-shadow: 3px 4px #000000;
+}
 
-    
-  }
-  .powerupToggle:hover{
-    float: right;
-    border-radius: 10vw;
-    margin-right: 2.5%;
-    margin-top: 1%;
-    width: 2vw;
-    height: 1.8vw;
-    border:none;
-    color: rgb(177, 177, 4);
-    outline:none;
-    background-color: #191919;
-    font-size: max(3vw);
+.power1 {
+    background-color: #FC0441;
+}
 
-    
-  }
-  .powerbtn{
+.power1:hover {
+    background-color: #bb0432;
+}
+
+.power2 {
+    background-color: #0480FC;
+}
+
+.power2:hover {
+    background-color: #0959a9;
+}
+
+.power3 {
+    background-color: #16AC9A;
+}
+
+.power3:hover {
+    background-color: #0d7468;
+}
+
+.btn {
     font-family: "Roboto";
     color: #191919;
-    width: 90%;
-    margin-left: 5%;
-    max-width: 500px;
+    width: 25%;
+    max-width: 800px;
     max-height: 180px;
-    height: 23%;
+    height: 25%;
     font-weight: bold;
-    margin-bottom: 4%;
-    border-radius: 1.3vw;
+    border-radius: 30px;
     border: 5px solid #000000;
     font-size: 1.8vw;
     font-size: max(30px);
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     cursor: pointer;
-    }
-    
-
-.btn{
-font-family: "Roboto";
-color: #191919;
-width: 25%;
-max-width: 800px;
-max-height: 180px;
-height: 25%;
-font-weight: bold;
-border-radius: 30px;
-border: 5px solid #000000;
-font-size: 1.8vw;
-font-size: max(30px);
-box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-cursor: pointer;
 }
 
-.play{
-background-color: #50AFF5;
-margin-top: 3.5%;
-margin-left: 20%;
-margin-right: 20%;
-width: 57%;
-height: 20%;
-max-width: 800px;
-
+.play {
+    background-color: #50AFF5;
+    margin-top: 3.5%;
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 57%;
+    height: 20%;
+    max-width: 800px;
 }
-.play:hover{
-  background-color: #4188bb;
-  }
+
+.play:hover {
+    background-color: #4188bb;
+}
+
 .join {
-  background-color: #DEFF86;
-  margin-top: 4%;
-  margin-left: 20%;
-  margin-right: 0%;
+    background-color: #DEFF86;
+    margin-top: 4%;
+    margin-left: 20%;
+    margin-right: 0%;
 }
+
 .join:hover {
-  background-color: #adc56c;
+    background-color: #adc56c;
 }
 
 .leaderboard {
-
-background: linear-gradient( 90deg, #FC0441 0%, #F62DA8);
-margin-top: 4%;
-margin-left: 7%;
-margin-right: 0%;
+    background: linear-gradient( 90deg, #FC0441 0%, #F62DA8);
+    margin-top: 4%;
+    margin-left: 7%;
+    margin-right: 0%;
 }
-.leaderboard:hover {
 
-  background: linear-gradient( 90deg, #c71542 0%, #bb2481);
-  }
+.leaderboard:hover {
+    background: linear-gradient( 90deg, #c71542 0%, #bb2481);
+}
 
 .instructions {
-background-color: #60E0D1;
-margin-top: 4%;
-  margin-left: 20%;
-  margin-right: 0%;
+    background-color: #60E0D1;
+    margin-top: 4%;
+    margin-left: 20%;
+    margin-right: 0%;
 }
+
 .instructions:hover {
-  background-color: #4ba99e;
-  }
-  
+    background-color: #4ba99e;
+}
 
 .settings {
-background-color: #707070;
-margin-top: 4%;
-  margin-left: 7%;
-  margin-right: 0%;
+    background-color: #707070;
+    margin-top: 4%;
+    margin-left: 7%;
+    margin-right: 0%;
 }
+
 .settings:hover {
-  background-color: #555555;
-  }
+    background-color: #555555;
+}
 
 @media only screen and (max-width: 980px) {
-  
-    .btn{
-      font-family: "Roboto";
-      color: #191919;
-      width: 70%;
-      height: 15%;
-      font-weight: bold;
-      border-radius: 30px;
-      border-color: black;
-      font-size: 7vw;
-      margin-left: 15%;
-      font-size: max(20px);
-      }
-      .top{
+    .btn {
+        font-family: "Roboto";
+        color: #191919;
+        width: 70%;
+        height: 15%;
+        font-weight: bold;
+        border-radius: 30px;
+        border-color: black;
+        font-size: 7vw;
+        margin-left: 15%;
+        font-size: max(20px);
+    }
+    .top {
         margin-top: 8%;
-      }
-      .title{
+    }
+    .title {
         font-family: "PhosphateInline";
         text-align: center;
         padding-top: 10%;
         padding-bottom: 5%;
         color: #cebc6f;
         font-size: max(5.5vw);
-        }
-        
-      
-      
+        }   
 }
-
-
-
-

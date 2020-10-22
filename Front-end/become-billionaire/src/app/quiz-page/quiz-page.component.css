@@ -27,6 +27,7 @@
     margin-left: 8%;
     margin-top: 1%;
 }
+
 .dynamicResult {
     color: green;
     text-align: center;
@@ -58,7 +59,6 @@
     font-size: max(1.3vw);
     background-color: #50AFF5;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }
 
 .firstChoice {
@@ -132,15 +132,11 @@
     max-height: 700px;
     margin: auto;
     border: 3px solid rgba(255, 255, 255, 0);
-    }
-
-
-
+}
 
 .timer {
     font-family: "Roboto";
     font-size: max(2vw);
-    
     width: auto;
     font-weight: bold;
     text-align: center;
@@ -155,8 +151,6 @@
     border: 3px solid #CEBC6F;
     border-radius: 50%;
 }
-
-
 
 .border {
     margin-left: 22%;
@@ -212,7 +206,6 @@
     float: left;
     width: 100%;
     padding-top: 1vw;
-    
 }
 
 .infobox {
@@ -256,4 +249,64 @@
         margin-left: 15%;
         ;
     }
+}
+
+.powerUps {
+    background-image: url(../pattern.png);
+    width: 15%;
+    height: 35%;
+    float: right;
+    margin-right: 1%;
+    max-width: 1400px;
+    max-height: 700px;
+    background-color: #191919;
+    border: 5px solid #000000;
+    border-radius: 25px;
+    box-shadow: 3px 4px #000000;
+}
+
+.powerupToggle {
+    float: right;
+    border-radius: 10vw;
+    margin-right: 2.5%;
+    margin-top: 1%;
+    width: 2vw;
+    height: 1.8vw;
+    border: none;
+    color: Yellow;
+    outline: none;
+    background-color: #191919;
+    font-size: max(3vw);
+}
+
+.powerupToggle:hover {
+    float: right;
+    border-radius: 10vw;
+    margin-right: 2.5%;
+    margin-top: 1%;
+    width: 2vw;
+    height: 1.8vw;
+    border: none;
+    color: rgb(177, 177, 4);
+    outline: none;
+    background-color: #191919;
+    font-size: max(3vw);
+}
+
+.powerbtn {
+    font-family: "Roboto";
+    color: #191919;
+    width: 90%;
+    margin-left: 5%;
+    max-width: 500px;
+    max-height: 180px;
+    height: 23%;
+    font-weight: bold;
+    margin-bottom: 4%;
+    border-radius: 1.3vw;
+    border: 5px solid #000000;
+    font-size: 1.8vw;
+    font-size: max(30px);
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
 }
