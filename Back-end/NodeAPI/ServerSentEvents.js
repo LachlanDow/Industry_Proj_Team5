@@ -21,13 +21,33 @@ var eventsHandler = async function eventsHandler(req, res) {
     res.write(`data: ${JSON.stringify(quiz[0])}\n\n`);
     //stops server from disconnecting to client
     res.connection.setTimeout(0);
+}
 
-    //When client closes connection, update the clients list to remove client
-    req.on('close', () => {
-        console.log(`${req.params.participantId} Connection closed`);
-        //Removes entry from associative array if participant leaves
-        delete participantList[req.params.participantId];
-    });
+var eventsHandler =  async function eventsHandler(req, res) {
+// Mandatory headers and http status to keep connection open. Also header to stop CORS from being disallowed on browser.
+const headers = {
+'Content-Type': 'text/event-stream',
+'Connection': 'keep-alive',
+'Cache-Control': 'no-cache',
+'Access-Control-Allow-Origin': '*'
+};
+res.writeHead(200, headers);
+const quiz = await Quiz.find({ "participants._id": req.params.participantId });
+res.connection.setTimeout(0);
+//Adds participants res object to associative array
+try { 
+    participantList[req.params.participantId] = res;
+ } catch(e) {
+   console.log(e);
+ }
+ res.write(`data: ${JSON.stringify(quiz[0])}\n\n`);
+
+//When client closes connection, update the clients list to remove client
+req.on('close', () => {
+console.log(`${req.params.participantId} Connection closed`);
+//Removes entry from associative array if participant leaves
+delete participantList[req.params.participantId];
+});
 }
 
 //Sends an object to all the participants in a quiz using a Server Sent Event. 
@@ -52,6 +72,15 @@ async function gameLoop(quiz) {
     updatedQuiz.questionNumber++;
 
     if (updatedQuiz.questionNumber <= updatedQuiz.questionCount) {
+        for (i = 0; i < updatedQuiz.participants.length; i++) {
+            for (j = 0; j < updatedQuiz.participants[0].powerups.length; j++) {
+                if(updatedQuiz.participants[i].powerups[j].active) { 
+                    updatedQuiz.participants[i].powerups[j].active = false;
+                    updatedQuiz.participants[i].powerups[j].available = false;
+                }
+                
+            }
+        }
         updatedQuiz = await updatedQuiz.save();
         sendEventsToAllInQuiz(updatedQuiz.participants, updatedQuiz);
     }

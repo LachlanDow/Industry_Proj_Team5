@@ -2,8 +2,15 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const categorySchema = new Schema({ 
-    name: 'String',
-    _id: 'String'
+    name: {
+        type: String,
+        required: true
+    },
+    _id: {
+        type: String,
+        required: true
+    }
+   
 });
 
 const Category = mongoose.model("Category", categorySchema);
