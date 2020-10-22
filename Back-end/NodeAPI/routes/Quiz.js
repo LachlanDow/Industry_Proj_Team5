@@ -152,7 +152,7 @@ router.patch("/:id/:participantId", getQuiz, async (req, res) => {
     }
 
     try {
-      quiz.participants = quiz.participants.sort(compare);
+      res.quiz.participants = res.quiz.participants.sort(compare);
       const updatedQuiz = await res.quiz.save();
       res.json(updatedQuiz);
       SSE.data.sendEventsToAllInQuiz(res.quiz.participants, updatedQuiz);
