@@ -33,6 +33,8 @@ router.post("/", async (req, res) => {
       _id: "main",
       participants: [],
       maxParticipantCount: 10
+    });
+
     var response = await fetch('http://35.214.82.56:3000/powerups');
     json = await response.json();
     
@@ -121,7 +123,7 @@ router.patch("/:id", getQuiz, async (req, res) => {
       score: 0,
       correctAnswers: 0,
       incorrectAnswers: 0,
-      averageAnswerTime: 0
+      averageAnswerTime: 0,
       powerups: json
     });
     res.quiz.participants.push(participant);
@@ -177,9 +179,6 @@ router.patch("/:id/:participantId", getQuiz, async (req, res) => {
   }
 
 });
-
-
-  });
 
 //activate participant powerup
 router.patch("/:id/:participantId/powerup", getQuiz, async (req, res) => {

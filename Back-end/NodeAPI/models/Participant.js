@@ -7,7 +7,7 @@ const participantSchema = new Schema({
     score: 'Number',
     correctAnswers: 'Number',
     incorrectAnswers: 'Number',
-    averageAnswerTime: 'Number'
+    averageAnswerTime: 'Number',
     powerups: { type: [Powerup.schema] , validate: v => Array.isArray(v) && v.length > 0 }
 
 });
