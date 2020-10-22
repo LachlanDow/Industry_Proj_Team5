@@ -7,8 +7,7 @@
 </div>
 <div *ngIf="!displayEndScreen && displayButtons">
     <div class="question">
-        <p class="questionNum">Question {{quiz.questionNumber}}:</p>
-        <p>{{quiz.questions[currentQuestion].question}}</p>
+        <p class="questionNum">Question {{quiz.questionNumber}}:</p> <p class="question">{{quiz.questions[currentQuestion].question}}</p>
     </div>
 
 
@@ -42,7 +41,7 @@
 <div *ngIf="!displayButtons">
 
     <div class="result">
-        <div class="dynamicResult">{{IsitCorrect}}</div>
+        <div [class.toggled]="changeColor" class="dynamicResult">{{IsitCorrect}}</div>
 
         <div class="border">
             <div class="scoring">

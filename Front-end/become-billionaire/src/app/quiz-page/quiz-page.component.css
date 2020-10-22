@@ -1,17 +1,16 @@
 .question {
     font-family: "Roboto";
-    font-size: 3vw;
-    font-size: max(40px);
+    font-size: max(1.3vw);
     width: 52vw;
-    height: 2vw;
+    height: 4vw;
     max-width: 90%;
     color: white;
     font-weight: bold;
     text-align: center;
     line-height: normal;
     margin-left: 5%;
-    margin-top: 2%;
-    margin-bottom: 10%;
+    margin-top: 3%;
+    margin-bottom: 5%;
 }
 
 .questionNum {
@@ -32,12 +31,17 @@
 .dynamicResult {
     color: green;
     text-align: center;
-    font-size: 2vw;
+    font-size: 1.8vw;
     font-weight: 900;
     padding-bottom: 1vw;
     margin-top: 8%;
-    margin-left: 8%;
+    margin-left: 13%;
 }
+
+.redText{
+    color: red;
+  }
+
 
 .btn {
     font-family: "Roboto";
@@ -52,7 +56,7 @@
     padding-top: 3%;
     /* font-size: 3vw; */
     font-size: auto;
-    font-size: max(40px);
+    font-size: max(1.3vw);
     background-color: #50AFF5;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -104,6 +108,8 @@
 .choices {
     height: auto;
     width: auto;
+    margin-top: 10%;
+    
 }
 
 .questionCount {
@@ -140,14 +146,14 @@
     padding-right: 1.5%;
     line-height: normal;
     color: #CEBC6F;
-    float: right;
-    margin-right: 2%;
+    float:right;
+    margin-right: 8%;
     border: 3px solid #CEBC6F;
     border-radius: 50%;
 }
 
 .border {
-    margin: auto;
+    margin-left: 22%;
     width: 50%;
     height: 100%;
     border: 3px solid #3B3B3B;
@@ -159,7 +165,7 @@
 }
 
 .dynamicResult {
-    color: rgb(255, 255, 255);
+    color: rgb(62, 225, 40);
     text-align: center;
     font-size: 2vw;
     font-weight: 900;

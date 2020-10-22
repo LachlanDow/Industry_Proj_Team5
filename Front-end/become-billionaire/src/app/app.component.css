@@ -162,9 +162,9 @@
     .title {
         font-family: "PhosphateInline";
         text-align: center;
-        padding-top: 15%;
+        padding-top: 10%;
         padding-bottom: 5%;
         color: #cebc6f;
-        font-size: 10vw;
-    }
+        font-size: max(5.5vw);
+        }   
 }
