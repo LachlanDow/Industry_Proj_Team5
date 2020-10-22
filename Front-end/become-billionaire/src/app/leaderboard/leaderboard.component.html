@@ -1,78 +1,27 @@
+<html lang="en">
 <div *ngIf="!display">
 
-<div class="box">
-  
-   <div class="div1">
-   <button type="button" class="fa fa-arrow-circle-left fa-2x btnExit" (click)="onPress()"></button>
-   <h1 class="headers">Your Score</h1>
+    <div class="box">
+        <button type="button" class="fa fa-arrow-circle-left fa-2x btnExit" (click)="onPress()"></button>
 
-   <div class="userInfo">
-      <h1 class="nameSize">Foxstalion67 <i class="fa fa-user-circle fa-1x profileIcon"></i></h1>
-      <mat-progress-bar class="progressBar" mode="determinate" [value]="userScore"></mat-progress-bar>
-      <h1 class="leftAlign Points">Correct - 9</h1><h1 class="leftAlign Points">Incorrect - 3</h1>
-      <h1 class="leftAlign Points">Average Time</h1> <h1 class="timer leftAlign">10s</h1>
-   </div>
+        <h1 class="headers">Top Players</h1>
+        <div class="div2">
 
-   </div>
-
-   <h1 class="headers">Top Players</h1>
-   <div class="div2">
-      
-         <div class="topPlayerInfo">
-            <h1 class="nameSizeTop">Foxstalion67<i style="color: gold;"class="fa fa-trophy fa-1x trophyIcon">320</i></h1>
-            <mat-progress-bar class="progressBarTop" mode="determinate" [value]="userScore1"></mat-progress-bar>
-            <h1 class="leftAlign topPoints">Correct - 19</h1><h1 class="leftAlign topPoints">Incorrect - 3</h1>
-            <h1 class="leftAlign topPoints">Average Time</h1> <h1 class="Toptimer leftAlign">10s</h1>
-         </div>
-
-         <div class="topPlayerInfo">
-            <h1 class="nameSizeTop">FuzzyLion13<i style="color: silver;" class="fa fa-trophy fa-1x trophyIcon">310</i></h1>
-            <mat-progress-bar class="progressBarTop" mode="determinate" [value]="userScore2"></mat-progress-bar>
-            <h1 class="leftAlign topPoints">Correct - 17</h1><h1 class="leftAlign topPoints">Incorrect - 5</h1>
-            <h1 class="leftAlign topPoints">Average Time</h1> <h1 class="Toptimer leftAlign">11s</h1>
-         </div>
-
-         <div class="topPlayerInfo">
-            <h1 class="nameSizeTop">Dominator4<i style="color: #f79152;" class="fa fa-trophy fa-1x trophyIcon">308</i></h1>
-            <mat-progress-bar class="progressBarTop" mode="determinate" [value]="userScore3"></mat-progress-bar>
-            <h1 class="leftAlign topPoints">Correct - 14</h1><h1 class="leftAlign topPoints">Incorrect - 8</h1>
-            <h1 class="leftAlign topPoints">Average Time</h1> <h1 class="Toptimer leftAlign">13s</h1>
-         </div>
-         <div class="topPlayerInfo">
-            <h1 class="nameSizeTop">Aydon_6764<i class="trophyIcon">296</i></h1>
-            <mat-progress-bar class="progressBarTop" mode="determinate" [value]="userScore4"></mat-progress-bar>
-            <h1 class="leftAlign topPoints">Correct - 13</h1><h1 class="leftAlign topPoints">Incorrect - 9</h1>
-            <h1 class="leftAlign topPoints">Average Time</h1> <h1 class="Toptimer leftAlign">13s</h1>
-         </div>
-         <div class="topPlayerInfo">
-            <h1 class="nameSizeTop">duffman<i class="trophyIcon">292</i></h1>
-            <mat-progress-bar class="progressBarTop" mode="determinate" [value]="userScore5"></mat-progress-bar>
-            <h1 class="leftAlign topPoints">Correct - 13</h1><h1 class="leftAlign topPoints">Incorrect - 9</h1>
-            <h1 class="leftAlign topPoints">Average Time</h1> <h1 class="Toptimer leftAlign">15s</h1>
-         </div>
-          <div class="topPlayerInfo">
-            <h1 class="nameSizeTop">JoBurgerXD<i class="trophyIcon">287</i></h1>
-            <mat-progress-bar class="progressBarTop" mode="determinate" [value]="userScore6"></mat-progress-bar>
-            <h1 class="leftAlign topPoints">Correct - 9</h1><h1 class="leftAlign topPoints">Incorrect - 3</h1>
-            <h1 class="leftAlign topPoints">Average Time</h1> <h1 class="Toptimer leftAlign">16s</h1>
-         </div>
-   </div>
-
-   
-   <div class="clear">
-      
+            <div class="topPlayerInfo" *ngFor="let participant of participantList">
+                <h1 class="nameSizeTop">{{participant.name}}<i style="color: gold;" class="fa fa-trophy fa-1x trophyIcon">{{participant.score}}</i></h1>
+                <mat-progress-bar class="progressBarTop" mode="determinate" [value]="userScore1"></mat-progress-bar>
+                <h1 class="leftAlign topPoints">Correct - {{participant.correctAnswers}}</h1>
+                <h1 class="leftAlign topPoints">Incorrect - {{participant.incorrectAnswers}}</h1>
+                <h1 class="leftAlign topPoints">Average Time</h1>
+                <h1 class="Toptimer leftAlign">{{participant.averageAnswerTime}}ms</h1>
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
 </div>
 
-
-</div>
 <div *ngIf="display">
-   <app></app>
+    <app></app>
 </div>
-
-   
-    
-   
-    
-    
-
-
+</html>

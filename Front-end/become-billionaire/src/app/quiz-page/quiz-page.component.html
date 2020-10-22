@@ -1,18 +1,29 @@
+<html lang="en">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Power up menu -->
+<div class="powerUps" *ngIf="displayButtons && !displayEndScreen" id="divshow">
+    <p class="powertitle">POWER-UPS</p>
+    <button type="button" class="powerbtn power1" *ngIf="fiftyPowerup" (click)="powerUpActivate('clear')">50/50</button>
+    <button type="button" class="powerbtn power2" *ngIf="handicapPowerup" (click)="powerUpActivate('handicap')">Handicap</button>
+    <button type="button" class="powerbtn power3" *ngIf="doublePowerup" (click)="powerUpActivate('double')">Double</button>
+</div>
+
 <div class="timer" *ngIf="!displayEndScreen">
+
     <countdown #cd [config]="config" (event)="handleEvent($event)"></countdown>
 </div>
 <div *ngIf="!displayEndScreen && displayButtons">
     <div class="question">
-        <p>Question {{quiz.questionNumber}}: {{quiz.questions[currentQuestion].question}}</p>
+        <p class="questionNum">Question {{quiz.questionNumber}}:</p> <p class="question">{{quiz.questions[currentQuestion].question}}</p>
     </div>
 
 
     <div class="choices">
-        <button type="button" class="btn firstChoice" (click)="answerCheck(1)">{{quiz.questions[currentQuestion].choices[0]}}</button>
-        <button type="button" class="btn secondChoice" (click)="answerCheck(2)">{{quiz.questions[currentQuestion].choices[1]}}</button>
-        <button type="button" class="btn thirdChoice" (click)="answerCheck(3)">{{quiz.questions[currentQuestion].choices[2]}}</button>
-        <button type="button" class="btn fourthChoice" (click)="answerCheck(4)">{{quiz.questions[currentQuestion].choices[3]}}</button>
+        <button type="button" class="btn firstChoice" *ngIf="questionsToShowList[0]" (click)="answerCheck(1)">{{quiz.questions[currentQuestion].choices[0]}}</button>
+        <button type="button" class="btn secondChoice" *ngIf="questionsToShowList[1]" (click)="answerCheck(2)">{{quiz.questions[currentQuestion].choices[1]}}</button>
+        <button type="button" class="btn thirdChoice" *ngIf="questionsToShowList[2]" (click)="answerCheck(3)">{{quiz.questions[currentQuestion].choices[2]}}</button>
+        <button type="button" class="btn fourthChoice" *ngIf="questionsToShowList[3]" (click)="answerCheck(4)">{{quiz.questions[currentQuestion].choices[3]}}</button>
     </div>
 
 
@@ -34,10 +45,13 @@
     <app-end-screen></app-end-screen>
 </div>
 
+
 <div *ngIf="!displayButtons">
 
     <div class="result">
-        <div class="dynamicResult">{{IsitCorrect}}</div>
+        <div [class.toggled]="classToggled" class="dynamicResult">{{IsitCorrect}}</div>
+      
+
 
         <div class="border">
             <div class="scoring">
@@ -57,7 +71,7 @@
 
             <div class="extraInfo">
                 <div class="text">Position</div>
-                <div class="infobox">5</div>
+                <div class="infobox">{{currentPosition}}</div>
             </div>
             <div class="waitCounter">
                 PLEASE WAIT
@@ -66,3 +80,4 @@
         </div>
     </div>
 </div>
+</html>

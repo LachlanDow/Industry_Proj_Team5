@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { DataService } from '../services/data.service';
+import  {AppComponent } from '../app.component'
 
 @Component({
   selector: 'app-join-game',
@@ -12,7 +13,7 @@ export class JoinGameComponent implements OnInit {
   displayJoinGameLobby = false;
   participantID;
 
-  constructor(private http: HttpClient, private data: DataService) {
+  constructor(private http: HttpClient, private data: DataService, private appComponent: AppComponent) {
     // NOOP
    }
 
@@ -43,5 +44,6 @@ export class JoinGameComponent implements OnInit {
 
   onPress() {
     this.displayApp = true;
+    this.appComponent.displayJoinPage = false;
   }
 }

@@ -195,18 +195,19 @@ div.box {
   }
   
   .startGame {
-    background-color: darkseagreen;
-    border: 0.2vw solid #3B3B3B;
-    border-radius: 2vw;
+    background-color: #60E0D1;
+    border: 0.2vw solid #191919;
+    border-radius: 1.4vw;
+    font-weight: bold;
     float: right;
     height: auto;
     width: 80%;
-    color: white;
+    color: #191919;
     margin-right: 0.5vw;
     margin-left: 1vw;
     padding-top: 5%;
     padding-left: 2vw;
-    margin-bottom: 2%;
+    padding-bottom: 3%;
     position: relative;
   }
   

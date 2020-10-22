@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import  {AppComponent } from '../app.component'
+import { QuizIdService } from '../services/quiz-id.service';
+import { HttpClient } from '@angular/common/http'
 
 
 @Component({
@@ -8,37 +11,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EndScreenComponent implements OnInit {
 
-  //Data for current player
-  userName = "bestPlayer"; 
-  userScore = 20;
-  userCorrect = 9;
-  userIncorrect = 1;
-  userAvg = 10;
+  quizId;
+  participantList;
+  display = false;
 
 
-  //data for the players in game,
-  //currently players need to be put into the array in the correct order, as the first item in array will come at the top of the leaderboard i.e. dave will be No1, jimmy No2
-  playerName = ["dave","jimmy","quiz boy"];
-  playerScore = ["20", "15","10"];
-  playerCorrect = ["20","15","5"];
-  playerIncorrect = ["5","10","25"];
-  playerAvg = ["10","9","5"];
-
-  // can add code later to auto sort players into the array if necessary 
-
-
-  constructor() { }
-
+  constructor(private quizID: QuizIdService, private http: HttpClient, private appComponent: AppComponent) { }
   ngOnInit(): void {
+    this.quizID.currentMessage.subscribe(message => this.quizId = message)
+    this.getLeaderboardData();
   }
 
-   display = false;
+  getLeaderboardData() {
+    console.log("from end screen quiz id",this.quizId)
+    const url = `http://35.214.82.56:3000/quiz/${this.quizId}`;
+    const headers = { 'Content-Type': 'application/json' };
+    this.http.get<any>(url, { headers: headers }).subscribe(data => {
+      this.participantList = data.participants;
+      console.log("participant list", this.participantList);
+    });
+  }
+
 
   onPress() {
     this.display = true;
+    this.appComponent.displayHost = false;
+    this.appComponent.displayJoinPage = false;
   }
-
 }
+
+
+
+
 
 
 

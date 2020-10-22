@@ -17,6 +17,8 @@
     float: left;
     height: 20%;
     width: 0%;
+    margin-top: 2%;
+    margin-left: 2%; 
       
   }
 .btnJoin{
@@ -30,15 +32,15 @@
   }
   .btnExit{
     float: left;
-    background-color: #191919;
+    background-color: transparent;
     border: none;
     color: #FA1772;
     position: fixed;   
     font-size: 3vw;
     font-size: max(70px);
     cursor: pointer;  
-    margin-top: 2%;
-    margin-left: 2%;  
+    margin-top: 3%;
+    margin-left: 3%;  
     position: relative;
     z-index: 1;
   }
@@ -68,6 +70,7 @@
     font-size: 2vw;
     text-align: center;
     color:white;
+    border-style: none;
 
   }
   .btnJoin{
@@ -81,4 +84,9 @@
     max-width: 800px;
     font-family: "Roboto";
     border-radius: 25px;
+    border-style: none;
+  }
+  .btnJoin:hover{
+    background-color: #3480b6;
+  
   }
