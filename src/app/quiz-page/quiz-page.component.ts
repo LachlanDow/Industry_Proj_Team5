@@ -4,9 +4,6 @@ import { DataService } from '../services/data.service';
 import { QuizIdService } from '../services/quiz-id.service';
 import { CountdownComponent, CountdownConfig } from 'ngx-countdown';
 import { AppComponent } from '../app.component';
-import { getCurrencySymbol } from '@angular/common';
-import { count } from 'console';
-import { PassThrough } from 'stream';
 
 
 @Component({
@@ -48,7 +45,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
   powerupList = ["handicap", "clear", "double"];
   powerupListIndex = 0;
   fiftyPowerupActivated = false;
-  questionsToShowList = [];
+  questionsToShowList = [true, true, true, true];
   currentPosition;
   classToggled = false;
 
@@ -66,8 +63,6 @@ export class QuizPageComponent implements OnInit, OnChanges {
     this.quizID.currentMessage.subscribe(message => this.quizId = message);
     this.participantID = this.hostId;
     this.getEvent();
-    this.appComponent.toggleShow();
-
   }
 
   ngOnChanges(): void {
@@ -80,14 +75,6 @@ export class QuizPageComponent implements OnInit, OnChanges {
     this.appComponent.wrongSound();
   }
 
-  public toggleField() {
-    this.classToggled = !this.classToggled;  
-  }
-  public toggleCorrect() {
-    if(this.classToggled == true){
-      this.classToggled = false;
-    }
-  }
 
   /**
    * Check if the clicked answer is the correct one 
@@ -98,7 +85,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
     this.displayButtons = false;
     this.lastAnsweredTime = new Date().getTime();
     if (e == this.correctAnswerIndex) {
-      this.toggleCorrect();
+      this.classToggled = false;
       this.IsitCorrect = "Correct Answer! Well Done";
       this.playCorrect();
       this.resultIcons.push(true)
@@ -106,7 +93,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
       this.sendScore();
     }
     else {
-      this.toggleField();
+      this.classToggled = true;
       this.IsitCorrect = "Wrong Answer! Good luck next time";
       this.playWrong();
       this.resultIcons.push(false)
@@ -143,8 +130,12 @@ export class QuizPageComponent implements OnInit, OnChanges {
     serverEvents.addEventListener('message', function (event) {
       quizPage.quiz = JSON.parse(event.data)
       quizPage.questionCount();
+      for (let i = 0; i < quizPage.quiz.participants.length; i++) {
+        if (quizPage.quiz.participants[i]._id == quizPage.participantID) {
+          quizPage.currentPosition = i + 1;
+        }
+      }
       if (quizPage.quiz.questionNumber == -1) {
-        quizPage.appComponent.toggleShow();
         quizPage.displayEndScreen = true;
         quizPage.displayButtons = true;
 
@@ -200,26 +191,26 @@ export class QuizPageComponent implements OnInit, OnChanges {
    * Sends score to the server
    */
   sendScore() {
+    this.timeDifference = Math.round((this.timeDifference / 1000) * 100) / 100;
+
     var correct, incorrect, average;
     var correctList = this.resultIcons.filter(function (value) {
       return value == true;
     });
 
-    this.currentScore = this.currentScore + this.timeDifference;
-
-    correct = correctList.length;
-    incorrect = this.resultIcons.length - correct;
-    average = this.currentScore / this.resultIcons.length;
     if (this.doublePowerupActivated) {
       if (this.IsitCorrect == "Correct Answer! Well Done") {
         this.timeDifference = this.timeDifference / 2;
       }
-      else { 
+      else {
         this.timeDifference = this.timeDifference * 2;
       }
       this.doublePowerupActivated = false;
     }
-
+    correct = correctList.length;
+    incorrect = this.resultIcons.length - correct;
+    average = Math.round((this.currentScore / this.resultIcons.length) * 100) / 100
+    this.currentScore = this.currentScore + this.timeDifference;
     const url = `http://35.214.82.56:3000/quiz/${this.quizId}/${this.participantID}`;
     const headers = { 'Content-Type': 'application/json' };
     const data = {
@@ -228,14 +219,8 @@ export class QuizPageComponent implements OnInit, OnChanges {
       "incorrectAnswers": incorrect,
       "averageAnswerTime": average
     };
+    console.log("dataaaaaaaa", data);
     this.http.patch<any>(url, JSON.stringify(data), { headers: headers }).subscribe(response => {
-      let participants = response.participants;
-      for(let i = 0; i < participants.length; i++) {
-        if(participants[i]._id = this.participantID) { 
-          this.currentPosition = i+1;
-        } 
-        
-      }
     });
   }
 
@@ -263,7 +248,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
       "powerupName": this.powerupList[this.powerupListIndex]
     };
     this.http.patch(url, JSON.stringify(data), { headers: headers }).subscribe(data => {
-      
+
     });
     if (this.powerupList[this.powerupListIndex] == "clear") {
       this.fiftyPowerup = true;
