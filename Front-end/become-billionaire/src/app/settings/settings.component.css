@@ -1,0 +1,178 @@
+
+
+#parent{padding:3%;}
+
+.child {height: 16%; margin-bottom: 5%; float:inline-start;}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    width: 60px;
+    height: 34px;
+    float: right;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(84, 84, 84);
+    
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  .slider:hover {
+    background-color: rgb(214, 214, 214);
+  }
+
+
+  
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    outline: 2px solid #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  .btnExit{
+    float: right;
+    background-color: #191919;
+    border: none;
+    color: #FA1772;
+    padding: 3%;    
+    font-size: 3vw;
+    font-size: max(70px);
+    cursor: pointer;  
+    
+  }
+  .btnExit:hover{
+    
+    color: #970f46;
+    
+    
+  }
+  h3{
+      color:white;
+      float: left;
+      font-size: 2vw;
+    }
+
+  h1{
+        color:white;
+        float: left;
+        font-size: 3vw;
+ }
+
+ .frame {
+  border: 0.2vw solid  #3B3B3B;
+  border-radius: 0.6vw;
+  font-family: "Roboto";
+  height: 15vw;
+  width: 20vw;
+  padding-top: 10%;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-left: 15%;
+ }
+
+ .title {
+   margin-top: 5%;
+   margin-left: 5%;
+ }
+ 
+ .big-icon {
+  font-size: 13vw;
+  color: #A6A6A6;
+  
+}
+
+@media only screen and (max-width: 1299px) {
+  .big-icon {
+    display:none;
+    
+  }
+  .btnExit{
+    float: left;
+    background-color: #191919;
+    border: none;
+    color: #FA1772;
+    position: fixed;
+    font-size: 3vw;
+    font-size: max(70px);
+    cursor: pointer;
+    margin-top: -2%;
+    margin-left: 3%;
+    position: relative;
+    z-index: 1;
+    
+  }
+  h1{
+    color:white;
+    float: left;
+    font-size: max(7vw);
+}
+.title {
+  margin-top: 10%;
+  margin-left: 10%;
+}
+.frame {
+  border: 0.5vw solid  #3B3B3B;
+  border-radius: 3vw;
+  font-family: "Roboto";
+  height: 60%;
+  width: 50vw;
+  padding-top: 10%;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-left: 8%;
+  position: relative;
+
+ }
+ h3{
+  color:white;
+  float: left;
+  font-size: 5vw;
+  
+  position: relative;
+}
+.child {height: 15%; margin-bottom: 10%; float:inline-start;}
+}

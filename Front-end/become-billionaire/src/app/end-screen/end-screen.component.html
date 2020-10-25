@@ -1,0 +1,29 @@
+<html lang="en">
+<div *ngIf="!display">
+    <div class="box">
+        <button type="button" class="fa fa-arrow-circle-left fa-2x btnExit" alt="Return to main screen" title="Return to main screen" (click)="onPress()"></button>
+        <h1 class="headers">Top Match Players</h1>
+        <div class="div2">
+            <ng-container>
+                <div class="topPlayerInfo" *ngFor="let participant of participantList">
+                    <h1 class="nameSizeTop">{{participant.name}}
+                        <i class="scores"> {{participant.score}}</i>
+                    </h1>
+                    <h1 class="leftAlign topPoints">Correct - {{participant.correctAnswers}}</h1>
+                    <h1 class="leftAlign topPoints">Incorrect - {{participant.incorrectAnswers}}</h1>
+                    <h1 class="leftAlign topPoints">Average Time</h1>
+                    <h1 class="Toptimer leftAlign">{{(participant.averageAnswerTime)}}s</h1>
+                </div>
+            </ng-container>
+        </div>
+
+        <div class="clear">
+        </div>
+
+    </div>
+    <div *ngIf="display">
+        <app></app>
+    </div>
+</div>
+
+</html>
