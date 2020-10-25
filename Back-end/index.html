@@ -1,5 +1,7 @@
 <script>
     //Example front end code, showing how to create event source from api and add an eventListener to this event source.
+    //This is not used in production, this is simply a test file used to verify that the server is behaving as expected.
+    //When using this file to test, requests must be made manually to server using a HTTP request tool such as Postman.
     //Replace the participant ID below with users participant ID
     var serverEvents = new EventSource('http:///localhost:3000/stream/5f91c8ed26b32d35d8d9fd92');
     serverEvents.addEventListener('message', function(event){

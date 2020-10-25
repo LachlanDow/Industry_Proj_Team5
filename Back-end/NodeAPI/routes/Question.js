@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Question = require("../models/Question");
 const Category = require("../models/Category");
-// Get All Route
+// Get All questions when get made to /questions endpoint
 router.get("/", async (req, res) => {
     try {
       const question = await Question.find()
@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
     }
   });
 
-// Create One Route
+// Create question when post made to /questions endpoint
 router.post("/", async (req, res) => {
     const question = new Question({
       questionText: req.body.questionText,
@@ -30,19 +30,5 @@ router.post("/", async (req, res) => {
       res.status(400).json({ message: err.message });
     }
   });
-// Edit One Route PUT version
-router.put("/:id", async (req, res) => {
-// Rest of the code will go here
-});
-// Edit One Route PATCH version
-router.patch("/:id", async (req, res) => {
-// Rest of the code will go here
-});
-// Delete One Route
-router.delete("/:id", async (req, res) => {
-// Rest of the code will go here
-});
-
-
 
 module.exports = router;

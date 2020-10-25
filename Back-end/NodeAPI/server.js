@@ -1,3 +1,4 @@
+//Main 'entrypoint' file for API. Sets app to use routers, which then handle requests made to their respective endpoint
 const express = require('express');
 const mongoose = require("mongoose");
 const SSE = require('./ServerSentEvents');
@@ -6,6 +7,7 @@ const cors = require('cors');
 const app = express();
 
 //Establish connection to database
+//Password set as environment variable to prevent password from being revealed in source code
 var password = process.env.DB_PASSWORD;
 mongoose.connect(`mongodb://quizAdmin:${password}@34.105.157.233:27017/quiz?authSource=admin`, { useNewUrlParser: true }); 
 const db = mongoose.connection;
