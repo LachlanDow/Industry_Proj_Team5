@@ -3,7 +3,7 @@ const Category = require("../models/Category");
 const router = express.Router();
 const Question = require("../models/Question");
 
-// Get All Categories
+// Get All Categories when get made to /categories endpoint
 router.get("/", async (req, res) => {
     try {
         const category = await Category.find({})
@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
     }
   });
 
-  //Create category
+  //Create category when post made to /categories endpoint
   router.post("/", async (req, res) => {
     const category = new Category({
         name: req.body.name,
@@ -27,7 +27,7 @@ router.get("/", async (req, res) => {
     }
   });
 
-// Get category by id
+// Get category by id when get made to /categories/(categoryID)
   router.get("/:id", getCategory, (req, res) => {
     res.json(res.category);
   });

@@ -26,6 +26,8 @@ function leftPad(str, length) {
 }
 
 //currently the algorithm used
+//Used to generate quiz IDs which are then used as join codes for other players. 
+//This function gives a shorter, more readable/memorable code than default ID provided by MongoDB
  function cryptPin(){
   const crypto = require('crypto');
 var buf= crypto.randomBytes(3);

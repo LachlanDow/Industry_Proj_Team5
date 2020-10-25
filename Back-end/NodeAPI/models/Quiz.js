@@ -4,6 +4,9 @@ const Participant = require("./Participant");
 const Category = require("./Category");
 const Question = require("./Question");
 
+//Schema for question documents in DB. Question documents have an ID, a list of participants, a category ID,
+//The timelimit in seconds between each question, the total number of questions (questionCount), 
+//a list of questions, and the current question number
 const quizSchema = new Schema({
     _id: String,
     participants: { type: [Participant.schema], validate: v => Array.isArray(v) && v.length > 0 },
@@ -13,6 +16,7 @@ const quizSchema = new Schema({
     questions: { type: [Question.schema], validate: v => Array.isArray(v) && v.length > 0 },
     questionNumber: { type: Number, required: true }
 });
-const Quiz = mongoose.model("Quiz", quizSchema);
 
+//Model must be exported to be used in routing to manipulate DB.
+const Quiz = mongoose.model("Quiz", quizSchema);
 module.exports = Quiz;

@@ -3,7 +3,7 @@ const Powerup = require("../models/Powerup");
 const router = express.Router();
 
 
-// Get All Powerups
+// Get All Powerups when get made to /powerups
 router.get("/", async (req, res) => {
     try {
         const powerup = await Powerup.find({})
@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
     }
   });
 
-// Get powerup by id
+// Get powerup by id when get made to /powerups/(powerupID)
   router.get("/:id", getPowerup, (req, res) => {
     res.json(res.powerup);
   });

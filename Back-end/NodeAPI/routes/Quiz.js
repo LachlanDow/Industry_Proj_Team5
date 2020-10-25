@@ -11,7 +11,7 @@ const Powerup = require("../models/Powerup");
 const SSE = require('../ServerSentEvents');
 const fetch = require('node-fetch');
 const powerupRouter = require("./Powerup.js");
-// Get All quizzes from db
+// Get All quizzes from db when get made to /quiz endpoint
 router.get("/", async (req, res) => {
   try {
     const quiz = await Quiz.find()
@@ -21,9 +21,8 @@ router.get("/", async (req, res) => {
   }
 });
 
-//Create new quiz. This adds the host as a participant, selects the category, timelimit, question count
-//and selects questions. TODO - move question selection to another function and provide functionality to pick random questions
-//from different categories
+//Create new quiz when post made to /quiz endpoint. This adds the host as a participant, selects the category, timelimit, question count
+//and selects questions. 
 router.post("/", async (req, res) => {
   //If there is no leaderboard with ID 'main', create this leaderboard
   //This strategy makes it easier to extend later on if we wished to have leaderboards for different categories etc
@@ -41,9 +40,11 @@ router.post("/", async (req, res) => {
       console.log(err);
     }
   }
+  //Call made to powerups endpoint to set all powerups for participant
   var response = await fetch('http://127.0.0.1:3000/powerups');
   json = await response.json();
 
+  //New participant is created for the host who is creating the quiz
   const participant = new Participant({
     name: req.body.hostName,
     score: 0,
@@ -52,12 +53,16 @@ router.post("/", async (req, res) => {
     averageAnswerTime: 0,
     powerups: json
   });
+  //All questions of category found from DB
   var categoryquestion = await Question.find({ "category._id": String(req.body.categoryId) });
+  //List of questions is 'shuffled' into new random order
   shuffleArray(categoryquestion);
 
+  //Question list is then set to be a subset of this list, depending on the desired number of questions given in questionCount
   var questionList = categoryquestion.slice(0, req.body.questionCount);
 
   const quizToCreate = new Quiz({
+    //Quiz ID is set using CryptPin function which gives a shorter and more user readable/memorable code for sharing with others to join
     _id: CryptPin(),
     participants: [participant],
     categoryId: req.body.categoryId,
@@ -77,13 +82,14 @@ router.post("/", async (req, res) => {
 });
 
 
-// Get quiz by ID - this is the equivalent of get quiz state
+// Get quiz by ID on get to /quiz/(quizID) - this is the equivalent of get quiz state
 router.get("/:id", getQuiz, (req, res) => {
   res.json(res.quiz);
 });
 
-// Start quiz
+// Start quiz when post made to /quiz/(quizID)/start
 router.post("/:id/start", getQuiz, async (req, res) => {
+  //Starts game loop in SSE function so that updates are sent to all quiz players
   SSE.data.gameLoopStart(res.quiz);
   try {
     const updatedQuiz = await res.quiz.save();
@@ -94,8 +100,9 @@ router.post("/:id/start", getQuiz, async (req, res) => {
   }
 });
 
-//Join Quiz. Patch to quiz endpoint with quizID after slash. This notifies all other participants in quiz.
+//Join Quiz when patch made to /quiz/(quizID) This notifies all other participants in quiz.
 router.patch("/:id", getQuiz, async (req, res) => {
+  //Call made to powerups endpoint to set all powerups for participant
   var response = await fetch('http://127.0.0.1:3000/powerups');
   json = await response.json();
 
@@ -120,7 +127,7 @@ router.patch("/:id", getQuiz, async (req, res) => {
   }
 });
 
-//Update participant score
+//Update participant score when patch made to /quiz/(quizID)/(participantID)
 router.patch("/:id/:participantId", getQuiz, async (req, res) => {
   const participant = res.quiz.participants.find(p => p.id == req.params.participantId);
   if (participant != null) {
@@ -129,7 +136,7 @@ router.patch("/:id/:participantId", getQuiz, async (req, res) => {
       var roundscore = req.body.score;
       //implement handicap
       if (participant.powerups[1].active == false) {
-
+        //If the player does not have the handicap powerup currently active, check if another player has it active. If so, double score.
         for (var part = 0; part < res.quiz.participants.length; ++part) {
           if (res.quiz.participants[part].powerups[1].active == true) {
             roundscore = (roundscore * 2)
@@ -138,9 +145,10 @@ router.patch("/:id/:participantId", getQuiz, async (req, res) => {
           }
         }
       }
-
+      //Set score to score + the score for the round
       participant.score = participant.score + roundscore;
     }
+    //Optionally request can update correctAnswers, incorrectAnswers, averageAnswerTime
     if (req.body.correctAnswers != null) {
       participant.correctAnswers = req.body.correctAnswers;
     }
@@ -162,13 +170,13 @@ router.patch("/:id/:participantId", getQuiz, async (req, res) => {
   }
 
 });
-
+//Function used when sorting list by order of participant score
 var compare = function (a, b) {
   return parseInt(a.score) - parseInt(b.score);
 }
 
 
-//activate participant powerup
+//activate participant powerup when patch made to /quiz/(quizID)/(participantID)/powerup
 router.patch("/:id/:participantId/powerup", getQuiz, async (req, res) => {
   //Find the participant in the quiz by their participant ID, and change to the powerup send in request body
   var part = res.quiz.participants.find(p => p.id == req.params.participantId)
@@ -193,7 +201,7 @@ router.patch("/:id/:participantId/powerup", getQuiz, async (req, res) => {
 
 
 
-//deactivate participant powerup
+//deactivate participant powerup when patch made to /quiz/(quizID)/(participantID)/removepowerup
 router.patch("/:id/:participantId/removepowerup", getQuiz, async (req, res) => {
   //Find the participant in the quiz by their participant ID, and change to the powerup send in request body
   var part = res.quiz.participants.find(p => p.id == req.params.participantId)
@@ -217,7 +225,7 @@ router.patch("/:id/:participantId/removepowerup", getQuiz, async (req, res) => {
 });
 
 
-//make participant powerup available
+//make participant powerup available when patch made to /quiz/(quizID)/(participantID)/availablepowerup
 router.patch("/:id/:participantId/availablepowerup", getQuiz, async (req, res) => {
   var part = res.quiz.participants.find(p => p.id == req.params.participantId)
   if (part != null) {
@@ -241,7 +249,7 @@ router.patch("/:id/:participantId/availablepowerup", getQuiz, async (req, res) =
 
 });
 
-//make participant powerup unavailable
+//make participant powerup unavailable when patch made to /quiz/(quizID)/(participantID)/unavailablepowerup
 router.patch("/:id/:participantId/unavailablepowerup", getQuiz, async (req, res) => {
   //Find the participant in the quiz by their participant ID, and change to the powerup send in request body
   var part = res.quiz.participants.find(p => p.id == req.params.participantId)
@@ -281,7 +289,7 @@ async function getQuiz(req, res, next) {
   next();
 }
 
-
+//Function to shuffle array to randomise questions to be set for quiz
 function shuffleArray(array) {
   for (var i = array.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
