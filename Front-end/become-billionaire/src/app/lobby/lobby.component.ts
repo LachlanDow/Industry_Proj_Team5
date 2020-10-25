@@ -9,6 +9,7 @@ import { HostSettingComponent } from '../host-setting/host-setting.component'
   styleUrls: ['./lobby.component.css']
 })
 export class LobbyComponent implements OnInit {
+  // global variables
   participantID;
   localParticipants;
   quizId
@@ -17,6 +18,7 @@ export class LobbyComponent implements OnInit {
 
   constructor(private data: DataService, private quizID: QuizIdService, private hostComponent: HostSettingComponent) { }
 
+  // runs on component created.
   ngOnInit(): void {
     this.data.currentMessage.subscribe(message => this.participantID = message);
     this.quizID.currentMessage.subscribe(message => this.quizId = message)
@@ -37,12 +39,17 @@ export class LobbyComponent implements OnInit {
     });
   }
 
+  /*
+  * on press showis thge landing page
+  */
   onPress() {
     this.display = true;
   }
 
+  /*
+  * on press hides lobby
+  */
   onPressExit() {
     this.hostComponent.showLobby = false;
   }
-
 }

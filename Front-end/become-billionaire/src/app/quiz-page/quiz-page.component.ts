@@ -12,6 +12,7 @@ import { AppComponent } from '../app.component';
   styleUrls: ['./quiz-page.component.css']
 })
 export class QuizPageComponent implements OnInit, OnChanges {
+  // global variables
   questions;
   currentQuestion = 0;
   IsitCorrect;
@@ -49,15 +50,13 @@ export class QuizPageComponent implements OnInit, OnChanges {
   currentPosition;
   classToggled = false;
 
-
-
   @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
-
 
   constructor(private http: HttpClient, private data: DataService, private quizID: QuizIdService, private appComponent: AppComponent) {
     //NOOP
   }
 
+  // runs on component created.
   ngOnInit(): void {
     this.data.currentMessage.subscribe(message => this.hostId = message);
     this.quizID.currentMessage.subscribe(message => this.quizId = message);
@@ -68,9 +67,13 @@ export class QuizPageComponent implements OnInit, OnChanges {
   ngOnChanges(): void {
     //NOOP
   }
+
+  // When the player gets correct answer it plays the sfx for that
   playCorrect() {
     this.appComponent.correctSound();
   }
+
+  // When the player gets wrong answer it plays the sfx for that
   playWrong() {
     this.appComponent.wrongSound();
   }
@@ -78,8 +81,6 @@ export class QuizPageComponent implements OnInit, OnChanges {
 
   /**
    * Check if the clicked answer is the correct one 
-   *  - if it's correct it calculates the score and sends it the server
-   * @param e 
    */
   answerCheck(e: any) {
     this.displayButtons = false;
@@ -102,7 +103,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
     }
   }
 
-
+  // Keeps the count of questions
   public questionCount() {
     if (this.quiz.questionNumber == 0) {
       this.currentQuestion = this.quiz.questionNumber;
@@ -292,6 +293,7 @@ export class QuizPageComponent implements OnInit, OnChanges {
     }
   }
 
+  //runs when fifty fifty power up is clicked
   activateFiftyPowerup() {
     let counter = 0;
 
@@ -306,6 +308,4 @@ export class QuizPageComponent implements OnInit, OnChanges {
     }
 
   }
-
 }
-

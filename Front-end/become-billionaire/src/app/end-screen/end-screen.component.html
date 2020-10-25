@@ -1,18 +1,14 @@
 <html lang="en">
 <div *ngIf="!display">
-
     <div class="box">
         <button type="button" class="fa fa-arrow-circle-left fa-2x btnExit" alt="Return to main screen" title="Return to main screen" (click)="onPress()"></button>
-
         <h1 class="headers">Top Match Players</h1>
         <div class="div2">
             <ng-container>
                 <div class="topPlayerInfo" *ngFor="let participant of participantList">
                     <h1 class="nameSizeTop">{{participant.name}}
-                        <!--<i style="color: gold;"class="fa fa-trophy fa-1x trophyIcon"></i>  Creates trophy next to score, can't figure out how to have it change based on players ranking-->
                         <i class="scores"> {{participant.score}}</i>
                     </h1>
-                    <!-- <mat-progress-bar class="progressBarTop" mode="determinate"></mat-progress-bar> -->
                     <h1 class="leftAlign topPoints">Correct - {{participant.correctAnswers}}</h1>
                     <h1 class="leftAlign topPoints">Incorrect - {{participant.incorrectAnswers}}</h1>
                     <h1 class="leftAlign topPoints">Average Time</h1>
