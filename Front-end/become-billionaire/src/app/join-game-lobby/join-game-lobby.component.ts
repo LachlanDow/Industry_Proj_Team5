@@ -8,17 +8,19 @@ import { QuizIdService } from '../services/quiz-id.service';
   styleUrls: ['./join-game-lobby.component.css']
 })
 export class JoinGameLobbyComponent implements OnInit {
-  participantID ;
+  //global variables
+  participantID;
   localParticipants;
   quizID;
   showQuizPage = false;
 
   constructor(private data: DataService, private quizId: QuizIdService) { }
 
+  // runs on component created.
   ngOnInit(): void {
     this.data.currentMessage.subscribe(message => this.participantID = message);
-   this.getEvent();
-   this.quizId.currentMessage.subscribe(message => this.quizID = message)
+    this.getEvent();
+    this.quizId.currentMessage.subscribe(message => this.quizID = message)
   }
 
   /**
@@ -35,15 +37,14 @@ export class JoinGameLobbyComponent implements OnInit {
       quizPage.quizID = quiz._id;
       quizPage.localParticipants = quiz.participants;
       quizPage.setQuizID();
-
-      if(quiz.questionNumber != 0) { 
+      if (quiz.questionNumber != 0) {
         quizPage.showQuizPage = true;
       }
     });
-
   }
 
-  setQuizID() { 
+  //updates the value of quiz id on the angular service
+  setQuizID() {
     this.quizId.changeMessage(this.quizID);
     console.log(this.quizId);
   }
